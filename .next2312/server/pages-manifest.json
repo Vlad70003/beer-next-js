@@ -1,0 +1,21 @@
+{
+  "/Contacts": "pages/Contacts.html",
+  "/Ordering": "pages/Ordering.html",
+  "/PrivateOffice": "pages/PrivateOffice.html",
+  "/WorkWithUs": "pages/WorkWithUs.html",
+  "/_app": "pages/_app.js",
+  "/api/hello": "pages/api/hello.js",
+  "/": "pages/index.html",
+  "/shop/BeerAndCider": "pages/shop/BeerAndCider.html",
+  "/shop/Beverages": "pages/shop/Beverages.html",
+  "/shop/Bottled": "pages/shop/Bottled.html",
+  "/shop/Chease": "pages/shop/Chease.html",
+  "/shop/Fishes": "pages/shop/Fishes.html",
+  "/shop/Meat": "pages/shop/Meat.html",
+  "/shop/Other": "pages/shop/Other.html",
+  "/shop/Snacks": "pages/shop/Snacks.html",
+  "/shop/Stock": "pages/shop/Stock.html",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
+}
