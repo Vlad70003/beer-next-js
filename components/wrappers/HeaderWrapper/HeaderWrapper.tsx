@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import style from "./HeaderWrapper.module.scss";
 
 import { Header } from "../../Header/Header";
@@ -25,32 +26,37 @@ export function HeaderWrapper({
   footer,
 }: HeaderWrapperState) {
   return (
-    <div className={style.wrapper} style={styles}>
-      {header && (
-        <>
-          <BaseWrapperMargin flex="0 0 auto">
-            <Header />
-          </BaseWrapperMargin>
-        </>
-      )}
-      {navigation && (
-        <>
-          <BaseWrapperMargin flex="auto">
-            <Navigation />
-          </BaseWrapperMargin>
-        </>
-      )}
-      {slider && (
-        <>
-          <SlickSlider />
-        </>
-      )}
-      <>{children}</>
-      {footer && (
-        <>
-          <Footer />
-        </>
-      )}
-    </div>
+    <>
+    <Head>
+      <meta name="keywords" content="Пивас и квас" />
+    </Head>
+      <div className={style.wrapper} style={styles}>
+        {header && (
+          <>
+            <BaseWrapperMargin flex="0 0 auto">
+              <Header />
+            </BaseWrapperMargin>
+          </>
+        )}
+        {navigation && (
+          <>
+            <BaseWrapperMargin flex="auto">
+              <Navigation />
+            </BaseWrapperMargin>
+          </>
+        )}
+        {slider && (
+          <>
+            <SlickSlider />
+          </>
+        )}
+        <>{children}</>
+        {footer && (
+          <>
+            <Footer />
+          </>
+        )}
+      </div>
+    </>
   );
 }
