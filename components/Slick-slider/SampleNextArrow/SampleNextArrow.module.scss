@@ -1,0 +1,14 @@
+.arrowNext {
+  position: absolute;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 7px;
+  font-size: 0px !important;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-45deg);
+  cursor: pointer;
+  z-index: 999;
+  opacity: 1;
+}

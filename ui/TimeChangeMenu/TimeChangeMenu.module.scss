@@ -1,0 +1,35 @@
+.timeChangeMenu{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    padding: 7px 16px;
+    border-radius: 20px;
+    border: 1px solid #BFBFBF;
+    right: -94%;
+    top: 0;
+    transform: translateX(-100%);
+
+    &__title{
+        text-align: center;
+        font-size: 18px;
+        color: #434242;
+        font-weight: 700;
+        padding-bottom: 12px;
+    }
+
+    &__list{
+        max-height: 336px;
+        overflow-y: scroll;
+        
+    }
+
+    &__item{
+        padding: 4px 10px;
+        margin-right: 2px;
+
+        &:hover{
+            background: #E4EAEF;
+        }
+    }
+}

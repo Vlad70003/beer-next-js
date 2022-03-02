@@ -1,0 +1,34 @@
+.cardChanger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+    }
+
+    &__border {
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: url("../../assests/img//dropdown.svg") center no-repeat;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+    }
+
+    &__bankLogo__wrapper {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 40px;
+        pointer-events: none;
+    }
+}

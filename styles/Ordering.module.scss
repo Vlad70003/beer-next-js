@@ -1,0 +1,73 @@
+.ordering{
+
+    display: flex;
+
+    & > section {
+        flex: 1;
+        padding-top: 32px;
+    }
+
+    &__rightSide{
+
+        margin-left: 20%;
+
+        &__bonusAccrual{
+            padding-bottom: 16px;
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    &__flexWrapper{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        ;
+        
+    }
+
+    &__spaceBetween{
+        justify-content: space-between
+    }
+
+    &__detailsPosttitle{
+        color: #757575;
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+    &__detailsPosttitle{
+        padding-bottom: 8px;
+    }
+
+    &__payPosttitle{
+        font-size: 11px;
+        color: #757575;
+        font-weight: normal;
+        padding-bottom: 16px;
+    }
+
+    &__checkboxWrapper{
+        padding-bottom: 16px;
+    }
+
+    &__label{
+        display: flex;
+        align-items: center;
+        color: #434242;
+        position: relative;
+    }
+
+    &__cardInfWrapper{
+        min-width: 300px;
+        width: 50%;
+    }
+
+    &__padding8{
+        padding-bottom: 8px;
+    }
+
+    &__padding24{
+        padding-bottom: 24px;
+    }
+}

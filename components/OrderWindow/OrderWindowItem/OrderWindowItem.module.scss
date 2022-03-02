@@ -1,0 +1,19 @@
+.orderWindow__item{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+
+    &__item__wrapper{
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__count{
+        color: #757575;
+        padding-left: 4px;
+    }
+
+    &__price{
+        color: #757575;
+    }
+}

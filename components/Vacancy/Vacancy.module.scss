@@ -1,0 +1,65 @@
+.vacancy {
+
+  padding-top: 20px;
+  border-bottom: 1px solid #D8D4CE;
+
+  &__title {
+    color: #434242;
+    font-size: 20px;
+    padding-bottom: 8px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    &__leftSide {
+      display: flex;
+      flex-direction: column;
+      padding-right: 50px;
+
+      &__list {
+        display: flex;
+        padding-bottom: 8px;
+
+        &:last-child {
+          color: #757575;
+
+          & li {
+            padding-right: 8px;
+          }
+        }
+      }
+
+      &__item {
+        padding-right: 16px;
+
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+
+  &__requirementWrapper{
+    display: flex;
+    justify-content: start;
+
+    & div{
+      padding-right: 50px;
+
+      &:last-child{
+        padding-right: 0;
+      }
+    }
+
+  }
+
+  &__open{
+    display: block;
+  }
+  &__close{
+    display: none;
+  }
+}

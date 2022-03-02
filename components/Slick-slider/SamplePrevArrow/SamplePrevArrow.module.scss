@@ -1,0 +1,15 @@
+.arrowPrev {
+  position: absolute;
+  border: solid white;
+  opacity: 1;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 7px;
+  font-size: 0px !important;
+  left: 25px;
+  top: 50%;
+  transform: translateY(-50%) rotate(135deg);
+  cursor: pointer;
+  z-index: 999;
+  opacity: 1;
+}

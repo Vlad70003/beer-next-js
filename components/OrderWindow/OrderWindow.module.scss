@@ -1,0 +1,19 @@
+.orderWindow{
+    padding: 48px;
+    background: white;
+    border-radius: 20px;
+    margin-bottom: 16px;
+
+    &__header{
+        text-align: center;
+        padding-bottom: 16px;
+    }
+
+    &__border{
+        height: 1px;
+        width: 80%;
+        display: block;
+        background: #D8D4CE;
+        margin: 0 auto;
+    }
+}

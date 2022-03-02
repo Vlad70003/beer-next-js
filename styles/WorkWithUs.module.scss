@@ -1,0 +1,35 @@
+.workWithUs{
+
+    &__subtitle{
+        color: #757575;
+        padding-top: 24px;
+        padding-bottom: 16px;
+    }
+
+    &__selectsWrapper{
+        display: flex;
+        padding-bottom: 32px;
+    }
+
+    &__selectWrapper{
+        max-width: 100%;
+        position: relative;
+
+        &::before {
+            content: "";
+            display: block;
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            right: 10px;
+            user-select: none;
+            top: 50%;
+            transform: translateY(-50%);
+            background: url("../assests/img/dropdown.svg") center no-repeat;
+        }
+
+        &:last-child{
+            padding-left: 64px;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+.changeShopBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__button{
+        &__wrapper{
+            padding-left: 10px;
+        }
+    }
+}

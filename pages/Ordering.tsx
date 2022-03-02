@@ -1,0 +1,237 @@
+import React, { useState } from "react";
+import style from "../styles/Ordering.module.scss";
+
+import { AdditionalPageWrapper } from "../components/wrappers/AdditionPageWrapper/AdditionPageWrapper";
+import { Subtitle } from "../components/Subtitle/Subtitle";
+import { ReCheckBox } from "../ui/Re-checkbox/ReCheckBox";
+import { BorderWrapper } from "../components/wrappers/borderWrapper/BorderWrapper";
+import { Input } from "../ui/Input/Input";
+import { InputMaskLib } from "../ui/InputMask/InputMaskLib";
+import TimeChange from "../ui/TimeChange/TimeChange";
+import { Button } from "../ui/Button/Button";
+import OrderWindow from "../components/OrderWindow/OrderWindow";
+import { BaseWrapperMargin } from "../components/wrappers/BaseWrapperMargin/BaseWrapperMargin";
+import { HeaderWrapper } from "../components/wrappers/HeaderWrapper/HeaderWrapper";
+import { styleRouterState } from "../types/router";
+import { baseBackground } from "../assests/variable/variable";
+
+function Ordering() {
+  const [timeOrder, setTimeOrder] = useState("");
+
+  const handleTimeOrder = (event: any) => {
+    setTimeOrder(event.target.value);
+  };
+
+  const styleHome: styleRouterState = {
+    width: "100%",
+    minHeight: "100vh",
+    background: baseBackground,
+  };
+
+  return (
+    <HeaderWrapper styles={styleHome} header footer >
+      <BaseWrapperMargin flex="auto">
+        <AdditionalPageWrapper title="Оформление заказа" bonus>
+          <main className={style.ordering}>
+            <section className={style.ordering__leftSide}>
+              <Subtitle
+                text="Детали заказа"
+                fontSize="20px"
+                padding="0 0 8px 0"
+              />
+              <h5 className={style.ordering__detailsPosttitle}>
+                Самовывоз из магазина по адресу: г. Северодвинск, ул.
+                Железнодорожная, 50/1
+              </h5>
+              <div className={style.ordering__checkboxWrapper}>
+                <label className={style.ordering__label}>
+                  <ReCheckBox padding="0 8px 0 0" />
+                  Использовать этот магазин по умолчанию при сделующих заказах
+                </label>
+              </div>
+              <div
+                className={`${style.ordering__flexWrapper} ${style.ordering__padding8} ${style.ordering__spaceBetween}`}
+              >
+                <label htmlFor="" className={style.ordering__label}>
+                  <pre>Имя получателя: </pre>
+                  <BorderWrapper
+                    border="1px solid #BFBFBF"
+                    borderRadius="92px"
+                    background="white"
+                    padding="9px 24px"
+                    maxWidth="150px"
+                    position="relative"
+                  >
+                    <Input width="100%" placeholder="Ведите имя" />
+                  </BorderWrapper>
+                </label>
+                <label htmlFor="" className={style.ordering__label}>
+                  <pre>Время: </pre>
+                  <BorderWrapper
+                    border="1px solid #BFBFBF"
+                    borderRadius="92px"
+                    background="white"
+                    padding="9px 24px"
+                    position="relative"
+                    display="flex"
+                  >
+                    <TimeChange
+                      padding="0 10px 0 0"
+                      setTimeOrder={setTimeOrder}
+                    />
+                    <InputMaskLib
+                      mask={"99:99"}
+                      width="100%"
+                      placeholder="09:00"
+                      handleTimeOrder={handleTimeOrder}
+                      timeOrder={timeOrder}
+                    />
+                  </BorderWrapper>
+                </label>
+              </div>
+              <div
+                className={`${style.ordering__flexWrapper} ${style.ordering__padding8}`}
+              >
+                <label className={style.ordering__label}>
+                  <ReCheckBox padding="0 8px 0 0" />
+                  <pre>Использовать бонусы: </pre>
+                </label>
+                <BorderWrapper
+                  border="1px solid #BFBFBF"
+                  borderRadius="92px"
+                  background="white"
+                  padding="9px 24px"
+                  position="relative"
+                  minWidth="70px"
+                >
+                  <Input width="100%" placeholder="Бонусы" type="number" />
+                </BorderWrapper>
+              </div>
+              <div
+                className={`${style.ordering__flexWrapper} ${style.ordering__padding24}`}
+              >
+                <label className={style.ordering__label}>
+                  <pre>Комментарий к заказу: </pre>
+                </label>
+                <BorderWrapper
+                  border="1px solid #BFBFBF"
+                  borderRadius="92px"
+                  background="white"
+                  padding="9px 24px"
+                  position="relative"
+                  width="inherit"
+                >
+                  <Input width="inherit" placeholder="Введите комментарий" />
+                </BorderWrapper>
+              </div>
+              <Subtitle text="Оплата" fontSize="18px" padding="0 0 8px 0" />
+              <h5 className={style.ordering__payPosttitle}>
+                Вводя данные карты, вы подтверждаете свое согласие, что денежные
+                средства с вашей карты будут зарезервированы до момента
+                подтверждения оплаты в точке выдачи товара. Окончательный расчет
+                и фактическое списание денежных средств с вашей карты будут
+                произведены при личном посещении вами торговой точки и
+                подтверждения возраста. Вы соглашаетесь с тем, что компания
+                может взимать плату за отказ от бронирования в сумме понесенных
+                расходов, если такой отказ произошел после выполнения заказа, и
+                Компания понесла расходы. Размер такой платы рассчитывается
+                аналогично стоимости совершенного заказа.
+              </h5>
+              <div
+                className={`${style.ordering__flexWrapper} ${style.ordering__padding24}`}
+              >
+                <label className={style.ordering__label}>
+                  <ReCheckBox padding="0 8px 0 0" />
+                  Принимаю
+                </label>
+              </div>
+              <div
+                className={`${style.ordering__flexWrapper} ${style.ordering__padding8}`}
+              >
+                <label className={style.ordering__label}>
+                  <Input type="radio" margin="0 8px 0 0" disabled checked />
+                  Картой на сайте
+                </label>
+              </div>
+              <div className={style.ordering__cardInfWrapper}>
+                <div
+                  className={`${style.ordering__flexWrapper} ${style.ordering__padding8}`}
+                >
+                  <BorderWrapper
+                    border="1px solid #BFBFBF"
+                    borderRadius="92px"
+                    background="white"
+                    padding="9px 24px"
+                    position="relative"
+                    width="100%"
+                  >
+                    <Input
+                      type="number"
+                      width="inherit"
+                      placeholder="Номер карты"
+                    />
+                  </BorderWrapper>
+                </div>
+                <div
+                  className={`${style.ordering__flexWrapper} ${style.ordering__padding8}`}
+                >
+                  <BorderWrapper
+                    border="1px solid #BFBFBF"
+                    borderRadius="92px"
+                    background="white"
+                    padding="9px 24px"
+                    position="relative"
+                    width="60%"
+                    margin="0 24px 0 0"
+                  >
+                    <Input width="100%" placeholder="Введите срок" />
+                  </BorderWrapper>
+                  <BorderWrapper
+                    border="1px solid #BFBFBF"
+                    borderRadius="92px"
+                    background="white"
+                    padding="9px 24px"
+                    position="relative"
+                    width="30%"
+                  >
+                    <Input width="100%" placeholder="CVV" maxLength="3" />
+                  </BorderWrapper>
+                </div>
+              </div>
+              <div className={style.ordering__flexWrapper}>
+                <label className={style.ordering__label}>
+                  <ReCheckBox padding="0 8px 0 0" />
+                  Привязать карту для быстрой оплаты следующих заказов
+                </label>
+              </div>
+              <Button
+                title="Назад"
+                color="#3D69B7"
+                border="1px solid #3D69B7"
+                padding="12px 70px"
+                borderRadius="60px"
+                margin="32px 0 100px 0"
+              />
+            </section>
+            <section className={style.ordering__rightSide}>
+              <OrderWindow />
+              <pre className={style.ordering__rightSide__bonusAccrual}>
+                Начислим <b>100</b> бонусов
+              </pre>
+              <Button
+                title="Оформить заказ"
+                color="white"
+                borderRadius="60px"
+                background="#20598E"
+                padding="12px"
+                width="100%"
+              />
+            </section>
+          </main>
+        </AdditionalPageWrapper>
+      </BaseWrapperMargin>
+    </HeaderWrapper>
+  );
+}
+
+export default Ordering;

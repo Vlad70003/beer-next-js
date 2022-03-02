@@ -1,0 +1,1 @@
+export const baseBackground:string = '#F2EDE1';

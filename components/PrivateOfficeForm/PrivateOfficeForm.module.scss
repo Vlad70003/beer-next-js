@@ -1,0 +1,23 @@
+.privateOfficeForm {
+
+    &__row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    &__label {
+        color: #434242;
+        font-size: 16px;
+
+        &__flex{
+            flex: 1;
+        }
+    }
+
+    &__gender{
+        display: flex;
+        justify-content: space-between;
+    }
+}

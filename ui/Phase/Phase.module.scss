@@ -1,0 +1,23 @@
+.phase{
+    display: flex;
+    align-items: center;
+
+    &__circle{
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: #D8D4CE;
+        text-align: center;
+        color: white;
+    }
+
+    &__line{
+        width: 30px;
+        height: 2px;
+        background: #D8D4CE;
+    }
+
+    &__active{
+        background: #2C9B37;
+    }
+}

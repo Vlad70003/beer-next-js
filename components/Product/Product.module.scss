@@ -1,0 +1,59 @@
+.product{
+    background-color: white;
+    padding: 24px 10px;
+    border-radius: 20px;
+    margin: 0 10px;
+    box-sizing: border-box;
+
+    & li {
+        text-align: center;
+    }
+
+    &__img{
+        padding-bottom: 15px;
+    }
+
+    &__title{
+        color: #434242;
+        font-size: 18px;
+        padding-bottom: 8px;
+    }
+
+    &__grade{
+        color: #434242;
+        padding-bottom: 8px;
+    }
+
+    &__subtitle{
+        color: #757575;
+        padding-bottom: 8px;
+    }
+
+    &__production{
+        color: #757575;
+        padding-bottom: 40px;
+    }
+
+    &__hooter{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__production{
+
+        &__leftSide{
+            display: flex;
+            flex-direction: column;
+        }
+
+        &__price{
+            color: #434242;
+            font-size: 24px;
+        }
+
+        &__count{
+            color: #757575;
+            font-size: 12px;
+        }
+    }
+}

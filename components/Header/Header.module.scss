@@ -1,0 +1,44 @@
+.header{
+    padding: 50px 0 25px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__leftSide{
+        display: flex;
+    }
+
+    &__rightSide{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__logo{
+        &__wrapper{
+            padding-right: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    &__changeShopBtn{
+        &__wrapper{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    &__profile{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+}
+
+.nav{
+    padding: 0 40px;
+}

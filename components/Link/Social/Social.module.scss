@@ -1,0 +1,15 @@
+@mixin img {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+.inst{
+    @include img();
+    background: url("../../../assests/img/inst.svg") center no-repeat;
+}
+
+.vk{
+    @include img();
+    background: url("../../../assests/img/vk.svg") center no-repeat;
+}

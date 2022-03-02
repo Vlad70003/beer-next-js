@@ -1,0 +1,17 @@
+.border{
+    &--eddit{
+        position: relative;
+        &::after{
+            content: "";
+            display: block;
+            width: 18px;
+            height: 18px;
+            position: absolute;
+            background: url("../../../assests/img/eddit.svg") center no-repeat;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+    }
+}
