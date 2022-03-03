@@ -17,9 +17,9 @@ const WorkWithUs: React.FC = () => {
   };
 
   return (
-    <HeaderWrapper styles={styleHome} header footer>
+    <HeaderWrapper styles={styleHome} header footer >
       <BaseWrapperMargin flex="auto">
-        <AdditionalPageWrapper title="Работа у нас">
+        <AdditionalPageWrapper title="Работа у нас" mainPadding="26px 0 0 0">
           <div className={style.workWithUs}>
             <div className={style.workWithUs__subtitle}>
               Выберите область и город, где хотите работать

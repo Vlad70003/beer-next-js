@@ -51,12 +51,13 @@ export const Vacancy = ({
           />
         </div>
       </div>
-      <Button
-        title={isOpen ? "Свернуть" : "Подробнее"}
+      { !isOpen && <Button
+        title={"Подробнее"}
         color="#3D69B7"
         fontWeight="700"
+        margin="16px 0"
         onClick={() => handleClick()}
-      />
+      />}
       <div
         className={
           isOpen
@@ -67,6 +68,13 @@ export const Vacancy = ({
         <Сonditions title="Условия:" content={conditions} />
         <Сonditions title="Требования:" content={requirements} />
       </div>
+      {isOpen && <Button
+        title={"Свернуть"}
+        color="#3D69B7"
+        fontWeight="700"
+        margin="16px 0"
+        onClick={() => handleClick()}
+      />}
     </div>
   );
 };

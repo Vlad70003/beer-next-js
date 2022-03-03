@@ -35,7 +35,7 @@ const PrivateOffice = () => {
     <HeaderWrapper styles={styleHome} header footer>
         <BaseWrapperMargin flex="auto">
       {" "}
-      <AdditionalPageWrapper title="Личный кабинет" bonus price>
+      <AdditionalPageWrapper title="Личный кабинет" mainPadding="18px 0 0px 0" bonus price>
         <main className={style.privateOffice}>
           <section className={style.privateOffice__leftSide}>
             <div className={style.privateOffice__wrapper}>
@@ -81,8 +81,8 @@ const PrivateOffice = () => {
                 onClick={() => handleShopingPage("onTheSite")}
                 borderBottom={
                   shoppingMenuPage === "onTheSite"
-                    ? "2px solid #3D69B7"
-                    : "2px solid transparent"
+                    ? "4px solid #3D69B7"
+                    : "4px solid transparent"
                 }
                 color={shoppingMenuPage === "onTheSite" ? "#3D69B7" : "#757575"}
                 fontWeight="700"
@@ -93,8 +93,8 @@ const PrivateOffice = () => {
                 onClick={() => handleShopingPage("inTheShop")}
                 borderBottom={
                   shoppingMenuPage === "inTheShop"
-                    ? "2px solid #3D69B7"
-                    : "2px solid transparent"
+                    ? "4px solid #3D69B7"
+                    : "4px solid transparent"
                 }
                 color={shoppingMenuPage === "inTheShop" ? "#3D69B7" : "#757575"}
                 fontWeight="700"

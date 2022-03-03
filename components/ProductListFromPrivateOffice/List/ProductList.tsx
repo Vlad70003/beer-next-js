@@ -28,7 +28,7 @@ export const ProductList = ({ item }: ProductListState) => {
               htmlFor=""
               className={style.productListFromPrivateOffice__headerLeftSide__item__label}
             >
-              Имя:
+              <pre>Имя: </pre>
             </label>
             <div className={style.productListFromPrivateOffice__headerLeftSide__item__value}>
               {item.user.firstName}
@@ -39,7 +39,7 @@ export const ProductList = ({ item }: ProductListState) => {
               htmlFor=""
               className={style.productListFromPrivateOffice__headerLeftSide__item__label}
             >
-              Статус:
+              <pre>Статус: </pre>
             </label>
             <div className={style.productListFromPrivateOffice__headerLeftSide__item__value}>
               {item.status}
@@ -73,7 +73,7 @@ export const ProductList = ({ item }: ProductListState) => {
               htmlFor=""
               className={style.productListFromPrivateOffice__headerLeftSide__item__label}
             >
-              Сумма заказа:
+              <pre>Сумма заказа: </pre>
             </label>
             <div className={style.productListFromPrivateOffice__headerLeftSide__item__value}>
               {item.sumPrice}
@@ -84,7 +84,7 @@ export const ProductList = ({ item }: ProductListState) => {
               htmlFor=""
               className={style.productListFromPrivateOffice__headerLeftSide__item__label}
             >
-              Начислено бонусов:
+              <pre>Начислено бонусов: </pre>
             </label>
             <div className={style.productListFromPrivateOffice__headerLeftSide__item__value}>
               {item.bonus}
@@ -95,7 +95,7 @@ export const ProductList = ({ item }: ProductListState) => {
               htmlFor=""
               className={style.productListFromPrivateOffice__headerLeftSide__item__label}
             >
-              Списано:
+              <pre>Списано: </pre>
             </label>
             <div className={style.productListFromPrivateOffice__headerLeftSide__item__value}>
               {item.writtenOff}

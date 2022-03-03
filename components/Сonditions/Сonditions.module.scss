@@ -1,16 +1,20 @@
 .conditions{
 
+    width: 400px;
+    font-size: 16px;
+
     &__title{
-        padding: 16px 0;
+        padding: 8px 0 16px 0;
+        font-size: 16px;
     }
 
     &__list{
         list-style-type: disc;
         color: #434242;
-        padding-left: 20px;
+        padding-left: 30px;
     }
 
     &__item{
-        padding: 4px 0;
+        padding: 3px 0;
     }
 }

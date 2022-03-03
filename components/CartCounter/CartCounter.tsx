@@ -9,7 +9,7 @@ export const CartCounter = () => {
       <div className={style.cartCounter__kart}>
         <ShopingKart />
       </div>
-      <div className={style.cartCounter__counter}>0 ₽</div>
+      <div className={style.cartCounter__counter}>2999 ₽</div>
     </div>
   );
 };

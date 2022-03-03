@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { inputState } from "../../types/input";
 
-import { inputChanger } from "../../script/inputChanger";
+import { inputChanger } from "../../script/input/inputChanger";
 
 export const Input = ({ border, width, type, disabled, checked, placeholder, margin, maxLength }: inputState) => {
   

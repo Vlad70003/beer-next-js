@@ -10,6 +10,7 @@ import { styleRouterState } from "../types/router";
 import { BeerAndCider } from "../data/sortButton";
 
 const Home: NextPage = () => {
+
   const styleHome: styleRouterState = {
     width: "100%",
     minHeight: "100vh",
@@ -17,15 +18,17 @@ const Home: NextPage = () => {
   };
 
   return (
-    <HeaderWrapper styles={styleHome} header navigation slider footer>
-      <BaseWrapperMargin flex="auto">
-        <Catalog
-          title="Пиво и сидры"
-          sortButton={BeerAndCider}
-          product="beer"
-        />
-      </BaseWrapperMargin>
-    </HeaderWrapper>
+    <>
+      <HeaderWrapper styles={styleHome} header navigation slider footer>
+        <BaseWrapperMargin flex="auto">
+          <Catalog
+            title="Пиво и сидры"
+            sortButton={BeerAndCider}
+            product="beer"
+          />
+        </BaseWrapperMargin>
+      </HeaderWrapper>
+    </>
   );
 };
 

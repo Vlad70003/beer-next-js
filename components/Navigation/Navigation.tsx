@@ -1,27 +1,25 @@
 import React, { useState, useEffect } from "react";
 import style from "./Navigation.module.scss";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { Button } from "../../ui/Button/Button";
 import { Bonus } from "../Bonus/Bonus";
 import { CartCounter } from "../CartCounter/CartCounter";
 
+import { toggleColor } from "./script/toggleColor";
+import { toggleBorderBottom } from "./script/toggleBorderBottom";
+
 export const Navigation = () => {
-  // const location = useLocation();
 
   const [pathName, setPathName] = useState<string | null>(null);
 
-  // useEffect(() => {
-  //   setPathName(location.pathname);
-  // }, [location]);
+  const router = useRouter();
+  const path = router.asPath;
 
-  const toggleBorderBottom = (path: string) => {
-    return pathName === path ? "4px solid #3D69B7" : "4px solid transparent";
-  };
-
-  const toggleColor = (path: string) => {
-    return pathName === path ? "#3D69B7" : "black";
-  };
+  useEffect(() => {
+    setPathName(path);
+  }, [path]);
 
   return (
     <nav className={style.navigation}>
@@ -37,8 +35,8 @@ export const Navigation = () => {
                   fontWeight="700"
                   margin="0"
                   padding="0 0 8px 0"
-                  borderBottom={toggleBorderBottom("/shop/BeerAndCider")}
-                  color={toggleColor("/shop/BeerAndCider")}
+                  borderBottom={toggleBorderBottom({pathName, path:"/shop/BeerAndCider"})}
+                  color={toggleColor({pathName, path:"/shop/BeerAndCider"})}
                 />
               </a>
             </Link>
@@ -53,8 +51,8 @@ export const Navigation = () => {
                   fontWeight="700"
                   padding="0 0 8px 0"
                   margin="0 0 0 2rem"
-                  borderBottom={toggleBorderBottom("/shop/bottled")}
-                  color={toggleColor("/shop/bottled")}
+                  borderBottom={toggleBorderBottom({pathName, path:"/shop/Bottled"})}
+                  color={toggleColor({pathName, path:"/shop/Bottled"})}
                 />
               </a>
             </Link>
@@ -69,8 +67,8 @@ export const Navigation = () => {
                   fontWeight="700"
                   padding="0 0 8px 0"
                   margin="0 0 0 2rem"
-                  borderBottom={toggleBorderBottom("/shop/beverages")}
-                  color={toggleColor("/shop/beverages")}
+                  borderBottom={toggleBorderBottom({pathName, path:"/shop/Beverages"})}
+                  color={toggleColor({pathName, path:"/shop/Beverages"})}
                 />
               </a>
             </Link>
@@ -85,8 +83,8 @@ export const Navigation = () => {
                   fontWeight="700"
                   padding="0 0 8px 0"
                   margin="0 0 0 2rem"
-                  borderBottom={toggleBorderBottom("/shop/fishes")}
-                  color={toggleColor("/shop/fishes")}
+                  borderBottom={toggleBorderBottom({pathName, path:"/shop/Fishes"})}
+                  color={toggleColor({pathName, path:"/shop/Fishes"})}
                 />
               </a>
             </Link>
@@ -101,8 +99,8 @@ export const Navigation = () => {
                   fontWeight="700"
                   padding="0 0 8px 0"
                   margin="0 0 0 2rem"
-                  borderBottom={toggleBorderBottom("/shop/meat")}
-                  color={toggleColor("/shop/meat")}
+                  borderBottom={toggleBorderBottom({pathName, path:"/shop/Meat"})}
+                  color={toggleColor({pathName, path:"/shop/Meat"})}
                 />
               </a>
             </Link>
@@ -117,8 +115,8 @@ export const Navigation = () => {
                   fontSize="18px"
                   padding="0 0 8px 0"
                   margin="0 0 0 2rem"
-                  borderBottom={toggleBorderBottom("/shop/chease")}
-                  color={toggleColor("/shop/chease")}
+                  borderBottom={toggleBorderBottom({pathName, path:"/shop/Chease"})}
+                  color={toggleColor({pathName, path:"/shop/Chease"})}
                 />
               </a>
             </Link>
@@ -133,8 +131,8 @@ export const Navigation = () => {
                   fontSize="18px"
                   padding="0 0 8px 0"
                   margin="0 0 0 2rem"
-                  borderBottom={toggleBorderBottom("/shop/snacks")}
-                  color={toggleColor("/shop/snacks")}
+                  borderBottom={toggleBorderBottom({pathName, path:"/shop/Snacks"})}
+                  color={toggleColor({pathName, path:"/shop/Snacks"})}
                 />
               </a>
             </Link>
@@ -149,8 +147,8 @@ export const Navigation = () => {
                   fontSize="18px"
                   padding="0 0 8px 0"
                   margin="0 0 0 2rem"
-                  borderBottom={toggleBorderBottom("/shop/other")}
-                  color={toggleColor("/shop/other")}
+                  borderBottom={toggleBorderBottom({pathName, path:"/shop/Other"})}
+                  color={toggleColor({pathName, path:"/shop/Other"})}
                 />
               </a>
             </Link>
@@ -165,7 +163,7 @@ export const Navigation = () => {
                   fontSize="18px"
                   margin="0 0 0 2rem"
                   padding="0 0 8px 0"
-                  borderBottom={toggleBorderBottom("/shop/stock")}
+                  borderBottom={toggleBorderBottom({pathName, path:"/shop/Stock"})}
                   color="#E31E25"
                 />
               </a>

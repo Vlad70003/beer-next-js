@@ -18,7 +18,7 @@ const Contacts = () => {
   return (
     <HeaderWrapper styles={styleHome} header footer>
       <BaseWrapperMargin flex="auto">
-        <AdditionalPageWrapper title="Контакты">
+        <AdditionalPageWrapper title="Контакты" mainPadding="26px 0 0 0">
           <main className={style.contscts__main}>
             <Contact
               address="г. Северодвинск, ул. Гагарина, д. 15 "

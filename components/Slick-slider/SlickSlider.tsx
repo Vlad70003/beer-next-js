@@ -1,14 +1,12 @@
 import React from "react";
 import Slider from "react-slick";
 import Image from "next/image";
-
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
+import style from "./SlickSlider.module.scss";
 
 import { SampleNextArrow } from "./SampleNextArrow/SampleNextArrow";
 import { SamplePrevArrow } from "./SamplePrevArrow/SamplePrevArrow";
 
-import bunner from "../../assests/img/bunner.png";
+import bunner from "../../assests/img/bunner.svg";
 
 export const SlickSlider = () => {
   const settings = {
@@ -19,8 +17,10 @@ export const SlickSlider = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     variableWidth: true,
-    autoplay: true,
+    autoplay: false,
+    centerPadding: "0px",
     autoplaySpeed: 3000,
+    
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };

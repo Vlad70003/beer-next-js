@@ -11,7 +11,7 @@ export const Footer = () => {
   return (
     <footer className={style.footer}>
       <div className={style.footer__topPart}>
-        <BaseWrapperMargin maxWidth="1290px">
+        <BaseWrapperMargin>
           <div className={style.footer__topPart__text}>
             В соответствии с действующим законодательством, мы не продаем
             алкоголь через интернет-магазин. Товар на сайте представлен для

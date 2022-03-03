@@ -9,6 +9,7 @@ interface welcomeModelState {
 
 export const WelcomeModal = ({ closeModal }: welcomeModelState) => {
 
+
   return (
     <div className={style.modalWelcome}>
       <h1 className={style.modalWelcome__title}>Вам уже исполнилось 18 лет?</h1>

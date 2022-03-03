@@ -22,7 +22,7 @@ export const PrivateOfficeForm = () => {
           background="white"
           padding="9px 24px"
           position="relative"
-          className="border--eddit"
+          className="eddit"
         >
           <Input width="100%" />
         </BorderWrapper>
@@ -49,7 +49,7 @@ export const PrivateOfficeForm = () => {
           background="white"
           padding="9px 24px"
           position="relative"
-          className="border--eddit"
+          className="eddit"
         >
           <Input width="100%" />
         </BorderWrapper>

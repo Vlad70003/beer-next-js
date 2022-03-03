@@ -5,7 +5,7 @@ import { imgState } from "../../types/image";
 
 import shopingCart from "../../assests/img/shoping-cart-transparent.svg";
 
-export const ShopingKart = ({ width = "60px", height = "60px" }: imgState) => {
+export const ShopingKart = ({ width = "40px", height = "40px" }: imgState) => {
   return (
     <Image
       src={shopingCart}

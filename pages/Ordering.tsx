@@ -31,7 +31,7 @@ function Ordering() {
   return (
     <HeaderWrapper styles={styleHome} header footer >
       <BaseWrapperMargin flex="auto">
-        <AdditionalPageWrapper title="Оформление заказа" bonus>
+        <AdditionalPageWrapper title="Оформление заказа" bonus mainPadding="26px 0 0 0">
           <main className={style.ordering}>
             <section className={style.ordering__leftSide}>
               <Subtitle

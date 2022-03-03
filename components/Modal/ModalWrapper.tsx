@@ -1,27 +1,31 @@
 import React, { useState } from "react";
-import "./ModalWrapper.scss";
 
 import Modal from "react-modal";
 
 interface modalState {
   children?: any;
   padding?: string;
-  border?: string;
+  borderRadius?: string;
   top?: string;
   maxWidth?: string;
+  modalIsOpen: boolean,
+  setModalIsOpen?: any
 }
 
 export const ModalWrapper = ({
   children,
   padding,
-  border,
+  borderRadius,
   top,
   maxWidth,
+  modalIsOpen,
+  setModalIsOpen,
 }: modalState) => {
-  const [modalIsOpen, setIsOpen] = useState(true);
+
 
   function closeModal() {
-    setIsOpen(false);
+    localStorage.setItem("first-time", "false");
+    setModalIsOpen(false);
   }
 
   const customStyles = {
@@ -33,7 +37,7 @@ export const ModalWrapper = ({
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
       padding: padding || "0px",
-      border: border || "0px",
+      borderRadius: borderRadius || "0px",
       maxWidth: maxWidth || "none",
       zIndex: 9999,
     },
@@ -43,7 +47,6 @@ export const ModalWrapper = ({
     <div className="modal">
       <Modal
         isOpen={modalIsOpen}
-        onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
       >

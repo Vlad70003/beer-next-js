@@ -37,7 +37,7 @@ export const BorderWrapper = ({
   };
 
   return (
-    <div className={className} style={borderWrapperStyle}>
+    <div className={className && style[className]} style={borderWrapperStyle}>
       {children}
     </div>
   );

@@ -9,6 +9,7 @@
   padding: 0;
   outline: none;
   box-sizing: border-box;
+  color: #434242;
 }
 
 html,
@@ -71,13 +72,14 @@ a {
   &__item {
     display: flex !important;
     justify-content: center !important;
-    padding: 0 20px;
+    padding: 0 5px;
     box-sizing: border-box !important;
 
     &--img {
       opacity: 0.7;
-      height: 365px !important;
-      width: 1120px !important;
+      // height: 365px !important;
+      // width: 1120px !important;
+      padding: 10px 0 !important;
     }
   }
 }
@@ -89,6 +91,7 @@ a {
   min-width: 100%;
   min-width: 100%;
   min-height: auto;
+  padding: 0 !important;
 }
 
 .slick-track{
@@ -140,4 +143,10 @@ input::-webkit-inner-spin-button {
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #253861;
+}
+
+
+//Modal
+.ReactModal__Overlay--after-open{
+  z-index: 999 !important;
 }

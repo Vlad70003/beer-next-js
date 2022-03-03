@@ -1,6 +1,6 @@
 .vacancy {
 
-  padding-top: 20px;
+  padding-top: 18px;
   border-bottom: 1px solid #D8D4CE;
 
   &__title {
@@ -43,11 +43,8 @@
   }
 
   &__requirementWrapper{
-    display: flex;
-    justify-content: start;
-
     & div{
-      padding-right: 50px;
+      margin-right: 50px;
 
       &:last-child{
         padding-right: 0;
@@ -57,7 +54,8 @@
   }
 
   &__open{
-    display: block;
+    display: flex;
+    justify-content: start;
   }
   &__close{
     display: none;

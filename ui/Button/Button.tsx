@@ -3,7 +3,7 @@ import styles from "./Button.module.scss";
 
 import { buttonState } from "../../types/button";
 
-import { truncate } from "../../script/trancute";
+import { truncate } from "../../script/wordProcessing/trancute";
 
 export const Button = ({
   title,

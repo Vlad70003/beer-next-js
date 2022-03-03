@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import style from "./Header.module.scss";
+import { useRouter } from "next/router";
 
 import { ChangeShopButton } from "../ChangeShopButton/ChangeShopButton";
 import { Input } from "../../ui/Input/Input";
@@ -9,20 +10,19 @@ import { BorderWrapper } from "../wrappers/borderWrapper/BorderWrapper";
 import { Seach } from "../../ui/Seach/Seach";
 import { Button } from "../../ui/Button/Button";
 import { User } from "../../ui/User/User";
-// import { useLocation } from "react-router-dom";
+
+import { toggleColor } from "./script/toggleColor";
 
 export const Header: React.FC = () => {
-  // const location = useLocation();
 
   const [pathName, setPathName] = useState<string | null>(null);
 
-  // useEffect(() => {
-  //   setPathName(location.pathname);
-  // }, [location]);
+  const router = useRouter();
+  const path = router.asPath;
 
-  const checkedPathName = (path: string) => {
-    return pathName === path ? "#3D69B7" : "#434242";
-  };
+  useEffect(() => {
+    setPathName(path);
+  }, [path]);
 
   return (
     <header className={style.header}>
@@ -57,7 +57,7 @@ export const Header: React.FC = () => {
             title="О компании"
             type="button"
             padding="0 24px 0 0"
-            color={checkedPathName("/about-company")}
+            color={toggleColor({pathName, path: "/about-company"})}
           />
           {/* </Link> */}
 
@@ -67,7 +67,7 @@ export const Header: React.FC = () => {
                 title="Контакты"
                 type="button"
                 padding="0 24px 0 0"
-                color={checkedPathName("/Contacts")}
+                color={toggleColor({pathName, path: "/Contacts"})}
               />
             </a>
           </Link>
@@ -76,7 +76,7 @@ export const Header: React.FC = () => {
               <Button
                 title="Работа у нас"
                 type="button"
-                color={checkedPathName("/WorkWithUs")}
+                color={toggleColor({pathName, path:"/WorkWithUs"})}
               />
             </a>
           </Link>

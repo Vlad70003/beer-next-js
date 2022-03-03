@@ -14,7 +14,7 @@ export const Card = ({ width = "300px", height = "188px", opacity = "0.1" }:card
 
   return (
     <div className={style.card}>
-      <div className={style.card__imgWrapper} style={{width: width, height: height}}>
+      <div className={style.card__imgWrapper} style={{width: width, height: height, backgroundColor: "red",}}>
         <Image
           src={card}
           alt="card"
