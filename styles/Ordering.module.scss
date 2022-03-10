@@ -1,73 +1,91 @@
-.ordering{
+.ordering {
+  display: flex;
 
+  & > section {
+    flex: 1;
+    padding-top: 32px;
+  }
+
+  &__rightSide {
+    margin-left: 20%;
+
+    &__bonusAccrual {
+      padding-bottom: 16px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__flexWrapper {
+    width: 100%;
     display: flex;
+    align-items: center;
+  }
 
-    & > section {
-        flex: 1;
-        padding-top: 32px;
-    }
+  &__imageWrapper{
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: start;
 
-    &__rightSide{
+      & > span {
+        margin: 0 5px !important;
+      }
+  }
 
-        margin-left: 20%;
+  &__spaceBetween {
+    justify-content: space-between;
+  }
 
-        &__bonusAccrual{
-            padding-bottom: 16px;
-            display: flex;
-            justify-content: center;
-        }
-    }
+  &__detailsPosttitle {
+    color: #757575;
+    font-size: 16px;
+    font-weight: normal;
+  }
 
-    &__flexWrapper{
-        width: 100%;
-        display: flex;
-        align-items: center;
-        ;
-        
-    }
+  &__detailsPosttitle {
+    padding-bottom: 8px;
+  }
 
-    &__spaceBetween{
-        justify-content: space-between
-    }
+  &__payPosttitle {
+    font-size: 11px;
+    color: #757575;
+    font-weight: normal;
+    padding-bottom: 16px;
+  }
 
-    &__detailsPosttitle{
-        color: #757575;
-        font-size: 16px;
-        font-weight: normal;
-    }
+  &__checkboxWrapper {
+    padding-bottom: 16px;
+  }
 
-    &__detailsPosttitle{
-        padding-bottom: 8px;
-    }
+  &__label {
+    display: flex;
+    align-items: center;
+    color: #434242;
+    position: relative;
+  }
 
-    &__payPosttitle{
-        font-size: 11px;
-        color: #757575;
-        font-weight: normal;
-        padding-bottom: 16px;
-    }
+  &__cardInfWrapper {
+    width: 100%;
+  }
 
-    &__checkboxWrapper{
-        padding-bottom: 16px;
-    }
+  &__imageWrapper{
+      display: flex;
+  }
 
-    &__label{
-        display: flex;
-        align-items: center;
-        color: #434242;
-        position: relative;
-    }
+  &__padding8 {
+    padding-bottom: 8px;
+  }
 
-    &__cardInfWrapper{
-        min-width: 300px;
-        width: 50%;
-    }
+  &__padding24 {
+    padding-bottom: 24px;
+  }
 
-    &__padding8{
-        padding-bottom: 8px;
-    }
+  &__width100{
+      width: 100%;
+  }
 
-    &__padding24{
-        padding-bottom: 24px;
-    }
+  &__width50{
+      width: 50%;
+  }
 }

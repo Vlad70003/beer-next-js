@@ -8,8 +8,6 @@ interface welcomeModelState {
 }
 
 export const WelcomeModal = ({ closeModal }: welcomeModelState) => {
-
-
   return (
     <div className={style.modalWelcome}>
       <h1 className={style.modalWelcome__title}>Вам уже исполнилось 18 лет?</h1>
@@ -33,7 +31,10 @@ export const WelcomeModal = ({ closeModal }: welcomeModelState) => {
           padding="10px 30px"
           border="1px solid #20598E"
           borderRadius="60px"
-          onClick={closeModal}
+          onClick={() => {
+            closeModal();
+            localStorage.setItem("first-time", "false");
+          }}
         />
       </div>
     </div>

@@ -70,7 +70,7 @@ export const PrivateOfficeForm = () => {
             width="100%"
             placeholder="ДД/ММ/ГГГГ"
           />
-          < Info right="15px" top="50%" transform="translateY(-50%)" text="Внимание! Дата рождения заполняется всего 1 раз! Проверьте правильность заполнения!"/>
+          < Info positionWindow="right" right="15px" top="50%" transform="translateY(-50%)" text="Внимание! Дата рождения заполняется всего 1 раз! Проверьте правильность заполнения!"/>
         </BorderWrapper>
       </div>
       <div className={`${style.privateOfficeForm__row} ${style.privateOfficeForm__gender}`}>

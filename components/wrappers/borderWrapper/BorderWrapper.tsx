@@ -18,6 +18,7 @@ export const BorderWrapper = ({
   overflow,
   width,
   margin,
+  flex,
 }: borderWrapperState) => {
   
   const borderWrapperStyle = {
@@ -34,6 +35,7 @@ export const BorderWrapper = ({
     overflow: overflow || "none",
     width: width || "none",
     margin: margin || "0px",
+    flex: flex,
   };
 
   return (

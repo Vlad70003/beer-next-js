@@ -2,7 +2,7 @@ import React from "react";
 import style from "./Product.module.scss";
 import Image from "next/image";
 
-import { priceState } from "../../types/product";
+import { Info } from "../../ui/Info/Info";
 import { Button } from "../../ui/Button/Button";
 
 export const Product = ({ product }) => {
@@ -13,7 +13,7 @@ export const Product = ({ product }) => {
     productPrice,
     productProduction,
     productSubtitle,
-    productTextButton,
+    stock,
     productTitle,
   } = product;
 
@@ -46,15 +46,28 @@ export const Product = ({ product }) => {
           <div className={style.product__production__count}>{productCount}</div>
         </div>
         <div className={style.product__production__rightSide}>
-          <Button
-            title="В корзину"
-            color="white"
-            background="#20598E"
-            padding="11px 24px"
-            borderRadius="60px"
-          />
+          <Info
+            text="Пожалуйста выберите магазин, чтобы мы могли педоставить вам актуальный ассортимент"
+            position="relative"
+            width="100%"
+            height="auto"
+            positionWindow="bottom"
+          >
+            <Button
+              title="В корзину"
+              color="white"
+              background="#20598E"
+              padding="11px 24px"
+              borderRadius="60px"
+            />
+          </Info>
         </div>
       </li>
+      {stock && (
+        <div className={style["product__stock--wrapper"] }>
+          <div className={style.product__stock}>{stock}</div>
+        </div>
+      )}
     </ul>
   );
 };

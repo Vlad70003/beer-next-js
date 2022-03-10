@@ -13,4 +13,5 @@ export interface borderWrapperState {
     overflow?: string,
     width?: string,
     margin?: string,
+    flex?: string,
 }

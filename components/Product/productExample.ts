@@ -15,6 +15,7 @@ export const BeerExample = [
     productProduction: "Производство: Бельгия",
     productPrice: "105 ₽",
     productCount: "цена за 1 шт",
+    stock: "-10%",
     productTextButton: "В корзину",
   },
   {
@@ -25,6 +26,7 @@ export const BeerExample = [
     productProduction: "Производство: Бельгия",
     productPrice: "105 ₽",
     productCount: "цена за 1 шт",
+    stock: "1+1=3",
     productTextButton: "В корзину",
   },
   {

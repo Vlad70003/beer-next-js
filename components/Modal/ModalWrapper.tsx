@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import style from "./ModalWrapper.module.scss";
 
 import Modal from "react-modal";
 
@@ -8,8 +9,10 @@ interface modalState {
   borderRadius?: string;
   top?: string;
   maxWidth?: string;
-  modalIsOpen: boolean,
-  setModalIsOpen?: any
+  modalIsOpen: boolean;
+  setModalIsOpen?: any;
+  minWidth?: string;
+  close?: boolean;
 }
 
 export const ModalWrapper = ({
@@ -18,13 +21,13 @@ export const ModalWrapper = ({
   borderRadius,
   top,
   maxWidth,
+  minWidth,
   modalIsOpen,
   setModalIsOpen,
+  close,
 }: modalState) => {
 
-
   function closeModal() {
-    localStorage.setItem("first-time", "false");
     setModalIsOpen(false);
   }
 
@@ -40,17 +43,20 @@ export const ModalWrapper = ({
       borderRadius: borderRadius || "0px",
       maxWidth: maxWidth || "none",
       zIndex: 9999,
+      minWidth: minWidth,
     },
   };
 
   return (
-    <div className="modal">
+    <div className={style.modal}>
       <Modal
         isOpen={modalIsOpen}
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <button className="modal__close" onClick={closeModal}></button>
+        {close && (
+          <button className={style.modal__close} onClick={closeModal}></button>
+        )}
         {React.cloneElement(children, { closeModal: closeModal })}
       </Modal>
     </div>

@@ -2,7 +2,6 @@
   font-family: "PT-SANS";
   src: url("../assests/fonts/pt-sans/PTSans-Regular.ttf");
 }
-
 * {
   font-family: "PT-SANS";
   margin: 0;
@@ -10,8 +9,8 @@
   outline: none;
   box-sizing: border-box;
   color: #434242;
+  font-style: normal;
 }
-
 html,
 body,
 #__next,
@@ -19,7 +18,6 @@ body,
   width: 100%;
   min-height: 100vh;
 }
-
 html,
 body {
   padding: 0;
@@ -27,28 +25,27 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-
 body {
   overflow-y: scroll;
 }
-
 #__next {
   overflow-x: hidden;
 }
-
 ul {
   list-style-type: none;
 }
-
 button {
   background: transparent;
   border: none;
 }
-
 a {
   color: black;
   text-decoration: none;
 }
+
+
+
+
 
 ///Slick slider
 @mixin arrow {
@@ -60,15 +57,11 @@ a {
   font-size: 0px !important;
   opacity: 1 !important;
 }
-
 .slide-wrapper{
   padding-bottom: 30px;
 }
-
 .slick-slider {
   padding-bottom: 30px;
-
-  
   &__item {
     display: flex !important;
     justify-content: center !important;
@@ -83,7 +76,6 @@ a {
     }
   }
 }
-
 .slick-center img {
   opacity: 1 !important;
   height: 390px !important;
@@ -93,29 +85,26 @@ a {
   min-height: auto;
   padding: 0 !important;
 }
-
 .slick-track{
   display: flex !important;
   align-items: center !important;
   padding-bottom: 5px !important;
 }
-
 .slick-dots {
   bottom: 0 !important;
-
   & li {
     margin: 0 2px !important; 
   }
-
   & li button::before {
     font-size: 9px !important;
     color: #3D84B7 !important;
 }
 }
-
 .slick-list{
   overflow: visible !important;
 }
+
+
 
 
 //ScrollBar
@@ -125,7 +114,6 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
-
 /* полоса прокрутки (скроллбар) */
 ::-webkit-scrollbar {
   width: 10px; /* ширина для вертикального скролла */
@@ -133,20 +121,31 @@ input::-webkit-inner-spin-button {
   background-color: #c7c6c4;
   border-radius: 16px;
 }
-
 /* ползунок скроллбара */
 ::-webkit-scrollbar-thumb {
   background-color: #f3e5c3;
   border-radius: 16px;
   box-shadow: inset 1px 1px 10px #f3e5c3;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background-color: #253861;
 }
 
 
+
+
 //Modal
 .ReactModal__Overlay--after-open{
   z-index: 999 !important;
+}
+
+
+
+//rc-checkbox
+.rc-checkbox-checked .rc-checkbox-inner{
+  background-color: #3D84B7 !important;
+  border-color: #3D84B7 !important;
+}
+.rc-checkbox:hover .rc-checkbox-inner, .rc-checkbox-input:focus + .rc-checkbox-inner{
+  border-color: #3D84B7 !important;
 }

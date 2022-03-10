@@ -1,59 +1,79 @@
-.product{
-    background-color: white;
-    padding: 24px 10px;
-    border-radius: 20px;
-    margin: 0 10px;
-    box-sizing: border-box;
+.product {
+  background-color: white;
+  padding: 24px 10px;
+  border-radius: 20px;
+  margin: 0 10px;
+  box-sizing: border-box;
+  position: relative;
 
-    & li {
-        text-align: center;
+  & li {
+    text-align: center;
+  }
+
+  &__img {
+    padding-bottom: 15px;
+  }
+
+  &__title {
+    color: #434242;
+    font-size: 18px;
+    padding-bottom: 8px;
+  }
+
+  &__grade {
+    color: #434242;
+    padding-bottom: 8px;
+  }
+
+  &__subtitle {
+    color: #757575;
+    padding-bottom: 8px;
+  }
+
+  &__production {
+    color: #757575;
+    padding-bottom: 40px;
+  }
+
+  &__hooter {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__production {
+    &__leftSide {
+      display: flex;
+      flex-direction: column;
     }
 
-    &__img{
-        padding-bottom: 15px;
+    &__price {
+      color: #434242;
+      font-size: 24px;
     }
 
-    &__title{
-        color: #434242;
-        font-size: 18px;
-        padding-bottom: 8px;
+    &__count {
+      color: #757575;
+      font-size: 12px;
     }
+  }
 
-    &__grade{
-        color: #434242;
-        padding-bottom: 8px;
-    }
+  &__stock {
+    height: 100%;
+    width: 100%;
+    background: url("../../assests/img/stockLabelRed.svg") center no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
 
-    &__subtitle{
-        color: #757575;
-        padding-bottom: 8px;
-    }
-
-    &__production{
-        color: #757575;
-        padding-bottom: 40px;
-    }
-
-    &__hooter{
-        display: flex;
-        justify-content: space-around;
-    }
-
-    &__production{
-
-        &__leftSide{
-            display: flex;
-            flex-direction: column;
-        }
-
-        &__price{
-            color: #434242;
-            font-size: 24px;
-        }
-
-        &__count{
-            color: #757575;
-            font-size: 12px;
-        }
-    }
+    &--wrapper {
+        position: absolute;
+        width: 100px;
+        height: 35px;
+        top: 10%;
+        right: -1px;
+        transform: translateY(-50%);
+      }
+  }
 }

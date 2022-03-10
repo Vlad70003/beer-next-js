@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import style from "../styles/Ordering.module.scss";
+import Image from "next/image";
 
 import { AdditionalPageWrapper } from "../components/wrappers/AdditionPageWrapper/AdditionPageWrapper";
 import { Subtitle } from "../components/Subtitle/Subtitle";
@@ -15,6 +16,10 @@ import { HeaderWrapper } from "../components/wrappers/HeaderWrapper/HeaderWrappe
 import { styleRouterState } from "../types/router";
 import { baseBackground } from "../assests/variable/variable";
 
+import masterCard from "../assests/img/masterCard.svg";
+import visa from "../assests/img/visa.svg";
+import mir from "../assests/img/mir.svg";
+
 function Ordering() {
   const [timeOrder, setTimeOrder] = useState("");
 
@@ -29,9 +34,13 @@ function Ordering() {
   };
 
   return (
-    <HeaderWrapper styles={styleHome} header footer >
+    <HeaderWrapper styles={styleHome} header footer>
       <BaseWrapperMargin flex="auto">
-        <AdditionalPageWrapper title="Оформление заказа" bonus mainPadding="26px 0 0 0">
+        <AdditionalPageWrapper
+          title="Оформление заказа"
+          bonus
+          mainPadding="26px 0 0 0"
+        >
           <main className={style.ordering}>
             <section className={style.ordering__leftSide}>
               <Subtitle
@@ -76,7 +85,7 @@ function Ordering() {
                     display="flex"
                   >
                     <TimeChange
-                      padding="0 10px 0 0"
+                      margin="0 10px 0 0"
                       setTimeOrder={setTimeOrder}
                     />
                     <InputMaskLib
@@ -155,7 +164,7 @@ function Ordering() {
               </div>
               <div className={style.ordering__cardInfWrapper}>
                 <div
-                  className={`${style.ordering__flexWrapper} ${style.ordering__padding8}`}
+                  className={`${style.ordering__flexWrapper} ${style.ordering__width100} ${style.ordering__padding8}`}
                 >
                   <BorderWrapper
                     border="1px solid #BFBFBF"
@@ -164,6 +173,7 @@ function Ordering() {
                     padding="9px 24px"
                     position="relative"
                     width="100%"
+                    flex="1"
                   >
                     <Input
                       type="number"
@@ -171,9 +181,33 @@ function Ordering() {
                       placeholder="Номер карты"
                     />
                   </BorderWrapper>
+                  <div className={style.ordering__imageWrapper}>
+                    <Image
+                      src={masterCard}
+                      alt={"masterCard"}
+                      className={
+                        style.ordering__cardInfWrapper__imageWrapper__image
+                      }
+                    
+                    />
+                    <Image
+                      src={visa}
+                      alt={"visa"}
+                      className={
+                        style.ordering__cardInfWrapper__imageWrapper__image
+                      }
+                    />
+                    <Image
+                      src={mir}
+                      alt={"mir"}
+                      className={
+                        style.ordering__cardInfWrapper__imageWrapper__image
+                      }
+                    />
+                  </div>
                 </div>
                 <div
-                  className={`${style.ordering__flexWrapper} ${style.ordering__padding8}`}
+                  className={`${style.ordering__flexWrapper} ${style.ordering__width50} ${style.ordering__padding8}`}
                 >
                   <BorderWrapper
                     border="1px solid #BFBFBF"
@@ -197,6 +231,28 @@ function Ordering() {
                     <Input width="100%" placeholder="CVV" maxLength="3" />
                   </BorderWrapper>
                 </div>
+
+                {/* <Image
+                    src={masterCard}
+                    alt={"masterCard"}
+                    className={
+                      style.ordering__cardInfWrapper__imageWrapper__image
+                    }
+                  />
+                  <Image
+                    src={visa}
+                    alt={"visa"}
+                    className={
+                      style.ordering__cardInfWrapper__imageWrapper__image
+                    }
+                  />
+                  <Image
+                    src={mir}
+                    alt={"mir"}
+                    className={
+                      style.ordering__cardInfWrapper__imageWrapper__image
+                    }
+                  /> */}
               </div>
               <div className={style.ordering__flexWrapper}>
                 <label className={style.ordering__label}>

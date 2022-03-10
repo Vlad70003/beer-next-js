@@ -1,46 +1,61 @@
-.close{
-    display: none;
+@mixin detail {
+  position: absolute;
+  width: 315px;
+  background: #484848;
+  color: #f3f1ed;
+  padding: 24px 30px;
+  border-radius: 20px;
+  opacity: 0.95;
+  z-index: 99;
+
 }
 
-.open{
-    display: block;
+@mixin detail-after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: #484848;
+  z-index: -1;
 }
 
-.infoWrapper{
-    position: absolute;
+.close {
+  display: none;
 }
+
+.open {
+  display: block;
+}
+
 .info {
-    position: relative;
-    width: 15px;
-    height: 15px;
-    cursor: pointer;
+  position: relative;
+  cursor: pointer;
 
-    &__detail {
-        position: absolute;
-        width: 315px;
-        background: #484848;
-        color: #F3F1ED;
-        left: 30px;
-        top: 100%;
-        transform: translateY(-40%);
-        padding: 24px 30px;
-        border-radius: 20px;
-        opacity: .95;
-        z-index: 9999;
+  &__right {
+    @include detail();
+    left: 30px;
+    top: -20px;
 
-        &:after {
-            content: "";
-            display: block;
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: #484848;
-            opacity: .95;
-            left: -5px;
-            top: 24%;
-            transform: translateY(-40%);
-            transform: rotateZ(45deg);
-            z-index: 9;
-        }
+    &:after {
+      @include detail-after();
+      left: -5px;
+      top: 15px;
+      transform: rotateZ(45deg);
+    } 
+  }
+
+  &__bottom {
+    @include detail();
+    left: 10%;
+    bottom: -5px;
+    transform: translateY(100%);
+
+    &:after {
+      @include detail-after();
+      left: 10%;
+      top: 0px;
+      transform: rotateZ(45deg);
     }
+  }
 }
