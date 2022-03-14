@@ -13,6 +13,11 @@ interface modalState {
   setModalIsOpen?: any;
   minWidth?: string;
   close?: boolean;
+  backgroundColor?: string,
+  onRequestClose?: boolean,
+  right?: string,
+  left?: string,
+  transform?: string,
 }
 
 export const ModalWrapper = ({
@@ -25,26 +30,38 @@ export const ModalWrapper = ({
   modalIsOpen,
   setModalIsOpen,
   close,
+  backgroundColor,
+  onRequestClose,
+  right,
+  left,
+  transform
 }: modalState) => {
 
   function closeModal() {
     setModalIsOpen(false);
   }
 
+  function closeEmit() {
+
+  }
+
   const customStyles = {
     content: {
       top: top || "50%",
-      left: "50%",
-      right: "auto",
+      left: left || "auto",
+      right: right || "auto",
       bottom: "auto",
       marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
+      transform: transform || "translate(-50%, -50%)",
       padding: padding || "0px",
       borderRadius: borderRadius || "0px",
       maxWidth: maxWidth || "none",
       zIndex: 9999,
       minWidth: minWidth,
     },
+    overlay: {
+      backgroundColor: backgroundColor,
+    }
   };
 
   return (
@@ -52,7 +69,7 @@ export const ModalWrapper = ({
       <Modal
         isOpen={modalIsOpen}
         style={customStyles}
-        contentLabel="Example Modal"
+        onRequestClose={onRequestClose ? closeModal : closeEmit}
       >
         {close && (
           <button className={style.modal__close} onClick={closeModal}></button>

@@ -6,25 +6,25 @@ import {
   FETCH_PRODUCT_SUCCESS,
 } from "./../reducers/products";
 
-// import { getAllDivisions } from "../../api/product/getProduct";
+// import { getAllDivisions } from "../../assests";
 
 export const fetachProducts = () => {
-  return async (dispatch: Dispatch<actionState>) => {
-    // try {
+  // return async (dispatch: Dispatch<actionState>) => {
+  //   try {
 
-    //   dispatch({ type: FETCH_PRODUCT });
+  //     dispatch({ type: FETCH_PRODUCT });
 
-    //   await getAllDivisions()
-    //     .then((response) => response.json())
-    //     .then((data) =>
-    //       dispatch({ type: FETCH_PRODUCT_SUCCESS, payload: data })
-    //     );
+  //     await getAllDivisions()
+  //       .then((response:any) => response.json())
+  //       .then((data:any) =>
+  //         dispatch({ type: FETCH_PRODUCT_SUCCESS, payload: data })
+  //       );
         
-    // } catch (error) {
-    //   dispatch({
-    //     type: FETCH_PRODUCT_ERROR,
-    //     payload: "Произошла ошибка при загрузке списка продуктов",
-    //   });
-    // }
-  };
+  //   } catch (error) {
+  //     dispatch({
+  //       type: FETCH_PRODUCT_ERROR,
+  //       payload: "Произошла ошибка при загрузке списка продуктов",
+  //     });
+  //   }
+  // };
 };

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import style from "../styles/Contacts.module.scss";
 
 import { Contact } from "../components/Contacts/Contact";
@@ -7,8 +8,12 @@ import { HeaderWrapper } from "../components/wrappers/HeaderWrapper/HeaderWrappe
 
 import { styleRouterState } from "../types/router";
 import { baseBackground } from "../assests/variable/variable";
+import { ModalWrapper } from "../components/Modal/ModalWrapper";
+import { FeedBack } from "../components/Modal/FeedBack/FeedBack";
 
 const Contacts = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   const styleHome: styleRouterState = {
     width: "100%",
     minHeight: "100vh",
@@ -16,20 +21,40 @@ const Contacts = () => {
   };
 
   return (
-    <HeaderWrapper styles={styleHome} header footer>
-      <BaseWrapperMargin flex="auto">
-        <AdditionalPageWrapper title="Контакты" mainPadding="26px 0 0 0">
-          <main className={style.contscts__main}>
-            <Contact
-              address="г. Северодвинск, ул. Гагарина, д. 15 "
-              phone="+7-900-000-00-00"
-              working_hours="пн-пт с 10:00 до 19:00"
-            />
-            <div className="contscts__right-side"></div>
-          </main>
-        </AdditionalPageWrapper>
-      </BaseWrapperMargin>
-    </HeaderWrapper>
+    <>
+      <HeaderWrapper styles={styleHome} header footer>
+        <BaseWrapperMargin flex="auto">
+          <AdditionalPageWrapper title="Контакты" mainPadding="26px 0 0 0">
+            <main className={style.contscts__main}>
+              <Contact
+                address="г. Северодвинск, ул. Гагарина, д. 15 "
+                phone="+7-900-000-00-00"
+                working_hours="пн-пт с 10:00 до 19:00"
+                setModalIsOpen={setModalIsOpen}
+                modalIsOpen={modalIsOpen}
+              />
+              <div className="contscts__right-side"></div>
+            </main>
+          </AdditionalPageWrapper>
+        </BaseWrapperMargin>
+      </HeaderWrapper>
+
+      <ModalWrapper
+        padding="32px 54px"
+        borderRadius="20px"
+        top="50%"
+        left="50%"
+        minWidth="472px"
+        modalIsOpen={modalIsOpen}
+        setModalIsOpen={setModalIsOpen}
+        backgroundColor="#0000004D"
+        transform="translate(-50%, -50%)"
+        onRequestClose
+        close
+      >
+        < FeedBack />
+      </ModalWrapper>
+    </>
   );
 };
 export default Contacts;

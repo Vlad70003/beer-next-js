@@ -39,9 +39,12 @@ export const ChangeShopButton = () => {
         padding="32px 54px"
         borderRadius="20px"
         top="35%"
+        left="50%"
         minWidth="560px"
         modalIsOpen={modalIsOpen}
         setModalIsOpen={setModalIsOpen}
+        backgroundColor="transparent"
+        onRequestClose
         close
       >
         <ChangeChopModal setShop={setShop} />

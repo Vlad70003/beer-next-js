@@ -1,0 +1,27 @@
+.wrapper {
+  position: relative;
+}
+
+.file {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  display: none;
+}
+
+.label {
+  color: #3e84c2;
+
+  &::before {
+    content: "";
+    width: 24px;
+    height: 24px;
+    display: block;
+    background: url("../../assests/img/download.svg") center no-repeat;
+    background-size: cover;
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

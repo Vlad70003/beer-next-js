@@ -92,8 +92,8 @@ function Ordering() {
                       mask={"99:99"}
                       width="100%"
                       placeholder="09:00"
-                      handleTimeOrder={handleTimeOrder}
-                      timeOrder={timeOrder}
+                      handleValue={handleTimeOrder}
+                      value={timeOrder}
                     />
                   </BorderWrapper>
                 </label>

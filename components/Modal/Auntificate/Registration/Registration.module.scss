@@ -1,0 +1,24 @@
+.absolute{
+    position: relative;
+}
+
+.row {
+    padding-bottom: 16px;
+}
+
+.title{
+    padding-bottom: 4px;
+}
+
+.flex {
+    display: flex;
+}
+.spaceBetween {
+    justify-content: space-between;
+}
+.eye{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}

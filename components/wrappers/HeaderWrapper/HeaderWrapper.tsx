@@ -84,9 +84,11 @@ export function HeaderWrapper({
           padding="48px"
           borderRadius="20px"
           top="30%"
+          left="50%"
           maxWidth="460px"
           modalIsOpen={modalIsOpen}
           setModalIsOpen={setModalIsOpen}
+          backgroundColor="#0000004D"
         >
           <WelcomeModal />
         </ModalWrapper>

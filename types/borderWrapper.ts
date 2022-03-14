@@ -14,4 +14,5 @@ export interface borderWrapperState {
     width?: string,
     margin?: string,
     flex?: string,
+    justifyContent?: string,
 }

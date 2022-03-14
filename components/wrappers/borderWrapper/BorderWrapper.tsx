@@ -19,6 +19,8 @@ export const BorderWrapper = ({
   width,
   margin,
   flex,
+  justifyContent,
+
 }: borderWrapperState) => {
   
   const borderWrapperStyle = {
@@ -28,7 +30,7 @@ export const BorderWrapper = ({
     borderRadius: borderRadius || "none",
     display: display || "flex",
     alignItems: inlineFlex && "center",
-    justifyContent: inlineFlex && "center",
+    justifyContent: justifyContent && "center",
     maxWidth: maxWidth || "none",
     minWidth: minWidth || "none",
     position: position || "static",

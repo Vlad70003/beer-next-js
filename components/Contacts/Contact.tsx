@@ -6,7 +6,7 @@ import { YandexMap } from "../YandexMap/YandexMap";
 
 import { contact } from "../../types/contact";
 
-export const Contact = ({ address, phone, working_hours }: contact) => {
+export const Contact = ({ address, phone, working_hours, setModalIsOpen, modalIsOpen }: contact) => {
   return (
     <div className={style.contact}>
       <div className={style.contact__leftSide}>
@@ -30,6 +30,7 @@ export const Contact = ({ address, phone, working_hours }: contact) => {
             fontWeight="700"
             fontSize="18px"
             borderBottom="1px dashed #3D69B7"
+            onClick={() => setModalIsOpen(!modalIsOpen)}
           />
         </div>
       </div>

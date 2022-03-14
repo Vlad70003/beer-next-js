@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import style from "./Header.module.scss";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 import { ChangeShopButton } from "../ChangeShopButton/ChangeShopButton";
 import { Input } from "../../ui/Input/Input";
@@ -9,13 +10,14 @@ import { Logotype } from "../../ui/Logotype/Logotype";
 import { BorderWrapper } from "../wrappers/borderWrapper/BorderWrapper";
 import { Seach } from "../../ui/Seach/Seach";
 import { Button } from "../../ui/Button/Button";
-import { User } from "../../ui/User/User";
+import { LoggedInButton } from "../LoggedInButton/LoggedInButton";
 
 import { toggleColor } from "./script/toggleColor";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 export const Header: React.FC = () => {
 
-  const [pathName, setPathName] = useState<string | null>(null);
+  const [pathName, setPathName] = useState<string>('');
 
   const router = useRouter();
   const path = router.asPath;
@@ -23,6 +25,8 @@ export const Header: React.FC = () => {
   useEffect(() => {
     setPathName(path);
   }, [path]);
+
+  const loggedInState = useTypedSelector(state => state.auntificate.loggedIn);
 
   return (
     <header className={style.header}>
@@ -81,18 +85,10 @@ export const Header: React.FC = () => {
             </a>
           </Link>
         </nav>
-        <Link href="/PrivateOffice">
+        <Link href={loggedInState ? "/PrivateOffice" : pathName}>
           <a>
             <span className={style.header__profile}>
-              <Button
-                title="Александр Иванов Иванович"
-                type="button"
-                fontWeight="700"
-                padding="0 10px 0 0"
-                maxLength={14}
-                fontSize="18px"
-              />
-              <User />
+              <LoggedInButton />
             </span>
           </a>
         </Link>
