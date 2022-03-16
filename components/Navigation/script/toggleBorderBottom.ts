@@ -1,6 +1,6 @@
 interface toggleBorderBottomState {
-  shopPage: string;
-  value: string
+  shopPage?: string;
+  value?: string;
 }
 
 export const toggleBorderBottom = ({ shopPage, value }: toggleBorderBottomState) => {

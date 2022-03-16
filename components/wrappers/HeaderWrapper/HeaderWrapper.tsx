@@ -20,8 +20,8 @@ interface HeaderWrapperState {
   navigation?: boolean;
   footer?: boolean;
   slider?: boolean;
-  shopPage: string;
-  handlePage: any;
+  shopPage?: string;
+  handlePage?: any;
 }
 
 export function HeaderWrapper({

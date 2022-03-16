@@ -11,8 +11,8 @@ import { toggleColor } from "./script/toggleColor";
 import { toggleBorderBottom } from "./script/toggleBorderBottom";
 
 interface NavigationProps {
-  handlePage: any;
-  shopPage: string;
+  handlePage?: any;
+  shopPage?: string;
 }
 
 export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
@@ -28,8 +28,8 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               fontWeight="700"
               margin="0"
               padding="0 0 8px 0"
-              borderBottom={toggleBorderBottom({ shopPage, value: "beer" })}
-              color={toggleColor({ shopPage, value: "beer" })}
+              borderBottom={ shopPage && toggleBorderBottom({ shopPage, value: "beer" })}
+              color={shopPage && toggleColor({ shopPage, value: "beer" })}
               onClick={() => handlePage("beer")}
             />
           </li>
@@ -41,11 +41,11 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               fontWeight="700"
               padding="0 0 8px 0"
               margin="0 0 0 2rem"
-              borderBottom={toggleBorderBottom({
+              borderBottom={ shopPage && toggleBorderBottom({
                 shopPage,
                 value: "bottled",
               })}
-              color={toggleColor({ shopPage, value: "bottled" })}
+              color={shopPage && toggleColor({ shopPage, value: "bottled" })}
               onClick={() => handlePage("bottled")}
             />
           </li>
@@ -57,11 +57,11 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               fontWeight="700"
               padding="0 0 8px 0"
               margin="0 0 0 2rem"
-              borderBottom={toggleBorderBottom({
+              borderBottom={ shopPage && toggleBorderBottom({
                 shopPage,
                 value: "beverages",
               })}
-              color={toggleColor({ shopPage, value: "beverages" })}
+              color={ shopPage && toggleColor({ shopPage, value: "beverages" })}
               onClick={() => handlePage("beverages")}
             />
           </li>
@@ -73,11 +73,11 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               fontWeight="700"
               padding="0 0 8px 0"
               margin="0 0 0 2rem"
-              borderBottom={toggleBorderBottom({
+              borderBottom={ shopPage && toggleBorderBottom({
                 shopPage,
                 value: "fishes",
               })}
-              color={toggleColor({ shopPage, value: "fishes" })}
+              color={ shopPage && toggleColor({ shopPage, value: "fishes" })}
               onClick={() => handlePage("fishes")}
             />
           </li>
@@ -89,10 +89,10 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               fontWeight="700"
               padding="0 0 8px 0"
               margin="0 0 0 2rem"
-              borderBottom={toggleBorderBottom({
+              borderBottom={ shopPage && toggleBorderBottom({
                 shopPage, value: "meat"
               })}
-              color={toggleColor({ shopPage, value: "meat" })}
+              color={ shopPage && toggleColor({ shopPage, value: "meat" })}
               onClick={() => handlePage("meat")}
             />
           </li>
@@ -104,10 +104,10 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               fontSize="18px"
               padding="0 0 8px 0"
               margin="0 0 0 2rem"
-              borderBottom={toggleBorderBottom({
+              borderBottom={ shopPage && toggleBorderBottom({
                 shopPage, value: "chease"
               })}
-              color={toggleColor({ shopPage, value: "chease" })}
+              color={ shopPage && toggleColor({ shopPage, value: "chease" })}
               onClick={() => handlePage("chease")}
             />
           </li>
@@ -119,10 +119,10 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               fontSize="18px"
               padding="0 0 8px 0"
               margin="0 0 0 2rem"
-              borderBottom={toggleBorderBottom({
+              borderBottom={ shopPage && toggleBorderBottom({
                 shopPage, value: "snacks"
               })}
-              color={toggleColor({ shopPage, value: "snacks" })}
+              color={ shopPage && toggleColor({ shopPage, value: "snacks" })}
               onClick={() => handlePage("snacks")}
             />
           </li>
@@ -134,10 +134,10 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               fontSize="18px"
               padding="0 0 8px 0"
               margin="0 0 0 2rem"
-              borderBottom={toggleBorderBottom({
+              borderBottom={ shopPage && toggleBorderBottom({
                 shopPage, value: "other"
               })}
-              color={toggleColor({ shopPage, value: "other" })}
+              color={ shopPage && toggleColor({ shopPage, value: "other" })}
               onClick={() => handlePage("other")}
             />
           </li>
@@ -149,7 +149,7 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               fontSize="18px"
               margin="0 0 0 2rem"
               padding="0 0 8px 0"
-              borderBottom={toggleBorderBottom({
+              borderBottom={ shopPage && toggleBorderBottom({
                 shopPage, value: "other" 
               })}
               color="#E31E25"
