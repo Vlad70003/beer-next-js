@@ -1,8 +1,8 @@
 interface toggleBorderBottomState {
-  pathName: string | null;
-  path: string;
+  shopPage: string;
+  value: string
 }
 
-export const toggleBorderBottom = ({ pathName, path }: toggleBorderBottomState) => {
-  return pathName === path ? "4px solid #3D69B7" : "4px solid transparent";
+export const toggleBorderBottom = ({ shopPage, value }: toggleBorderBottomState) => {
+  return shopPage === value ? "4px solid #3D69B7" : "4px solid transparent";
 };

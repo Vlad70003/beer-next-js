@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { NextPage } from "next";
 
 import { HeaderWrapper } from "../components/wrappers/HeaderWrapper/HeaderWrapper";
@@ -7,9 +8,18 @@ import { baseBackground } from "../assests/variable/variable";
 
 import { styleRouterState } from "../types/router";
 
-import { BeerAndCider } from "../data/sortButton";
+import {
+  BeerAndCider,
+  Beverages,
+  Chease,
+  Fish,
+  Meat,
+  Other,
+  Snacks,
+} from "../data/sortButton";
 
 const Home: NextPage = () => {
+  const [shopPage, setShopPage] = useState("beer");
 
   const styleHome: styleRouterState = {
     width: "100%",
@@ -17,15 +27,58 @@ const Home: NextPage = () => {
     background: baseBackground,
   };
 
+  const handlePage = (value: string) => {
+    setShopPage(value);
+  };
+
   return (
     <>
-      <HeaderWrapper styles={styleHome} header navigation slider footer>
+      <HeaderWrapper
+        styles={styleHome}
+        handlePage={handlePage}
+        shopPage={shopPage}
+        header
+        navigation
+        slider
+        footer
+      >
         <BaseWrapperMargin flex="auto">
-          <Catalog
-            title="Пиво и сидры"
-            sortButton={BeerAndCider}
-            product="beer"
-          />
+          {shopPage === "beer" && (
+            <Catalog
+              title="Пиво и сидры"
+              sortButton={BeerAndCider}
+              product="beer"
+            />
+          )}
+          {shopPage === "beverages" && (
+            <Catalog
+              title="Напитки"
+              sortButton={Beverages}
+              product="beverages"
+            />
+          )}
+          {shopPage === "bottled" && (
+            <Catalog
+              title="Бутылочное"
+              sortButton={BeerAndCider}
+              product="bottled"
+            />
+          )}
+          {shopPage === "chease" && (
+            <Catalog title="Сыры" sortButton={Chease} product="chease" />
+          )}
+          {shopPage === "fishes" && (
+            <Catalog title="Рыбы" sortButton={Fish} product="fishes" />
+          )}
+          {shopPage === "meat" && (
+            <Catalog title="Мясо" sortButton={Meat} product="meat" />
+          )}
+          {shopPage === "other" && (
+            <Catalog title="Прочее" sortButton={Other} product="other" />
+          )}
+          {shopPage === "snacks" && (
+            <Catalog title="Снеки" sortButton={Snacks} product="snacks" />
+          )}
         </BaseWrapperMargin>
       </HeaderWrapper>
     </>

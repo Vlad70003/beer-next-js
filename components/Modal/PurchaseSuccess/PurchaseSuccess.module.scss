@@ -1,0 +1,31 @@
+.purchaseSuccess{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 0;
+}
+
+.row{
+    padding-bottom: 16px;
+}
+
+.header{
+    &__title{
+        font-size: 20px;
+        padding-bottom: 24px;
+    }
+}
+
+.main{
+    &__subtitle{
+        color: #757575;
+        font-size: 14px;
+    }
+    padding-bottom: 8px;
+}
+
+.footer{
+    display: flex;
+    width: 100%;
+}
+

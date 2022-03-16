@@ -1,8 +1,8 @@
 interface toggleColorState {
-  pathName: string | null;
-  path: string;
+  shopPage: string;
+  value: string;
 }
 
-export const toggleColor = ({ pathName, path }: toggleColorState) => {
-  return pathName === path ? "#3D69B7" : "black";
+export const toggleColor = ({ shopPage, value }: toggleColorState) => {
+  return shopPage === value ? "#3D69B7" : "black";
 };

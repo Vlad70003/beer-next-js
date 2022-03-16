@@ -75,19 +75,19 @@ export const PrivateOfficeForm = () => {
       </div>
       <div className={`${style.privateOfficeForm__row} ${style.privateOfficeForm__gender}`}>
         <label
-          htmlFor="name"
-          className={`${style.rivateOfficeForm__label} ${style.privateOfficeForm__label__flex}`}
+          htmlFor="gender"
+          className={`${style.privateOfficeForm__label} ${style.privateOfficeForm__label__flex}`}
         >
           Пол:
         </label>
-        <InputRadio initialState="male" flex="2" className="radioGroup">
-          <label htmlFor="male">
-            <Radio id="male" value="male" />
-            Мужской
+        <InputRadio initialState="male-privateOfice" flex="2" className="radioGroup">
+          <label htmlFor="male-privateOfice" className={`${style.flex} ${style.alighnItemsCenter}`}>
+            <Radio id="male-privateOfice" value="male-privateOfice" />
+            <pre>  Мужской</pre>
           </label>
-          <label htmlFor="female">
-            <Radio id="female" value="female" />
-            Женский
+          <label htmlFor="female-privateOfice" className={`${style.flex} ${style.alighnItemsCenter}`}>
+            <Radio id="female-privateOfice" value="female-privateOfice" />
+            <pre>  Женский</pre>
           </label>
         </InputRadio>
       </div>

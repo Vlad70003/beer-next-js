@@ -20,10 +20,14 @@ interface HeaderWrapperState {
   navigation?: boolean;
   footer?: boolean;
   slider?: boolean;
+  shopPage: string;
+  handlePage: any;
 }
 
 export function HeaderWrapper({
   children,
+  shopPage,
+  handlePage,
   styles,
   header,
   navigation,
@@ -55,30 +59,18 @@ export function HeaderWrapper({
       </Head>
       <div className={style.wrapper} style={styles}>
         {header && (
-          <>
-            <BaseWrapperMargin flex="0 0 auto">
-              <Header />
-            </BaseWrapperMargin>
-          </>
+          <BaseWrapperMargin flex="0 0 auto">
+            <Header />
+          </BaseWrapperMargin>
         )}
         {navigation && (
-          <>
-            <BaseWrapperMargin flex="auto">
-              <Navigation />
-            </BaseWrapperMargin>
-          </>
+          <BaseWrapperMargin flex="auto">
+            <Navigation handlePage={handlePage} shopPage={shopPage} />
+          </BaseWrapperMargin>
         )}
-        {slider && (
-          <>
-            <SlickSlider />
-          </>
-        )}
+        {slider && <SlickSlider />}
         <>{children}</>
-        {footer && (
-          <>
-            <Footer />
-          </>
-        )}
+        {footer && <Footer />}
 
         <ModalWrapper
           padding="48px"

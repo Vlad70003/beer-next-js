@@ -21,6 +21,7 @@ export const Button = ({
   borderBottom,
   fontSize,
   width,
+  minWidth,
 }: buttonState) => {
   const styleButton = {
     color: color || "black",
@@ -34,6 +35,7 @@ export const Button = ({
     borderBottom: borderBottom || border,
     fontSize: fontSize || "16px",
     width: width || "auto",
+    minWidth: minWidth,
   };
 
   return (

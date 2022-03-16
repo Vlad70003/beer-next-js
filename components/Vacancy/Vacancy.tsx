@@ -3,6 +3,8 @@ import style from "./Vacancy.module.scss";
 
 import { Button } from "../../ui/Button/Button";
 import { Сonditions } from "../Сonditions/Сonditions";
+import { ModalWrapper } from "../Modal/ModalWrapper";
+import { ApplyForJob } from "../Modal/ApplyForJob/ApplyForJob";
 
 import { vacancyState } from "../../types/vacancy";
 
@@ -16,13 +18,16 @@ export const Vacancy = ({
   requirement,
   timetable,
 }: vacancyState) => {
+
   const [isOpen, setIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
 
   return (
+    <>
     <div className={style.vacancy}>
       <h3 className={style.vacancy__title}>{title}</h3>
       <div className={style.vacancy__header}>
@@ -48,6 +53,7 @@ export const Vacancy = ({
             border="1px solid #3D69B7"
             borderRadius="60px"
             padding="12px 40px"
+            onClick={() => setModalIsOpen(true)}
           />
         </div>
       </div>
@@ -76,5 +82,22 @@ export const Vacancy = ({
         onClick={() => handleClick()}
       />}
     </div>
+
+    <ModalWrapper
+        padding="32px 54px"
+        borderRadius="20px"
+        top="50%"
+        left="50%"
+        minWidth="812px"
+        modalIsOpen={modalIsOpen}
+        setModalIsOpen={setModalIsOpen}
+        backgroundColor="#0000004D"
+        transform="translate(-50%, -50%)"
+        onRequestClose
+        close
+      >
+        < ApplyForJob />
+      </ModalWrapper>
+    </>
   );
 };

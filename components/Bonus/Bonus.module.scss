@@ -1,4 +1,11 @@
 .bonus{
     font-size: 21px;
     padding-right: 25px;
+    display: flex;
+    align-items: baseline;
+}
+
+.bonusCount{
+    font-weight: 700;
+    font-size: 18px;
 }

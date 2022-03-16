@@ -9,9 +9,11 @@ export interface buttonState {
     background?: string,
     border?: string,
     borderRadius?: string,
-    onClick?: React.MouseEventHandler<HTMLButtonElement>,
+    onClick?: any,
+    // onClick?: React.MouseEventHandler<HTMLButtonElement> | ((value: string) => void),
     margin?: string,
     borderBottom?: any,
     fontSize?: string,
     width?: string,
+    minWidth?: string,
 }

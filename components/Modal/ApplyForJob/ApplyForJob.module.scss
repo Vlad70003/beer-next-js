@@ -1,0 +1,80 @@
+.applyForJob {
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    font-size: 18px;
+    padding-bottom: 16px;
+    font-weight: 700;
+  }
+
+  &__subTitle {
+    font-size: 18px;
+    font-weight: 400;
+    padding-bottom: 32px;
+  }
+}
+
+.label {
+  &__title {
+    padding-bottom: 4px;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+}
+
+.leftSide,
+.rightSide {
+  flex: 1;
+}
+
+.leftSide {
+  margin-right: 48px;
+}
+
+.rightSide{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.labelMargin{
+    margin-right: 32px;
+}
+
+.filePostTile{
+    color: #BFBFBF;
+    font-size: 12px;
+    text-align: center;
+}
+
+.main, .footer {
+  width: 100%;
+}
+
+.footer{
+  display: flex;
+  justify-content: center;
+}
+
+.main{
+  padding-bottom: 28px;
+}
+
+.row{
+    padding-bottom: 16px;
+}
+
+.red {
+  color: red;
+}

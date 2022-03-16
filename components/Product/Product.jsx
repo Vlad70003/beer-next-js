@@ -19,7 +19,7 @@ export const Product = ({ product }) => {
 
   return (
     <ul className={style.product}>
-      <li className={style.product__img__wrapper}>
+      <li className={style.product__img__wrapper} >
         <Image
           src={productImg}
           alt="product image"
