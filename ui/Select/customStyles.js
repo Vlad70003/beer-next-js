@@ -2,7 +2,6 @@ export const customStyles = {
   
   option: (provided, state) => ({
     ...provided,
-    // minWidth: state.selectProps.minWidth,
     padding: 10,
     backgroundColor: state.isDisabled
     ? undefined

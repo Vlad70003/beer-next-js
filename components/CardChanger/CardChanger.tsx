@@ -24,7 +24,7 @@ export const CardChanger = () => {
           minWidth="270px"
           className={style.cardChanger__border}
         >
-          <InputSelect placeholder="Веберите карту" width="100%" />
+          <InputSelect placeholder="Веберите карту" width="100%" minWidth="200px" border="none" transform  />
           <div className={style.cardChanger__bankLogo__wrapper}>
             <Image
               src={bankLogo}

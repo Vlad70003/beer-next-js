@@ -3,12 +3,17 @@ import Select from "react-select";
 import style from "./InputSelect.module.scss";
 
 import { citiesObject } from "./options";
-import { customStyles } from "./customStyles";
+import { customStyles } from "./customStyles.js";
 
 import { inputSelectState } from "../../types/inputSelect";
 
-export const InputSelect = ({ placeholder, width, minWidth, border, transform }) => {
-  
+export const InputSelect = ({
+  placeholder,
+  width,
+  minWidth,
+  border,
+  transform,
+}) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [focus, setFocus] = useState(false);
 
@@ -21,22 +26,24 @@ export const InputSelect = ({ placeholder, width, minWidth, border, transform })
   };
 
   return (
-    <Select
-      value={selectedOption}
-      onChange={handleChange}
-      styles={customStyles}
-      options={citiesObject}
-      placeholder={placeholder}
-      minWidth={minWidth}
-      border={border}
-      transform={transform}
-      className={width && style.selectWidth}
-      components={{
-        DropdownIndicator: () => null,
-        IndicatorSeparator: () => null,
-      }}
-      onFocus={() => handleFocus(true)}
-      onBlur={() => handleFocus(false)}
-    />
+    <div style={{ minWidth: minWidth }}>
+      <Select
+        value={selectedOption}
+        onChange={handleChange}
+        styles={customStyles}
+        options={citiesObject}
+        placeholder={placeholder}
+        minWidth={minWidth}
+        border={border}
+        transform={transform}
+        className={width && style.selectWidth}
+        components={{
+          DropdownIndicator: () => null,
+          IndicatorSeparator: () => null,
+        }}
+        onFocus={() => handleFocus(true)}
+        onBlur={() => handleFocus(false)}
+      />
+    </div>
   );
 };

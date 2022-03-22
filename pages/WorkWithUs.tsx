@@ -17,7 +17,7 @@ const WorkWithUs: React.FC = () => {
   };
 
   return (
-    <HeaderWrapper styles={styleHome} header footer >
+    <HeaderWrapper styles={styleHome} header footer>
       <BaseWrapperMargin flex="auto">
         <AdditionalPageWrapper title="Работа у нас" mainPadding="26px 0 0 0">
           <div className={style.workWithUs}>
@@ -26,24 +26,22 @@ const WorkWithUs: React.FC = () => {
             </div>
             <div className={style.workWithUs__selectsWrapper}>
               <div className={style.workWithUs__selectWrapper}>
-                <BorderWrapper
+                <InputSelect
+                  placeholder="Выберите область"
+                  width="100%"
+                  minWidth="187px"
                   border="1px solid #BFBFBF"
-                  borderRadius="20px"
-                  maxWidth="230px"
-                  minWidth="230px"
-                >
-                  <InputSelect placeholder="Выберите область" />
-                </BorderWrapper>
+                  transform
+                />
               </div>
               <div className={style.workWithUs__selectWrapper}>
-                <BorderWrapper
+                <InputSelect
+                  placeholder="Выберите город"
+                  width="100%"
+                  minWidth="187px"
                   border="1px solid #BFBFBF"
-                  borderRadius="20px"
-                  maxWidth="230px"
-                  minWidth="230px"
-                >
-                  <InputSelect placeholder="Выберите город" />
-                </BorderWrapper>
+                  transform
+                />
               </div>
             </div>
             <div className={style.workWithUs__vacancyWrapper}>
