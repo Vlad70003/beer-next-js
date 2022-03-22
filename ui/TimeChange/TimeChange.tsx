@@ -9,15 +9,11 @@ import clock from "../../assests/img/clock.svg";
 interface TimeChangeState {
     margin?: string,
     setTimeOrder?: any,
+    timeChangeIsOpen: boolean,
+    handleOpen: (value: boolean) => void
 }
 
-export default function TimeChange({margin, setTimeOrder}:TimeChangeState) {
-
-    const [isOpen, setIsOpen] = useState(false);
-
-    const handleOpen = () => {
-        setIsOpen(!isOpen);
-    }
+export default function TimeChange({margin, setTimeOrder, timeChangeIsOpen, handleOpen}:TimeChangeState) {
 
     const TimeChangeStyle = {
         margin: margin || "0px",
@@ -25,9 +21,9 @@ export default function TimeChange({margin, setTimeOrder}:TimeChangeState) {
 
   return (
     <div className={style.timeChange} style={TimeChangeStyle} >
-        <Image src={clock} width={20} height={20} alt="clock" className="timeChange__img" onClick={() => handleOpen()} />
-        <div className="timeChange__menu" style={isOpen ? {display: "block"} : {display: "none"}}>
-            <TimeChangeMenu setIsOpen={setIsOpen} setTimeOrder={setTimeOrder} />
+        <Image src={clock} width={20} height={20} alt="clock" className="timeChange__img" />
+        <div className="timeChange__menu" style={timeChangeIsOpen ? {display: "block"} : {display: "none"}}>
+            <TimeChangeMenu setIsOpen={handleOpen} setTimeOrder={setTimeOrder} />
         </div>
     </div>
   )

@@ -1,0 +1,27 @@
+.chooseVolume{
+    width: 100%;
+    
+    &__list{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #F6F6F4;
+        border-radius: 20px;
+        padding: 2px;
+    }
+
+    &__item{
+        width: 100%;
+        padding: 8px 0;
+        text-align: center;
+        border: 1px solid transparent;
+        border-radius: 50px;
+        cursor: pointer;
+        user-select: none;
+
+        &__active{
+            border: 1px solid #DFD8D8;
+            background: white;
+        }
+    }
+}

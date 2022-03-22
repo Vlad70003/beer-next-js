@@ -16,8 +16,7 @@ import { toggleColor } from "./script/toggleColor";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 export const Header: React.FC = () => {
-
-  const [pathName, setPathName] = useState<string>('');
+  const [pathName, setPathName] = useState<string>("");
 
   const router = useRouter();
   const path = router.asPath;
@@ -25,8 +24,6 @@ export const Header: React.FC = () => {
   useEffect(() => {
     setPathName(path);
   }, [path]);
-
-  const loggedInState = useTypedSelector(state => state.auntificate.loggedIn);
 
   return (
     <header className={style.header}>
@@ -61,7 +58,7 @@ export const Header: React.FC = () => {
             title="О компании"
             type="button"
             padding="0 24px 0 0"
-            color={toggleColor({pathName, path: "/about-company"})}
+            color={toggleColor({ pathName, path: "/about-company" })}
           />
           {/* </Link> */}
 
@@ -71,7 +68,7 @@ export const Header: React.FC = () => {
                 title="Контакты"
                 type="button"
                 padding="0 24px 0 0"
-                color={toggleColor({pathName, path: "/Contacts"})}
+                color={toggleColor({ pathName, path: "/Contacts" })}
               />
             </a>
           </Link>
@@ -80,18 +77,14 @@ export const Header: React.FC = () => {
               <Button
                 title="Работа у нас"
                 type="button"
-                color={toggleColor({pathName, path:"/WorkWithUs"})}
+                color={toggleColor({ pathName, path: "/WorkWithUs" })}
               />
             </a>
           </Link>
         </nav>
-        <Link href={loggedInState ? "/PrivateOffice" : pathName}>
-          <a>
-            <span className={style.header__profile}>
-              <LoggedInButton />
-            </span>
-          </a>
-        </Link>
+        <span className={style.header__profile}>
+          <LoggedInButton />
+        </span>
       </div>
     </header>
   );

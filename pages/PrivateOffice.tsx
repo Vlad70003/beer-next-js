@@ -35,7 +35,7 @@ const PrivateOffice = () => {
     <HeaderWrapper styles={styleHome} header footer>
         <BaseWrapperMargin flex="auto">
       {" "}
-      <AdditionalPageWrapper title="Личный кабинет" mainPadding="18px 0 0px 0" bonus price>
+      <AdditionalPageWrapper title="Личный кабинет" mainPadding="18px 0 0px 0" padding="0 0 16px 0" bonus price>
         <main className={style.privateOffice}>
           <section className={style.privateOffice__leftSide}>
             <div className={style.privateOffice__wrapper}>

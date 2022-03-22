@@ -3,9 +3,10 @@ import style from "./FileButton.module.scss";
 
 interface propsType {
   title: string,
+  postTitle?: string
 }
 
-export const FileButton = ({title}:propsType) => {
+export const FileButton = ({title, postTitle}:propsType) => {
   return (
     <div className={style.fileButton}>
       <div className={style.wrapper}>
@@ -16,7 +17,8 @@ export const FileButton = ({title}:propsType) => {
           className={style.file}
         />
         <label htmlFor="input__file" className={style.label}>
-          <div className="input__avatar">{title}</div>
+          <div className={style.title}>{title}</div>
+          <div className={style.postTitile}>{postTitle}</div>
         </label>
       </div>
     </div>

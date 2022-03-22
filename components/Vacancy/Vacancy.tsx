@@ -66,7 +66,7 @@ export const Vacancy = ({
       />}
       <div
         className={
-          isOpen
+          !isOpen
             ? `${style.vacancy__requirementWrapper} ${style.vacancy__open}`
             : `${style.vacancy__requirementWrapper} ${style.vacancy__close}`
         }

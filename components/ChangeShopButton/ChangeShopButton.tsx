@@ -1,24 +1,21 @@
 import { useState, useEffect } from "react";
 import style from "./ChangeShopButton.module.scss";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 import { ModalWrapper } from "../Modal/ModalWrapper";
 import { ChangeChopModal } from "../Modal/ChangeChopModal/ChangeChopModal";
 import { MapPin } from "../../ui/MapPin/MapPin";
 import { Button } from "../../ui/Button/Button";
 
-import { currentShop } from "../../script/shop/currentShop";
-
-
-
 export const ChangeShopButton = () => {
 
+  const currentShopStore = useTypedSelector(state => state.currentShop.currentShop);
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [shop, setShop] = useState<string>("Выберите магазин");
 
   useEffect(() => {
-    currentShop.checkedCurrentShop();
-    setShop(localStorage.getItem("currentShop") || "Выберите магазин");
-  }, [])
+    localStorage.setItem("currentShop", currentShopStore);
+  }, [currentShopStore])
 
   return (
     <>
@@ -31,7 +28,7 @@ export const ChangeShopButton = () => {
           <MapPin />
         </span>
         <span className={style.changeShopBtn__button__wrapper}>
-          <Button title={shop} type="button" color="#3D69B7" />
+          <Button title={currentShopStore} type="button" color="#3D69B7" />
         </span>
       </div>
 
@@ -47,7 +44,7 @@ export const ChangeShopButton = () => {
         onRequestClose
         close
       >
-        <ChangeChopModal setShop={setShop} />
+        <ChangeChopModal />
       </ModalWrapper>
     </>
   );

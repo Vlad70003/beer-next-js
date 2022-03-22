@@ -1,0 +1,33 @@
+.changePhone{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__title{
+        font-size: 18px;
+        font-weight: 700;
+        padding-bottom: 24px;
+    }
+
+    &__form{
+        width: 100%;
+    }
+}
+
+.label{
+    &__title{
+        padding-bottom: 4px;
+    }
+}
+
+.row{
+    padding-bottom: 16px;
+
+    &:last-child{
+        padding-bottom: 0;
+    }
+}
+
+.red {
+    color: red;
+}

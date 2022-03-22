@@ -1,10 +1,10 @@
 export interface loggedInAction {
-    type: string;
-    payload?: any;
+  type: string;
+  payload?: any;
 }
 
 export interface loggedInState {
-    loggedIn: boolean;
-    load: boolean;
-    error: null | boolean;
-  }
+  loggedIn: boolean;
+  load: boolean;
+  error: null | boolean;
+}

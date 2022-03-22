@@ -1,0 +1,59 @@
+.openProduct {
+  display: flex;
+}
+
+.leftSide {
+  flex: 1;
+}
+
+.rightSide {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main{
+    padding-bottom: 10px;
+}
+
+.footer{
+    display: flex;
+
+    &__column{
+        &:first-child {
+            flex: 1;
+        }
+        &:last-child {
+            flex: 1.5;
+        }
+    }
+    &__row{
+        &:first-child {
+            font-size: 24px;
+        }
+        &:last-child {
+            color: #757575;
+            font-size: 12px;
+        }
+    }
+}
+
+.row{
+    padding-bottom: 8px;
+}
+
+.title{
+    font-size: 20px;
+    padding-bottom: 8px;
+}
+
+.text {
+    &__grey {
+        color: #757575;
+    }
+
+    &__description{
+        padding-bottom: 8px;
+    }
+}

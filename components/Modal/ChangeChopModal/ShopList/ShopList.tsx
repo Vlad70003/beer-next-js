@@ -1,16 +1,21 @@
 import style from "./ShopList.module.scss";
+import { useEffect } from "react";
+import { useActions } from "../../../../hooks/useActions";
+
 import { shops } from "../data";
 
 import { Button } from "../../../../ui/Button/Button";
+import {currentShapAction} from "../../../../store/actions-creators/currentShop";
 
-import { currentShop } from "../../../../script/shop/currentShop";
 
 interface ShopListState {
   closeModal?: any;
-  setShop: (value: string) => void,
 }
 
-export const ShopList = ({ closeModal, setShop }: ShopListState) => {
+export const ShopList = ({ closeModal }: ShopListState) => {
+
+  const { currentShapAction } = useActions();
+
   return (
     <ul className={style.shopList}>
       {shops.map((shop, ind) => {
@@ -48,8 +53,8 @@ export const ShopList = ({ closeModal, setShop }: ShopListState) => {
                 borderBottom={"1px solid #3D69B7"}
                 onClick={() => {
                   closeModal();
-                  currentShop.changeLocalStorage(shop.address);
-                  setShop(shop.address)
+                  currentShapAction(shop.address)
+                  // setShop && setShop(shop.address)
                 }}
               />
             </div>

@@ -1,8 +1,9 @@
-import { loggedInAction, loggedInState } from './../../types/loggenIn';
+import { loggedInAction, loggedInState } from "./../../types/loggenIn";
 
 export const FETCH_LOGIN = "FETCH_PRODUCT";
 export const FETCH_LOGIN_SUCCESS = "FETCH_PRODUCT_SUCCESS";
 export const FETCH_LOGIN_ERROR = "FETCH_PRODUCT_ERROR";
+export const LOG_OUT = "LOG_OUT";
 
 const initialStates: loggedInState = {
   loggedIn: false,
@@ -14,7 +15,6 @@ export const auntificateReducers = (
   state = initialStates,
   action: loggedInAction
 ): loggedInState => {
-
   switch (action.type) {
     case FETCH_LOGIN:
       return { load: true, error: null, loggedIn: false };
@@ -24,6 +24,9 @@ export const auntificateReducers = (
 
     case FETCH_LOGIN_ERROR:
       return { load: false, error: true, loggedIn: false };
+
+    case LOG_OUT:
+      return { load: false, error: null, loggedIn: false };
 
     default:
       return state;

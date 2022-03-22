@@ -51,14 +51,14 @@ export const ApplyForJob = () => {
                 >
                   <label
                     htmlFor="male-applyForJob"
-                    className={style.labelMargin}
+                    className={`${style.labelMargin} ${style.flex} ${style.alignItems}`}
                   >
-                    <Radio id="male-applyForJob" value="male-applyForJob" />
-                    Мужской
+                    <Radio id="male-applyForJob" value="male-applyForJob"  />
+                    <pre>  Мужской</pre>
                   </label>
-                  <label htmlFor="female-applyForJob">
+                  <label htmlFor="female-applyForJob" className={`${style.flex} ${style.alignItems}`}>
                     <Radio id="female-applyForJob" value="female-applyForJob" />
-                    Женский
+                    <pre>  Женский</pre>
                   </label>
                 </InputRadio>
               </label>

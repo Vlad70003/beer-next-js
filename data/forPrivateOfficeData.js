@@ -68,7 +68,7 @@ export const historyOrderInShop = [
     destination: "Осталось 20 мин",
     phase: 3,
     sumPrice: "1540 ₽",
-    bonus: "1000",
+    bonus: "100",
     writtenOff: "50",
     productList: [
       {

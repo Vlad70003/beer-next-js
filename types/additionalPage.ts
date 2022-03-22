@@ -5,4 +5,5 @@ export interface additionalPageState {
     bonus?: any,
     price?: any,
     mainPadding?: string,
+    padding?: string
 }

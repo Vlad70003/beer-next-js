@@ -7,16 +7,16 @@ import { customStyles } from "./customStyles";
 
 import { inputSelectState } from "../../types/inputSelect";
 
-export const InputSelect = ({ placeholder, width }: inputSelectState) => {
+export const InputSelect = ({ placeholder, width, minWidth, border, transform }) => {
   
   const [selectedOption, setSelectedOption] = useState(null);
   const [focus, setFocus] = useState(false);
 
-  const handleChange = (selectedOption: any) => {
+  const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
   };
 
-  const handleFocus = (value: boolean) => {
+  const handleFocus = (value) => {
     setFocus(value);
   };
 
@@ -27,6 +27,9 @@ export const InputSelect = ({ placeholder, width }: inputSelectState) => {
       styles={customStyles}
       options={citiesObject}
       placeholder={placeholder}
+      minWidth={minWidth}
+      border={border}
+      transform={transform}
       className={width && style.selectWidth}
       components={{
         DropdownIndicator: () => null,

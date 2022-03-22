@@ -6,4 +6,5 @@ export interface baseWrapperState {
     justifyContent?: string,
     alignItems?: string,
     flex?: string,
+    borderBottom?: string,
 }

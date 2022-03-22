@@ -102,7 +102,7 @@ export const FeedBack = () => {
             display="flex"
             justifyContent="center"
           >
-            <FileButton title="Редактировать"/>
+            <FileButton title="Прикрепить файл"/>
           </BorderWrapper>
         </div>
         <div className={style.row}>

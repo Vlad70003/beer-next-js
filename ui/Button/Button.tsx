@@ -44,6 +44,7 @@ export const Button = ({
       type={type}
       style={styleButton}
       onClick={onClick}
+      id="button"
     >
       {maxLength ? truncate(title, maxLength) : title}
     </button>

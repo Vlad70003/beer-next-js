@@ -9,11 +9,9 @@ import { YandexMap } from "../../YandexMap/YandexMap";
 
 interface ChangeChopModalState {
   closeModal?: any;
-  setShop: (value: string) => void,
 }
 
-export const ChangeChopModal = ({closeModal, setShop}:ChangeChopModalState) => {
-
+export const ChangeChopModal = ({ closeModal }: ChangeChopModalState) => {
   const [showMap, setShowMap] = useState(false);
 
   return (
@@ -26,27 +24,25 @@ export const ChangeChopModal = ({closeModal, setShop}:ChangeChopModalState) => {
                 Область
               </div>
               <div className={style.changeChopModal__header__input}>
-                <BorderWrapper
-                  border="1px solid #BFBFBF"
-                  borderRadius="20px"
-                  maxWidth="187px"
+                <InputSelect
+                  placeholder="Область"
+                  width="100%"
                   minWidth="187px"
-                >
-                  <InputSelect placeholder="Область" width="100%"/>
-                </BorderWrapper>
+                  border="1px solid #BFBFBF"
+                  transform
+                />
               </div>
             </div>
             <div className={style.changeChopModal__header__rightSide}>
               <div className={style.changeChopModal__header__title}>Город</div>
               <div className={style.changeChopModal__header__input}>
-                <BorderWrapper
-                  border="1px solid #BFBFBF"
-                  borderRadius="20px"
+                <InputSelect
+                  placeholder="Область"
+                  width="100%"
                   minWidth="187px"
-                  maxWidth="187px"
-                >
-                  <InputSelect placeholder="Область" width="100%"/>
-                </BorderWrapper>
+                  border="1px solid #BFBFBF"
+                  transform
+                />
               </div>
             </div>
           </div>
@@ -57,15 +53,19 @@ export const ChangeChopModal = ({closeModal, setShop}:ChangeChopModalState) => {
               </div>
             </div>
             <div className={style.changeChopModal__header__rightSide}>
-                < StoreSelection width="187px" setShowMap={setShowMap} showMap={showMap} />   
+              <StoreSelection
+                width="187px"
+                setShowMap={setShowMap}
+                showMap={showMap}
+              />
             </div>
           </div>
         </header>
         <main className={style.changeChopModal__main}>
           <div className={style.changeChopModal__main__conteiner}>
-            {!showMap && < ShopList closeModal={closeModal} setShop={setShop} /> }     
-            {showMap && < YandexMap width={"100%"} height={"248px"} /> }     
-        </div>
+            {!showMap && <ShopList closeModal={closeModal} />}
+            {showMap && <YandexMap width={"100%"} height={"248px"} />}
+          </div>
         </main>
       </div>
     </div>

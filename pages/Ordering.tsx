@@ -26,10 +26,15 @@ import mir from "../assests/img/mir.svg";
 function Ordering() {
   const [timeOrder, setTimeOrder] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [timeChangeIsOpen, setTimeChangeIsOpen] = useState(false);
 
   const handleTimeOrder = (event: any) => {
     setTimeOrder(event.target.value);
   };
+
+  const handleOpen = () => {
+    setTimeChangeIsOpen(!timeChangeIsOpen);
+}
 
   const styleHome: styleRouterState = {
     width: "100%",
@@ -80,7 +85,7 @@ function Ordering() {
                       <Input width="100%" placeholder="Ведите имя" />
                     </BorderWrapper>
                   </label>
-                  <label htmlFor="" className={style.ordering__label}>
+                  <label htmlFor="" className={style.ordering__label} onClick={() => handleOpen()}>
                     <pre>Время:    </pre>
                     <BorderWrapper
                       border="1px solid #BFBFBF"
@@ -89,10 +94,13 @@ function Ordering() {
                       padding="9px 24px"
                       position="relative"
                       display="flex"
+                      
                     >
                       <TimeChange
                         margin="0 10px 0 0"
                         setTimeOrder={setTimeOrder}
+                        timeChangeIsOpen={timeChangeIsOpen}
+                        handleOpen={handleOpen}
                       />
                       <InputMaskLib
                         mask={"99:99"}

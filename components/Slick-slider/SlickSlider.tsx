@@ -1,7 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
 import Image from "next/image";
-import style from "./SlickSlider.module.scss";
 
 import { SampleNextArrow } from "./SampleNextArrow/SampleNextArrow";
 import { SamplePrevArrow } from "./SamplePrevArrow/SamplePrevArrow";
@@ -17,7 +16,7 @@ export const SlickSlider = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     variableWidth: true,
-    autoplay: true,
+    autoplay: false,
     centerPadding: "0px",
     autoplaySpeed: 3000,
     

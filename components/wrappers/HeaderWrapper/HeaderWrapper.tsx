@@ -64,7 +64,7 @@ export function HeaderWrapper({
           </BaseWrapperMargin>
         )}
         {navigation && (
-          <BaseWrapperMargin flex="auto">
+          <BaseWrapperMargin flex="auto" >
             <Navigation handlePage={handlePage} shopPage={shopPage} />
           </BaseWrapperMargin>
         )}

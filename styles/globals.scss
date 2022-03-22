@@ -44,12 +44,9 @@ a {
   color: black;
   text-decoration: none;
 }
-label{
+label {
   cursor: pointer;
 }
-
-
-
 
 ///Slick slider
 @mixin arrow {
@@ -61,7 +58,7 @@ label{
   font-size: 0px !important;
   opacity: 1 !important;
 }
-.slide-wrapper{
+.slide-wrapper {
   padding-bottom: 30px;
 }
 .slick-slider {
@@ -74,9 +71,8 @@ label{
 
     &--img {
       opacity: 0.7;
-      // height: 365px !important;
-      // width: 1120px !important;
       padding: 10px 0 !important;
+      
     }
   }
 }
@@ -89,7 +85,7 @@ label{
   min-height: auto;
   padding: 0 !important;
 }
-.slick-track{
+.slick-track {
   display: flex !important;
   align-items: center !important;
   padding-bottom: 5px !important;
@@ -97,19 +93,26 @@ label{
 .slick-dots {
   bottom: 0 !important;
   & li {
-    margin: 0 2px !important; 
+    margin: 0 2px !important;
   }
   & li button::before {
     font-size: 9px !important;
-    color: #3D84B7 !important;
+    color: #3d84b7 !important;
+  }
 }
-}
-.slick-list{
+.slick-list {
   overflow: visible !important;
 }
 
-
-
+.rc-checkbox-inner {
+  width: 16px !important;
+  height: 16px !important;
+  &:after {
+    border: 1px solid #ffffff !important;
+    border-top: 0 !important;
+    border-left: 0 !important;
+  }
+}
 
 //ScrollBar
 input::-webkit-outer-spin-button,
@@ -135,21 +138,17 @@ input::-webkit-inner-spin-button {
   background-color: #253861;
 }
 
-
-
-
 //Modal
-.ReactModal__Overlay--after-open{
+.ReactModal__Overlay--after-open {
   z-index: 999 !important;
 }
 
-
-
 //rc-checkbox
-.rc-checkbox-checked .rc-checkbox-inner{
-  background-color: #3D84B7 !important;
-  border-color: #3D84B7 !important;
+.rc-checkbox-checked .rc-checkbox-inner {
+  background-color: #3d84b7 !important;
+  border-color: #3d84b7 !important;
 }
-.rc-checkbox:hover .rc-checkbox-inner, .rc-checkbox-input:focus + .rc-checkbox-inner{
-  border-color: #3D84B7 !important;
+.rc-checkbox:hover .rc-checkbox-inner,
+.rc-checkbox-input:focus + .rc-checkbox-inner {
+  border-color: #3d84b7 !important;
 }

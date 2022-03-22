@@ -34,7 +34,7 @@ export const PurchaseSuccess = () => {
       </main>
       <footer className={style.footer}>
         <Link href="/">
-          <a>
+          <a style={{flex: 1, padding: "0 16px 0 0"}}>
             <Button
               title="На главную"
               color="#3D69B7"
@@ -42,12 +42,11 @@ export const PurchaseSuccess = () => {
               borderRadius="60px"
               padding="12px 27px"
               width="100%"
-              margin="0 16px 0 0"
             />
           </a>
         </Link>
         <Link href="/PrivateOffice">
-          <a>
+          <a style={{flex: 1}}>
             <Button
               title="В личный кабинет"
               color="white"

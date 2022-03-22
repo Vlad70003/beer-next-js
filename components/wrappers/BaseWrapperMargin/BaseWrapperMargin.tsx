@@ -8,6 +8,7 @@ export const BaseWrapperMargin = ({
   justifyContent,
   alignItems,
   flex,
+  borderBottom,
 }: baseWrapperState) => {
   
   const styleBaseWrapper = {
@@ -19,6 +20,7 @@ export const BaseWrapperMargin = ({
     alignItems: alignItems || "none",
     flex: flex || "none",
     padding: "0 15px",
+    borderBottom: borderBottom,
   };
 
   return (

@@ -1,4 +1,15 @@
 .loggedInButton{
     display: flex;
+    flex-direction: column;
+    position: relative;
+
+    &__wrapper{
+        display: flex;
+        align-items: center;
+    }
+}
+
+.link {
+    display: flex;
     align-items: center;
 }
