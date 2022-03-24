@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./Button.module.scss";
 
 import { buttonState } from "../../types/button";
 
 import { truncate } from "../../script/wordProcessing/trancute";
+import { classNaneBtn } from "./className";
 
 export const Button = ({
   title,
@@ -22,7 +22,11 @@ export const Button = ({
   fontSize,
   width,
   minWidth,
+  fontWeightClass,
+  hoverClassColor,
 }: buttonState) => {
+
+
   const styleButton = {
     color: color || "black",
     padding: padding || "none",
@@ -36,11 +40,12 @@ export const Button = ({
     fontSize: fontSize || "16px",
     width: width || "auto",
     minWidth: minWidth,
+    transition: "all .4s"
   };
 
   return (
     <button
-      className={styles.button}
+      className={classNaneBtn({fontWeightClass, hoverClassColor})}
       type={type}
       style={styleButton}
       onClick={onClick}

@@ -16,4 +16,6 @@ export interface buttonState {
     fontSize?: string,
     width?: string,
     minWidth?: string,
+    fontWeightClass?: string,
+    hoverClassColor?: string,
 }

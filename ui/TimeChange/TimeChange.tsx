@@ -22,9 +22,9 @@ export default function TimeChange({margin, setTimeOrder, timeChangeIsOpen, hand
   return (
     <div className={style.timeChange} style={TimeChangeStyle} >
         <Image src={clock} width={20} height={20} alt="clock" className="timeChange__img" />
-        <div className="timeChange__menu" style={timeChangeIsOpen ? {display: "block"} : {display: "none"}}>
+        {/* <div className="timeChange__menu" style={timeChangeIsOpen ? {display: "block"} : {display: "none"}}>
             <TimeChangeMenu setIsOpen={handleOpen} setTimeOrder={setTimeOrder} />
-        </div>
+        </div> */}
     </div>
   )
 }

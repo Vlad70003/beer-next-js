@@ -16,6 +16,7 @@ import { HeaderWrapper } from "../components/wrappers/HeaderWrapper/HeaderWrappe
 import { styleRouterState } from "../types/router";
 import { baseBackground } from "../assests/variable/variable";
 import { PurchaseSuccess } from "../components/Modal/PurchaseSuccess/PurchaseSuccess";
+import { TimeChanger } from "../components/Modal/TimeChanger/TimeChanger";
 
 import { ModalWrapper } from "../components/Modal/ModalWrapper";
 
@@ -24,8 +25,10 @@ import visa from "../assests/img/visa.svg";
 import mir from "../assests/img/mir.svg";
 
 function Ordering() {
-  const [timeOrder, setTimeOrder] = useState("");
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [timeOrder, setTimeOrder] = useState("Побыстрее");
+  const [modalIsOpenComplate, setModalIsOpenComplate] = useState(false);
+  const [modalIsOpenTimePicker, setModalIsOpenTimePicker] = useState(false);
+  
   const [timeChangeIsOpen, setTimeChangeIsOpen] = useState(false);
 
   const handleTimeOrder = (event: any) => {
@@ -85,7 +88,7 @@ function Ordering() {
                       <Input width="100%" placeholder="Ведите имя" />
                     </BorderWrapper>
                   </label>
-                  <label htmlFor="" className={style.ordering__label} onClick={() => handleOpen()}>
+                  <label htmlFor="" className={style.ordering__label} onClick={() => setModalIsOpenTimePicker(true)}>
                     <pre>Время:    </pre>
                     <BorderWrapper
                       border="1px solid #BFBFBF"
@@ -102,13 +105,7 @@ function Ordering() {
                         timeChangeIsOpen={timeChangeIsOpen}
                         handleOpen={handleOpen}
                       />
-                      <InputMaskLib
-                        mask={"99:99"}
-                        width="100%"
-                        placeholder="09:00"
-                        handleValue={handleTimeOrder}
-                        value={timeOrder}
-                      />
+                      <div>{timeOrder}</div>
                     </BorderWrapper>
                   </label>
                 </div>
@@ -295,7 +292,7 @@ function Ordering() {
                   background="#20598E"
                   padding="12px"
                   width="100%"
-                  onClick={() => setModalIsOpen(true)}
+                  onClick={() => setModalIsOpenComplate(true)}
                 />
               </section>
             </main>
@@ -310,12 +307,28 @@ function Ordering() {
         left="50%"
         minWidth="514px"
         maxWidth="530px"
-        modalIsOpen={modalIsOpen}
-        setModalIsOpen={setModalIsOpen}
+        modalIsOpen={modalIsOpenComplate}
+        setModalIsOpen={setModalIsOpenComplate}
         backgroundColor="#0000004D"
         transform="translate(-50%, -50%)"
       >
         <PurchaseSuccess />
+      </ModalWrapper>
+
+      <ModalWrapper
+        padding="32px 54px"
+        borderRadius="20px"
+        top="50%"
+        left="50%"
+        minWidth="600px"
+        maxWidth="650px"
+        modalIsOpen={modalIsOpenTimePicker}
+        setModalIsOpen={setModalIsOpenTimePicker}
+        backgroundColor="#0000004D"
+        transform="translate(-50%, -50%)"
+        close
+      >
+        <TimeChanger setTimeOrder={setTimeOrder} timeOrder={timeOrder} closeModal />
       </ModalWrapper>
     </>
   );

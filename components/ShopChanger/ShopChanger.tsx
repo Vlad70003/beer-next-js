@@ -2,10 +2,14 @@ import React from "react";
 import style from "./ShopChanger.module.scss";
 import Image from "next/image";
 
-import { Button } from "../../ui/Button/Button";
+import { ChangeShopButton } from "../ChangeShopButton/ChangeShopButton";
 import trash from "../../assests/img/trash.svg";
+import { useActions } from "../../hooks/useActions";
 
 export const ShopChanger = () => {
+
+  const { deleteCurrentShapAction } = useActions();
+
   return (
     <div className={style.shopChanger}>
       <div className={style.shopChanger__adressWrapper}>
@@ -13,12 +17,10 @@ export const ShopChanger = () => {
           Адрес:
         </label>
         <div className={style.shopChanger__adress}>
-          <Button
-            title="г. Северодвинск, ул. Железнодорожная, 50/1"
-            fontWeight="400"
-            color="#3D69B7"
-            borderBottom="1px dashed #3D69B7"
-            padding="0 5px 0 0"
+          <ChangeShopButton
+            borderBottom="1px dashed rgb(61, 105, 183)"
+            margin="0 10px 0 0"
+            noLogo
           />
           <Image
             src={trash}
@@ -26,6 +28,7 @@ export const ShopChanger = () => {
             className={style.shopChanger__delete}
             width={20}
             height={20}
+            onClick={deleteCurrentShapAction}
           />
         </div>
       </div>
@@ -39,16 +42,24 @@ export const ShopChanger = () => {
           </a>
         </div>
         <div className={style.shopChanger__timetableRightSide}>
-            <ul className={style.shopChanger__timetableRightSide__list}>
-                <li className={style.shopChanger__timetableRightSide__item}>
-                    <div className={style.shopChanger__timetableRightSide__day}>пн-пт</div>
-                    <div className={style.shopChanger__timetableRightSide__time}>10:00 - 22:00</div>
-                </li>
-                <li className={style.shopChanger__timetableRightSide__item}>
-                    <div className={style.shopChanger__timetableRightSide__day}>сб-вс</div>
-                    <div className={style.shopChanger__timetableRightSide__time}>10:00 - 23:00</div>
-                </li>
-            </ul>
+          <ul className={style.shopChanger__timetableRightSide__list}>
+            <li className={style.shopChanger__timetableRightSide__item}>
+              <div className={style.shopChanger__timetableRightSide__day}>
+                пн-пт
+              </div>
+              <div className={style.shopChanger__timetableRightSide__time}>
+                10:00 - 22:00
+              </div>
+            </li>
+            <li className={style.shopChanger__timetableRightSide__item}>
+              <div className={style.shopChanger__timetableRightSide__day}>
+                сб-вс
+              </div>
+              <div className={style.shopChanger__timetableRightSide__time}>
+                10:00 - 23:00
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

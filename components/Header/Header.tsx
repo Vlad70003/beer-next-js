@@ -13,6 +13,7 @@ import { Button } from "../../ui/Button/Button";
 import { LoggedInButton } from "../LoggedInButton/LoggedInButton";
 
 import { toggleColor } from "./script/toggleColor";
+import { toggleFontWidth } from "./script/toggleColor";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 export const Header: React.FC = () => {
@@ -59,6 +60,8 @@ export const Header: React.FC = () => {
             type="button"
             padding="0 24px 0 0"
             color={toggleColor({ pathName, path: "/about-company" })}
+            fontWeight={toggleFontWidth({ pathName, path: "/about-company" })}
+            hoverClassColor="blueHoverClassColor"
           />
           {/* </Link> */}
 
@@ -69,6 +72,8 @@ export const Header: React.FC = () => {
                 type="button"
                 padding="0 24px 0 0"
                 color={toggleColor({ pathName, path: "/Contacts" })}
+                fontWeight={toggleFontWidth({ pathName, path: "/Contacts" })}
+                hoverClassColor="blueHoverClassColor"
               />
             </a>
           </Link>
@@ -78,6 +83,8 @@ export const Header: React.FC = () => {
                 title="Работа у нас"
                 type="button"
                 color={toggleColor({ pathName, path: "/WorkWithUs" })}
+                fontWeight={toggleFontWidth({ pathName, path: "/WorkWithUs" })}
+                hoverClassColor="blueHoverClassColor"
               />
             </a>
           </Link>

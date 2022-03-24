@@ -25,12 +25,13 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               title="ПИВО И СИДРЫ"
               type="button"
               fontSize="18px"
-              fontWeight="700"
               margin="0"
               padding="0 0 8px 0"
               borderBottom={ shopPage && toggleBorderBottom({ shopPage, value: "beer" })}
               color={shopPage && toggleColor({ shopPage, value: "beer" })}
               onClick={() => handlePage("beer")}
+              fontWeightClass="bold"
+              hoverClassColor="blueHoverClassColor"
             />
           </li>
           <li className={style.navigation__item}>
@@ -38,7 +39,6 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               title="БУТЫЛОЧНОЕ"
               type="button"
               fontSize="18px"
-              fontWeight="700"
               padding="0 0 8px 0"
               margin="0 0 0 2rem"
               borderBottom={ shopPage && toggleBorderBottom({
@@ -47,6 +47,8 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               })}
               color={shopPage && toggleColor({ shopPage, value: "bottled" })}
               onClick={() => handlePage("bottled")}
+              fontWeightClass="bold"
+              hoverClassColor="blueHoverClassColor"
             />
           </li>
           <li className={style.navigation__item}>
@@ -54,7 +56,6 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               title="НАПИТКИ"
               type="button"
               fontSize="18px"
-              fontWeight="700"
               padding="0 0 8px 0"
               margin="0 0 0 2rem"
               borderBottom={ shopPage && toggleBorderBottom({
@@ -63,6 +64,8 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               })}
               color={ shopPage && toggleColor({ shopPage, value: "beverages" })}
               onClick={() => handlePage("beverages")}
+              fontWeightClass="bold"
+              hoverClassColor="blueHoverClassColor"
             />
           </li>
           <li className={style.navigation__item}>
@@ -70,7 +73,6 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               title="РЫБЫ"
               type="button"
               fontSize="18px"
-              fontWeight="700"
               padding="0 0 8px 0"
               margin="0 0 0 2rem"
               borderBottom={ shopPage && toggleBorderBottom({
@@ -79,6 +81,8 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               })}
               color={ shopPage && toggleColor({ shopPage, value: "fishes" })}
               onClick={() => handlePage("fishes")}
+              fontWeightClass="bold"
+              hoverClassColor="blueHoverClassColor"
             />
           </li>
           <li className={style.navigation__item}>
@@ -86,7 +90,6 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               title="МЯСО"
               type="button"
               fontSize="18px"
-              fontWeight="700"
               padding="0 0 8px 0"
               margin="0 0 0 2rem"
               borderBottom={ shopPage && toggleBorderBottom({
@@ -94,13 +97,14 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               })}
               color={ shopPage && toggleColor({ shopPage, value: "meat" })}
               onClick={() => handlePage("meat")}
+              fontWeightClass="bold"
+              hoverClassColor="blueHoverClassColor"
             />
           </li>
           <li className={style.navigation__item}>
             <Button
               title="СЫР"
               type="button"
-              fontWeight="700"
               fontSize="18px"
               padding="0 0 8px 0"
               margin="0 0 0 2rem"
@@ -109,13 +113,14 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               })}
               color={ shopPage && toggleColor({ shopPage, value: "chease" })}
               onClick={() => handlePage("chease")}
+              fontWeightClass="bold"
+              hoverClassColor="blueHoverClassColor"
             />
           </li>
           <li className={style.navigation__item}>
             <Button
               title="СНЕКИ"
               type="button"
-              fontWeight="700"
               fontSize="18px"
               padding="0 0 8px 0"
               margin="0 0 0 2rem"
@@ -124,13 +129,14 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               })}
               color={ shopPage && toggleColor({ shopPage, value: "snacks" })}
               onClick={() => handlePage("snacks")}
+              fontWeightClass="bold"
+              hoverClassColor="blueHoverClassColor"
             />
           </li>
           <li className={style.navigation__item}>
             <Button
               title="ПРОЧЕЕ"
               type="button"
-              fontWeight="700"
               fontSize="18px"
               padding="0 0 8px 0"
               margin="0 0 0 2rem"
@@ -139,13 +145,14 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               })}
               color={ shopPage && toggleColor({ shopPage, value: "other" })}
               onClick={() => handlePage("other")}
+              fontWeightClass="bold"
+              hoverClassColor="blueHoverClassColor"
             />
           </li>
           <li className={style.navigation__item}>
             <Button
               title="АКЦИИ"
               type="button"
-              fontWeight="700"
               fontSize="18px"
               margin="0 0 0 2rem"
               padding="0 0 8px 0"
@@ -154,6 +161,8 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               })}
               color="#E31E25"
               onClick={() => handlePage("other")}
+              fontWeightClass="bold"
+              hoverClassColor="blueHoverClassColor"
             />
           </li>
         </ul>

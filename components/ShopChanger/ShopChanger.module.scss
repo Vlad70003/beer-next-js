@@ -1,38 +1,36 @@
 .shopChanger {
+  cursor: pointer;
+  &__adressWrapper {
+    display: flex;
+    justify-content: space-between;
+  }
 
-    &__adressWrapper {
-        display: flex;
-        justify-content: space-between;
+  &__adress {
+    display: flex;
+    padding-bottom: 16px;
+  }
+
+  &__timetableWrapper {
+    display: flex;
+    font-size: 14px;
+    color: #757575;
+    justify-content: end;
+  }
+
+  &__timetableLeftSide {
+    &__phone {
+      padding-right: 38px;
+      color: #757575;
+    }
+  }
+
+  &__timetableRightSide {
+    &__item {
+      display: flex;
     }
 
-    &__adress {
-        display: flex;
-        padding-bottom: 16px;
+    &__day {
+      padding-right: 38px;
     }
-
-    &__timetableWrapper {
-        display: flex;
-        font-size: 14px;
-        color: #757575;
-        justify-content: end;
-    }
-
-    &__timetableLeftSide {
-
-        &__phone {
-            padding-right: 38px;
-            color: #757575;
-        }
-    }
-
-    &__timetableRightSide {
-
-        &__item {
-            display: flex;
-        }
-
-        &__day {
-            padding-right: 38px;
-        }
-    }
+  }
 }

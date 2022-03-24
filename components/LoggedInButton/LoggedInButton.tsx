@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Menu, { SubMenu, MenuItem } from "rc-menu";
 import style from "./LoggedInButton.module.scss";
 
 import { Button } from "../../ui/Button/Button";
@@ -8,9 +9,7 @@ import { User } from "../../ui/User/User";
 import { ModalWrapper } from "../Modal/ModalWrapper";
 import { Auntificate } from "../Modal/Auntificate/Auntificate";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { LoggedInButtonMenu } from "./LoggedInButtonMenu/LoggedInButtonMenu";
 import { Close } from "../../ui/Close/Close";
-
 
 export const LoggedInButton = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -51,14 +50,16 @@ export const LoggedInButton = () => {
                 maxLength={14}
                 fontSize="18px"
               />
-              { loggedInState ? <Close /> : <User />}
+              {/* <Menu>
+                <MenuItem>1</MenuItem>
+                <SubMenu title="2">
+                  <MenuItem>2-1</MenuItem>
+                </SubMenu>
+              </Menu> */}
+              {loggedInState ? <Close /> : <User />}
             </a>
           </Link>
         </div>
-        {/* <LoggedInButtonMenu
-          mainClass={mainClass}
-          chooseMainClass={chooseMainClass}
-        /> */}
       </div>
 
       <ModalWrapper

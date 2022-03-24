@@ -7,26 +7,45 @@ import { ChangeChopModal } from "../Modal/ChangeChopModal/ChangeChopModal";
 import { MapPin } from "../../ui/MapPin/MapPin";
 import { Button } from "../../ui/Button/Button";
 
-export const ChangeShopButton = () => {
+interface ChangeShopButtonProps {
+  noLogo?: boolean;
+  borderBottom?: string;
+  margin?: string;
+}
 
-  const currentShopStore = useTypedSelector(state => state.currentShop.currentShop);
+export const ChangeShopButton = ({
+  noLogo,
+  borderBottom,
+  margin,
+}: ChangeShopButtonProps) => {
+  const currentShopStore = useTypedSelector(
+    (state) => state.currentShop.currentShop
+  );
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("currentShop", currentShopStore);
-  }, [currentShopStore])
+  }, [currentShopStore]);
+
+  const ChangeShopButtonStyle = {
+    display: "flex",
+    borderBottom: borderBottom,
+    margin: margin,
+  };
 
   return (
     <>
       <div
         className={style.changeShopBtn}
-        style={{ display: "flex" }}
+        style={ChangeShopButtonStyle}
         onClick={() => setModalIsOpen(true)}
       >
-        <span className="changeShopBtn__max-pin__wrapper">
-          <MapPin />
-        </span>
+        {!noLogo && (
+          <span className="changeShopBtn__max-pin__wrapper">
+            <MapPin />
+          </span>
+        )}
         <span className={style.changeShopBtn__button__wrapper}>
           <Button title={currentShopStore} type="button" color="#3D69B7" />
         </span>

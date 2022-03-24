@@ -1,7 +1,6 @@
 .vacancy {
-
   padding-top: 18px;
-  border-bottom: 1px solid #D8D4CE;
+  border-bottom: 1px solid #d8d4ce;
 
   &__title {
     color: #434242;
@@ -42,22 +41,21 @@
     }
   }
 
-  &__requirementWrapper{
-    & div{
+  &__requirementWrapper {
+    & div {
       margin-right: 50px;
 
-      &:last-child{
+      &:last-child {
         padding-right: 0;
       }
     }
-
   }
 
-  &__open{
+  &__open {
     display: flex;
     justify-content: start;
   }
-  &__close{
+  &__close {
     display: none;
   }
 }

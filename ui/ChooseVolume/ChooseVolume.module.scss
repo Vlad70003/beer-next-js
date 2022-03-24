@@ -18,10 +18,12 @@
         border-radius: 50px;
         cursor: pointer;
         user-select: none;
+        transition: all linear .2s;
 
         &__active{
             border: 1px solid #DFD8D8;
             background: white;
+            transition: all linear .2s;
         }
     }
 }

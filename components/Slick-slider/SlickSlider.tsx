@@ -16,7 +16,7 @@ export const SlickSlider = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     variableWidth: true,
-    autoplay: false,
+    autoplay: true,
     centerPadding: "0px",
     autoplaySpeed: 3000,
     

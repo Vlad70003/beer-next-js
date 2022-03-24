@@ -1,5 +1,20 @@
+@font-face {
+    font-family: "PT-SANS-BOLD";
+    src: url("../../assests/fonts/pt-sans/PTSans-Bold.ttf");
+  }
+
 .button{
     border: none;
     background: none;
     outline: none;
+}
+
+.blueHoverClassColor{
+    &:hover {
+        color: rgb(61, 105, 183) !important;
+    }
+}
+
+.bold {
+    font-family: "PT-SANS-BOLD";
 }

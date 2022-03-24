@@ -5,8 +5,6 @@ import { useActions } from "../../../../hooks/useActions";
 import { shops } from "../data";
 
 import { Button } from "../../../../ui/Button/Button";
-import {currentShapAction} from "../../../../store/actions-creators/currentShop";
-
 
 interface ShopListState {
   closeModal?: any;
