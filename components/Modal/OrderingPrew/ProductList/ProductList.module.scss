@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "PTSans-Bold";
+    src: url("../../../../assests/fonts/pt-sans/PTSans-Bold.ttf");
+}
+
 .productList{
     padding-left: 24px;
     width: 90%;
@@ -13,6 +18,11 @@
     display: flex;
     padding: 16px 25px;
     border-bottom: 1px solid #D8D4CE;
+}
+
+.nameProduct{
+    font-size: 18px;
+    font-family: "PTSans-Bold";
 }
 
 .imageWrapper{
