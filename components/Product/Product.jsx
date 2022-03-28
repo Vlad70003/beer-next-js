@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import style from "./Product.module.scss";
 import Image from "next/image";
 
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useActions } from "../../hooks/useActions";
+
 import { Info } from "../../ui/Info/Info";
 import { Button } from "../../ui/Button/Button";
 import { ChooseVolume } from "../../ui/ChooseVolume/ChooseVolume";
@@ -21,7 +24,8 @@ export const Product = ({ product }) => {
     status,
   } = product;
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const modal = useTypedSelector((state) => state.modal);
+  const { openModalAction } = useActions();
 
   const handleModal = (event) => {
     const elementId = event.target.id;
@@ -36,7 +40,7 @@ export const Product = ({ product }) => {
       return;
     }
 
-    setModalIsOpen(true);
+    openModalAction("open-product");
   };
 
   return (
@@ -104,20 +108,19 @@ export const Product = ({ product }) => {
         )}
       </ul>
 
-      <ModalWrapper
+      { modal.typeModal === "open-product" && <ModalWrapper
         padding="48px"
         borderRadius="20px"
         top="30%"
         left="50%"
         maxWidth="800px"
         minWidth="740px"
-        modalIsOpen={modalIsOpen}
-        setModalIsOpen={setModalIsOpen}
+        modalIsOpen={modal.modalOpen}
         backgroundColor="#0000004D"
         close
       >
         <OpenProduct product={product} />
-      </ModalWrapper>
+      </ModalWrapper>}
     </>
   );
 };

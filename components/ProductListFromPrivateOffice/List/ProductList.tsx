@@ -8,18 +8,23 @@ import { RepeatOrder } from "../../RepeatOrder/RepeatOrder";
 import { ModalWrapper } from "../../Modal/ModalWrapper";
 import { RateTheDelivery } from "../../Modal/RateTheDelivery/RateTheDelivery";
 
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { useActions } from "../../../hooks/useActions";
+
 import { substringSearch } from "../../../script/string/substringSearch";
 interface ProductListState {
   item: any;
 }
 
 export const ProductList = ({ item }: ProductListState) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => {
     setIsOpen(!isOpen);
   };
+
+  const modal = useTypedSelector((state) => state.modal);
+  const { openModalAction } = useActions();
 
   return (
     <>
@@ -107,7 +112,7 @@ export const ProductList = ({ item }: ProductListState) => {
                   borderRadius="50px"
                   padding="4px 10px"
                   width="100%"
-                  onClick={() => setModalIsOpen(true)}
+                  onClick={() => openModalAction("rate-the-devilery")}
                 />
               ) : (
                 <Phase phaseNumber={item.phase} />
@@ -237,18 +242,17 @@ export const ProductList = ({ item }: ProductListState) => {
         </main>
       </li>
 
-      <ModalWrapper
+      { modal.typeModal === "rate-the-devilery" && <ModalWrapper
           padding="40px"
           borderRadius="20px"
           top="30%"
           left="50%"
           maxWidth="650px"
           minWidth="450px"
-          modalIsOpen={modalIsOpen}
-          setModalIsOpen={setModalIsOpen}
+          modalIsOpen={modal.modalOpen}
           backgroundColor="#0000004D"
           close
-        >< RateTheDelivery /></ModalWrapper>
+        >< RateTheDelivery /></ModalWrapper>}
     </>
   );
 };

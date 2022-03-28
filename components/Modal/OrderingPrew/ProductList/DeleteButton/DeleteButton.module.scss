@@ -1,0 +1,9 @@
+.deleteButton{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    &__imgWrapper{
+        margin-left: 5px;
+    }
+}

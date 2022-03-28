@@ -9,9 +9,6 @@ class LoggedFirstTime {
     localStorage.setItem("first-time", value);
   }
 
-  changeState(setState:any, value:boolean) {
-    setState(value);
-  }
 }
 
 export const loggedFirstTime = new LoggedFirstTime();

@@ -30,15 +30,14 @@ body {
 body {
   overflow-y: scroll;
 }
-#__next {
-  overflow-x: hidden;
-}
+
 ul {
   list-style-type: none;
 }
 button {
   background: transparent;
   border: none;
+  user-select: none;
 }
 a {
   color: black;
@@ -49,19 +48,11 @@ label {
 }
 
 ///Slick slider
-@mixin arrow {
-  content: "";
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  display: inline-block;
-  padding: 7px;
-  font-size: 0px !important;
-  opacity: 1 !important;
-}
+
 .slide-wrapper {
   padding-bottom: 30px;
 }
-.slick-slider {
+.slick-slider-bunner {
   padding-bottom: 30px;
   &__item {
     display: flex !important;
@@ -76,7 +67,7 @@ label {
     }
   }
 }
-.slick-center img {
+.slick-center .slick-slider-bunner__item--img {
   opacity: 1 !important;
   height: 390px !important;
   width: 1120px !important;
@@ -103,6 +94,8 @@ label {
 .slick-list {
   overflow: visible !important;
 }
+
+
 
 .rc-checkbox-inner {
   width: 16px !important;

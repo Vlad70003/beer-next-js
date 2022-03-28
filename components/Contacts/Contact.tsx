@@ -6,7 +6,12 @@ import { YandexMap } from "../YandexMap/YandexMap";
 
 import { contact } from "../../types/contact";
 
-export const Contact = ({ address, phone, working_hours, setModalIsOpenFeedBack, modalIsOpenFeedBack , setModalIsOpen, modalIsOpen }: contact) => {
+import { useActions } from "../../hooks/useActions";
+
+export const Contact = ({ address, phone, working_hours }: contact) => {
+  
+  const {openModalAction} = useActions();
+
   return (
     <div className={style.contact}>
       <div className={style.contact__leftSide}>
@@ -23,7 +28,7 @@ export const Contact = ({ address, phone, working_hours, setModalIsOpenFeedBack,
             fontSize="18px"
             margin="0 0 28px 0"
             borderBottom=" 1px dashed #3D69B7"
-            onClick={() => setModalIsOpen(!modalIsOpen)}
+            onClick={() => openModalAction("change-shop")}
           />
           <Button
             title="Обратная связь"
@@ -31,7 +36,7 @@ export const Contact = ({ address, phone, working_hours, setModalIsOpenFeedBack,
             fontWeight="700"
             fontSize="18px"
             borderBottom="1px dashed #3D69B7"
-            onClick={() => setModalIsOpenFeedBack(!modalIsOpenFeedBack)}
+            onClick={() => openModalAction("feedback")}
           />
         </div>
       </div>

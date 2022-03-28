@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import style from "./ChangeShopButton.module.scss";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-
+import { useActions } from "../../hooks/useActions";
 import { ModalWrapper } from "../Modal/ModalWrapper";
 import { ChangeChopModal } from "../Modal/ChangeChopModal/ChangeChopModal";
 import { MapPin } from "../../ui/MapPin/MapPin";
@@ -22,7 +22,8 @@ export const ChangeShopButton = ({
     (state) => state.currentShop.currentShop
   );
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const modal = useTypedSelector((state) => state.modal);
+  const { openModalAction } = useActions();
 
   useEffect(() => {
     localStorage.setItem("currentShop", currentShopStore);
@@ -39,7 +40,7 @@ export const ChangeShopButton = ({
       <div
         className={style.changeShopBtn}
         style={ChangeShopButtonStyle}
-        onClick={() => setModalIsOpen(true)}
+        onClick={() => openModalAction("change-shop")}
       >
         {!noLogo && (
           <span className="changeShopBtn__max-pin__wrapper">
@@ -51,20 +52,19 @@ export const ChangeShopButton = ({
         </span>
       </div>
 
-      <ModalWrapper
+      { modal.typeModal === "change-shop" && <ModalWrapper
         padding="32px 54px"
         borderRadius="20px"
         top="35%"
         left="50%"
         minWidth="560px"
-        modalIsOpen={modalIsOpen}
-        setModalIsOpen={setModalIsOpen}
+        modalIsOpen={modal.modalOpen}
         backgroundColor="transparent"
         onRequestClose
         close
       >
         <ChangeChopModal />
-      </ModalWrapper>
+      </ModalWrapper>}
     </>
   );
 };

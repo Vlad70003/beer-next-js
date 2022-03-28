@@ -1,7 +1,8 @@
 import React from "react";
 import style from "./ModalWrapper.module.scss";
-
 import Modal from "react-modal";
+
+import {useActions} from "../../hooks/useActions";
 
 interface modalState {
   children?: any;
@@ -28,7 +29,6 @@ export const ModalWrapper = ({
   maxWidth,
   minWidth,
   modalIsOpen,
-  setModalIsOpen,
   close,
   backgroundColor,
   onRequestClose,
@@ -37,13 +37,13 @@ export const ModalWrapper = ({
   transform
 }: modalState) => {
 
+  const {closeModalAction} = useActions();
+
   function closeModal() {
-    setModalIsOpen(false);
+    closeModalAction();
   }
 
-  function closeEmit() {
-
-  }
+  function closeEmit() {}
 
   const customStyles = {
     content: {

@@ -1,0 +1,23 @@
+.arrowNext {
+    border: solid #3D69B7;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    font-size: 0px !important;
+    transform: rotate(-45deg);
+    cursor: pointer;
+    opacity: 1;
+    transition: box-shadow linear 0.1s;
+  }
+  
+  .wrapper {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;align-items: center;
+    z-index: 99;
+    
+  }

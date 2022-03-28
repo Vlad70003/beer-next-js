@@ -7,7 +7,6 @@ import { Subtitle } from "../components/Subtitle/Subtitle";
 import { ReCheckBox } from "../ui/Re-checkbox/ReCheckBox";
 import { BorderWrapper } from "../components/wrappers/borderWrapper/BorderWrapper";
 import { Input } from "../ui/Input/Input";
-import { InputMaskLib } from "../ui/InputMask/InputMaskLib";
 import TimeChange from "../ui/TimeChange/TimeChange";
 import { Button } from "../ui/Button/Button";
 import OrderWindow from "../components/OrderWindow/OrderWindow";
@@ -17,8 +16,10 @@ import { styleRouterState } from "../types/router";
 import { baseBackground } from "../assests/variable/variable";
 import { PurchaseSuccess } from "../components/Modal/PurchaseSuccess/PurchaseSuccess";
 import { TimeChanger } from "../components/Modal/TimeChanger/TimeChanger";
-
 import { ModalWrapper } from "../components/Modal/ModalWrapper";
+
+import { useTypedSelector } from "../hooks/useTypedSelector";
+import { useActions } from "../hooks/useActions";
 
 import masterCard from "../assests/img/masterCard.svg";
 import visa from "../assests/img/visa.svg";
@@ -26,18 +27,14 @@ import mir from "../assests/img/mir.svg";
 
 function Ordering() {
   const [timeOrder, setTimeOrder] = useState("Побыстрее");
-  const [modalIsOpenComplate, setModalIsOpenComplate] = useState(false);
-  const [modalIsOpenTimePicker, setModalIsOpenTimePicker] = useState(false);
-  
   const [timeChangeIsOpen, setTimeChangeIsOpen] = useState(false);
 
-  const handleTimeOrder = (event: any) => {
-    setTimeOrder(event.target.value);
-  };
+  const modal = useTypedSelector((state) => state.modal);
+  const { openModalAction } = useActions();
 
   const handleOpen = () => {
     setTimeChangeIsOpen(!timeChangeIsOpen);
-}
+  };
 
   const styleHome: styleRouterState = {
     width: "100%",
@@ -74,8 +71,11 @@ function Ordering() {
                 <div
                   className={`${style.ordering__flexWrapper} ${style.ordering__padding8} ${style.ordering__spaceBetween}`}
                 >
-                  <label htmlFor="" className={`${style.ordering__label} ${style.ordering__marginRight24}`}>
-                    <pre>Имя получателя:    </pre>
+                  <label
+                    htmlFor=""
+                    className={`${style.ordering__label} ${style.ordering__marginRight24}`}
+                  >
+                    <pre>Имя получателя: </pre>
                     <BorderWrapper
                       border="1px solid #BFBFBF"
                       borderRadius="92px"
@@ -88,8 +88,12 @@ function Ordering() {
                       <Input width="100%" placeholder="Ведите имя" />
                     </BorderWrapper>
                   </label>
-                  <label htmlFor="" className={style.ordering__label} onClick={() => setModalIsOpenTimePicker(true)}>
-                    <pre>Время:    </pre>
+                  <label
+                    htmlFor=""
+                    className={style.ordering__label}
+                    onClick={() => openModalAction("time-picker")}
+                  >
+                    <pre>Время: </pre>
                     <BorderWrapper
                       border="1px solid #BFBFBF"
                       borderRadius="92px"
@@ -97,7 +101,6 @@ function Ordering() {
                       padding="9px 24px"
                       position="relative"
                       display="flex"
-                      
                     >
                       <TimeChange
                         margin="0 10px 0 0"
@@ -114,7 +117,7 @@ function Ordering() {
                 >
                   <label className={style.ordering__label}>
                     <ReCheckBox padding="0 8px 0 0" />
-                    <pre>Использовать бонусы:    </pre>
+                    <pre>Использовать бонусы: </pre>
                   </label>
                   <BorderWrapper
                     border="1px solid #BFBFBF"
@@ -132,7 +135,7 @@ function Ordering() {
                   className={`${style.ordering__flexWrapper} ${style.ordering__padding24}`}
                 >
                   <label className={style.ordering__label}>
-                    <pre>Комментарий к заказу:    </pre>
+                    <pre>Комментарий к заказу: </pre>
                   </label>
                   <BorderWrapper
                     border="1px solid #BFBFBF"
@@ -292,7 +295,7 @@ function Ordering() {
                   background="#20598E"
                   padding="12px"
                   width="100%"
-                  onClick={() => setModalIsOpenComplate(true)}
+                  onClick={() => openModalAction("purchase-success")}
                 />
               </section>
             </main>
@@ -300,36 +303,42 @@ function Ordering() {
         </BaseWrapperMargin>
       </HeaderWrapper>
 
-      <ModalWrapper
-        padding="32px 54px"
-        borderRadius="20px"
-        top="30%"
-        left="50%"
-        minWidth="514px"
-        maxWidth="530px"
-        modalIsOpen={modalIsOpenComplate}
-        setModalIsOpen={setModalIsOpenComplate}
-        backgroundColor="#0000004D"
-        transform="translate(-50%, -50%)"
-      >
-        <PurchaseSuccess />
-      </ModalWrapper>
+      {modal.typeModal === "purchase-success" && (
+        <ModalWrapper
+          padding="32px 54px"
+          borderRadius="20px"
+          top="30%"
+          left="50%"
+          minWidth="514px"
+          maxWidth="530px"
+          modalIsOpen={modal.modalOpen}
+          backgroundColor="#0000004D"
+          transform="translate(-50%, -50%)"
+        >
+          <PurchaseSuccess />
+        </ModalWrapper>
+      )}
 
-      <ModalWrapper
-        padding="32px 54px"
-        borderRadius="20px"
-        top="50%"
-        left="50%"
-        minWidth="600px"
-        maxWidth="650px"
-        modalIsOpen={modalIsOpenTimePicker}
-        setModalIsOpen={setModalIsOpenTimePicker}
-        backgroundColor="#0000004D"
-        transform="translate(-50%, -50%)"
-        close
-      >
-        <TimeChanger setTimeOrder={setTimeOrder} timeOrder={timeOrder} closeModal />
-      </ModalWrapper>
+      {modal.typeModal === "time-picker" && (
+        <ModalWrapper
+          padding="32px 54px"
+          borderRadius="20px"
+          top="50%"
+          left="50%"
+          minWidth="600px"
+          maxWidth="650px"
+          modalIsOpen={modal.modalOpen}
+          backgroundColor="#0000004D"
+          transform="translate(-50%, -50%)"
+          close
+        >
+          <TimeChanger
+            setTimeOrder={setTimeOrder}
+            timeOrder={timeOrder}
+            closeModal
+          />
+        </ModalWrapper>
+      )}
     </>
   );
 }

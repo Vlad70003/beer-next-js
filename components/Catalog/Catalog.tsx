@@ -66,6 +66,7 @@ export function Catalog({ title, sortButton, product }: catalogState) {
                   border="1px solid #C5C5C580"
                   borderRadius="40px"
                   margin="14px 25px 0 0"
+                  fontSize="18px"
                 />
               </li>
             );

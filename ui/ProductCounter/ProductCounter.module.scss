@@ -1,0 +1,34 @@
+.productCounter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 200px;
+}
+
+.row{
+    &:first-child {
+        font-size: 24px;
+        font-weight: 400;
+    }
+    &:last-child {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.count{
+    padding: 0 11px;
+}
+
+.button{
+    width: 29px;
+    height: 29px;
+    background: #20598E;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+}

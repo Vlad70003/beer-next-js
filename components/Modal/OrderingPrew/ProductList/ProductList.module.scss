@@ -1,0 +1,21 @@
+.productList{
+    padding-left: 24px;
+    width: 90%;
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 16px;
+}
+
+.item{
+    display: flex;
+    padding: 16px 25px;
+    border-bottom: 1px solid #D8D4CE;
+}
+
+.imageWrapper{
+    min-width: 85px;
+    min-height: 85px;
+}

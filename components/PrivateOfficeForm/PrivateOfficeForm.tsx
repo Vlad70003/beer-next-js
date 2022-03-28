@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import style from "./PrivateOfficeForm.module.scss";
 import { Radio } from "react-radio-input";
 
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useActions } from "../../hooks/useActions";
+
 import { InputMaskLib } from "../../ui/InputMask/InputMaskLib";
 import { BorderWrapper } from "../wrappers/borderWrapper/BorderWrapper";
 import { Input } from "../../ui/Input/Input";
@@ -13,8 +16,9 @@ import { ChangePassword } from "../Modal/ChangePassword/ChangePassword";
 import { ChangePhone } from "../Modal/ChangePhone/ChangePhone";
 
 export const PrivateOfficeForm = () => {
-  const [modalIsOpenChangePassword, setModalIsOpenChangePassword] = useState(false);
-  const [modalIsOpenChangePhone, setModalIsOpenChangePhone] = useState(false);
+
+  const modal = useTypedSelector((state) => state.modal);
+  const { openModalAction } = useActions();
 
   return (
     <>
@@ -44,7 +48,7 @@ export const PrivateOfficeForm = () => {
             fontWeight="700"
             color="#3D69B7"
             borderBottom="1px dashed #3D69B7"
-            onClick={() => setModalIsOpenChangePhone(true)}
+            onClick={() => openModalAction("change-phone")}
           />
         </div>
         <div className={style.privateOfficeForm__row}>
@@ -122,39 +126,37 @@ export const PrivateOfficeForm = () => {
           fontWeight="700"
           color="#3D69B7"
           borderBottom="1px dashed #3D69B7"
-          onClick={() => setModalIsOpenChangePassword(true)}
+          onClick={() => openModalAction("change-passwod")}
         />
       </div>
 
-      <ModalWrapper
+      { modal.typeModal === "change-passwod" && <ModalWrapper
         padding="48px"
         borderRadius="20px"
         top="40%"
         left="50%"
         maxWidth="460px"
         minWidth="460px"
-        modalIsOpen={modalIsOpenChangePassword}
-        setModalIsOpen={setModalIsOpenChangePassword}
+        modalIsOpen={modal.modalOpen}
         backgroundColor="#0000004D"
         close
       >
         <ChangePassword />
-      </ModalWrapper>
+      </ModalWrapper>}
 
-      <ModalWrapper
+      { modal.typeModal === "change-phone" && <ModalWrapper
         padding="48px"
         borderRadius="20px"
         top="40%"
         left="50%"
         maxWidth="460px"
         minWidth="460px"
-        modalIsOpen={modalIsOpenChangePhone}
-        setModalIsOpen={setModalIsOpenChangePhone}
+        modalIsOpen={modal.modalOpen}
         backgroundColor="#0000004D"
         close
       >
         <ChangePhone />
-      </ModalWrapper>
+      </ModalWrapper>}
     </>
   );
 };

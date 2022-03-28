@@ -1,0 +1,86 @@
+@font-face {
+  font-family: "PTSans-Bold";
+  src: url("../../../assests/fonts/pt-sans/PTSans-Bold.ttf");
+}
+
+.orderingPrew {
+  position: fixed;
+  min-width: 500px;
+  max-width: 500px;
+  background: white;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.title {
+  text-align: center;
+  padding-bottom: 24px;
+}
+
+.secondTitle {
+  padding-top: 16px;
+  padding-bottom: 24px;
+  padding-left: 24px;
+}
+
+.total {
+  padding: 0 32px 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__title {
+    font-size: 24px;
+  }
+
+  &__count {
+    font-family: "PTSans-Bold";
+    font-size: 24px;
+  }
+}
+
+.bottomSide{
+  padding: 16px 0 32px 0;
+  border-top: 1px solid #D8D4CE;
+}
+
+.close {
+  width: 24px;
+  height: 24px;
+  opacity: 0.4;
+  cursor: pointer;
+  transition: opacity ease 0.5s;
+  position: absolute;
+  top: 32px;
+  right: 20px;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 20px;
+    height: 3px;
+    background: #000;
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}

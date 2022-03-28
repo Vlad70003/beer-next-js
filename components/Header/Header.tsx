@@ -14,7 +14,6 @@ import { LoggedInButton } from "../LoggedInButton/LoggedInButton";
 
 import { toggleColor } from "./script/toggleColor";
 import { toggleFontWidth } from "./script/toggleColor";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 export const Header: React.FC = () => {
   const [pathName, setPathName] = useState<string>("");
@@ -78,7 +77,7 @@ export const Header: React.FC = () => {
             </a>
           </Link>
           <Link href="/WorkWithUs">
-            <a href="">
+            <a >
               <Button
                 title="Работа у нас"
                 type="button"

@@ -9,6 +9,8 @@ export const BaseWrapperMargin = ({
   alignItems,
   flex,
   borderBottom,
+  position,
+  top
 }: baseWrapperState) => {
   
   const styleBaseWrapper = {

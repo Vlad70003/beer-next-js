@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Menu, { SubMenu, MenuItem } from "rc-menu";
 import style from "./LoggedInButton.module.scss";
 
 import { Button } from "../../ui/Button/Button";
@@ -9,10 +8,10 @@ import { User } from "../../ui/User/User";
 import { ModalWrapper } from "../Modal/ModalWrapper";
 import { Auntificate } from "../Modal/Auntificate/Auntificate";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useActions } from "../../hooks/useActions";
 import { Close } from "../../ui/Close/Close";
 
 export const LoggedInButton = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [mainClass, setMainClass] = useState("close");
   const [pathName, setPathName] = useState<string>("");
 
@@ -24,6 +23,8 @@ export const LoggedInButton = () => {
   }, [path]);
 
   const loggedInState = useTypedSelector((state) => state.auntificate.loggedIn);
+  const modal = useTypedSelector((state) => state.modal);
+  const { openModalAction } = useActions();
 
   const chooseMainClass = (value: string) => {
     setMainClass(value);
@@ -36,7 +37,7 @@ export const LoggedInButton = () => {
         onMouseMove={() => loggedInState && chooseMainClass("open")}
         onMouseOut={() => loggedInState && chooseMainClass("close")}
         onClick={() => {
-          !loggedInState && setModalIsOpen(true);
+          !loggedInState && openModalAction("auntificate");
         }}
       >
         <div className={style.loggedInButton__wrapper}>
@@ -62,21 +63,20 @@ export const LoggedInButton = () => {
         </div>
       </div>
 
-      <ModalWrapper
+      { modal.typeModal === "auntificate" && <ModalWrapper
         padding="32px 54px"
         borderRadius="20px"
         top="100px"
         left="74%"
         minWidth="478px"
-        modalIsOpen={modalIsOpen}
-        setModalIsOpen={setModalIsOpen}
+        modalIsOpen={modal.modalOpen}
         backgroundColor="transparent"
         transform="translate(-50%, 0%)"
         onRequestClose
         close
       >
         <Auntificate />
-      </ModalWrapper>
+      </ModalWrapper>}
     </>
   );
 };

@@ -1,0 +1,13 @@
+.slickSliderToOrder{
+    overflow: hidden;
+
+    &__item{
+        display: flex !important;
+        width: 85px;
+        height: 85px;
+    }
+
+    &__text {
+        font-size: 14px;
+    }
+}

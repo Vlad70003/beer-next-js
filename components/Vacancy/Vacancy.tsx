@@ -6,6 +6,9 @@ import { Сonditions } from "../Сonditions/Сonditions";
 import { ModalWrapper } from "../Modal/ModalWrapper";
 import { ApplyForJob } from "../Modal/ApplyForJob/ApplyForJob";
 
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useActions } from "../../hooks/useActions";
+
 import { vacancyState } from "../../types/vacancy";
 
 import { conditions, requirements } from "./data";
@@ -20,11 +23,13 @@ export const Vacancy = ({
 }: vacancyState) => {
 
   const [isOpen, setIsOpen] = useState(false);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
+
+  const modal = useTypedSelector((state) => state.modal);
+  const { openModalAction } = useActions();
 
   return (
     <>
@@ -53,7 +58,7 @@ export const Vacancy = ({
             border="1px solid #3D69B7"
             borderRadius="60px"
             padding="12px 40px"
-            onClick={() => setModalIsOpen(true)}
+            onClick={() => openModalAction("vacancy")}
           />
         </div>
       </div>
@@ -83,21 +88,20 @@ export const Vacancy = ({
       />}
     </div>
 
-    <ModalWrapper
+    {modal.typeModal === "vacancy" && <ModalWrapper
         padding="32px 54px"
         borderRadius="20px"
         top="50%"
         left="50%"
         minWidth="812px"
-        modalIsOpen={modalIsOpen}
-        setModalIsOpen={setModalIsOpen}
+        modalIsOpen={modal.modalOpen}
         backgroundColor="#0000004D"
         transform="translate(-50%, -50%)"
         onRequestClose
         close
       >
         < ApplyForJob />
-      </ModalWrapper>
+      </ModalWrapper>}
     </>
   );
 };
