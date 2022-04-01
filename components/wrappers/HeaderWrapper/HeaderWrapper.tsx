@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import style from "./HeaderWrapper.module.scss";
 
@@ -11,6 +11,7 @@ import { OrderingPrew } from "../../Modal/OrderingPrew/OrderingPrew";
 
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { useActions } from "../../../hooks/useActions";
+import { useScroll } from "../../../hooks/useScroll";
 
 import { ModalWrapper } from "../../../components/Modal/ModalWrapper";
 import { WelcomeModal } from "../../../components/Modal/WelcomeModal/WelcomeModal";
@@ -41,6 +42,7 @@ export function HeaderWrapper({
   const modal = useTypedSelector((state) => state.modal);
   const { openModalAction } = useActions();
   const { closeModalAction } = useActions();
+  const scroll = useScroll();
 
   useEffect(() => {
     loggedFirstTime.checkedFirstTime()
@@ -70,7 +72,13 @@ export function HeaderWrapper({
           </BaseWrapperMargin>
         )}
         {navigation && (
-          <div className={style.sticky}>
+          <div
+            className={
+              scroll >= 100
+                ? `${style.sticky} ${style.sticky__boxShadow}`
+                : `${style.sticky}`
+            }
+          >
             <BaseWrapperMargin flex="auto">
               <Navigation handlePage={handlePage} shopPage={shopPage} />
             </BaseWrapperMargin>

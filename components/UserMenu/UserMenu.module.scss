@@ -1,0 +1,19 @@
+.userMenu{
+    display: flex;
+    flex-direction: column;
+    background-color: #F2EDE1;
+    border-radius: 20px;
+}
+
+.row{
+    padding: 10px;
+
+    &__lastChild {
+        border-radius: 0 0 20px 20px;
+    }
+
+    &:hover {
+        background-color: rgba($color: #000000, $alpha: .2);
+        transition: all .3s;
+    }
+}

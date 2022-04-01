@@ -5,6 +5,7 @@ import { useActions } from "../../hooks/useActions";
 import { ModalWrapper } from "../Modal/ModalWrapper";
 import { ChangeChopModal } from "../Modal/ChangeChopModal/ChangeChopModal";
 import { MapPin } from "../../ui/MapPin/MapPin";
+import { ModalStaticWrapper } from "../ModalStatic/ModalStaticWrapper";
 import { Button } from "../../ui/Button/Button";
 
 interface ChangeShopButtonProps {
@@ -52,19 +53,26 @@ export const ChangeShopButton = ({
         </span>
       </div>
 
-      { modal.typeModal === "change-shop" && <ModalWrapper
-        padding="32px 54px"
-        borderRadius="20px"
-        top="35%"
-        left="50%"
-        minWidth="560px"
-        modalIsOpen={modal.modalOpen}
-        backgroundColor="transparent"
-        onRequestClose
-        close
-      >
-        <ChangeChopModal />
-      </ModalWrapper>}
+      {
+        modal.typeModal === "change-shop" && (
+          // <ModalWrapper
+          //   padding="32px 54px"
+          //   borderRadius="20px"
+          //   top="35%"
+          //   left="50%"
+          //   minWidth="560px"
+          //   modalIsOpen={modal.modalOpen}
+          //   backgroundColor="transparent"
+          //   onRequestClose
+          //   close
+          // >
+          <ModalStaticWrapper top="100px" left="50%" transform="translateX(-50%)" >
+            <ChangeChopModal />
+          </ModalStaticWrapper>
+        )
+
+        // </ModalWrapper>
+      }
     </>
   );
 };

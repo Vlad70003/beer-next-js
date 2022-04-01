@@ -116,16 +116,16 @@ input::-webkit-inner-spin-button {
 }
 /* полоса прокрутки (скроллбар) */
 ::-webkit-scrollbar {
-  width: 10px; /* ширина для вертикального скролла */
-  height: 10px; /* высота для горизонтального скролла */
-  background-color: #c7c6c4;
-  border-radius: 16px;
+  width: 4px; /* ширина для вертикального скролла */
+  height: 4px; /* высота для горизонтального скролла */
+  background-color: #E4EAEF;
+  border-radius: 4px;
 }
 /* ползунок скроллбара */
 ::-webkit-scrollbar-thumb {
-  background-color: #f3e5c3;
-  border-radius: 16px;
-  box-shadow: inset 1px 1px 10px #f3e5c3;
+  background-color: #3D84B7;
+  border-radius: 4px;
+  // box-shadow: inset 1px 1px 10px #f3e5c3;
 }
 ::-webkit-scrollbar-thumb:hover {
   background-color: #253861;

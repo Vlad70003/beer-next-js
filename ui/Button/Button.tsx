@@ -24,6 +24,7 @@ export const Button = ({
   minWidth,
   fontWeightClass,
   hoverClassColor,
+  ref
 }: buttonState) => {
 
 
@@ -50,6 +51,7 @@ export const Button = ({
       style={styleButton}
       onClick={onClick}
       id="button"
+      ref={ref}
     >
       {maxLength ? truncate(title, maxLength) : title}
     </button>

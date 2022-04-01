@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import style from "../styles/Ordering.module.scss";
 import Image from "next/image";
+import Link from "next/link";
 
 import { AdditionalPageWrapper } from "../components/wrappers/AdditionPageWrapper/AdditionPageWrapper";
 import { Subtitle } from "../components/Subtitle/Subtitle";
@@ -274,14 +275,18 @@ function Ordering() {
                     Привязать карту для быстрой оплаты следующих заказов
                   </label>
                 </div>
-                <Button
-                  title="Назад"
-                  color="#3D69B7"
-                  border="1px solid #3D69B7"
-                  padding="12px 70px"
-                  borderRadius="60px"
-                  margin="32px 0 100px 0"
-                />
+                <Link href="/">
+                  <a>
+                    <Button
+                      title="Назад"
+                      color="#3D69B7"
+                      border="1px solid #3D69B7"
+                      padding="12px 70px"
+                      borderRadius="60px"
+                      margin="32px 0 100px 0"
+                    />
+                  </a>
+                </Link>
               </section>
               <section className={style.ordering__rightSide}>
                 <OrderWindow />

@@ -2,11 +2,30 @@
     display: flex;
     flex-direction: column;
     position: relative;
-
+    // border: 1px solid transparent;
+    
     &__wrapper{
         display: flex;
+        flex-direction: column;
         align-items: center;
+        position: relative;
+        padding: 10px;
     }
+}
+
+.open{
+    position: absolute;
+    width: 100%;
+    display: block;
+    padding-top: 45px;
+    top: -2px;
+    box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: .2);
+    border-radius: 20px;
+    z-index: 9999;
+}
+
+.close{
+    display: none;
 }
 
 .link {

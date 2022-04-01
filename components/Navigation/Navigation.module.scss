@@ -1,14 +1,59 @@
 .navigation {
   display: flex;
-  align-items: baseline;
+  align-items: flex-end;
   justify-content: space-between;
   background-color: #F2EDE1;
   z-index: 10;
   padding: 25px 0;
 
+  &__leftSide{
+    display: flex;
+    overflow: hidden;
+  }
+
   &__list {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    &__open {
+      animation-duration: .2s;
+      animation-name: slideinOpen;
+    }
+    &__close{
+      animation-duration: .2s;
+      animation-name: slideinClose;
+      margin-left: -35px;
+    }
+  }
+
+}
+
+.miniLogo{
+  &__open{
+    display: block;
+  }
+  &__close{
+    display: none;
+  }
+}
+
+@keyframes slideinOpen {
+  from {
+    margin-left: -35px;
+  }
+
+  to {
+    margin-left: 0px;
+  }
+}
+@keyframes slideinClose {
+  from {
+    margin-left: 0px;
+    
+  }
+
+  to {
+    margin-left: -35px;
   }
 }

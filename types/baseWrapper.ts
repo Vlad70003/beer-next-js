@@ -1,5 +1,5 @@
 export interface baseWrapperState {
-    children: any,
+    children: React.ReactNode,
     maxWidth?: string,
     margin?: string,
     display?: string,

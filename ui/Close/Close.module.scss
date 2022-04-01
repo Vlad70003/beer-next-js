@@ -4,6 +4,7 @@
   opacity: 0.4;
   cursor: pointer;
   transition: opacity ease 0.5s;
+  position: absolute;
 
   &::before,
   &::after {

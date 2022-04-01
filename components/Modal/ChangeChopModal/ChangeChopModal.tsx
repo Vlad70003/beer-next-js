@@ -11,7 +11,7 @@ interface ChangeChopModalState {
   closeModal?: any;
 }
 
-export const ChangeChopModal = ({ closeModal }: ChangeChopModalState) => {
+export const ChangeChopModal = ({  }: ChangeChopModalState) => {
   const [showMap, setShowMap] = useState(false);
 
   return (
@@ -63,7 +63,7 @@ export const ChangeChopModal = ({ closeModal }: ChangeChopModalState) => {
         </header>
         <main className={style.changeChopModal__main}>
           <div className={style.changeChopModal__main__conteiner}>
-            {!showMap && <ShopList closeModal={closeModal} />}
+            {!showMap && <ShopList />}
             {showMap && <YandexMap width={"100%"} height={"248px"} />}
           </div>
         </main>

@@ -5,6 +5,7 @@ import { HeaderWrapper } from "../components/wrappers/HeaderWrapper/HeaderWrappe
 import { BaseWrapperMargin } from "../components/wrappers/BaseWrapperMargin/BaseWrapperMargin";
 import { Catalog } from "../components/Catalog/Catalog";
 import { baseBackground } from "../assests/variable/variable";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 
 import { styleRouterState } from "../types/router";
 

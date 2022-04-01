@@ -8,13 +8,13 @@ interface StateProps {
   closeModal?: any;
 }
 
-export const Auntificate = ({ closeModal}:StateProps) => {
+export const Auntificate = ({ }:StateProps) => {
   
   const [leggedIn, setLoggedIn] = useState(true);
 
   return (
     <div className={style.auntificate}>
-      { leggedIn && <LoggedIn setLoggedIn={setLoggedIn}  closeModal={closeModal} />}
+      { leggedIn && <LoggedIn setLoggedIn={setLoggedIn} />}
       { !leggedIn && <Registration setLoggedIn={setLoggedIn} />}
     </div>
   );

@@ -12,16 +12,19 @@ import { Button } from "../../../../ui/Button/Button";
 import { useActions } from "../../../../hooks/useActions";
 
 interface LoggedInProps {
-  closeModal?: any;
+  // closeModal?: any;
   setLoggedIn: (value: boolean) => void;
 }
 
-export const LoggedIn = ({
-  setLoggedIn,
-  closeModal,
-}: LoggedInProps) => {
-  
+export const LoggedIn = ({ setLoggedIn }: LoggedInProps) => {
   const { loggedInAction } = useActions();
+  const { closeModalAction } = useActions();
+
+  const handleForm = (event:Event) => {
+    event.preventDefault();
+    loggedInAction();
+    closeModalAction();
+  };
 
   return (
     <div className={style.loggedIn}>
@@ -96,10 +99,7 @@ export const LoggedIn = ({
               padding="12px 27px"
               background="#20598E"
               width="100%"
-              onClick={() => {
-                loggedInAction();
-                closeModal();
-              }}
+              onClick={(event: Event) => handleForm(event)}
             />
           </div>
         </div>

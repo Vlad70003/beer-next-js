@@ -10,9 +10,10 @@ interface ShopListState {
   closeModal?: any;
 }
 
-export const ShopList = ({ closeModal }: ShopListState) => {
-
+export const ShopList = ({}: ShopListState) => {
   const { currentShapAction } = useActions();
+  const { closeModalAction } = useActions();
+
 
   return (
     <ul className={style.shopList}>
@@ -50,8 +51,8 @@ export const ShopList = ({ closeModal }: ShopListState) => {
                 color="#3D69B7"
                 borderBottom={"1px solid #3D69B7"}
                 onClick={() => {
-                  closeModal();
-                  currentShapAction(shop.address)
+                  closeModalAction();
+                  currentShapAction(shop.address);
                   // setShop && setShop(shop.address)
                 }}
               />

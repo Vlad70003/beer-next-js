@@ -6,10 +6,12 @@ import style from "./LoggedInButton.module.scss";
 import { Button } from "../../ui/Button/Button";
 import { User } from "../../ui/User/User";
 import { ModalWrapper } from "../Modal/ModalWrapper";
+import { ModalStaticWrapper } from "../ModalStatic/ModalStaticWrapper";
 import { Auntificate } from "../Modal/Auntificate/Auntificate";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useActions } from "../../hooks/useActions";
 import { Close } from "../../ui/Close/Close";
+import { UserMenu } from "../UserMenu/UserMenu";
 
 export const LoggedInButton = () => {
   const [mainClass, setMainClass] = useState("close");
@@ -41,42 +43,32 @@ export const LoggedInButton = () => {
         }}
       >
         <div className={style.loggedInButton__wrapper}>
-          <Link href={loggedInState ? "/PrivateOffice" : pathName}>
-            <a className={style.link}>
-              <Button
-                title={loggedInState ? "Александр" : "Войти"}
-                type="button"
-                fontWeight="700"
-                padding="0 10px 0 0"
-                maxLength={14}
-                fontSize="18px"
-              />
-              {/* <Menu>
-                <MenuItem>1</MenuItem>
-                <SubMenu title="2">
-                  <MenuItem>2-1</MenuItem>
-                </SubMenu>
-              </Menu> */}
-              {loggedInState ? <Close /> : <User />}
-            </a>
-          </Link>
+          <div className={style.link}>
+            <Button
+              title={loggedInState ? "Александр" : "Войти"}
+              type="button"
+              fontWeight="700"
+              padding="0 10px 0 0"
+              maxLength={14}
+              fontSize="18px"
+            />
+            <User />
+          </div>
+          <div
+            className={
+              mainClass === "open" ? `${style.open}` : `${style.close}`
+            }
+          >
+            <UserMenu chooseMainClass={chooseMainClass} />
+          </div>
         </div>
       </div>
 
-      { modal.typeModal === "auntificate" && <ModalWrapper
-        padding="32px 54px"
-        borderRadius="20px"
-        top="100px"
-        left="74%"
-        minWidth="478px"
-        modalIsOpen={modal.modalOpen}
-        backgroundColor="transparent"
-        transform="translate(-50%, 0%)"
-        onRequestClose
-        close
-      >
-        <Auntificate />
-      </ModalWrapper>}
+      {modal.typeModal === "auntificate" && (
+        <ModalStaticWrapper top="100px" right="70px">
+          <Auntificate />
+        </ModalStaticWrapper>
+      )}
     </>
   );
 };

@@ -1,13 +1,23 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
 import style from "./Close.module.scss";
 import Link from "next/link";
 
-import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { useActions } from "../../hooks/useActions";
+interface CloseProps {
+  onClick: any;
+  top?: string;
+  left?: string;
+  right?: string;
+  bottom?: string;
+}
 
-export const Close = () => {
-  const loggedInState = useTypedSelector((state) => state.auntificate.loggedIn);
-    const { loggedOutAction} = useActions();
+export const Close = ({onClick, top, left, right, bottom}:CloseProps) => {
 
-  return <div className={style.close} onClick={() => loggedOutAction()}></div>;
+  const styleClose = {
+    top: top,
+    left: left,
+    right: right,
+    bottom: bottom,
+  }
+
+  return <div style={styleClose} className={style.close} onClick={() => onClick()}></div>;
 };
