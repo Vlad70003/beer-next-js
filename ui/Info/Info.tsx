@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import style from "./Info.module.scss";
 import Image from "next/image";
 
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+
 import info from "../../assests/img/information.svg";
 
 interface InfoState {
@@ -30,6 +32,9 @@ export const Info = ({
   top,
   bottom,
 }: InfoState) => {
+
+  const { currentShop } = useTypedSelector(state => state.currentShop);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = (value: boolean) => {
@@ -57,12 +62,12 @@ export const Info = ({
       <div className={style.info} style={infoStyle}>
         {children ? (
           <div
-            onMouseOver={() => handleOpen(true)}
-            onMouseOut={() => handleOpen(false)}
+            onMouseOver={() => { currentShop === "Выберите магазин" && handleOpen(true)}}
+            onMouseOut={() => { currentShop === "Выберите магазин" && handleOpen(false)}}
           >
             {children}
           </div>
-        ) : (
+        ) : !children ? (
           <Image
             src={info}
             alt="info"
@@ -72,7 +77,7 @@ export const Info = ({
             onMouseOver={() => handleOpen(true)}
             onMouseOut={() => handleOpen(false)}
           />
-        )}
+        ) : null}
 
         <div
           className={

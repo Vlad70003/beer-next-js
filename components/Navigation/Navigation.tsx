@@ -41,7 +41,7 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               type="button"
               fontSize="18px"
               padding="0 0 8px 0"
-              margin="0 0 0 1rem"
+              margin="0 0 0 1.5rem"
               borderBottom={
                 shopPage && toggleBorderBottom({ shopPage, value: "beer" })
               }
@@ -57,7 +57,7 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               type="button"
               fontSize="18px"
               padding="0 0 8px 0"
-              margin="0 0 0 1rem"
+              margin="0 0 0 1.5rem"
               borderBottom={
                 shopPage &&
                 toggleBorderBottom({
@@ -77,7 +77,7 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               type="button"
               fontSize="18px"
               padding="0 0 8px 0"
-              margin="0 0 0 1rem"
+              margin="0 0 0 1.5rem"
               borderBottom={
                 shopPage &&
                 toggleBorderBottom({
@@ -97,7 +97,7 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               type="button"
               fontSize="18px"
               padding="0 0 8px 0"
-              margin="0 0 0 1rem"
+              margin="0 0 0 1.5rem"
               borderBottom={
                 shopPage &&
                 toggleBorderBottom({
@@ -117,7 +117,7 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               type="button"
               fontSize="18px"
               padding="0 0 8px 0"
-              margin="0 0 0 1rem"
+              margin="0 0 0 1.5rem"
               borderBottom={
                 shopPage &&
                 toggleBorderBottom({
@@ -137,7 +137,7 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               type="button"
               fontSize="18px"
               padding="0 0 8px 0"
-              margin="0 0 0 1rem"
+              margin="0 0 0 1.5rem"
               borderBottom={
                 shopPage &&
                 toggleBorderBottom({
@@ -157,7 +157,7 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               type="button"
               fontSize="18px"
               padding="0 0 8px 0"
-              margin="0 0 0 1rem"
+              margin="0 0 0 1.5rem"
               borderBottom={
                 shopPage &&
                 toggleBorderBottom({
@@ -177,7 +177,7 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               type="button"
               fontSize="18px"
               padding="0 0 8px 0"
-              margin="0 0 0 1rem"
+              margin="0 0 0 1.5rem"
               borderBottom={
                 shopPage &&
                 toggleBorderBottom({
@@ -196,7 +196,7 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               title="АКЦИИ"
               type="button"
               fontSize="18px"
-              margin="0 0 0 1rem"
+              margin="0 0 0 1.5rem"
               padding="0 0 8px 0"
               borderBottom={
                 shopPage &&

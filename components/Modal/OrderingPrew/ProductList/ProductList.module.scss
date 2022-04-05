@@ -16,8 +16,19 @@
 
 .item{
     display: flex;
+    justify-content: space-between;
     padding: 16px 25px;
     border-bottom: 1px solid #D8D4CE;
+
+    &__col{
+        flex: 3;
+        &:first-child {
+            flex: 1
+        }
+        &:last-child {
+            flex: 2.5;
+        }
+    }
 }
 
 .nameProduct{
@@ -28,4 +39,9 @@
 .imageWrapper{
     min-width: 85px;
     min-height: 85px;
+}
+
+.clearList {
+    padding: 10px 0;
+    font-size: 20px;
 }

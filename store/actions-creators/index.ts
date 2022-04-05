@@ -4,6 +4,8 @@ import * as FetachProducts from './products';
 import * as CurrentShapAction from './currentShop';
 import * as openModalAction from './modal';
 import * as closeModalAction from './modal';
+import * as addOrderAction from './order';
+import * as deleteOrderAction from './order';
 
 export default {
     ...LoggedInAction,
@@ -12,4 +14,6 @@ export default {
     ...CurrentShapAction,
     ...openModalAction,
     ...closeModalAction,
+    ...addOrderAction,
+    ...deleteOrderAction,
 }

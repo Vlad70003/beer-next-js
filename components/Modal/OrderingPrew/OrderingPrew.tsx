@@ -6,11 +6,15 @@ import { ProductList } from "./ProductList/ProductList";
 import { SlickSliderToOrder } from "../../Slick-slider-order/Slick-slider";
 import { Button } from "../../../ui/Button/Button";
 
+import { orderSum } from "../../../script/order/orderSum";
+
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { useActions } from "../../../hooks/useActions";
 
 export const OrderingPrew = () => {
   const modal = useTypedSelector((state) => state.modal);
+  const { order } = useTypedSelector((state) => state.order);
+
   const { closeModalAction } = useActions();
 
   const orderingPrewStyle = {
@@ -33,7 +37,7 @@ export const OrderingPrew = () => {
       <div className={style.bottomSide}>
         <div className={style.total}>
           <div className={style.total__title}>Итого:</div>
-          <div className={style.total__count}>1500 ₽</div>
+          <div className={style.total__count}>{`${orderSum(order)} ₽`}</div>
         </div>
         <Link href="/Ordering">
           <a>

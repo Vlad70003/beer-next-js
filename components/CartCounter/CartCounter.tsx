@@ -1,15 +1,22 @@
 import React from "react";
 import style from "./CartCounter.module.scss";
 
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+
+import { orderSum } from "../../script/order/orderSum";
+
 import { ShopingKart } from "../../ui/ShopingKart/ShopingKart";
 
 export const CartCounter = () => {
+
+  const {order} = useTypedSelector((state) => state.order);
+
   return (
     <div className={style.cartCounter}>
       <div className={style.cartCounter__kart}>
         <ShopingKart />
       </div>
-      <div className={style.cartCounter__counter}>2999 ₽</div>
+      <div className={style.cartCounter__counter}>{`${orderSum(order)} ₽`}</div>
     </div>
   );
 };

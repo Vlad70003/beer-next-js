@@ -14,9 +14,21 @@
   }
 
   &__nav {
+
     &__list {
       display: flex;
       flex-wrap: wrap;
+    }
+
+    &__item > button {
+      &:hover {
+        background-color: #3D69B7 !important;
+        color: white !important;
+      }
+
+      &:active {
+        background-color: black !important;
+      }
     }
   }
 

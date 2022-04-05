@@ -1,44 +1,43 @@
 import React, { useState } from "react";
 import style from "./ChooseVolume.module.scss";
 
-export const ChooseVolume = () => {
-  const [step, setStep] = useState(1);
+interface ChooseVolumeArg {
+  step: number;
+  handleStep: (value: number) => void;
+}
 
-  const handleClick = (value: number) => {
-    setStep(value);
+export const ChooseVolume = ({ step, handleStep }: ChooseVolumeArg) => {
+  
+  const toggleItemStyle = {
+    left: step === 0.5 ? "0" : step === 1 ? "50%" : step === 1.5 ? "100%" : "0",
+    top: "0",
+    transform:
+      step === 0.5
+        ? "translateX(-1%)"
+        : step === 1
+        ? "translateX(-50%)"
+        : step === 1.5
+        ? "translateX(-101%)"
+        : "0",
   };
 
   return (
-    <div className={style.chooseVolume}>
+    <div className={`${style.chooseVolume}`}>
       <ul className={style.chooseVolume__list}>
-        <li
-          className={`${style.chooseVolume__item} ${
-            step === 1 && style.chooseVolume__item__active
-          }`}
-          onClick={() => handleClick(1)}
-          id="chooseVolume__first"
-        >
-          0,5 л
+        <li className={style.chooseVolume__item} onClick={() => handleStep(0.5)}>
+          <span className={style.chooseVolume__item__index}>0,5 л</span>
         </li>
-        <li
-          className={`${style.chooseVolume__item} ${
-            step === 2 && style.chooseVolume__item__active
-          }`}
-          onClick={() => handleClick(2)}
-          id="chooseVolume__second"
-        >
+        <li className={style.chooseVolume__item} onClick={() => handleStep(1)}>
           1 л
         </li>
-        <li
-          className={`${style.chooseVolume__item} ${
-            step === 3 && style.chooseVolume__item__active
-          }`}
-          onClick={() => handleClick(3)}
-          id="chooseVolume__third"
-        >
+        <li className={style.chooseVolume__item} onClick={() => handleStep(1.5)}>
           1,5 л
         </li>
       </ul>
+      <div
+        className={style.chooseVolume__toggleItem}
+        style={toggleItemStyle}
+      ></div>
     </div>
   );
 };

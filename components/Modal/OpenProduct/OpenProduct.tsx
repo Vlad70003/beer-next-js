@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./OpenProduct.module.scss";
 import Image from "next/image";
 
 import { ChooseVolume } from "../../../ui/ChooseVolume/ChooseVolume";
+import { useActions } from "../../../hooks/useActions";
 import { Button } from "../../../ui/Button/Button";
 
 interface OpenProductProps {
@@ -36,10 +37,23 @@ export const OpenProduct = ({ product }: OpenProductProps) => {
     description,
   } = product;
 
+  const { addOrderAction } = useActions();
+
+  const [step, setStep] = useState(1);
+
+  const handleStep = (value: number) => {
+    setStep(value);
+  };
+
   return (
     <div className={style.openProduct}>
       <div className={style.leftSide}>
-          < Image src={productImg} width="240px" height="240px" alt="product img" />
+        <Image
+          src={productImg}
+          width="240px"
+          height="240px"
+          alt="product img"
+        />
       </div>
       <div className={style.rightSide}>
         <main className={style.main}>
@@ -54,20 +68,26 @@ export const OpenProduct = ({ product }: OpenProductProps) => {
           </div>
           {brewery && (
             <div className={style.row}>
-              <div className={`${style.text} ${style.text__grey}`}>{brewery}</div>
+              <div className={`${style.text} ${style.text__grey}`}>
+                {brewery}
+              </div>
             </div>
           )}
           <div className={style.row}>
-            <div className={`${style.text} ${style.text__grey}`}>{productProduction}</div>
+            <div className={`${style.text} ${style.text__grey}`}>
+              {productProduction}
+            </div>
           </div>
           {description && (
             <div className={style.row}>
-              <div className={`${style.text} ${style.text__description}`}>{description}</div>
+              <div className={`${style.text} ${style.text__description}`}>
+                {description}
+              </div>
             </div>
           )}
           {status && (
             <div className={style.row}>
-              <ChooseVolume />
+              <ChooseVolume handleStep={handleStep} step={step} />
             </div>
           )}
         </main>
@@ -85,6 +105,7 @@ export const OpenProduct = ({ product }: OpenProductProps) => {
               width="100%"
               color="white"
               borderRadius="60px"
+              onClick={() => addOrderAction({product, step})}
             />
           </div>
         </footer>

@@ -10,6 +10,7 @@ import { Button } from "../../ui/Button/Button";
 import { ChooseVolume } from "../../ui/ChooseVolume/ChooseVolume";
 import { ModalWrapper } from "../Modal/ModalWrapper";
 import { OpenProduct } from "../Modal/OpenProduct/OpenProduct";
+import { handleProductionCount } from "./script";
 
 export const Product = ({ product }) => {
   const {
@@ -25,22 +26,28 @@ export const Product = ({ product }) => {
   } = product;
 
   const modal = useTypedSelector((state) => state.modal);
+  const { currentShop } = useTypedSelector((state) => state.currentShop);
+
   const { openModalAction } = useActions();
+  const { addOrderAction } = useActions();
+
+  const [step, setStep] = useState(1);
 
   const handleModal = (event) => {
-    const elementId = event.target.id;
-    const listId = [
-      "chooseVolume__first",
-      "chooseVolume__second",
-      "chooseVolume__third",
-      "button",
-    ];
+    const elementId = event.target;
 
-    if (listId.includes(elementId)) {
+    if (
+      elementId.closest(".chooseVolume") ||
+      elementId.closest(".product__button-wrapper")
+    ) {
       return;
     }
 
     openModalAction("open-product");
+  };
+
+  const handleStep = (value) => {
+    setStep(value);
   };
 
   return (
@@ -69,21 +76,23 @@ export const Product = ({ product }) => {
             <div className={style.product__production}>{productProduction}</div>
           )}
           {status && (
-            <div className={style.product__chooseVolume}>
-              {<ChooseVolume />}
+            <div className={`${style.product__chooseVolume} chooseVolume`}>
+              {<ChooseVolume step={step} handleStep={handleStep} />}
             </div>
           )}
         </li>
         <li className={style.product__hooter}>
           <div className={style.product__production__leftSide}>
             <div className={style.product__production__price}>
-              {productPrice}
+              {`${productPrice} Р`}
             </div>
             <div className={style.product__production__count}>
-              {productCount}
+              {handleProductionCount({ productCount, status })}
             </div>
           </div>
-          <div className={style.product__production__rightSide}>
+          <div
+            className={`${style.product__production__rightSide} product__button-wrapper`}
+          >
             <Info
               text="Пожалуйста выберите магазин, чтобы мы могли педоставить вам актуальный ассортимент"
               position="relative"
@@ -97,6 +106,11 @@ export const Product = ({ product }) => {
                 background="#20598E"
                 padding="11px 24px"
                 borderRadius="60px"
+                onClick={() => {
+                  currentShop === "Выберите магазин"
+                    ? openModalAction("change-shop")
+                    : addOrderAction({ product, step });
+                }}
               />
             </Info>
           </div>
@@ -108,19 +122,22 @@ export const Product = ({ product }) => {
         )}
       </ul>
 
-      { modal.typeModal === "open-product" && <ModalWrapper
-        padding="48px"
-        borderRadius="20px"
-        top="30%"
-        left="50%"
-        maxWidth="800px"
-        minWidth="740px"
-        modalIsOpen={modal.modalOpen}
-        backgroundColor="#0000004D"
-        close
-      >
-        <OpenProduct product={product} />
-      </ModalWrapper>}
+      {modal.typeModal === "open-product" && (
+        <ModalWrapper
+          padding="48px"
+          borderRadius="20px"
+          top="30%"
+          left="50%"
+          maxWidth="800px"
+          minWidth="740px"
+          modalIsOpen={modal.modalOpen}
+          backgroundColor="#0000004D"
+          onRequestClose
+          close
+        >
+          <OpenProduct product={product} step={step} />
+        </ModalWrapper>
+      )}
     </>
   );
 };

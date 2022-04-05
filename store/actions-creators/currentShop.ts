@@ -1,8 +1,7 @@
 import { actionState } from "./../../types/products";
 import { Dispatch } from "redux";
 
-import { CHOOSE_CURENT_SHOP } from "../reducers/currentShop";
-import { DELETE_CURRENT_SHOP } from "../reducers/currentShop";
+import { CHOOSE_CURENT_SHOP, DELETE_CURRENT_SHOP } from "../reducers/currentShop";
 
 export const currentShapAction = (value:string) => {
   return async (dispatch: Dispatch<actionState>) => {
