@@ -10,7 +10,12 @@ import { Button } from "../../ui/Button/Button";
 import { ChooseVolume } from "../../ui/ChooseVolume/ChooseVolume";
 import { ModalWrapper } from "../Modal/ModalWrapper";
 import { OpenProduct } from "../Modal/OpenProduct/OpenProduct";
-import { handleProductionCount } from "./script";
+
+import {
+  handleProductionCount,
+  handleProductionPrice,
+  checkedProductInOrder,
+} from "./script";
 
 export const Product = ({ product }) => {
   const {
@@ -23,10 +28,12 @@ export const Product = ({ product }) => {
     stock,
     productTitle,
     status,
+    id,
   } = product;
 
   const modal = useTypedSelector((state) => state.modal);
   const { currentShop } = useTypedSelector((state) => state.currentShop);
+  const { order } = useTypedSelector((state) => state.order);
 
   const { openModalAction } = useActions();
   const { addOrderAction } = useActions();
@@ -84,35 +91,39 @@ export const Product = ({ product }) => {
         <li className={style.product__hooter}>
           <div className={style.product__production__leftSide}>
             <div className={style.product__production__price}>
-              {`${productPrice} Р`}
+              {`${handleProductionPrice({ productPrice, step })} Р`}
             </div>
             <div className={style.product__production__count}>
-              {handleProductionCount({ productCount, status })}
+              {handleProductionCount({ productCount, status, step })}
             </div>
           </div>
           <div
             className={`${style.product__production__rightSide} product__button-wrapper`}
           >
-            <Info
-              text="Пожалуйста выберите магазин, чтобы мы могли педоставить вам актуальный ассортимент"
-              position="relative"
-              width="100%"
-              height="auto"
-              positionWindow="bottom"
-            >
-              <Button
-                title="В корзину"
-                color="white"
-                background="#20598E"
-                padding="11px 24px"
-                borderRadius="60px"
-                onClick={() => {
-                  currentShop === "Выберите магазин"
-                    ? openModalAction("change-shop")
-                    : addOrderAction({ product, step });
-                }}
-              />
-            </Info>
+            {checkedProductInOrder({ order, id, step }) ? (
+              1
+            ) : (
+              <Info
+                text="Пожалуйста выберите магазин, чтобы мы могли педоставить вам актуальный ассортимент"
+                position="relative"
+                width="100%"
+                height="auto"
+                positionWindow="bottom"
+              >
+                <Button
+                  title="В корзину"
+                  color="white"
+                  background="#20598E"
+                  padding="11px 24px"
+                  borderRadius="60px"
+                  onClick={() => {
+                    currentShop === "Выберите магазин"
+                      ? openModalAction("change-shop")
+                      : addOrderAction({ product, step });
+                  }}
+                />
+              </Info>
+            )}
           </div>
         </li>
         {stock && (

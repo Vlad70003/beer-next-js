@@ -1,5 +1,5 @@
 export const orderSum = (arr: [{ product: {productPrice : number}, step: number }]) => {
-    if (!arr.length) {
+    if (!arr?.length) {
       return 0;
     }
   

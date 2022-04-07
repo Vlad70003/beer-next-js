@@ -16,14 +16,14 @@ export const ProductList = () => {
   const { order }: { order: orderArg[] } = useTypedSelector(
     (store) => store.order
   );
-  const {deleteOrderAction} = useActions()
+  const { deleteAllOrderAction } = useActions();
 
-  const [productList, setProductList] = useState<orderArg[]>(order);
+  const [productList, setProductList] = useState<orderArg[]>([]);
 
   useEffect(() => {
     addToOrder({ setProductList, order, productList });
   }, [order]);
-
+  
   return (
     <div className={style.productList}>
       {productList && productList?.length ? (
@@ -52,9 +52,11 @@ export const ProductList = () => {
                 <div className={style.item__col}>
                   <ProductCounter
                     productInfo={{
+                      product: product,
                       price: product.product.productPrice,
                       count: product.number || 1,
                       status: product.product.status,
+                      step: product.step,
                     }}
                   />
                 </div>
@@ -67,7 +69,7 @@ export const ProductList = () => {
       )}
       {productList && productList?.length ? (
         <div className={style.buttonWrapper}>
-          <DeleteButton onClick={() => deleteOrderAction()} />
+          <DeleteButton onClick={() => deleteAllOrderAction()} />
         </div>
       ) : null}
     </div>

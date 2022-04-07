@@ -24,16 +24,16 @@ export const Button = ({
   minWidth,
   fontWeightClass,
   hoverClassColor,
-  ref
+  ref,
+  disabled
 }: buttonState) => {
 
-
   const styleButton = {
-    color: color || "black",
+    color: disabled ? "white" : color || "black",
     padding: padding || "none",
     fontWeight: fontWeight || "400",
     cursor: cursor || "pointer",
-    background: background || "none",
+    background: disabled ? "#BFBFBF" : background || "none",
     border: border || "none",
     borderRadius: borderRadius || "none",
     margin: margin || "0px",
@@ -44,12 +44,16 @@ export const Button = ({
     transition: "all .4s"
   };
 
+  const preventDefault = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+  }
+
   return (
     <button
       className={classNaneBtn({fontWeightClass, hoverClassColor})}
       type={type}
       style={styleButton}
-      onClick={onClick}
+      onClick={disabled ? (e) => preventDefault(e) : onClick}
       id="button"
       ref={ref}
     >

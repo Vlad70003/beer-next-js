@@ -1,26 +1,33 @@
 interface handleProductCounterArg {
-    status?: any;
-    productCount: number;
-    setProductCount: (value: number) => void;
-    action: string;
+  addOrderAction: any;
+  deteteOrderAction: any;
+  product: any;
+  step: number;
+  status?: any;
+  productCount: number;
+  setProductCount: (value: number) => void;
+  action: string;
 }
 
-export const handleProductCounter = ({status, productCount, setProductCount, action}: handleProductCounterArg) => {
+export const handleProductCounter = ({
+  addOrderAction,
+  deteteOrderAction,
+  product,
+  step,
+  status,
+  productCount,
+  setProductCount,
+  action,
+}: handleProductCounterArg) => {
+  if (productCount === 0 && action === "increase") {
+    return;
+  }
 
-    if ( productCount === 0 && action === "increase") {
-        return
-    }
+  if (action === "increase") {
+    deteteOrderAction({ product: product.product, step });
+  }
 
-    if (status && action === "increase") {
-        setProductCount(productCount - 0.5)
-    } else if (action === "increase") {
-        setProductCount(productCount - 1);
-    }
-
-    if( status && action === "decrease" ) {
-        setProductCount(productCount + 0.5)
-    } else if (action === "decrease") {
-        setProductCount(productCount + 1);
-    }
-
-}
+  if (action === "decrease") {
+    addOrderAction({ product: product.product, step });
+  }
+};

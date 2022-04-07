@@ -19,4 +19,5 @@ export interface buttonState {
     fontWeightClass?: string,
     hoverClassColor?: string,
     ref?: any
+    disabled?: boolean;
 }

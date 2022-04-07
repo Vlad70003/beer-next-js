@@ -6,6 +6,7 @@ import * as openModalAction from './modal';
 import * as closeModalAction from './modal';
 import * as addOrderAction from './order';
 import * as deleteOrderAction from './order';
+import * as deleteAllOrderAction from './order';
 
 export default {
     ...LoggedInAction,
@@ -16,4 +17,5 @@ export default {
     ...closeModalAction,
     ...addOrderAction,
     ...deleteOrderAction,
+    ...deleteAllOrderAction,
 }
