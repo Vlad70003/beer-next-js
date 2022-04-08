@@ -1,48 +1,32 @@
-import { addToOrderArg } from "../../../../types/order";
-
-var _ = require("lodash");
+import { addToOrderArg, orderArg } from "../../../../types/order";
 
 export const addToOrder = ({
   setProductList,
-  order,
-  productList,
+  order
 }: addToOrderArg) => {
 
-  const id: { id: number; step: number }[] = [];
+  const compareItems = (resultItem: any, orderItem: any) => {
+    return resultItem?.product?.id === orderItem.product.id
+      && resultItem?.step === orderItem.step
+  }
 
-  setProductList([]);
+  const result: any = []
 
-  order.map((item) => {
+  order.forEach((orderItem, ind) => {
 
-    let isEqual = false;
+    const filtered = result.filter(
+      (resultItem: any) => compareItems(resultItem, orderItem))
 
-    id.forEach((element) => {
-      _.isEqual(element, { id: item.product.id, step: item.step }) &&
-        (isEqual = true);
-      return;
-    });
-
-    if (isEqual) {
-     
-      setProductList(
-        productList.map((element) => {
-          return item.product.id === element.product.id &&
-            item.step === element.step
-            ? {
-                ...element,
-                number: element.number ? element.number + item.step : 1,
-              }
-            : element
-        })
-      );
+    if (filtered.length > 0) {
+      const inx = result.findIndex((resultItem: any) => compareItems(resultItem, orderItem))
+      result[inx].number += orderItem.step
     } else {
-      id.push({ id: item.product.id, step: item.step });
-
-      setProductList((productList: any) => [
-        ...productList,
-        { ...item, number: item.step ? item.step : 1 },
-      ]);
-
+      result.push({ ...orderItem, number: orderItem.step, key: ind })
     }
-  });
+  })
+
+  const sortResult = result.sort((a: orderArg, b: orderArg) => (a.product.id + a.step) - (b.product.id + b.step));
+
+  setProductList(sortResult)
+  
 };

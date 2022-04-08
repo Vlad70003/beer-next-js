@@ -6,8 +6,9 @@ import { useActions } from "../../hooks/useActions";
 import { handleProductCounter } from "./script";
 
 interface ProductCounterProps {
+  customNumber?: boolean;
   productInfo: {
-    product: any;
+    product?: any;
     price: number;
     count: number;
     status: string | null;
@@ -15,10 +16,12 @@ interface ProductCounterProps {
   };
 }
 
-export const ProductCounter = ({ productInfo }: ProductCounterProps) => {
-
-  const {addOrderAction} = useActions();
-  const {deteteOrderAction} = useActions();
+export const ProductCounter = ({
+  customNumber,
+  productInfo,
+}: ProductCounterProps) => {
+  const { addOrderAction } = useActions();
+  const { deteteOrderAction } = useActions();
 
   const [productCount, setProductCount] = useState<number>(productInfo.count);
 
@@ -30,12 +33,24 @@ export const ProductCounter = ({ productInfo }: ProductCounterProps) => {
     setProductCount(productInfo.count);
   }, [productInfo]);
 
+  const customNumberCounter = (act: string, step: number) => {
+    if (act === "increase") {
+      setProductCount((prev) => prev - step);
+    }
+
+    if (act === "decrease") {
+      setProductCount((prev) => prev + step);
+    }
+  };
+
   return (
     <div className={style.productCounter}>
-      <div className={style.row}>{`${priceCalculate(
-        productCount,
-        productInfo.price
-      )} ₽`}</div>
+      {customNumber ? null : (
+        <div className={style.row}>{`${priceCalculate(
+          productCount,
+          productInfo.price
+        )} ₽`}</div>
+      )}
       <div className={style.row}>
         <button
           className={style.button}
@@ -45,9 +60,7 @@ export const ProductCounter = ({ productInfo }: ProductCounterProps) => {
               addOrderAction,
               product: productInfo.product,
               step: productInfo.step,
-              status: productInfo.status,
               productCount,
-              setProductCount,
               action: "increase",
             });
           }}
@@ -65,9 +78,7 @@ export const ProductCounter = ({ productInfo }: ProductCounterProps) => {
               addOrderAction,
               product: productInfo.product,
               step: productInfo.step,
-              status: productInfo.status,
               productCount,
-              setProductCount,
               action: "decrease",
             });
           }}

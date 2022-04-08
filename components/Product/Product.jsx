@@ -10,11 +10,13 @@ import { Button } from "../../ui/Button/Button";
 import { ChooseVolume } from "../../ui/ChooseVolume/ChooseVolume";
 import { ModalWrapper } from "../Modal/ModalWrapper";
 import { OpenProduct } from "../Modal/OpenProduct/OpenProduct";
+import { ProductCounter } from "../../ui/ProductCounter/ProductCounter";
 
 import {
   handleProductionCount,
   handleProductionPrice,
   checkedProductInOrder,
+  handleModal
 } from "./script";
 
 export const Product = ({ product }) => {
@@ -34,24 +36,11 @@ export const Product = ({ product }) => {
   const modal = useTypedSelector((state) => state.modal);
   const { currentShop } = useTypedSelector((state) => state.currentShop);
   const { order } = useTypedSelector((state) => state.order);
-
+console.log(order)
   const { openModalAction } = useActions();
   const { addOrderAction } = useActions();
 
   const [step, setStep] = useState(1);
-
-  const handleModal = (event) => {
-    const elementId = event.target;
-
-    if (
-      elementId.closest(".chooseVolume") ||
-      elementId.closest(".product__button-wrapper")
-    ) {
-      return;
-    }
-
-    openModalAction("open-product");
-  };
 
   const handleStep = (value) => {
     setStep(value);
@@ -59,7 +48,7 @@ export const Product = ({ product }) => {
 
   return (
     <>
-      <ul className={style.product} onClick={(event) => handleModal(event)}>
+      <ul className={style.product} onClick={(event) => handleModal(event, openModalAction)}>
         <li className={style.product__img__wrapper}>
           <Image
             src={productImg}
@@ -101,7 +90,16 @@ export const Product = ({ product }) => {
             className={`${style.product__production__rightSide} product__button-wrapper`}
           >
             {checkedProductInOrder({ order, id, step }) ? (
-              1
+              <ProductCounter
+                customNumber
+                productInfo={{
+                  product: product,
+                  price: productPrice,
+                  count: product.number || step,
+                  status: status,
+                  step: step,
+                }}
+              />
             ) : (
               <Info
                 text="Пожалуйста выберите магазин, чтобы мы могли педоставить вам актуальный ассортимент"

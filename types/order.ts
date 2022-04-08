@@ -24,5 +24,5 @@ export interface orderArg {
 export interface addToOrderArg {
   setProductList: (value: any) => void;
   order: orderArg[];
-  productList: orderArg[];
+
 }

@@ -3,10 +3,17 @@ interface handleProductCounterArg {
   deteteOrderAction: any;
   product: any;
   step: number;
-  status?: any;
   productCount: number;
-  setProductCount: (value: number) => void;
   action: string;
+}
+
+const checkedProduct = (product:any) => {
+  if (product.product) {
+    return product.product
+  }
+  if (product) {
+    return product;
+  }
 }
 
 export const handleProductCounter = ({
@@ -14,9 +21,7 @@ export const handleProductCounter = ({
   deteteOrderAction,
   product,
   step,
-  status,
   productCount,
-  setProductCount,
   action,
 }: handleProductCounterArg) => {
   if (productCount === 0 && action === "increase") {
@@ -24,10 +29,10 @@ export const handleProductCounter = ({
   }
 
   if (action === "increase") {
-    deteteOrderAction({ product: product.product, step });
+    deteteOrderAction({ product: checkedProduct(product) , step });
   }
 
   if (action === "decrease") {
-    addOrderAction({ product: product.product, step });
+    addOrderAction({ product: checkedProduct(product), step });
   }
 };

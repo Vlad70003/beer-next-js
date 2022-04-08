@@ -27,18 +27,7 @@ export const handleProductionPrice = ({productPrice, step}:handleProductionPrice
     return productPrice * step;
 }
 
-export const buttonDisabled = (order: orderArg[], id: number, step: number) => {
 
-    let disabled = false;
-
-    order.map(item => {
-        if (item.product.id === id && item.step === step) {
-            disabled = true;
-        }
-    })
-
-    return disabled;
-}
 
 interface checkedProductInOrderArg {
     order: orderArg[];
@@ -51,6 +40,7 @@ export const checkedProductInOrder = ({order, id, step}:checkedProductInOrderArg
     let productIsOrder = false;
 
     order?.map(item => {
+console.log(item)
         if (item.product.id === id && item.step === step) {
             productIsOrder = true;
         }
@@ -58,3 +48,16 @@ export const checkedProductInOrder = ({order, id, step}:checkedProductInOrderArg
 
     return productIsOrder;
 }
+
+export const handleModal = (event: React.SyntheticEvent, openModalAction: any) => {
+    const elementId = event.target as HTMLUListElement;
+
+    if (
+      elementId.closest(".chooseVolume") ||
+      elementId.closest(".product__button-wrapper")
+    ) {
+      return;
+    }
+
+    openModalAction("open-product");
+  };

@@ -55,6 +55,10 @@
       display: flex;
       flex-direction: column;
     }
+    &__rightSide{
+      display: flex;
+      align-items: center;
+    }
 
     &__price {
       color: #434242;

@@ -18,19 +18,19 @@ export const ProductList = () => {
   );
   const { deleteAllOrderAction } = useActions();
 
-  const [productList, setProductList] = useState<orderArg[]>([]);
+  const [productList, setProductList] = useState<any[]>([]);
 
   useEffect(() => {
-    addToOrder({ setProductList, order, productList });
+    addToOrder({ setProductList, order });
   }, [order]);
-  
+
   return (
     <div className={style.productList}>
-      {productList && productList?.length ? (
+      {productList?.length ? (
         <ul className={style.list}>
           {productList.map((product) => {
             return (
-              <li className={style.item} key={product.product.id}>
+              <li className={style.item} key={product.key}>
                 <div className={style.item__col}>
                   <div className={style.imageWrapper}>
                     <Image
