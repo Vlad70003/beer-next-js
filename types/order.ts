@@ -19,10 +19,11 @@ export interface orderArg {
   step: number;
   count?: number;
   number?: number;
+  key?: number;
 }
 
 export interface addToOrderArg {
-  setProductList: (value: any) => void;
+  addGeneralOrderAction: (value: any) => void;
   order: orderArg[];
 
 }

@@ -1,7 +1,7 @@
 import { addToOrderArg, orderArg } from "../../../../types/order";
 
 export const addToOrder = ({
-  setProductList,
+  addGeneralOrderAction,
   order
 }: addToOrderArg) => {
 
@@ -27,6 +27,6 @@ export const addToOrder = ({
 
   const sortResult = result.sort((a: orderArg, b: orderArg) => (a.product.id + a.step) - (b.product.id + b.step));
 
-  setProductList(sortResult)
+  addGeneralOrderAction(sortResult)
   
 };

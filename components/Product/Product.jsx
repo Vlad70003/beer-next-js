@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./Product.module.scss";
 import Image from "next/image";
 
@@ -16,7 +16,7 @@ import {
   handleProductionCount,
   handleProductionPrice,
   checkedProductInOrder,
-  handleModal
+  handleModal,
 } from "./script";
 
 export const Product = ({ product }) => {
@@ -35,12 +35,24 @@ export const Product = ({ product }) => {
 
   const modal = useTypedSelector((state) => state.modal);
   const { currentShop } = useTypedSelector((state) => state.currentShop);
-  const { order } = useTypedSelector((state) => state.order);
-console.log(order)
+  const { generalOrder } = useTypedSelector((state) => state.generalOrder);
+
   const { openModalAction } = useActions();
   const { addOrderAction } = useActions();
 
   const [step, setStep] = useState(1);
+
+  const [checkedAndNumberProductInOrder, setCheckedAndNumberProductInOrder] =
+    useState(null);
+
+  useEffect(() => {
+    const { productIsOrder, numberOrder } = checkedProductInOrder({
+      generalOrder,
+      id,
+      step,
+    });
+    setCheckedAndNumberProductInOrder({ productIsOrder, numberOrder });
+  }, [generalOrder, id, step]);
 
   const handleStep = (value) => {
     setStep(value);
@@ -48,7 +60,10 @@ console.log(order)
 
   return (
     <>
-      <ul className={style.product} onClick={(event) => handleModal(event, openModalAction)}>
+      <ul
+        className={style.product}
+        onClick={(event) => handleModal(event, openModalAction)}
+      >
         <li className={style.product__img__wrapper}>
           <Image
             src={productImg}
@@ -89,13 +104,13 @@ console.log(order)
           <div
             className={`${style.product__production__rightSide} product__button-wrapper`}
           >
-            {checkedProductInOrder({ order, id, step }) ? (
+            {checkedAndNumberProductInOrder?.productIsOrder ? (
               <ProductCounter
                 customNumber
                 productInfo={{
                   product: product,
                   price: productPrice,
-                  count: product.number || step,
+                  count: checkedAndNumberProductInOrder?.numberOrder || 1,
                   status: status,
                   step: step,
                 }}

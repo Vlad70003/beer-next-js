@@ -16,19 +16,23 @@ export const ProductList = () => {
   const { order }: { order: orderArg[] } = useTypedSelector(
     (store) => store.order
   );
+  const { generalOrder }: { generalOrder: orderArg[] } = useTypedSelector(
+    (store) => store.generalOrder
+  );
   const { deleteAllOrderAction } = useActions();
+  const { addGeneralOrderAction } = useActions();
 
   const [productList, setProductList] = useState<any[]>([]);
 
   useEffect(() => {
-    addToOrder({ setProductList, order });
+    addToOrder({ addGeneralOrderAction, order });
   }, [order]);
 
   return (
     <div className={style.productList}>
-      {productList?.length ? (
+      {generalOrder?.length ? (
         <ul className={style.list}>
-          {productList.map((product) => {
+          {generalOrder.map((product) => {
             return (
               <li className={style.item} key={product.key}>
                 <div className={style.item__col}>
@@ -67,7 +71,7 @@ export const ProductList = () => {
       ) : (
         <div className={style.clearList}>Корзина пуста, добавьте товар.</div>
       )}
-      {productList && productList?.length ? (
+      {generalOrder && generalOrder?.length ? (
         <div className={style.buttonWrapper}>
           <DeleteButton onClick={() => deleteAllOrderAction()} />
         </div>
