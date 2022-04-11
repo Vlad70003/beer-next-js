@@ -2,6 +2,7 @@ import React, { useEffect, useState, useLayoutEffect } from "react";
 import style from "./ProductCounter.module.scss";
 
 import { useActions } from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 import { handleProductCounter } from "./script";
 
@@ -22,6 +23,7 @@ export const ProductCounter = ({
 }: ProductCounterProps) => {
   const { addOrderAction } = useActions();
   const { deteteOrderAction } = useActions();
+  const {generalOrder} = useTypedSelector(state => state.generalOrder)
 
   const [productCount, setProductCount] = useState<number>(productInfo.count);
 
@@ -62,10 +64,12 @@ export const ProductCounter = ({
             handleProductCounter({
               deteteOrderAction,
               addOrderAction,
+              generalOrder,
               product: productInfo.product,
               step: productInfo.step,
               productCount,
               action: "increase",
+              status: productInfo.status,
             });
           }}
         >
@@ -84,6 +88,7 @@ export const ProductCounter = ({
             handleProductCounter({
               deteteOrderAction,
               addOrderAction,
+              generalOrder,
               product: productInfo.product,
               step: productInfo.status === "weight" ? 0.5 : productInfo.step,
               productCount,
