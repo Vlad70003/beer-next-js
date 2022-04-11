@@ -26,7 +26,15 @@ export const ProductCounter = ({
   const [productCount, setProductCount] = useState<number>(productInfo.count);
 
   const priceCalculate = (productCount: number, price: number) => {
-    return productCount * price;
+    const pow = productCount * price;
+
+    if (productInfo.status === "draft") {
+      return pow * productInfo.step;
+    } else if (productInfo.status === "weight") {
+      return pow / 100;
+    } else {
+      return pow;
+    }
   };
 
   useEffect(() => {
