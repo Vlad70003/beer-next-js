@@ -50,6 +50,7 @@ export const fishExaple = [
     productCount: "цена за 100 гр",
     productTextButton: "В корзину",
     id: 3,
+    status: "weight"
   },
 ];
 
@@ -64,6 +65,7 @@ export const meatExaple = [
     productCount: "цена за 100 гр",
     productTextButton: "В корзину",
     id: 4,
+    status: "weight",
   },
 ];
 
@@ -77,7 +79,8 @@ export const cheaseExaple = [
     productPrice: 250,
     productCount: "цена за 100 гр",
     productTextButton: "В корзину",
-    id: 5
+    id: 5,
+    status: "weight"
   },
 ];
 

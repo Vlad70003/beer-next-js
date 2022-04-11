@@ -22,8 +22,6 @@ export const ProductList = () => {
   const { deleteAllOrderAction } = useActions();
   const { addGeneralOrderAction } = useActions();
 
-  const [productList, setProductList] = useState<any[]>([]);
-
   useEffect(() => {
     addToOrder({ addGeneralOrderAction, order });
   }, [order]);
@@ -46,13 +44,16 @@ export const ProductList = () => {
                     />
                   </div>
                 </div>
-
                 <div className={style.item__col}>
                   <h4 className={style.nameProduct}>
                     {product.product.productTitle}
                   </h4>
+                  {product.product.status === "draft" && (
+                    <div
+                      className={style.item__displacement}
+                    >{`${product.step} л.`}</div>
+                  )}
                 </div>
-
                 <div className={style.item__col}>
                   <ProductCounter
                     productInfo={{

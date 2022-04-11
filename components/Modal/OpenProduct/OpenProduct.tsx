@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./OpenProduct.module.scss";
 import Image from "next/image";
 
+import { checkedProductInOrder } from "../../../script/order/checkedProductInOrder";
+
 import { ChooseVolume } from "../../../ui/ChooseVolume/ChooseVolume";
 import { useActions } from "../../../hooks/useActions";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { ProductCounter } from "../../../ui/ProductCounter/ProductCounter";
 import { Button } from "../../../ui/Button/Button";
 
 interface OpenProductProps {
@@ -12,13 +16,14 @@ interface OpenProductProps {
     productImg: string;
     productCount: string;
     productGrade: string;
-    productPrice: string;
+    productPrice: number;
     productProduction: string;
     productSubtitle: string;
     stock: string;
     productTitle: string;
     status: string;
     description?: string;
+    id: number;
   };
 }
 
@@ -35,11 +40,29 @@ export const OpenProduct = ({ product }: OpenProductProps) => {
     productTitle,
     status,
     description,
+    id,
   } = product;
 
   const { addOrderAction } = useActions();
+  const { openModalAction } = useActions();
+  const { currentShop } = useTypedSelector((state) => state.currentShop);
+  const { generalOrder } = useTypedSelector((state) => state.generalOrder);
 
   const [step, setStep] = useState(1);
+
+  const [checkedAndNumberProductInOrder, setCheckedAndNumberProductInOrder] =
+    useState<{ productIsOrder: boolean; numberOrder: number | null } | null>(
+      null
+    );
+
+  useEffect(() => {
+    const { productIsOrder, numberOrder } = checkedProductInOrder({
+      generalOrder,
+      id,
+      step,
+    });
+    setCheckedAndNumberProductInOrder({ productIsOrder, numberOrder });
+  }, [generalOrder, id, step]);
 
   const handleStep = (value: number) => {
     setStep(value);
@@ -85,7 +108,7 @@ export const OpenProduct = ({ product }: OpenProductProps) => {
               </div>
             </div>
           )}
-          {status && (
+          {status === "draft" && (
             <div className={style.row}>
               <ChooseVolume handleStep={handleStep} step={step} />
             </div>
@@ -93,20 +116,37 @@ export const OpenProduct = ({ product }: OpenProductProps) => {
         </main>
         <footer className={style.footer}>
           <div className={style.footer__column}>
-            <div className={style.footer__row}>{productPrice}</div>
+            <div className={style.footer__row}>{`${productPrice} ₽`}</div>
             <div className={style.footer__row}>{productCount}</div>
           </div>
           <div className={style.footer__column}>
-            <Button
-              title="В корзину"
-              fontSize="18px"
-              background="#20598E"
-              padding="11px 0"
-              width="100%"
-              color="white"
-              borderRadius="60px"
-              onClick={() => addOrderAction({product, step})}
-            />
+            {checkedAndNumberProductInOrder?.productIsOrder ? (
+              <ProductCounter
+                customNumber
+                productInfo={{
+                  product: product,
+                  price: productPrice,
+                  count: checkedAndNumberProductInOrder?.numberOrder || 1,
+                  status: status,
+                  step: step,
+                }}
+              />
+            ) : (
+              <Button
+                title="В корзину"
+                fontSize="18px"
+                background="#20598E"
+                padding="11px 0"
+                width="100%"
+                color="white"
+                borderRadius="60px"
+                onClick={() => {
+                  currentShop === "Выберите магазин"
+                    ? openModalAction("change-shop")
+                    : addOrderAction({ product, step });
+                }}
+              />
+            )}
           </div>
         </footer>
       </div>

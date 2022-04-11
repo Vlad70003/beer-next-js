@@ -1,32 +1,38 @@
 import { addToOrderArg, orderArg } from "../../../../types/order";
 
-export const addToOrder = ({
-  addGeneralOrderAction,
-  order
-}: addToOrderArg) => {
+export const addToOrder = ({ addGeneralOrderAction, order }: addToOrderArg) => {
+  const compareItems = (resultItem: any, orderItem: any, status: any) => {
+    if (status === "weight") {
+      return resultItem?.product?.id === orderItem.product.id;
+    }
 
-  const compareItems = (resultItem: any, orderItem: any) => {
-    return resultItem?.product?.id === orderItem.product.id
-      && resultItem?.step === orderItem.step
-  }
+    return (
+      resultItem?.product?.id === orderItem.product.id &&
+      resultItem?.step === orderItem.step
+    );
+  };
 
-  const result: any = []
+  const result: any = [];
 
   order.forEach((orderItem, ind) => {
-
-    const filtered = result.filter(
-      (resultItem: any) => compareItems(resultItem, orderItem))
+    const filtered = result.filter((resultItem: any) =>
+      compareItems(resultItem, orderItem, orderItem.product.status)
+    );
 
     if (filtered.length > 0) {
-      const inx = result.findIndex((resultItem: any) => compareItems(resultItem, orderItem))
-      result[inx].number += orderItem.step
+      const inx = result.findIndex((resultItem: any) =>
+        compareItems(resultItem, orderItem, orderItem.product.status)
+      );
+      result[inx].number += orderItem.step;
     } else {
-      result.push({ ...orderItem, number: orderItem.step, key: ind })
+      result.push({ ...orderItem, number: orderItem.step, key: ind });
     }
-  })
+  });
 
-  const sortResult = result.sort((a: orderArg, b: orderArg) => (a.product.id + a.step) - (b.product.id + b.step));
+  const sortResult = result.sort(
+    (a: orderArg, b: orderArg) =>
+      a.product.id + a.step - (b.product.id + b.step)
+  );
 
-  addGeneralOrderAction(sortResult)
-  
+  addGeneralOrderAction(sortResult);
 };

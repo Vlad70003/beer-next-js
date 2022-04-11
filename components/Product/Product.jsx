@@ -12,10 +12,10 @@ import { ModalWrapper } from "../Modal/ModalWrapper";
 import { OpenProduct } from "../Modal/OpenProduct/OpenProduct";
 import { ProductCounter } from "../../ui/ProductCounter/ProductCounter";
 
+import { checkedProductInOrder } from "../../script/order/checkedProductInOrder";
 import {
   handleProductionCount,
   handleProductionPrice,
-  checkedProductInOrder,
   handleModal,
 } from "./script";
 
@@ -57,7 +57,6 @@ export const Product = ({ product }) => {
   const handleStep = (value) => {
     setStep(value);
   };
-
   return (
     <>
       <ul
@@ -71,6 +70,7 @@ export const Product = ({ product }) => {
             className={style.product__img}
             width={220}
             height={220}
+            
           />
         </li>
         <li className={style.product__title__wrapper}>
@@ -83,10 +83,10 @@ export const Product = ({ product }) => {
           <div className={style.product__subtitle}>{productSubtitle}</div>
         </li>
         <li className={style.product__production__wrapper}>
-          {!status && (
+          {status !== "draft" && (
             <div className={style.product__production}>{productProduction}</div>
           )}
-          {status && (
+          {status === "draft" && (
             <div className={`${style.product__chooseVolume} chooseVolume`}>
               {<ChooseVolume step={step} handleStep={handleStep} />}
             </div>
@@ -159,7 +159,12 @@ export const Product = ({ product }) => {
           onRequestClose
           close
         >
-          <OpenProduct product={product} step={step} />
+          <OpenProduct
+            product={product}
+            step={step}
+            isOrder={checkedAndNumberProductInOrder.productIsOrder}
+            numberOrder={checkedAndNumberProductInOrder.numberOrder}
+          />
         </ModalWrapper>
       )}
     </>

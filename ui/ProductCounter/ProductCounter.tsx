@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import style from "./ProductCounter.module.scss";
 
 import { useActions } from "../../hooks/useActions";
@@ -30,18 +30,14 @@ export const ProductCounter = ({
   };
 
   useEffect(() => {
-    setProductCount(productInfo.count);
+    if (productInfo.status === "draft") {
+      setProductCount(productInfo.count / productInfo.step);
+    } else if (productInfo.status === "weight") {
+      setProductCount(productInfo.count * 100);
+    } else {
+      setProductCount(productInfo.count);
+    }
   }, [productInfo]);
-
-  const customNumberCounter = (act: string, step: number) => {
-    if (act === "increase") {
-      setProductCount((prev) => prev - step);
-    }
-
-    if (act === "decrease") {
-      setProductCount((prev) => prev + step);
-    }
-  };
 
   return (
     <div className={style.productCounter}>
@@ -68,7 +64,11 @@ export const ProductCounter = ({
           -
         </button>
         <div className={style.count}>
-          {productInfo.status ? `${productCount} л.` : `${productCount} шт.`}
+          {productInfo.status === "draft"
+            ? `${productCount} шт.`
+            : productInfo.status === "weight"
+            ? `${productCount} гр.`
+            : `${productCount} шт.`}
         </div>
         <button
           className={style.button}
@@ -77,7 +77,7 @@ export const ProductCounter = ({
               deteteOrderAction,
               addOrderAction,
               product: productInfo.product,
-              step: productInfo.step,
+              step: productInfo.status === "weight" ? 0.5 : productInfo.step,
               productCount,
               action: "decrease",
             });

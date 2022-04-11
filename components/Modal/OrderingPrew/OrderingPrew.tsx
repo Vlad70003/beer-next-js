@@ -25,13 +25,15 @@ export const OrderingPrew = () => {
   return (
     <div className={style.orderingPrew} style={orderingPrewStyle}>
       <div className={style.topSide}>
-        <h3 className={style.title}>Ваша корзина</h3>
-        <div className={style.productListWrapper}>
-          <ProductList />
-        </div>
-        <h3 className={style.secondTitle}>Добавить к заказу?</h3>
-        <div className={style.slideWrapper}>
-          <SlickSliderToOrder />
+        <div className={style.topSide__conteiner}>
+          <h3 className={style.title}>Ваша корзина</h3>
+          <div className={style.productListWrapper}>
+            <ProductList />
+          </div>
+          <h3 className={style.secondTitle}>Добавить к заказу?</h3>
+          <div className={style.slideWrapper}>
+            <SlickSliderToOrder />
+          </div>
         </div>
       </div>
       <div className={style.bottomSide}>

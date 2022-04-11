@@ -5,8 +5,8 @@
 
 .orderingPrew {
   position: fixed;
-  min-width: 500px;
-  max-width: 500px;
+  min-width: 559px;
+  max-width: 559px;
   background: white;
   top: 0;
   right: 0;
@@ -16,7 +16,21 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
 
+.topSide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  &__conteiner {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow: auto;
+  }
 }
 
 .title {
@@ -50,9 +64,9 @@
   }
 }
 
-.bottomSide{
+.bottomSide {
   padding: 16px 0 32px 0;
-  border-top: 1px solid #D8D4CE;
+  border-top: 1px solid #d8d4ce;
 }
 
 .close {

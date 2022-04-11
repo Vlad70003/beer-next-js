@@ -1,5 +1,3 @@
-import { orderArg } from "../../types/order";
-
 interface handleProductionCountArg {
   productCount: string;
   status: string;
@@ -11,7 +9,7 @@ export const handleProductionCount = ({
   status,
   step,
 }: handleProductionCountArg) => {
-  if (status && step === 1) {
+  if (status === "draft" && step === 1) {
     return "цена за 1 л без тары";
   } else if (status && step === 0.5) {
     return "цена за 0.5 л без тары";
@@ -32,30 +30,6 @@ export const handleProductionPrice = ({
   step,
 }: handleProductionPriceArg) => {
   return productPrice * step;
-};
-
-interface checkedProductInOrderArg {
-  generalOrder: orderArg[];
-  id: number;
-  step: number;
-}
-
-export const checkedProductInOrder = ({
-  generalOrder,
-  id,
-  step,
-}: checkedProductInOrderArg) => {
-  let productIsOrder = false;
-  let numberOrder = null;
-
-  generalOrder?.map((item) => {
-    if (item.product.id === id && item.step === step) {
-      productIsOrder = true;
-      numberOrder = item.number;
-    }
-  });
-
-  return { productIsOrder, numberOrder };
 };
 
 export const handleModal = (

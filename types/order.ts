@@ -4,7 +4,7 @@ export interface orderAction {
 }
 
 export interface orderState {
-  order: { product: { id: number }, step: number }[];
+  order: { product: { id: number; status: string }; step: number }[];
 }
 
 export interface orderArg {
@@ -25,5 +25,4 @@ export interface orderArg {
 export interface addToOrderArg {
   addGeneralOrderAction: (value: any) => void;
   order: orderArg[];
-
 }
