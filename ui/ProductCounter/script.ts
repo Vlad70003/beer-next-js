@@ -1,6 +1,4 @@
-import { Console } from "console";
-
-const GRAMM = 100;
+import {container} from "../../components/Product/productExample";
 
 interface handleProductCounterArg {
   addOrderAction: any;
@@ -9,6 +7,7 @@ interface handleProductCounterArg {
   step: number;
   productCount: number;
   action: string;
+  status?: string | null;
 }
 
 const checkedProduct = (product:any) => {
@@ -27,6 +26,7 @@ export const handleProductCounter = ({
   step,
   productCount,
   action,
+  status,
 }: handleProductCounterArg) => {
   if (productCount === 0 && action === "increase") {
     return;
@@ -38,41 +38,9 @@ export const handleProductCounter = ({
 
   if (action === "decrease") {
     addOrderAction({ product: checkedProduct(product), step });
+
+    if ( status === "draft" ) {
+      addOrderAction({ product: container, step });
+    }
   }
 };
-
-// interface priceCalculateArg {
-//   step: number;
-//   status: string | null;
-//   productCount: number;
-//   price: number
-// }
-
-// export const priceCalculate = ({step, status, productCount, price}: priceCalculateArg) => {
-//   const pow = productCount * price;
-
-//   if (status === "draft") {
-//     return pow * step;
-//   } else if (status === "weight") {
-//     return pow / GRAMM;
-//   } else {
-//     return pow;
-//   }
-// };
-
-// interface handleProductCountArg {
-//   step: number;
-//   status: string | null;
-//   productCount: number;
-//   setProductCount: (value: number) => void;
-// }
-
-// export const handleProductCount = ({status, step, productCount, setProductCount}:handleProductCountArg) => {
-//   if (status === "draft") {
-//     setProductCount(productCount / step);
-//   } else if (status === "weight") {
-//     setProductCount(productCount * GRAMM);
-//   } else {
-//     setProductCount(productCount);
-//   }
-// }

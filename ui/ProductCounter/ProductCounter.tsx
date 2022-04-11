@@ -28,7 +28,7 @@ export const ProductCounter = ({
   const priceCalculate = (productCount: number, price: number) => {
     const pow = productCount * price;
 
-    if (productInfo.status === "draft") {
+    if (productInfo.status === "draft" || productInfo.status === "conteiner") {
       return pow * productInfo.step;
     } else if (productInfo.status === "weight") {
       return pow / 100;
@@ -38,7 +38,7 @@ export const ProductCounter = ({
   };
 
   useEffect(() => {
-    if (productInfo.status === "draft") {
+    if (productInfo.status === "draft" || productInfo.status === "conteiner") {
       setProductCount(productInfo.count / productInfo.step);
     } else if (productInfo.status === "weight") {
       setProductCount(productInfo.count * 100);
@@ -72,7 +72,7 @@ export const ProductCounter = ({
           -
         </button>
         <div className={style.count}>
-          {productInfo.status === "draft"
+          {(productInfo.status === "draft" || productInfo.status === "conteiner")
             ? `${productCount} шт.`
             : productInfo.status === "weight"
             ? `${productCount} гр.`
@@ -88,6 +88,7 @@ export const ProductCounter = ({
               step: productInfo.status === "weight" ? 0.5 : productInfo.step,
               productCount,
               action: "decrease",
+              status: productInfo.status,
             });
           }}
         >

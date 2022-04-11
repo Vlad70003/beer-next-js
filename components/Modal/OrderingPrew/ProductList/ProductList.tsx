@@ -48,7 +48,7 @@ export const ProductList = () => {
                   <h4 className={style.nameProduct}>
                     {product.product.productTitle}
                   </h4>
-                  {product.product.status === "draft" && (
+                  {(product.product.status === "draft" || product.product.status === "conteiner")  && (
                     <div
                       className={style.item__displacement}
                     >{`${product.step} л.`}</div>

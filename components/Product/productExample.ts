@@ -5,6 +5,7 @@ import meat from "../../assests/img/meat.png";
 import chease from "../../assests/img/chease.jpg";
 import snack from "../../assests/img/snack.jpg";
 import other from "../../assests/img/other.jpg";
+import conteiner from "../../assests/img/conteiner.jpg";
 
 export const BeerExample = [
   {
@@ -21,7 +22,7 @@ export const BeerExample = [
     description:
       "Светлое пиво средней плотности, низового брожения, с ароматом светлого солода и минимальным хмелевым присутствием.",
     status: "draft",
-    id: 1
+    id: 1,
   },
 ];
 
@@ -50,7 +51,7 @@ export const fishExaple = [
     productCount: "цена за 100 гр",
     productTextButton: "В корзину",
     id: 3,
-    status: "weight"
+    status: "weight",
   },
 ];
 
@@ -80,7 +81,7 @@ export const cheaseExaple = [
     productCount: "цена за 100 гр",
     productTextButton: "В корзину",
     id: 5,
-    status: "weight"
+    status: "weight",
   },
 ];
 
@@ -111,3 +112,15 @@ export const otherExaple = [
     id: 7,
   },
 ];
+
+export const container = {
+  productImg: conteiner,
+  productTitle: "Контейнер",
+  productGrade: "1 шт",
+  productProduction: "Производство: Россия",
+  productPrice: 5,
+  productCount: "цена за 0.5 мл",
+  productTextButton: "В корзину",
+  id: 999,
+  status: "conteiner",
+};

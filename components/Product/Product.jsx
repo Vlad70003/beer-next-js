@@ -19,6 +19,8 @@ import {
   handleModal,
 } from "./script";
 
+import { container } from "./productExample";
+
 export const Product = ({ product }) => {
   const {
     productImg,
@@ -70,7 +72,6 @@ export const Product = ({ product }) => {
             className={style.product__img}
             width={220}
             height={220}
-            
           />
         </li>
         <li className={style.product__title__wrapper}>
@@ -132,7 +133,8 @@ export const Product = ({ product }) => {
                   onClick={() => {
                     currentShop === "Выберите магазин"
                       ? openModalAction("change-shop")
-                      : addOrderAction({ product, step });
+                      : addOrderAction({ product, step }) &&
+                      addOrderAction({ product: container, step });
                   }}
                 />
               </Info>
