@@ -8,7 +8,7 @@ export const OrderIndicator = () => {
     const {generalOrder} = useTypedSelector(store => store.generalOrder);
 
   return (
-    <div className={style.OrderIndicator}>
+    <div className={style.orderIndicator}>
         {generalOrder?.length}
     </div>
   )

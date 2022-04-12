@@ -7,16 +7,19 @@
   padding: 3px 15px;
   border-radius: 60px;
   cursor: pointer;
-  position: relative;
 
   &__counter {
     font-size: 18px;
     padding: 0px 15px 0 20px;
   }
 
+  &__kart {
+    position: relative;
+  }
+
   &__orderIndicator {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     position: absolute;
     border-radius: 50%;
     background-color: #e31e25;
@@ -25,6 +28,6 @@
     justify-content: center;
     top: 0;
     right: 0;
-    transform: translateX(20%) translateY(-40%);
+    transform: translateX(10%) translateY(0%);
   }
 }
