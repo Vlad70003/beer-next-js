@@ -22,7 +22,7 @@ export const CartCounter = () => {
           </div>
         ) : null}
       </div>
-      <div className={style.cartCounter__counter}>{`${orderSum(order)} ₽`}</div>
+      <div className={style.cartCounter__counter}>{generalOrder?.length ? `${orderSum(order)} ₽` : "Корзина"}</div>
     </div>
   );
 };
