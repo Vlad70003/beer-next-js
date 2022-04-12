@@ -4,6 +4,8 @@ import Image from "next/image";
 
 import { checkedProductInOrder } from "../../../script/order/checkedProductInOrder";
 
+import { container } from "../../Product/productExample";
+
 import { ChooseVolume } from "../../../ui/ChooseVolume/ChooseVolume";
 import { useActions } from "../../../hooks/useActions";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
@@ -68,6 +70,14 @@ export const OpenProduct = ({ product }: OpenProductProps) => {
     setStep(value);
   };
 
+  const handleClick = () => {
+    return currentShop === "Выберите магазин"
+      ? openModalAction("change-shop")
+      : addOrderAction({ product, step }) &&
+          status === "draft" &&
+          addOrderAction({ product: container, step });
+  };
+
   return (
     <div className={style.openProduct}>
       <div className={style.leftSide}>
@@ -123,6 +133,7 @@ export const OpenProduct = ({ product }: OpenProductProps) => {
             {checkedAndNumberProductInOrder?.productIsOrder ? (
               <ProductCounter
                 customNumber
+                padding="0 50px"
                 productInfo={{
                   product: product,
                   price: productPrice,
@@ -140,11 +151,7 @@ export const OpenProduct = ({ product }: OpenProductProps) => {
                 width="100%"
                 color="white"
                 borderRadius="60px"
-                onClick={() => {
-                  currentShop === "Выберите магазин"
-                    ? openModalAction("change-shop")
-                    : addOrderAction({ product, step });
-                }}
+                onClick={() => handleClick()}
               />
             )}
           </div>

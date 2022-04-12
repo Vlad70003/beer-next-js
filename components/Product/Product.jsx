@@ -59,6 +59,15 @@ export const Product = ({ product }) => {
   const handleStep = (value) => {
     setStep(value);
   };
+
+  const handleClick = () => {
+    return currentShop === "Выберите магазин"
+      ? openModalAction("change-shop")
+      : addOrderAction({ product, step }) &&
+          status === "draft" &&
+          addOrderAction({ product: container, step });
+  };
+
   return (
     <>
       <ul
@@ -130,13 +139,7 @@ export const Product = ({ product }) => {
                   background="#20598E"
                   padding="11px 24px"
                   borderRadius="60px"
-                  onClick={() => {
-                    currentShop === "Выберите магазин"
-                      ? openModalAction("change-shop")
-                      : addOrderAction({ product, step }) &&
-                        status === "draft" &&
-                        addOrderAction({ product: container, step });
-                  }}
+                  onClick={() => handleClick()}
                 />
               </Info>
             )}

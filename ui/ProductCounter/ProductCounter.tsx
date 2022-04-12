@@ -15,11 +15,13 @@ interface ProductCounterProps {
     status: string | null;
     step: number;
   };
+  padding?: string;
 }
 
 export const ProductCounter = ({
   customNumber,
   productInfo,
+  padding,
 }: ProductCounterProps) => {
   const { addOrderAction } = useActions();
   const { deteteOrderAction } = useActions();
@@ -49,6 +51,10 @@ export const ProductCounter = ({
     }
   }, [productInfo]);
 
+  const sountStyle = {
+    padding: padding ||  "0 11px",
+  }
+
   return (
     <div className={style.productCounter}>
       {customNumber ? null : (
@@ -75,7 +81,7 @@ export const ProductCounter = ({
         >
           -
         </button>
-        <div className={style.count}>
+        <div className={style.count} style={sountStyle}>
           {(productInfo.status === "draft" || productInfo.status === "conteiner")
             ? `${productCount} шт.`
             : productInfo.status === "weight"
