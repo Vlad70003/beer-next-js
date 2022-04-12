@@ -13,7 +13,7 @@ export const PurchaseSuccess = () => {
       <main className={style.main}>
         <div className={style.row}>
           <div className={style.main__title}>
-            Как тольок ваш заказ будет готов, вы получите СМС-уведомление на
+            Как только ваш заказ будет готов, вы получите СМС-уведомление на
             мобильный телефон
           </div>
         </div>
