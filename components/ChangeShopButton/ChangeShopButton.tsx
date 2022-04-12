@@ -4,7 +4,6 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useActions } from "../../hooks/useActions";
 import { ChangeChopModal } from "../Modal/ChangeChopModal/ChangeChopModal";
 import { MapPin } from "../../ui/MapPin/MapPin";
-import { ModalStaticWrapper } from "../ModalStatic/ModalStaticWrapper";
 import { ModalWrapper } from "../Modal/ModalWrapper";
 import { Button } from "../../ui/Button/Button";
 
@@ -55,9 +54,6 @@ export const ChangeShopButton = ({
 
       {
         modal.typeModal === "change-shop" && (
-          // <ModalStaticWrapper top="100px" left="50%" transform="translateX(-50%)" >
-          //   <ChangeChopModal />
-          // </ModalStaticWrapper>
           <ModalWrapper
             padding="32px 54px"
             borderRadius="20px"
@@ -72,8 +68,6 @@ export const ChangeShopButton = ({
             <ChangeChopModal />
           </ModalWrapper>
         )
-
-        // </ModalWrapper>
       }
     </>
   );

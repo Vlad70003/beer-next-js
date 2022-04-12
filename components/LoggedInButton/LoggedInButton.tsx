@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import style from "./LoggedInButton.module.scss";
 
 import { Button } from "../../ui/Button/Button";
 import { User } from "../../ui/User/User";
-import { ModalWrapper } from "../Modal/ModalWrapper";
 import { ModalStaticWrapper } from "../ModalStatic/ModalStaticWrapper";
 import { Auntificate } from "../Modal/Auntificate/Auntificate";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useActions } from "../../hooks/useActions";
-import { Close } from "../../ui/Close/Close";
 import { UserMenu } from "../UserMenu/UserMenu";
 
 export const LoggedInButton = () => {

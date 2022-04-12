@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import style from "./TimeChange.module.scss";
 
-import TimeChangeMenu from "../TimeChangeMenu/TimeChangeMenu";
-
 import clock from "../../assests/img/clock.svg";
 
 interface TimeChangeState {
@@ -22,9 +20,6 @@ export default function TimeChange({margin, setTimeOrder, timeChangeIsOpen, hand
   return (
     <div className={style.timeChange} style={TimeChangeStyle} >
         <Image src={clock} width={20} height={20} alt="clock" className="timeChange__img" />
-        {/* <div className="timeChange__menu" style={timeChangeIsOpen ? {display: "block"} : {display: "none"}}>
-            <TimeChangeMenu setIsOpen={handleOpen} setTimeOrder={setTimeOrder} />
-        </div> */}
     </div>
   )
 }

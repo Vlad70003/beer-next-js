@@ -4,7 +4,7 @@ import style from "./ProductCounter.module.scss";
 import { useActions } from "../../hooks/useActions";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 
-import { handleProductCounter } from "./script";
+import { handleProductCounter } from "./script/handleProductCounter";
 
 interface ProductCounterProps {
   customNumber?: boolean;
@@ -57,7 +57,7 @@ export const ProductCounter = ({
           productInfo.price
         )} ₽`}</div>
       )}
-      <div className={style.row}>
+      <div className={customNumber ? style.onlyButton : style.row}>
         <button
           className={style.button}
           onClick={() => {

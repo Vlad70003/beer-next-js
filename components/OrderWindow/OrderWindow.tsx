@@ -8,12 +8,6 @@ import OrderTotal from "./OrderTotal/OrderTotal";
 
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 
-const data = [
-  { name: "Пиво Jaws «Атомная Прачечная»", count: "1 шт", price: "105 ₽" },
-  { name: "Пиво Jaws «Атомная Прачечная»", count: "1 шт", price: "105 ₽" },
-  { name: "Пиво Jaws «Атомная Прачечная»", count: "1 шт", price: "105 ₽" },
-];
-
 export default function OrderWindow() {
 
   const {order} = useTypedSelector(state => state.order);

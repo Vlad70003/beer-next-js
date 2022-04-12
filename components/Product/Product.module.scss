@@ -48,6 +48,10 @@
   &__hooter {
     display: flex;
     justify-content: space-around;
+
+    & > div {
+      flex: 1;
+    }
   }
 
   &__production {

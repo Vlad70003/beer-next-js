@@ -1,15 +1,30 @@
 .cartCounter {
+  display: flex;
+  align-items: center;
+  justify-self: center;
+  margin-left: 20px;
+  border: 1px solid #c5c5c580;
+  padding: 3px 15px;
+  border-radius: 60px;
+  cursor: pointer;
+  position: relative;
+
+  &__counter {
+    font-size: 18px;
+    padding: 0px 15px 0 20px;
+  }
+
+  &__orderIndicator {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #e31e25;
     display: flex;
     align-items: center;
-    justify-self: center;
-    margin-left: 20px;
-    border: 1px solid #C5C5C580;
-    padding: 3px 15px;
-    border-radius: 60px;
-    cursor: pointer;
-
-    &__counter{
-        font-size: 18px;
-        padding: 0px 15px 0 20px;
-    }
+    justify-content: center;
+    top: 0;
+    right: 0;
+    transform: translateX(20%) translateY(-40%);
+  }
 }
