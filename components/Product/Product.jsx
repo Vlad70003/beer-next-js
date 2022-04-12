@@ -134,7 +134,8 @@ export const Product = ({ product }) => {
                     currentShop === "Выберите магазин"
                       ? openModalAction("change-shop")
                       : addOrderAction({ product, step }) &&
-                      addOrderAction({ product: container, step });
+                        status === "draft" &&
+                        addOrderAction({ product: container, step });
                   }}
                 />
               </Info>
