@@ -51,6 +51,7 @@ export const OrderingPrew = () => {
               padding="12px 0"
               margin="0 5%"
               width="90%"
+              hoverClassColor="orderBtnHover"
             />
           </a>
         </Link>

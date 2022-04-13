@@ -1,20 +1,48 @@
 @font-face {
-    font-family: "PT-SANS-BOLD";
-    src: url("../../assests/fonts/pt-sans/PTSans-Bold.ttf");
-  }
-
-.button{
-    border: none;
-    background: none;
-    outline: none;
+  font-family: "PT-SANS-BOLD";
+  src: url("../../assests/fonts/pt-sans/PTSans-Bold.ttf");
 }
 
-.blueHoverClassColor{
-    &:hover {
-        color: rgb(61, 105, 183) !important;
-    }
+.button {
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.blueHoverClassColor {
+  &:hover {
+    color: rgb(61, 105, 183) !important;
+  }
+}
+
+.filterBtn {
+  border: 1px solid #3d69b7 !important;
+}
+
+.productBtnHover,
+.loggedInBtnHover,
+.orderBtnHover {
+  &:hover {
+    transition: all 0.2 linear;
+    background-color: #3d69b7 !important;
+  }
+
+  &:active {
+    background-color: #1b4e7d !important;
+  }
+}
+
+.registrationBtnHover, .orderBackBtnHover {
+  &:hover {
+    transition: all 0.2 linear;
+    background-color: #20598E14 !important;
+  }
+
+  &:active {
+    background-color: #20598E29 !important;
+  }
 }
 
 .bold {
-    font-family: "PT-SANS-BOLD";
+  font-family: "PT-SANS-BOLD";
 }

@@ -90,6 +90,7 @@ export const LoggedIn = ({ setLoggedIn }: LoggedInProps) => {
               width="100%"
               margin="0 16px 0 0"
               onClick={() => setLoggedIn(false)}
+              hoverClassColor="registrationBtnHover"
             />
             <Button
               title="Войти"
@@ -100,6 +101,7 @@ export const LoggedIn = ({ setLoggedIn }: LoggedInProps) => {
               background="#20598E"
               width="100%"
               onClick={(event: Event) => handleForm(event)}
+              hoverClassColor="loggedInBtnHover"
             />
           </div>
         </div>

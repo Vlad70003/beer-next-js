@@ -10,10 +10,10 @@ import { ReCheckBox } from "../../../../ui/Re-checkbox/ReCheckBox";
 import { Button } from "../../../../ui/Button/Button";
 
 interface RegistrationProps {
-    setLoggedIn: (value:boolean) => void
+  setLoggedIn: (value: boolean) => void;
 }
 
-export const Registration = ({setLoggedIn}:RegistrationProps) => {
+export const Registration = ({ setLoggedIn }: RegistrationProps) => {
   return (
     <div className={style.registration}>
       <form className={style.form}>
@@ -97,6 +97,7 @@ export const Registration = ({setLoggedIn}:RegistrationProps) => {
               width="100%"
               margin="0 16px 0 0"
               onClick={() => setLoggedIn(true)}
+              hoverClassColor="registrationBtnHover"
             />
             <Button
               title="Зарегистрироваться"
@@ -106,6 +107,7 @@ export const Registration = ({setLoggedIn}:RegistrationProps) => {
               padding="12px 27px"
               background="#20598E"
               width="100%"
+              hoverClassColor="loggedInBtnHover"
             />
           </div>
         </div>

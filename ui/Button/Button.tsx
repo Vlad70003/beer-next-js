@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { buttonState } from "../../types/button";
 
@@ -25,9 +25,10 @@ export const Button = ({
   fontWeightClass,
   hoverClassColor,
   ref,
-  disabled
+  disabled,
+  selectClass,
+  selected,
 }: buttonState) => {
-
   const styleButton = {
     color: disabled ? "white" : color || "black",
     padding: padding || "none",
@@ -41,19 +42,38 @@ export const Button = ({
     fontSize: fontSize || "16px",
     width: width || "auto",
     minWidth: minWidth,
-    transition: "all .4s"
+    transition: "all .4s",
   };
 
-  const preventDefault = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const [selectedBtn, setSelectedBtn] = useState(false);
+
+  const preventDefault = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     e.preventDefault();
-  }
+  };
+
+  const handleSelectedBtn = () => {
+    setSelectedBtn(() => !selectedBtn);
+  };
 
   return (
     <button
-      className={classNaneBtn({fontWeightClass, hoverClassColor})}
+      className={classNaneBtn({
+        fontWeightClass,
+        hoverClassColor,
+        selectedBtn,
+        selectClass,
+      })}
       type={type}
       style={styleButton}
-      onClick={disabled ? (e) => preventDefault(e) : onClick}
+      onClick={
+        disabled
+          ? (e) => preventDefault(e)
+          : selected
+          ? handleSelectedBtn
+          : onClick
+      }
       id="button"
       ref={ref}
     >

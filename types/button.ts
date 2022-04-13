@@ -20,4 +20,6 @@ export interface buttonState {
     hoverClassColor?: string,
     ref?: any
     disabled?: boolean;
+    selected?: boolean;
+    selectClass?: string;
 }

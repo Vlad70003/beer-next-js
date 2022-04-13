@@ -284,6 +284,7 @@ function Ordering() {
                       padding="12px 70px"
                       borderRadius="60px"
                       margin="32px 0 100px 0"
+                      hoverClassColor="orderBackBtnHover"
                     />
                   </a>
                 </Link>
@@ -301,6 +302,7 @@ function Ordering() {
                   padding="12px"
                   width="100%"
                   onClick={() => openModalAction("purchase-success")}
+                  hoverClassColor="orderBtnHover"
                 />
               </section>
             </main>

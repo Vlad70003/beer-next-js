@@ -140,6 +140,7 @@ export const Product = ({ product }) => {
                   padding="11px 24px"
                   borderRadius="60px"
                   onClick={() => handleClick()}
+                  hoverClassColor="productBtnHover"
                 />
               </Info>
             )}
