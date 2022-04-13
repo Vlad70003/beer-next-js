@@ -1,11 +1,11 @@
 import { useState } from "react";
 import type { NextPage } from "next";
+import { Element } from "react-scroll";
 
 import { HeaderWrapper } from "../components/wrappers/HeaderWrapper/HeaderWrapper";
 import { BaseWrapperMargin } from "../components/wrappers/BaseWrapperMargin/BaseWrapperMargin";
 import { Catalog } from "../components/Catalog/Catalog";
 import { baseBackground } from "../assests/variable/variable";
-import { useTypedSelector } from "../hooks/useTypedSelector";
 
 import { styleRouterState } from "../types/router";
 
@@ -44,42 +44,43 @@ const Home: NextPage = () => {
         footer
       >
         <BaseWrapperMargin flex="auto">
-          {shopPage === "beer" && (
+          <Element name="beer" className="beer">
             <Catalog
               title="Пиво и сидры"
               sortButton={BeerAndCider}
               product="beer"
             />
-          )}
-          {shopPage === "beverages" && (
+          </Element>
+          <Element name="beverages" className="beverages">
             <Catalog
               title="Напитки"
               sortButton={Beverages}
               product="beverages"
             />
-          )}
-          {shopPage === "bottled" && (
+          </Element>
+          <Element name="bottled" className="bottled">
             <Catalog
               title="Бутылочное"
               sortButton={BeerAndCider}
               product="bottled"
             />
-          )}
-          {shopPage === "chease" && (
+          </Element>
+          <Element name="chease" className="chease">
             <Catalog title="Сыры" sortButton={Chease} product="chease" />
-          )}
-          {shopPage === "fishes" && (
+          </Element>
+          <Element name="fishes" className="fishes">
             <Catalog title="Рыбы" sortButton={Fish} product="fishes" />
-          )}
-          {shopPage === "meat" && (
+          </Element>
+          <Element name="meat" className="meat">
             <Catalog title="Мясо" sortButton={Meat} product="meat" />
-          )}
-          {shopPage === "other" && (
-            <Catalog title="Прочее" sortButton={Other} product="other" />
-          )}
-          {shopPage === "snacks" && (
+          </Element>
+          <Element name="snacks" className="snacks">
             <Catalog title="Снеки" sortButton={Snacks} product="snacks" />
-          )}
+          </Element>
+          <Element name="other" className="other">
+            <Catalog title="Прочее" sortButton={Other} product="other" />
+          </Element>
+          
         </BaseWrapperMargin>
       </HeaderWrapper>
     </>

@@ -30,12 +30,7 @@
 }
 
 .miniLogo{
-  &__open{
-    display: block;
-  }
-  &__close{
-    display: none;
-  }
+  cursor: pointer;
 }
 
 @keyframes slideinOpen {

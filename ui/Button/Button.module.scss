@@ -35,11 +35,11 @@
 .registrationBtnHover, .orderBackBtnHover {
   &:hover {
     transition: all 0.2 linear;
-    background-color: #20598E14 !important;
+    background: #20598E14 !important;
   }
 
   &:active {
-    background-color: #20598E29 !important;
+    background: #20598E29 !important;
   }
 }
 
