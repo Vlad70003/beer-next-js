@@ -34,4 +34,12 @@
   justify-content: center;
   color: white;
   cursor: pointer;
+
+  &:hover {
+    background-color: #3D69B7;
+  }
+
+  &:active {
+    background-color: #1B4E7D;
+  }
 }
