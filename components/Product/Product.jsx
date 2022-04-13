@@ -60,6 +60,22 @@ export const Product = ({ product }) => {
     setStep(value);
   };
 
+  const handleModal = (
+    event,
+    openModalAction
+  ) => {
+    const elementId = event.target;
+  
+    if (
+      elementId.closest(".chooseVolume") ||
+      elementId.closest(".product__button-wrapper")
+    ) {
+      return;
+    }
+  
+    openModalAction("open-product", id);
+  };
+
   const handleClick = () => {
     return currentShop === "Выберите магазин"
       ? openModalAction("change-shop")
@@ -153,7 +169,7 @@ export const Product = ({ product }) => {
         )}
       </ul>
 
-      {modal.typeModal === "open-product" && (
+      {modal.typeModal === "open-product" && modal.id === id && (
         <ModalWrapper
           padding="48px"
           borderRadius="20px"

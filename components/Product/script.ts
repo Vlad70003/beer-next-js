@@ -32,18 +32,4 @@ export const handleProductionPrice = ({
   return productPrice * step;
 };
 
-export const handleModal = (
-  event: React.SyntheticEvent,
-  openModalAction: any
-) => {
-  const elementId = event.target as HTMLUListElement;
 
-  if (
-    elementId.closest(".chooseVolume") ||
-    elementId.closest(".product__button-wrapper")
-  ) {
-    return;
-  }
-
-  openModalAction("open-product");
-};

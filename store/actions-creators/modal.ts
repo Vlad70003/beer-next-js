@@ -3,9 +3,9 @@ import { Dispatch } from "redux";
 
 import { OPEN_MODAL, CLOSE_MODAL } from "../reducers/modal";
 
-export const openModalAction = (value:string) => {
+export const openModalAction = (value:string, id: number) => {
     return async (dispatch: Dispatch<actionState>) => {
-      dispatch({ type: OPEN_MODAL, payload: value });
+      dispatch({ type: OPEN_MODAL, payload: {value, id} });
     };
   };
 
