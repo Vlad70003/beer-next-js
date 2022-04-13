@@ -5,6 +5,6 @@ export interface modalAction {
   
   export interface modalState {
     modalOpen: boolean;
-    id: number | null;
+    id?: number | null;
     typeModal: string | null;
   }
