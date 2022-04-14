@@ -46,7 +46,6 @@ export const ApplyForJob = () => {
                 </div>
                 <InputRadio
                   initialState="male-applyForJob"
-                  flex="2"
                   className="radioGroupApplyForJob"
                 >
                   <label

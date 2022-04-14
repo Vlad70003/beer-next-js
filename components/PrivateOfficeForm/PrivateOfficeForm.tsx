@@ -106,7 +106,7 @@ export const PrivateOfficeForm = () => {
           >
             <label
               htmlFor="male-privateOfice"
-              className={`${style.flex} ${style.alighnItemsCenter}`}
+              className={`${style.flex} ${style.alighnItemsCenter} ${style.malePrivateOfice}`}
             >
               <Radio id="male-privateOfice" value="male-privateOfice" />
               <pre> Мужской</pre>
