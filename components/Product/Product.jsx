@@ -13,11 +13,9 @@ import { OpenProduct } from "../Modal/OpenProduct/OpenProduct";
 import { ProductCounter } from "../../ui/ProductCounter/ProductCounter";
 
 import { checkedProductInOrder } from "../../script/order/checkedProductInOrder";
-import {
-  handleProductionCount,
-  handleProductionPrice,
-  handleModal,
-} from "./script";
+import { handleProductionCount } from "../../script/calculate/handleProductionCount";
+
+import { handleProductionPrice } from "../../script/calculate/handleProductionPrice";
 
 import { container } from "./productExample";
 

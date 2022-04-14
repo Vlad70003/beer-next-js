@@ -5,7 +5,7 @@ import Image from "next/image";
 import { BaseWrapperMargin } from "../wrappers/BaseWrapperMargin/BaseWrapperMargin";
 import { Social } from "../Link/Social/Social";
 
-import logotype from "../../assests/img/logotype.svg";
+import logotype from "../../assests/img/logotype.png";
 
 export const Footer = () => {
   return (
@@ -27,7 +27,7 @@ export const Footer = () => {
           alignItems="center"
         >
           <div className={style.footer__bottomPart__leftSide}>
-            <Image src={logotype} alt="logotype" className={style.footer__img} />
+            <Image src={logotype} alt="logotype" className={style.footer__img} width={140} height={30} />
           </div>
           <div className={style.footer__bottomPart__middleSide}>
             <div className={style.footer__bottomPart__middleSide__text}>

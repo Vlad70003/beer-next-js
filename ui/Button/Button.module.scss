@@ -9,6 +9,32 @@
   outline: none;
 }
 
+.priviteOfficeBorder {
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    animation-duration: 0.2s;
+    animation-name: priviteOfficeBorderAnimation;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes priviteOfficeBorderAnimation {
+  from {
+  }
+
+  to {
+    width: 100%;
+    height: 4px;
+    bottom: -8px;
+    left: 0px;
+    background-color: #3d69b7;
+    border-radius: 2px;
+  }
+}
+
 .blueHoverClassColor {
   &:hover {
     color: rgb(61, 105, 183) !important;
@@ -32,14 +58,15 @@
   }
 }
 
-.registrationBtnHover, .orderBackBtnHover {
+.registrationBtnHover,
+.orderBackBtnHover {
   &:hover {
     transition: all 0.2 linear;
     background: #20598E14 !important;
   }
 
   &:active {
-    background: #20598E29 !important;
+    background: #20598e29 !important;
   }
 }
 

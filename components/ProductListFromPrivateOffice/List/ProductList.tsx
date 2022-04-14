@@ -72,6 +72,27 @@ export const ProductList = ({ item }: ProductListState) => {
                   style.productListFromPrivateOffice__headerLeftSide__item__label
                 }
               >
+                <pre>Адрес: </pre>
+              </label>
+              <div
+                className={
+                  style.productListFromPrivateOffice__headerLeftSide__item__value
+                }
+              >
+                {item.shopAddress}
+              </div>
+            </li>
+            <li
+              className={
+                style.productListFromPrivateOffice__headerLeftSide__item
+              }
+            >
+              <label
+                htmlFor=""
+                className={
+                  style.productListFromPrivateOffice__headerLeftSide__item__label
+                }
+              >
                 <pre>Статус: </pre>
               </label>
               <div
@@ -112,6 +133,7 @@ export const ProductList = ({ item }: ProductListState) => {
                   borderRadius="50px"
                   padding="4px 10px"
                   width="100%"
+                  hoverClassColor="registrationBtnHover"
                   onClick={() => openModalAction("rate-the-devilery")}
                 />
               ) : (

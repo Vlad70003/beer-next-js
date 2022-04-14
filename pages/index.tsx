@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import { Element } from "react-scroll";
 
@@ -19,17 +19,61 @@ import {
   Snacks,
 } from "../data/sortButton";
 
+import { productExample } from "../components/Product/productExample";
+
+interface productState {
+  beer?: any;
+  beverages?: any;
+  fish?: any;
+  meat?: any;
+  chease?: any;
+  snack?: any;
+  other?: any;
+  stock?: any;
+  bottled?: any;
+}
+
 const Home: NextPage = () => {
   const [shopPage, setShopPage] = useState("beer");
+  const [product, setProduct] = useState<productState>({});
+
+  useEffect(() => {
+    const sortProduct: productState = { beer: [], beverages: [], bottled: [], fish: [], meat: [], chease: [], snack: [], other: [], stock: []};
+
+    productExample.forEach((item) => {
+
+      item.stock && sortProduct.stock.push(item);
+
+      if (item.kind === "beer") {
+        sortProduct.beer.push(item);
+      } else if (item.kind === "beverages") {
+        sortProduct.beverages.push(item);
+      } else if (item.kind === "bottled") {
+        sortProduct.bottled.push(item);
+      } else if (item.kind === "fish") {
+        sortProduct.fish.push(item);
+      } else if (item.kind === "meat") {
+        sortProduct.meat.push(item);
+      } else if (item.kind === "chease") {
+        sortProduct.chease.push(item);
+      } else if (item.kind === "snack") {
+        sortProduct.snack.push(item);
+      } else if (item.kind === "other") {
+        sortProduct.other.push(item);
+      }
+    });
+
+    setProduct(sortProduct);
+  }, [productExample]);
+
+  const handlePage = (value: string) => {
+    setShopPage(value);
+  };
 
   const styleHome: styleRouterState = {
     width: "100%",
     minHeight: "100vh",
     background: baseBackground,
-  };
-
-  const handlePage = (value: string) => {
-    setShopPage(value);
   };
 
   return (
@@ -48,39 +92,57 @@ const Home: NextPage = () => {
             <Catalog
               title="Пиво и сидры"
               sortButton={BeerAndCider}
-              product="beer"
+              product={product?.beer}
             />
           </Element>
           <Element name="beverages" className="beverages">
             <Catalog
               title="Напитки"
               sortButton={Beverages}
-              product="beverages"
+              product={product?.beverages}
             />
           </Element>
           <Element name="bottled" className="bottled">
             <Catalog
               title="Бутылочное"
               sortButton={BeerAndCider}
-              product="bottled"
+              product={product?.bottled}
             />
           </Element>
           <Element name="chease" className="chease">
-            <Catalog title="Сыры" sortButton={Chease} product="chease" />
+            <Catalog
+              title="Сыры"
+              sortButton={Chease}
+              product={product?.chease}
+            />
           </Element>
           <Element name="fishes" className="fishes">
-            <Catalog title="Рыбы" sortButton={Fish} product="fishes" />
+            <Catalog title="Рыба" sortButton={Fish} product={product?.fish} />
           </Element>
           <Element name="meat" className="meat">
-            <Catalog title="Мясо" sortButton={Meat} product="meat" />
+            <Catalog title="Мясо" sortButton={Meat} product={product?.meat} />
           </Element>
           <Element name="snacks" className="snacks">
-            <Catalog title="Снеки" sortButton={Snacks} product="snacks" />
+            <Catalog
+              title="Снеки"
+              sortButton={Snacks}
+              product={product?.snack}
+            />
           </Element>
           <Element name="other" className="other">
-            <Catalog title="Прочее" sortButton={Other} product="other" />
+            <Catalog
+              title="Прочее"
+              sortButton={Other}
+              product={product?.other}
+            />
           </Element>
-          
+          <Element name="stock" className="stock">
+            <Catalog
+              title="Акции"
+              sortButton={Other}
+              product={product?.stock}
+            />
+          </Element>
         </BaseWrapperMargin>
       </HeaderWrapper>
     </>

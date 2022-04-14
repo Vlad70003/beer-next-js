@@ -4,6 +4,10 @@
   align-items: center;
   flex: 0 0 auto;
 
+  &__img{
+    opacity: 50%;
+  }
+
   &__topPart {
     &__text {
       padding-bottom: 15px;

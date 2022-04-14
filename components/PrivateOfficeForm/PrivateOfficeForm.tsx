@@ -31,11 +31,11 @@ export const PrivateOfficeForm = () => {
             border="1px solid #BFBFBF"
             borderRadius="92px"
             background="white"
-            padding="9px 24px"
+            padding="8px 24px"
             position="relative"
             className="eddit"
           >
-            <Input width="100%" />
+            <Input width="230px" />
           </BorderWrapper>
         </div>
         <div className={style.privateOfficeForm__row}>
@@ -59,11 +59,11 @@ export const PrivateOfficeForm = () => {
             border="1px solid #BFBFBF"
             borderRadius="92px"
             background="white"
-            padding="9px 24px"
+            padding="8px 24px"
             position="relative"
             className="eddit"
           >
-            <Input width="100%" />
+            <Input width="230px" />
           </BorderWrapper>
         </div>
         <div className={style.privateOfficeForm__row}>
@@ -74,12 +74,12 @@ export const PrivateOfficeForm = () => {
             border="1px solid #BFBFBF"
             borderRadius="92px"
             background="white"
-            padding="9px 24px"
+            padding="8px 24px"
             position="relative"
           >
             <InputMaskLib
               mask={"99/99/9999"}
-              width="100%"
+              width="230px"
               placeholder="ДД/ММ/ГГГГ"
             />
             <Info
@@ -102,7 +102,6 @@ export const PrivateOfficeForm = () => {
           </label>
           <InputRadio
             initialState="male-privateOfice"
-            flex="2"
             className="radioGroup"
           >
             <label

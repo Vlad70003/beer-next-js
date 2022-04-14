@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "PTSans-Bold";
+  src: url("../../assests/fonts/pt-sans/PTSans-Bold.ttf");
+}
+
 .product {
   background-color: white;
   padding: 24px 20px;
@@ -21,8 +26,9 @@
 
   &__title {
     color: #434242;
-    font-size: 18px;
+    font-size: 17px;
     padding-bottom: 8px;
+    font-family: "PTSans-Bold";
   }
 
   &__grade {

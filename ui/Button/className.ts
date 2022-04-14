@@ -5,6 +5,7 @@ interface classNaneBtnInterface {
   hoverClassColor: string | undefined;
   selectedBtn: boolean;
   selectClass?: string | undefined;
+  privateOffice?: string | null;
 }
 
 export const classNaneBtn = ({
@@ -12,6 +13,7 @@ export const classNaneBtn = ({
   hoverClassColor,
   selectedBtn,
   selectClass,
+  privateOffice
 }: classNaneBtnInterface) => {
   let className = `${styles.button}`;
 
@@ -26,6 +28,11 @@ export const classNaneBtn = ({
   if (selectedBtn && selectClass) {
     className += ` ${styles[selectClass]}`;
   }
+
+  if (privateOffice) {
+    className += ` ${styles[privateOffice]}`;
+  }
+
 
   return className;
 };

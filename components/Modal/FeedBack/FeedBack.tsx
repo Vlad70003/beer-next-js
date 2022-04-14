@@ -23,7 +23,7 @@ export const FeedBack = () => {
               border="1px solid #BFBFBF"
               borderRadius="92px"
               background="white"
-              padding="9px 24px"
+              padding="8px 24px"
               position="relative"
               className={style.absolute}
             >
@@ -41,7 +41,7 @@ export const FeedBack = () => {
               border="1px solid #BFBFBF"
               borderRadius="92px"
               background="white"
-              padding="9px 24px"
+              padding="8px 24px"
               position="relative"
             >
               <InputMaskLib
@@ -62,7 +62,7 @@ export const FeedBack = () => {
               border="1px solid #BFBFBF"
               borderRadius="92px"
               background="white"
-              padding="9px 24px"
+              padding="8px 24px"
               position="relative"
               className={style.absolute}
             >
@@ -78,7 +78,7 @@ export const FeedBack = () => {
               border="1px solid #BFBFBF"
               borderRadius="15px"
               background="white"
-              padding="9px 24px"
+              padding="8px 24px"
               position="relative"
               className={style.absolute}
             >

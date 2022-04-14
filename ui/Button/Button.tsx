@@ -28,6 +28,7 @@ export const Button = ({
   disabled,
   selectClass,
   selected,
+  privateOffice,
 }: buttonState) => {
   const styleButton = {
     color: disabled ? "white" : color || "black",
@@ -64,6 +65,7 @@ export const Button = ({
         hoverClassColor,
         selectedBtn,
         selectClass,
+        privateOffice
       })}
       type={type}
       style={styleButton}

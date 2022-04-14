@@ -22,4 +22,5 @@ export interface buttonState {
     disabled?: boolean;
     selected?: boolean;
     selectClass?: string;
+    privateOffice?: string | null;
 }

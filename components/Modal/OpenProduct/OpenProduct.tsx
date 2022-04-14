@@ -6,6 +6,9 @@ import { checkedProductInOrder } from "../../../script/order/checkedProductInOrd
 
 import { container } from "../../Product/productExample";
 
+import { handleProductionPrice } from "../../../script/calculate/handleProductionPrice";
+import { handleProductionCount } from "../../../script/calculate/handleProductionCount";
+
 import { ChooseVolume } from "../../../ui/ChooseVolume/ChooseVolume";
 import { useActions } from "../../../hooks/useActions";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
@@ -126,8 +129,8 @@ export const OpenProduct = ({ product }: OpenProductProps) => {
         </main>
         <footer className={style.footer}>
           <div className={style.footer__column}>
-            <div className={style.footer__row}>{`${productPrice} ₽`}</div>
-            <div className={style.footer__row}>{productCount}</div>
+            <div className={style.footer__row}>{`${handleProductionPrice({ productPrice, step })} Р`}</div>
+            <div className={style.footer__row}>{handleProductionCount({ productCount, status, step })}</div>
           </div>
           <div className={style.footer__column}>
             {checkedAndNumberProductInOrder?.productIsOrder ? (

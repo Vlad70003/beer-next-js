@@ -102,10 +102,10 @@ const PrivateOffice = () => {
                   <Button
                     title="На сайте"
                     onClick={() => handleShopingPage("onTheSite")}
-                    borderBottom={
+                    privateOffice={
                       shoppingMenuPage === "onTheSite"
-                        ? "4px solid #3D69B7"
-                        : "4px solid transparent"
+                        ? "priviteOfficeBorder"
+                        : null
                     }
                     color={
                       shoppingMenuPage === "onTheSite" ? "#3D69B7" : "#757575"
@@ -116,10 +116,10 @@ const PrivateOffice = () => {
                   <Button
                     title="В магазине"
                     onClick={() => handleShopingPage("inTheShop")}
-                    borderBottom={
+                    privateOffice={
                       shoppingMenuPage === "inTheShop"
-                        ? "4px solid #3D69B7"
-                        : "4px solid transparent"
+                        ? "priviteOfficeBorder"
+                        : null
                     }
                     color={
                       shoppingMenuPage === "inTheShop" ? "#3D69B7" : "#757575"

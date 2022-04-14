@@ -24,7 +24,7 @@ export const Registration = ({ setLoggedIn }: RegistrationProps) => {
               border="1px solid #BFBFBF"
               borderRadius="92px"
               background="white"
-              padding="9px 24px"
+              padding="8px 24px"
               position="relative"
             >
               <InputMaskLib
@@ -42,7 +42,7 @@ export const Registration = ({ setLoggedIn }: RegistrationProps) => {
               border="1px solid #BFBFBF"
               borderRadius="92px"
               background="white"
-              padding="9px 24px"
+              padding="8px 24px"
               position="relative"
               className={style.absolute}
             >
@@ -57,7 +57,7 @@ export const Registration = ({ setLoggedIn }: RegistrationProps) => {
               border="1px solid #BFBFBF"
               borderRadius="92px"
               background="white"
-              padding="9px 24px"
+              padding="8px 24px"
               position="relative"
               className={style.absolute}
             >
@@ -75,7 +75,7 @@ export const Registration = ({ setLoggedIn }: RegistrationProps) => {
               border="1px solid #BFBFBF"
               borderRadius="92px"
               background="white"
-              padding="9px 24px"
+              padding="8px 24px"
               position="relative"
               className={style.absolute}
             >

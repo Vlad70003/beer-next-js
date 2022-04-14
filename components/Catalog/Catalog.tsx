@@ -6,50 +6,8 @@ import { baseBackground } from "../../assests/variable/variable";
 import { Button } from "../../ui/Button/Button";
 import { Product } from "../Product/Product";
 
-import {
-  BeerExample,
-  meatExaple,
-  beveragesExaple,
-  fishExaple,
-  cheaseExaple,
-  snackExaple,
-  otherExaple,
-} from "../Product/productExample";
 
 export function Catalog({ title, sortButton, product }: catalogState) {
-
-  const [currentProduct, setCurrentProduct] = useState<any>(null);
-
-  useEffect(() => {
-    switch (product) {
-      case "beer":
-        setCurrentProduct(BeerExample);
-        break;
-      case "bottled":
-        setCurrentProduct(BeerExample);
-        break;
-      case "beverages":
-        setCurrentProduct(beveragesExaple);
-        break;
-      case "fishes":
-        setCurrentProduct(fishExaple);
-        break;
-      case "meat":
-        setCurrentProduct(meatExaple);
-        break;
-      case "chease":
-        setCurrentProduct(cheaseExaple);
-        break;
-      case "snacks":
-        setCurrentProduct(snackExaple);
-        break;
-      case "other":
-        setCurrentProduct(otherExaple);
-        break;
-      default:
-        return;
-    }
-  }, [product]);
 
   return (<section className={style.catalog}>
       <h2 className={style.catalog__title}>{title}</h2>
@@ -76,7 +34,7 @@ export function Catalog({ title, sortButton, product }: catalogState) {
         </ul>
       </nav>
       <ul className={style.catalog__list}>
-        {currentProduct?.map((item: {}, ind: number) => {
+        {product?.map((item: {}, ind: number) => {
             return (
               <li className={style.catalog__item} key={ind}>
                 <Product product={item} />

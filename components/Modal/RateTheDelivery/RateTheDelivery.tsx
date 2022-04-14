@@ -23,7 +23,7 @@ export const RateTheDelivery = () => {
           border="1px solid #BFBFBF"
           borderRadius="15px"
           background="white"
-          padding="9px 24px"
+          padding="8px 24px"
           position="relative"
           className={style.absolute}
         >
@@ -41,7 +41,7 @@ export const RateTheDelivery = () => {
           display="flex"
           justifyContent="center"
         >
-          <FileButton title="Прикрепить резюме" postTitle="Размер файла не более 5MB" />
+          <FileButton title="Прикрепить файл" postTitle="Размер файла не более 5MB" />
         </BorderWrapper>
       </div>
       < Button title="Отправить" background="#20598E" color="white" padding="13px 0" width="100%" borderRadius="60px" />

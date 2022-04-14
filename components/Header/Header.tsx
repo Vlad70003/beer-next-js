@@ -44,7 +44,7 @@ export const Header: React.FC = () => {
           <BorderWrapper
             display="flex"
             border="1px solid #BFBFBF"
-            padding="9px 16px"
+            padding="8px 16px"
             background="white"
             borderRadius="30px"
           >

@@ -76,12 +76,12 @@ function Ordering() {
                     htmlFor=""
                     className={`${style.ordering__label} ${style.ordering__marginRight24}`}
                   >
-                    <pre>Имя получателя: </pre>
+                    <pre>Имя получателя:     </pre>
                     <BorderWrapper
                       border="1px solid #BFBFBF"
                       borderRadius="92px"
                       background="white"
-                      padding="9px 24px"
+                      padding="8px 24px"
                       maxWidth="150px"
                       position="relative"
                       minWidth="170px"
@@ -94,12 +94,12 @@ function Ordering() {
                     className={style.ordering__label}
                     onClick={() => openModalAction("time-picker")}
                   >
-                    <pre>Время: </pre>
+                    <pre>Время:     </pre>
                     <BorderWrapper
                       border="1px solid #BFBFBF"
                       borderRadius="92px"
                       background="white"
-                      padding="9px 24px"
+                      padding="8px 24px"
                       position="relative"
                       display="flex"
                     >
@@ -118,13 +118,13 @@ function Ordering() {
                 >
                   <label className={style.ordering__label}>
                     <ReCheckBox padding="0 8px 0 0" />
-                    <pre>Использовать бонусы: </pre>
+                    <pre>Использовать бонусы:     </pre>
                   </label>
                   <BorderWrapper
                     border="1px solid #BFBFBF"
                     borderRadius="92px"
                     background="white"
-                    padding="9px 24px"
+                    padding="8px 24px"
                     position="relative"
                     minWidth="70px"
                     maxWidth="100px"
@@ -136,13 +136,13 @@ function Ordering() {
                   className={`${style.ordering__flexWrapper} ${style.ordering__padding24}`}
                 >
                   <label className={style.ordering__label}>
-                    <pre>Комментарий к заказу: </pre>
+                    <pre>Комментарий к заказу:     </pre>
                   </label>
                   <BorderWrapper
                     border="1px solid #BFBFBF"
                     borderRadius="92px"
                     background="white"
-                    padding="9px 24px"
+                    padding="8px 24px"
                     position="relative"
                     width="inherit"
                   >
@@ -186,7 +186,7 @@ function Ordering() {
                       border="1px solid #BFBFBF"
                       borderRadius="92px"
                       background="white"
-                      padding="9px 24px"
+                      padding="8px 24px"
                       position="relative"
                       width="100%"
                       flex="1"
@@ -228,7 +228,7 @@ function Ordering() {
                       border="1px solid #BFBFBF"
                       borderRadius="92px"
                       background="white"
-                      padding="9px 24px"
+                      padding="8px 24px"
                       position="relative"
                       width="60%"
                       margin="0 24px 0 0"
@@ -239,7 +239,7 @@ function Ordering() {
                       border="1px solid #BFBFBF"
                       borderRadius="92px"
                       background="white"
-                      padding="9px 24px"
+                      padding="8px 24px"
                       position="relative"
                       width="30%"
                     >

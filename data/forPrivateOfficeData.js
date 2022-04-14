@@ -13,6 +13,7 @@ export const historyOrderInSite = [
     sumPrice: "1500 ₽",
     bonus: "100",
     writtenOff: "50",
+    shopAddress: "Юбилейная, 33",
     productList: [
       {
         productName: "Пиво Jaws «Атомная Прачечная»",
@@ -40,6 +41,7 @@ export const historyOrderInSite = [
     sumPrice: "1500 ₽",
     bonus: "100",
     writtenOff: "50",
+    shopAddress: "Юбилейная, 33",
     productList: [
       {
         productName: "Пиво Jaws «Атомная Прачечная»",
@@ -70,6 +72,7 @@ export const historyOrderInShop = [
     sumPrice: "1540 ₽",
     bonus: "100",
     writtenOff: "50",
+    shopAddress: "Юбилейная, 33",
     productList: [
       {
         productName: "Пиво Jaws «Атомная Прачечная»",
@@ -97,6 +100,7 @@ export const historyOrderInShop = [
     sumPrice: "1500 ₽",
     bonus: "100",
     writtenOff: "50",
+    shopAddress: "Юбилейная, 33",
     productList: [
       {
         productName: "Пиво Jaws «Атомная Прачечная»",

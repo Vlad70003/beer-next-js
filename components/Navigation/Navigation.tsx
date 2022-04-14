@@ -36,7 +36,13 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
         >
           <li>
             <a onClick={() => scroll.scrollToTop()}>
-              <Image src={miniLogo} className={style.miniLogo} alt="mini-logo" height={35} width={35} />
+              <Image
+                src={miniLogo}
+                className={style.miniLogo}
+                alt="mini-logo"
+                height={35}
+                width={35}
+              />
             </a>
           </li>
           <li className={style.navigation__item}>
@@ -169,7 +175,7 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               onClick={() => handlePage("fishes")}
             >
               <Button
-                title="РЫБЫ"
+                title="РЫБА"
                 type="button"
                 fontSize="18px"
                 padding="0 0 8px 0"
@@ -256,6 +262,7 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               spy={true}
               smooth={true}
               duration={500}
+              offset={-100}
               onClick={() => handlePage("other")}
             >
               <Button
@@ -278,24 +285,33 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
             </Link>
           </li>
           <li className={style.navigation__item}>
-            <Button
-              title="АКЦИИ"
-              type="button"
-              fontSize="18px"
-              margin="0 0 0 1.5rem"
-              padding="0 0 8px 0"
-              borderBottom={
-                shopPage &&
-                toggleBorderBottom({
-                  shopPage,
-                  value: "other",
-                })
-              }
-              color="#E31E25"
-              onClick={() => handlePage("other")}
-              fontWeightClass="bold"
-              hoverClassColor="blueHoverClassColor"
-            />
+            <Link
+              activeClass="active"
+              className="stock"
+              to="stock"
+              spy={true}
+              smooth={true}
+              duration={500}
+              offset={-150}
+              onClick={() => handlePage("stock")}
+            >
+              <Button
+                title="АКЦИИ"
+                type="button"
+                fontSize="18px"
+                margin="0 0 0 1.5rem"
+                padding="0 0 8px 0"
+                borderBottom={
+                  shopPage &&
+                  toggleBorderBottom({
+                    shopPage,
+                    value: "stock",
+                  })
+                }
+                color="#E31E25"
+                fontWeightClass="bold"
+              />
+            </Link>
           </li>
         </ul>
       </div>
