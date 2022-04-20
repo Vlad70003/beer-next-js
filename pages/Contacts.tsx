@@ -1,4 +1,3 @@
-import { useState } from "react";
 import style from "../styles/Contacts.module.scss";
 
 import { Contact } from "../components/Contacts/Contact";

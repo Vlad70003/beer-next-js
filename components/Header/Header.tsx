@@ -53,16 +53,21 @@ export const Header: React.FC = () => {
           </BorderWrapper>
         </span>
         <nav className={style.nav}>
-          {/* <Link to="/about-company"> */}
-          <Button
-            title="О компании"
-            type="button"
-            padding="0 24px 0 0"
-            color={toggleColor({ pathName, path: "/about-company" })}
-            fontWeight={toggleFontWidth({ pathName, path: "/about-company" })}
-            hoverClassColor="blueHoverClassColor"
-          />
-          {/* </Link> */}
+          <Link href="/AboutCompany">
+            <a >
+              <Button
+                title="О компании"
+                type="button"
+                padding="0 24px 0 0"
+                color={toggleColor({ pathName, path: "/about-company" })}
+                fontWeight={toggleFontWidth({
+                  pathName,
+                  path: "/about-company",
+                })}
+                hoverClassColor="blueHoverClassColor"
+              />
+            </a>
+          </Link>
 
           <Link href="/Contacts">
             <a>
@@ -77,7 +82,7 @@ export const Header: React.FC = () => {
             </a>
           </Link>
           <Link href="/WorkWithUs">
-            <a >
+            <a>
               <Button
                 title="Работа у нас"
                 type="button"
