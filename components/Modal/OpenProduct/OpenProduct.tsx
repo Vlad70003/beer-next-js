@@ -30,9 +30,11 @@ interface OpenProductProps {
     description?: string;
     id: number;
   };
+  stepInOpenProduct: number;
+  handleStep: (value: number) => void;
 }
 
-export const OpenProduct = ({ product }: OpenProductProps) => {
+export const OpenProduct = ({ product, stepInOpenProduct, handleStep }: OpenProductProps) => {
   const {
     brewery,
     productImg,
@@ -47,7 +49,7 @@ export const OpenProduct = ({ product }: OpenProductProps) => {
     description,
     id,
   } = product;
-
+console.log(stepInOpenProduct)
   const { addOrderAction } = useActions();
   const { openModalAction } = useActions();
   const { currentShop } = useTypedSelector((state) => state.currentShop);
@@ -69,9 +71,9 @@ export const OpenProduct = ({ product }: OpenProductProps) => {
     setCheckedAndNumberProductInOrder({ productIsOrder, numberOrder });
   }, [generalOrder, id, step]);
 
-  const handleStep = (value: number) => {
-    setStep(value);
-  };
+  useEffect(() => {
+    setStep(stepInOpenProduct);
+  }, [stepInOpenProduct])
 
   const handleClick = () => {
     return currentShop === "Выберите магазин"

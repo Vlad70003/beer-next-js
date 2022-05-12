@@ -19,7 +19,7 @@ const AboutCompany = () => {
   return (
     <HeaderWrapper styles={styleHome} header footer>
       <BaseWrapperMargin flex="auto">
-        <AdditionalPageWrapper title="Контакты" mainPadding="26px 0 0 0">
+        <AdditionalPageWrapper title="О компании" mainPadding="26px 0 0 0">
           <AboutUs />
         </AdditionalPageWrapper>
       </BaseWrapperMargin>

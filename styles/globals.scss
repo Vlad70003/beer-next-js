@@ -26,6 +26,14 @@ body {
   font-size: 16px;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 729px) {
+  html,
+  body {
+    font-size: 14px;
+  }
 }
 body {
   overflow-y: auto;
@@ -64,7 +72,6 @@ label {
     &--img {
       opacity: 0.7;
       padding: 10px 0 !important;
-      
     }
   }
 }
@@ -96,8 +103,6 @@ label {
   overflow: visible !important;
 }
 
-
-
 .rc-checkbox-inner {
   width: 16px !important;
   height: 16px !important;
@@ -119,12 +124,12 @@ input::-webkit-inner-spin-button {
 ::-webkit-scrollbar {
   width: 4px; /* ширина для вертикального скролла */
   height: 4px; /* высота для горизонтального скролла */
-  background-color: #E4EAEF;
+  background-color: #e4eaef;
   border-radius: 4px;
 }
 /* ползунок скроллбара */
 ::-webkit-scrollbar-thumb {
-  background-color: #3D84B7;
+  background-color: #3d84b7;
   border-radius: 4px;
   // box-shadow: inset 1px 1px 10px #f3e5c3;
 }

@@ -41,14 +41,17 @@ export const LoggedInButton = () => {
       >
         <div className={style.loggedInButton__wrapper}>
           <div className={style.link}>
-            <Button
-              title={loggedInState ? "Александр" : "Войти"}
-              type="button"
-              fontWeight="700"
-              padding="0 10px 0 0"
-              maxLength={14}
-              fontSize="18px"
-            />
+            <div className={style.loggedInButton__button}>
+              <Button
+                title={loggedInState ? "Александр" : "Войти"}
+                type="button"
+                fontWeight="700"
+                padding="0 10px 0 0"
+                maxLength={14}
+                fontSize="18px"
+              />
+            </div>
+
             <User />
           </div>
           <div

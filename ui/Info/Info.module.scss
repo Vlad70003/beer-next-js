@@ -1,9 +1,9 @@
 @mixin detail {
   position: absolute;
-  width: 315px;
+  width: 17.5rem;
   background: #484848;
   color: #f3f1ed;
-  padding: 24px 30px;
+  padding: 1.3333rem 1.6666rem;
   border-radius: 20px;
   opacity: 0.95;
   z-index: 99;
@@ -50,12 +50,54 @@
     left: 10%;
     bottom: -5px;
     transform: translateY(100%);
+    font-size: 1rem;
 
     &:after {
       @include detail-after();
       left: 10%;
       top: 0px;
       transform: rotateZ(45deg);
+    }
+  }
+}
+
+@media screen and (max-width: 1590px) {
+  .info {
+    &__bottom {
+      left: -90%;
+      &:after {
+        left: 50%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 850px) {
+  .info {
+    &__bottom {
+      left: -90%;
+      &:after {
+        left: 70%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 620px) {
+  .info {
+    &__bottom {
+      left: -20%;
+      &:after {
+        left: 70%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 535px) {
+  .info {
+    &__bottom {
+      left: -110%;
+      &:after {
+        left: 70%;
+      }
     }
   }
 }

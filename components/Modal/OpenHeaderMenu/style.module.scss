@@ -1,0 +1,60 @@
+.openHeaderMenu {
+  position: fixed;
+  min-width: 300px;
+  max-width: 300px;
+  background: white;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+
+  &__title{
+      font-size: 20px;
+      text-align: center;
+  }
+
+  &__list{
+      margin: 20px 40px;
+  }
+
+  &__item{
+      padding: 10px 0;
+  }
+}
+
+.close {
+  width: 24px;
+  height: 24px;
+  opacity: 0.4;
+  cursor: pointer;
+  transition: opacity ease 0.5s;
+  position: absolute;
+  top: 32px;
+  right: 20px;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 20px;
+    height: 3px;
+    background: #000;
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}

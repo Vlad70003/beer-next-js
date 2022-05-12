@@ -58,19 +58,16 @@ export const Product = ({ product }) => {
     setStep(value);
   };
 
-  const handleModal = (
-    event,
-    openModalAction
-  ) => {
+  const handleModal = (event, openModalAction) => {
     const elementId = event.target;
-  
+
     if (
       elementId.closest(".chooseVolume") ||
       elementId.closest(".product__button-wrapper")
     ) {
       return;
     }
-  
+
     openModalAction("open-product", id);
   };
 
@@ -99,14 +96,8 @@ export const Product = ({ product }) => {
         </li>
         <li className={style.product__title__wrapper}>
           <div className={style.product__title}>{productTitle}</div>
-        </li>
-        <li className={style.product__grade__wrapper}>
           <div className={style.product__grade}>{productGrade}</div>
-        </li>
-        <li className={style.product__subtitle__wrapper}>
           <div className={style.product__subtitle}>{productSubtitle}</div>
-        </li>
-        <li className={style.product__production__wrapper}>
           {status !== "draft" && (
             <div className={style.product__production}>{productProduction}</div>
           )}
@@ -115,49 +106,50 @@ export const Product = ({ product }) => {
               {<ChooseVolume step={step} handleStep={handleStep} />}
             </div>
           )}
-        </li>
-        <li className={style.product__hooter}>
-          <div className={style.product__production__leftSide}>
-            <div className={style.product__production__price}>
-              {`${handleProductionPrice({ productPrice, step })} Р`}
+          <div className={style.product__footer}>
+            <div className={style.product__production__leftSide}>
+              <div className={style.product__production__price}>
+                {`${handleProductionPrice({ productPrice, step })} Р`}
+              </div>
+              <div className={style.product__production__count}>
+                {handleProductionCount({ productCount, status, step })}
+              </div>
             </div>
-            <div className={style.product__production__count}>
-              {handleProductionCount({ productCount, status, step })}
-            </div>
-          </div>
-          <div
-            className={`${style.product__production__rightSide} product__button-wrapper`}
-          >
-            {checkedAndNumberProductInOrder?.productIsOrder ? (
-              <ProductCounter
-                customNumber
-                productInfo={{
-                  product: product,
-                  price: productPrice,
-                  count: checkedAndNumberProductInOrder?.numberOrder || 1,
-                  status: status,
-                  step: step,
-                }}
-              />
-            ) : (
-              <Info
-                text="Пожалуйста выберите магазин, чтобы мы могли педоставить вам актуальный ассортимент"
-                position="relative"
-                width="100%"
-                height="auto"
-                positionWindow="bottom"
-              >
-                <Button
-                  title="В корзину"
-                  color="white"
-                  background="#20598E"
-                  padding="11px 24px"
-                  borderRadius="60px"
-                  onClick={() => handleClick()}
-                  hoverClassColor="productBtnHover"
+            <div
+              className={`${style.product__production__rightSide} product__button-wrapper`}
+            >
+              {checkedAndNumberProductInOrder?.productIsOrder ? (
+                <ProductCounter
+                  customNumber
+                  productInfo={{
+                    product: product,
+                    price: productPrice,
+                    count: checkedAndNumberProductInOrder?.numberOrder || 1,
+                    status: status,
+                    step: step,
+                  }}
                 />
-              </Info>
-            )}
+              ) : (
+                <Info
+                  text="Пожалуйста выберите магазин, чтобы мы могли педоставить вам актуальный ассортимент"
+                  position="relative"
+                  width="100%"
+                  height="auto"
+                  positionWindow="bottom"
+                >
+                  <Button
+                    title="В корзину"
+                    color="white"
+                    background="#20598E"
+                    padding="11px 24px"
+                    borderRadius="60px"
+                    onClick={() => handleClick()}
+                    hoverClassColor="productBtnHover"
+                    fontSize="1rem"
+                  />
+                </Info>
+              )}
+            </div>
           </div>
         </li>
         {stock && (
@@ -182,7 +174,8 @@ export const Product = ({ product }) => {
         >
           <OpenProduct
             product={product}
-            step={step}
+            stepInOpenProduct={step}
+            handleStep={handleStep}
             isOrder={checkedAndNumberProductInOrder.productIsOrder}
             numberOrder={checkedAndNumberProductInOrder.numberOrder}
           />

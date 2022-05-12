@@ -13,7 +13,7 @@
   cursor: pointer;
 
   &:hover {
-    box-shadow: 5px 5px 20px rgba($color: #000000, $alpha: .2);
+    box-shadow: 5px 5px 20px rgba($color: #000000, $alpha: 0.2);
   }
 
   & li {
@@ -22,23 +22,41 @@
 
   &__img {
     padding-bottom: 15px;
+
+    &__wrapper {
+      min-width: 82px;
+    }
+
+    @media screen and (max-width: 535px) {
+      &__wrapper {
+        flex: 1;
+      }
+    }
   }
 
   &__title {
     color: #434242;
-    font-size: 17px;
+    font-size: 0.94rem;
     padding-bottom: 8px;
     font-family: "PTSans-Bold";
+
+    @media screen and (max-width: 535px) {
+      &__wrapper {
+        flex: 3;
+      }
+    }
   }
 
   &__grade {
     color: #434242;
     padding-bottom: 8px;
+    font-size: 0.94rem;
   }
 
   &__subtitle {
     color: #757575;
     padding-bottom: 8px;
+    font-size: 0.94rem;
   }
 
   &__production {
@@ -46,12 +64,12 @@
     padding-bottom: 40px;
   }
 
-  &__chooseVolume{
+  &__chooseVolume {
     color: #757575;
     padding-bottom: 18px;
   }
 
-  &__hooter {
+  &__footer {
     display: flex;
     justify-content: space-around;
 
@@ -65,14 +83,14 @@
       display: flex;
       flex-direction: column;
     }
-    &__rightSide{
+    &__rightSide {
       display: flex;
       align-items: center;
     }
 
     &__price {
       color: #434242;
-      font-size: 24px;
+      font-size: 1.333rem;
     }
 
     &__count {
@@ -92,12 +110,39 @@
     font-size: 14px;
 
     &--wrapper {
+      position: absolute;
+      width: 100px;
+      height: 35px;
+      top: 10%;
+      right: -1px;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+
+@media screen and (max-width: 535px) {
+  .product {
+    display: flex;
+
+    &__stock {
+      height: 100%;
+      width: 100%;
+      background: url("../../assests/img/redLabelLeft.svg") center no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.77777rem;
+  
+      &--wrapper {
         position: absolute;
-        width: 100px;
-        height: 35px;
+        width: 54px;
+        height: 16px;
         top: 10%;
-        right: -1px;
+        left: -1px;
         transform: translateY(-50%);
       }
+    }
   }
 }

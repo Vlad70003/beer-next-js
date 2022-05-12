@@ -41,7 +41,7 @@ export const Contact = ({ address, phone, working_hours }: contact) => {
         </div>
       </div>
       <div className={style.contact__rightSide}>
-        <YandexMap width="960px" height="500px" />
+        <YandexMap width="100%" height="500px" />
       </div>
     </div>
   );

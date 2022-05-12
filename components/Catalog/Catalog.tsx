@@ -19,12 +19,12 @@ export function Catalog({ title, sortButton, product }: catalogState) {
                 <Button
                   title={item}
                   background={baseBackground}
-                  padding="13px 40px"
+                  padding="0.72rem 2.222rem"
                   color="#434242"
                   border="1px solid #C5C5C580"
                   borderRadius="40px"
-                  margin="14px 25px 0 0"
-                  fontSize="18px"
+                  margin="0.7777rem 1.38rem 0 0"
+                  fontSize="1rem"
                   selectClass="filterBtn"
                   selected
                 />

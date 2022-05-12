@@ -12,10 +12,12 @@ export const AdditionalPageWrapper = ({
   price,
   mainPadding,
   padding,
+  minHeight,
 }: additionalPageState) => {
 
   const mainStyle = {
     padding: mainPadding || "0px",
+    minHeight: minHeight,
   }
 
   const styleHeader = {

@@ -48,7 +48,7 @@ export const ChangeShopButton = ({
           </span>
         )}
         <span className={style.changeShopBtn__button__wrapper}>
-          <Button title={currentShopStore} type="button" color="#3D69B7" />
+          <Button title={currentShopStore} type="button" color="#3D69B7" fontSize="1rem" />
         </span>
       </div>
 

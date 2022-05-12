@@ -7,6 +7,7 @@ import { BaseWrapperMargin } from "../../wrappers/BaseWrapperMargin/BaseWrapperM
 import { Navigation } from "../../../components/Navigation/Navigation";
 import { SlickSlider } from "../../../components/Slick-slider-bunner/SlickSlider";
 import { Footer } from "../../../components/Footer/Footer";
+import OpenHeaderMenu from "../../Modal/OpenHeaderMenu/OpenHeaderMenu";
 import { OrderingPrew } from "../../Modal/OrderingPrew/OrderingPrew";
 
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
@@ -103,6 +104,7 @@ export function HeaderWrapper({
         )}
 
         <OrderingPrew />
+        < OpenHeaderMenu />
       </div>
     </>
   );

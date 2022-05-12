@@ -2,13 +2,21 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  background-color: #F2EDE1;
+  background-color: #f2ede1;
   z-index: 10;
   padding: 15px 0;
 
-  &__leftSide{
+  &__leftSide {
     display: flex;
     overflow: hidden;
+  }
+
+  &__rightSide {
+    &__list {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
 
   &__list {
@@ -17,19 +25,49 @@
     justify-content: space-between;
 
     &__open {
-      animation-duration: .2s;
+      animation-duration: 0.2s;
       animation-name: slideinOpen;
     }
-    &__close{
-      animation-duration: .2s;
+    &__close {
+      animation-duration: 0.2s;
       animation-name: slideinClose;
       margin-left: -35px;
     }
   }
-
 }
 
-.miniLogo{
+@media screen and (max-width: 1200px) {
+  .navigation {
+    flex-direction: column;
+    align-items: start;
+
+    &__leftSide {
+      justify-content: space-between;
+      
+    }
+
+    &__rightSide {
+
+      align-self: flex-end;
+      margin-top: 1rem;
+      padding: 0 8px 0 24px;
+      &__list {
+        min-width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 728px) {
+  .navigation {
+    &__rightSide {
+      width: 100%;
+      align-self: center;
+    }
+  }
+}
+
+.miniLogo {
   cursor: pointer;
 }
 
@@ -45,7 +83,6 @@
 @keyframes slideinClose {
   from {
     margin-left: 0px;
-    
   }
 
   to {

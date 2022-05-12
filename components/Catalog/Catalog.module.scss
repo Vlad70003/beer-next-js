@@ -34,6 +34,22 @@
     grid-template-columns: repeat(4, 1fr);
   }
 
+  @media screen and (max-width: 1140px) {
+    &__list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media screen and (max-width: 850px) {
+    &__list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media screen and (max-width: 620px) {
+    &__list {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
   &__item {
     padding: 15px 0px;
   }

@@ -1,44 +1,107 @@
-.header{
-    padding: 50px 0 0 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    &__leftSide{
-        display: flex;
-    }
-
-    &__rightSide{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    &__logo{
-        &__wrapper{
-            padding-right: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    }
-
-    &__changeShopBtn{
-        &__wrapper{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    }
-
-    &__profile{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-    }
+.conteiner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.nav{
-    padding: 0 40px;
+.header {
+  padding: 50px 0 0 0;
+
+  &__leftSide {
+    display: flex;
+    align-items: center;
+  }
+
+  &__input {
+    &__wrapperlaptop{
+      position: relative;
+    }
+
+    &__wrapperModile{
+      display: none;
+    }
+
+    @media screen and (max-width: 500px) {
+      &__wrapperModile{
+        position: relative;
+        display: block;
+      }
+    }
+  }
+  &__input {
+    &__wrapper{
+      position: relative;
+    }
+  }
+
+  @media screen and (max-width: 728px) {
+    &__input {
+      &__wrapper {
+        display: none;
+      }
+    }
+  }
+
+  &__rightSide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__logo {
+    &__wrapper {
+      padding-right: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @media screen and (max-width: 729px) {
+      &__wrapper {
+        width: 107px;
+        height: 21px;
+        padding-right: 20px;
+      }
+    }
+  }
+
+  &__changeShopBtn {
+    &__wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &__seachWrapper {
+      display: none;
+    }
+
+    @media screen and (max-width: 728px) {
+      &__seachWrapper {
+        display: block;
+      }
+    }
+    @media screen and (max-width: 500px) {
+      &__seachWrapper {
+        display: none;
+      }
+    }
+  }
+}
+
+.nav {
+  padding: 0 2.2222rem;
+}
+
+@media screen and (max-width: 1130px) {
+  .nav {
+    display: none;
+  }
 }

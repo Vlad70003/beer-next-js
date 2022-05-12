@@ -18,7 +18,7 @@ export const UserMenu = ({ chooseMainClass }: UserMenuProps) => {
       <Link href={"/PrivateOffice"}>
         <a>
           <div className={style.row} onClick={() => chooseMainClass("close")}>
-            <Button title="Личный кабинет" />
+            <Button title="Личный кабинет" fontSize="1rem" />
           </div>
         </a>
       </Link>
@@ -30,7 +30,7 @@ export const UserMenu = ({ chooseMainClass }: UserMenuProps) => {
           loggedOutAction();
         }}
       >
-        <Button title="Выйти" />
+        <Button title="Выйти" fontSize="1rem" />
       </div>
     </div>
   );

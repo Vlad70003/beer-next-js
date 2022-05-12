@@ -9,7 +9,7 @@
     background: white;
     border-radius: 20px;
     padding: 32px 48px;
-    margin: 16px 0px;
+    margin-top: 24px;
   }
 
   &__header {
@@ -40,7 +40,7 @@
   &__headerMiddleSide,
   &__headerRightSide {
     &__item {
-      padding: 8px 0;
+      padding-top: 8px;
       display: flex;
       position: relative;
     }

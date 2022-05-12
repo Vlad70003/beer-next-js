@@ -40,8 +40,8 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
                 src={miniLogo}
                 className={style.miniLogo}
                 alt="mini-logo"
-                height={35}
-                width={35}
+                height={31}
+                width={31}
               />
             </a>
           </li>
@@ -316,7 +316,7 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
         </ul>
       </div>
       <div className={style.navigation__rightSide}>
-        <ul className={style.navigation__list}>
+        <ul className={style.navigation__rightSide__list}>
           <li className="navigation__item">
             <Bonus />
           </li>

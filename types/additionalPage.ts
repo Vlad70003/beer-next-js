@@ -6,4 +6,5 @@ export interface additionalPageState {
     price?: any,
     mainPadding?: string,
     padding?: string
+    minHeight?: string
 }

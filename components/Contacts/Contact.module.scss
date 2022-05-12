@@ -8,6 +8,8 @@
 
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    height: 100%;
 
     &__title{
         color: #434242;
@@ -34,5 +36,23 @@
         flex-direction: column;
         width: max-content;
         align-items: start;
+    }
+
+    &__leftSide{
+        margin-left: 20px;
+    }
+
+    &__rightSide{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .contact{
+        flex-direction: column;
+
+        &__leftSide{
+            margin-bottom: 20px;
+        }
     }
 }
