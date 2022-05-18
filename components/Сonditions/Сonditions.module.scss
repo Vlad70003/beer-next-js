@@ -1,11 +1,11 @@
 .conditions{
 
     width: 400px;
-    font-size: 16px;
+    font-size: 0.889rem;
 
     &__title{
         padding: 8px 0 16px 0;
-        font-size: 16px;
+        font-size: 0.889rem;
     }
 
     &__list{
@@ -16,5 +16,11 @@
 
     &__item{
         padding: 3px 0;
+        font-size: 0.889rem;
+    }
+}
+@media screen and (max-width: 420px) {
+    .conditions{
+        width: 100%;
     }
 }

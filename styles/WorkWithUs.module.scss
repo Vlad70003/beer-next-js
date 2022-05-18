@@ -11,6 +11,12 @@
         padding-bottom: 16px;
     }
 
+    @media screen and (max-width: 430px) {
+        &__selectsWrapper{
+            flex-direction: column;
+        }
+    }
+
     &__selectWrapper{
         max-width: 100%;
         position: relative;
@@ -30,6 +36,19 @@
 
         &:last-child{
             padding-left: 64px;
+        }
+
+        @media screen and (max-width: 729px) {
+            &:last-child{
+                padding-left: 20px;
+            }
+        }
+
+        @media screen and (max-width: 430px) {
+            &:last-child{
+                margin-top: 1rem;
+                padding-left: 0px;
+            }
         }
     }
 }

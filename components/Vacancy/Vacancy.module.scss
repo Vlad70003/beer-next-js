@@ -4,7 +4,7 @@
 
   &__title {
     color: #434242;
-    font-size: 20px;
+    font-size: 1.25rem;
     padding-bottom: 8px;
   }
 
@@ -16,7 +16,30 @@
     &__leftSide {
       display: flex;
       flex-direction: column;
-      padding-right: 50px;
+      padding-right: 2.778rem;
+
+      &__requirement,
+      &__timetable {
+        color: #757575;
+        font-size: 0.889rem;
+      }
+
+      @media screen and (max-width: 800px) {
+        &__requirement {
+          width: 200px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+      @media screen and (max-width: 660px) {
+        &__requirement {
+          width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
 
       &__list {
         display: flex;
@@ -26,17 +49,73 @@
           color: #757575;
 
           & li {
-            padding-right: 8px;
+            padding-right: 0.444rem;
           }
         }
       }
 
+      @media screen and (max-width: 660px) {
+        &__list {
+          flex-wrap: wrap;
+        }
+      }
+
       &__item {
-        padding-right: 16px;
+        padding-right: 0.889rem;
+        font-size: 0.889rem;
+        white-space: nowrap;
 
         &:last-child {
           padding-right: 0;
         }
+      }
+      @media screen and (max-width: 950px) {
+        &__item {
+          &:last-child {
+            padding-right: 0;
+            width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+      @media screen and (max-width: 660px) {
+        &__item {
+          &:last-child {
+            padding-right: 0;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 950px) {
+      &__leftSide {
+        padding-right: 0.778rem;
+      }
+    }
+
+    @media screen and (max-width: 530px) {
+      &__rightSide {
+        display: none;
+      }
+    }
+  }
+
+  &__footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__display{
+      display: none;
+    }
+
+    @media screen and (max-width: 530px) {
+      &__display{
+        display: block;
       }
     }
   }
@@ -54,6 +133,12 @@
   &__open {
     display: flex;
     justify-content: start;
+  }
+
+  @media screen and (max-width: 610px) {
+    &__open {
+      flex-direction: column;
+    }
   }
   &__close {
     display: none;
