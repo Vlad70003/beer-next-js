@@ -14,11 +14,12 @@ export const customStyles = {
 
   menu: (provided, state) => ({
     ...provided,
-    margin:  state.selectProps.transform ? "0px" : "10px 0",
+    margin:  state.selectProps.transform ? "0px" : "0px 0",
     color: state.selectProps.menuColor,
     borderRadius: state.selectProps.transform ? "0px 0px 20px 20px" : "10px",
     borderTop: state.selectProps.transform ? "none" : state.selectProps.border,
     border: "1px solid #BFBFBF",
+    overflow: "hidden",
   }),
 
   control: (provided, state) => ({

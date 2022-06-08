@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import style from "../styles/Ordering.module.scss";
 import Image from "next/image";
+import { NextPage } from "next";
 import Link from "next/link";
 
+//api
+import { ShopsApi } from "../api/shopsApi";
+
+//components
 import { AdditionalPageWrapper } from "../components/wrappers/AdditionPageWrapper/AdditionPageWrapper";
 import { Subtitle } from "../components/Subtitle/Subtitle";
 import { ReCheckBox } from "../ui/Re-checkbox/ReCheckBox";
@@ -13,20 +18,25 @@ import { Button } from "../ui/Button/Button";
 import OrderWindow from "../components/OrderWindow/OrderWindow";
 import { BaseWrapperMargin } from "../components/wrappers/BaseWrapperMargin/BaseWrapperMargin";
 import { HeaderWrapper } from "../components/wrappers/HeaderWrapper/HeaderWrapper";
-import { styleRouterState } from "../types/router";
-import { baseBackground } from "../assests/variable/variable";
 import { PurchaseSuccess } from "../components/Modal/PurchaseSuccess/PurchaseSuccess";
 import { TimeChanger } from "../components/Modal/TimeChanger/TimeChanger";
 import { ModalWrapper } from "../components/Modal/ModalWrapper";
 
+//hooks
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useActions } from "../hooks/useActions";
 
+//types
+import { styleRouterState } from "../types/router";
+import { OrderingProps } from "../types/pages";
+
+//assests
 import masterCard from "../assests/img/masterCard.svg";
 import visa from "../assests/img/visa.svg";
 import mir from "../assests/img/mir.svg";
+import { baseBackground } from "../assests/variable/variable";
 
-function Ordering() {
+const Ordering:NextPage<OrderingProps> = ({shops}) => {
   const [timeOrder, setTimeOrder] = useState("Побыстрее");
   const [timeChangeIsOpen, setTimeChangeIsOpen] = useState(false);
 
@@ -348,6 +358,17 @@ function Ordering() {
       )}
     </>
   );
+}
+
+export async function getStaticProps() {
+  const shopsApi = new ShopsApi();
+
+  const res = await shopsApi.getShopsList();
+  const shops = await res.json();
+
+  return {
+    props: { shops },
+  };
 }
 
 export default Ordering;

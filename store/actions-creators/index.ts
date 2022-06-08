@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import * as LoggedInAction from "./loggedIn";
 import * as loggedOutAction from "./loggedIn";
 import * as FetachProducts from "./products";
@@ -8,6 +9,7 @@ import * as addOrderAction from "./order";
 import * as deleteOrderAction from "./order";
 import * as deleteAllOrderAction from "./order";
 import * as addGeneralOrderAction from "./generalOrder";
+import * as addShopsListAction from "./shopsList";
 
 export default {
   ...LoggedInAction,
@@ -20,4 +22,5 @@ export default {
   ...deleteOrderAction,
   ...deleteAllOrderAction,
   ...addGeneralOrderAction,
+  ...addShopsListAction,
 };

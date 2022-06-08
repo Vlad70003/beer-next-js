@@ -1,15 +1,24 @@
 import style from "../styles/WorkWithUs.module.scss";
+import { NextPage } from "next";
 
+//api
+import { ShopsApi } from "../api/shopsApi";
+
+//types
+import { WorkWithUsProps } from "../types/pages";
+import { styleRouterState } from "../types/router";
+
+//components
 import { AdditionalPageWrapper } from "../components/wrappers/AdditionPageWrapper/AdditionPageWrapper";
-import { BorderWrapper } from "../components/wrappers/borderWrapper/BorderWrapper";
 import { Vacancy } from "../components/Vacancy/Vacancy";
 import { BaseWrapperMargin } from "../components/wrappers/BaseWrapperMargin/BaseWrapperMargin";
-import { styleRouterState } from "../types/router";
 import { InputSelect } from "../ui/Select/InputSelect";
-import { baseBackground } from "../assests/variable/variable";
 import { HeaderWrapper } from "../components/wrappers/HeaderWrapper/HeaderWrapper";
 
-const WorkWithUs: React.FC = () => {
+//assests
+import { baseBackground } from "../assests/variable/variable";
+
+const WorkWithUs: NextPage<WorkWithUsProps> = ({shops}) => {
   const styleHome: styleRouterState = {
     width: "100%",
     minHeight: "100vh",
@@ -76,5 +85,16 @@ const WorkWithUs: React.FC = () => {
     </HeaderWrapper>
   );
 };
+
+export async function getStaticProps() {
+  const shopsApi = new ShopsApi();
+
+  const res = await shopsApi.getShopsList();
+  const shops = await res.json();
+
+  return {
+    props: { shops },
+  };
+}
 
 export default WorkWithUs;

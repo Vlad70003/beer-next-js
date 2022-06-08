@@ -1,7 +1,12 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import style from "../styles/PrivateOffice.module.scss";
+import { NextPage } from "next";
 
+//api
+import { ShopsApi } from "../api/shopsApi";
+
+//components
 import { AdditionalPageWrapper } from "../components/wrappers/AdditionPageWrapper/AdditionPageWrapper";
 import { Subtitle } from "../components/Subtitle/Subtitle";
 import { Card } from "../components/Card/Card";
@@ -13,17 +18,22 @@ import { Button } from "../ui/Button/Button";
 import { ProductListFromPrivateOffice } from "../components/ProductListFromPrivateOffice/ProductListFromPrivateOffice";
 import { BaseWrapperMargin } from "../components/wrappers/BaseWrapperMargin/BaseWrapperMargin";
 import { HeaderWrapper } from "../components/wrappers/HeaderWrapper/HeaderWrapper";
-import { baseBackground } from "../assests/variable/variable";
 
+//hooks
 import { useActions } from "../hooks/useActions";
 
+//assests
 import {
   historyOrderInSite,
   historyOrderInShop,
 } from "../data/forPrivateOfficeData";
+import { baseBackground } from "../assests/variable/variable";
+
+//types
+import { PrivateOfficeProps } from "../types/pages";
 import { styleRouterState } from "../types/router";
 
-const PrivateOffice = () => {
+const PrivateOffice: NextPage<PrivateOfficeProps> = ({ shops }) => {
   const { loggedOutAction } = useActions();
   const [shoppingMenuPage, setShoppingMenuPage] = useState("onTheSite");
 
@@ -147,5 +157,16 @@ const PrivateOffice = () => {
     </div>
   );
 };
+
+export async function getStaticProps() {
+  const shopsApi = new ShopsApi();
+
+  const res = await shopsApi.getShopsList();
+  const shops = await res.json();
+
+  return {
+    props: { shops },
+  };
+}
 
 export default PrivateOffice;

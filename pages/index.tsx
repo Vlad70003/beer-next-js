@@ -1,13 +1,20 @@
 import { useEffect, useState } from "react";
 import type { NextPage } from "next";
+import { useActions } from "../hooks/useActions";
 import { Element } from "react-scroll";
 
+//components
 import { HeaderWrapper } from "../components/wrappers/HeaderWrapper/HeaderWrapper";
 import { BaseWrapperMargin } from "../components/wrappers/BaseWrapperMargin/BaseWrapperMargin";
 import { Catalog } from "../components/Catalog/Catalog";
 import { baseBackground } from "../assests/variable/variable";
 
+//api
+import { ShopsApi } from "../api/shopsApi";
+
+//types
 import { styleRouterState } from "../types/router";
+import { HomeProps } from "../types/pages";
 
 import {
   BeerAndCider,
@@ -33,15 +40,30 @@ interface productState {
   bottled?: any;
 }
 
-const Home: NextPage = () => {
+const Home: NextPage<HomeProps> = ({ shops }) => {
   const [shopPage, setShopPage] = useState("beer");
   const [product, setProduct] = useState<productState>({});
+  const {addShopsListAction} = useActions();
 
   useEffect(() => {
-    const sortProduct: productState = { beer: [], beverages: [], bottled: [], fish: [], meat: [], chease: [], snack: [], other: [], stock: []};
+    shops && addShopsListAction(shops)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shops])
+
+  useEffect(() => {
+    const sortProduct: productState = {
+      beer: [],
+      beverages: [],
+      bottled: [],
+      fish: [],
+      meat: [],
+      chease: [],
+      snack: [],
+      other: [],
+      stock: [],
+    };
 
     productExample.forEach((item) => {
-
       item.stock && sortProduct.stock.push(item);
 
       if (item.kind === "beer") {
@@ -64,6 +86,7 @@ const Home: NextPage = () => {
     });
 
     setProduct(sortProduct);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [productExample]);
 
   const handlePage = (value: string) => {
@@ -148,5 +171,16 @@ const Home: NextPage = () => {
     </>
   );
 };
+
+export async function getStaticProps() {
+  const shopsApi = new ShopsApi();
+
+  const res = await shopsApi.getShopsList();
+  const shops = await res.json();
+
+  return {
+    props: { shops },
+  };
+}
 
 export default Home;

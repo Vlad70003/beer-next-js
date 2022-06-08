@@ -2,19 +2,20 @@ import React, { useState } from "react";
 import Select from "react-select";
 import style from "./InputSelect.module.scss";
 
-import { citiesObject } from "./options";
 import { customStyles } from "./customStyles.js";
-
-import { inputSelectState } from "../../types/inputSelect";
 
 export const InputSelect = ({
   placeholder,
+  options,
   width,
   minWidth,
   border,
   transform,
+  selectedOption,
+  setSelectedOption,
+  noOptionsMessage
 }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
+
   const [focus, setFocus] = useState(false);
 
   const handleChange = (selectedOption) => {
@@ -31,11 +32,12 @@ export const InputSelect = ({
         value={selectedOption}
         onChange={handleChange}
         styles={customStyles}
-        options={citiesObject}
+        options={options}
         placeholder={placeholder}
         minWidth={minWidth}
         border={border}
         transform={transform}
+        noOptionsMessage={() => noOptionsMessage}
         className={width && style.selectWidth}
         components={{
           DropdownIndicator: () => null,

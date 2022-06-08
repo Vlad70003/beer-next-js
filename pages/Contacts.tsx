@@ -1,22 +1,29 @@
 import style from "../styles/Contacts.module.scss";
+import { NextPage } from "next";
 
+//components
 import { Contact } from "../components/Contacts/Contact";
 import { AdditionalPageWrapper } from "../components/wrappers/AdditionPageWrapper/AdditionPageWrapper";
 import { BaseWrapperMargin } from "../components/wrappers/BaseWrapperMargin/BaseWrapperMargin";
 import { HeaderWrapper } from "../components/wrappers/HeaderWrapper/HeaderWrapper";
-
-import { styleRouterState } from "../types/router";
-import { baseBackground } from "../assests/variable/variable";
 import { ModalWrapper } from "../components/Modal/ModalWrapper";
 import { FeedBack } from "../components/Modal/FeedBack/FeedBack";
-import { ChangeChopModal } from "../components/Modal/ChangeChopModal/ChangeChopModal";
 
+//types
+import { styleRouterState } from "../types/router";
+import { ContactsProps } from "../types/pages";
+
+//assests
+import { baseBackground } from "../assests/variable/variable";
+
+//api
+import { ShopsApi } from "../api/shopsApi";
+
+//hooks
 import { useTypedSelector } from "../hooks/useTypedSelector";
-import { useActions } from "../hooks/useActions";
 
-const Contacts = () => {
+const Contacts: NextPage<ContactsProps> = ({ shops }) => {
   const modal = useTypedSelector((state) => state.modal);
-  const { openModalAction } = useActions();
 
   const styleHome: styleRouterState = {
     width: "100%",
@@ -41,22 +48,35 @@ const Contacts = () => {
         </BaseWrapperMargin>
       </HeaderWrapper>
 
-       { modal.typeModal === "feedback" && <ModalWrapper
-        padding="32px 54px"
-        borderRadius="20px"
-        top="50%"
-        left="50%"
-        minWidth="472px"
-        modalIsOpen={modal.modalOpen}
-        backgroundColor="#0000004D"
-        transform="translate(-50%, -50%)"
-        onRequestClose
-        close
-      >
-        < FeedBack />
-      </ModalWrapper>}
-
+      {modal.typeModal === "feedback" && (
+        <ModalWrapper
+          padding="32px 54px"
+          borderRadius="20px"
+          top="50%"
+          left="50%"
+          minWidth="472px"
+          modalIsOpen={modal.modalOpen}
+          backgroundColor="#0000004D"
+          transform="translate(-50%, -50%)"
+          onRequestClose
+          close
+        >
+          <FeedBack />
+        </ModalWrapper>
+      )}
     </>
   );
 };
+
+export async function getStaticProps() {
+  const shopsApi = new ShopsApi();
+
+  const res = await shopsApi.getShopsList();
+  const shops = await res.json();
+
+  return {
+    props: { shops },
+  };
+}
+
 export default Contacts;

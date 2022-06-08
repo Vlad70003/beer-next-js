@@ -16,7 +16,7 @@ export const chooseCurrentShopReducers = (
       return { currentShop: action.payload };
     case DELETE_CURRENT_SHOP:
       return { currentShop: "Выберите магазин" };
-    default: 
+    default:
       return state;
   }
 };
