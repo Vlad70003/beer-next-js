@@ -2,60 +2,65 @@ import React, { useState, useEffect } from "react";
 import style from "./OpenProduct.module.scss";
 import Image from "next/image";
 
+//script
 import { checkedProductInOrder } from "../../../script/order/checkedProductInOrder";
-
-import { container } from "../../Product/productExample";
-
 import { handleProductionPrice } from "../../../script/calculate/handleProductionPrice";
 import { handleProductionCount } from "../../../script/calculate/handleProductionCount";
 
+//example
+import { container } from "../../Product/productExample";
+
+//component
 import { ChooseVolume } from "../../../ui/ChooseVolume/ChooseVolume";
-import { useActions } from "../../../hooks/useActions";
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { ProductCounter } from "../../../ui/ProductCounter/ProductCounter";
 import { Button } from "../../../ui/Button/Button";
+
+//action, selector
+import { useActions } from "../../../hooks/useActions";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
+
+//img
+import noPhoto from "../../../assests/img/no-photo.svg";
 
 interface OpenProductProps {
   product: {
     brewery?: string;
-    productImg: string;
+    picture: string;
     productCount: string;
-    productGrade: string;
-    productPrice: number;
-    productProduction: string;
-    productSubtitle: string;
     stock: string;
     productTitle: string;
-    status: string;
+    name: string;
     description?: string;
     id: number;
   };
   stepInOpenProduct: number;
+  productGrade: string;
+  productPrice: number;
+  productSubtitle: string;
+  productProduction: string;
+  status: string;
   handleStep: (value: number) => void;
 }
 
-export const OpenProduct = ({ product, stepInOpenProduct, handleStep }: OpenProductProps) => {
-  const {
-    brewery,
-    productImg,
-    productCount,
-    productGrade,
-    productPrice,
-    productProduction,
-    productSubtitle,
-    stock,
-    productTitle,
-    status,
-    description,
-    id,
-  } = product;
-console.log(stepInOpenProduct)
+export const OpenProduct = ({
+  product,
+  stepInOpenProduct,
+  handleStep,
+  productGrade,
+  productSubtitle,
+  productProduction,
+  status,
+  productPrice,
+}: OpenProductProps) => {
+  const { brewery, picture, productCount, stock, name, description, id } =
+    product;
+
   const { addOrderAction } = useActions();
   const { openModalAction } = useActions();
   const { currentShop } = useTypedSelector((state) => state.currentShop);
   const { generalOrder } = useTypedSelector((state) => state.generalOrder);
 
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(stepInOpenProduct);
 
   const [checkedAndNumberProductInOrder, setCheckedAndNumberProductInOrder] =
     useState<{ productIsOrder: boolean; numberOrder: number | null } | null>(
@@ -73,7 +78,7 @@ console.log(stepInOpenProduct)
 
   useEffect(() => {
     setStep(stepInOpenProduct);
-  }, [stepInOpenProduct])
+  }, [stepInOpenProduct]);
 
   const handleClick = () => {
     return currentShop === "Выберите магазин"
@@ -87,7 +92,7 @@ console.log(stepInOpenProduct)
     <div className={style.openProduct}>
       <div className={style.leftSide}>
         <Image
-          src={productImg}
+          src={picture ? picture : noPhoto}
           width="240px"
           height="240px"
           alt="product img"
@@ -96,7 +101,7 @@ console.log(stepInOpenProduct)
       <div className={style.rightSide}>
         <main className={style.main}>
           <div className={style.row}>
-            <h4 className={style.title}>{productTitle}</h4>
+            <h4 className={style.title}>{name}</h4>
           </div>
           <div className={style.row}>
             <div className={style.text}>{productGrade}</div>
@@ -131,8 +136,13 @@ console.log(stepInOpenProduct)
         </main>
         <footer className={style.footer}>
           <div className={style.footer__column}>
-            <div className={style.footer__row}>{`${handleProductionPrice({ productPrice, step })} Р`}</div>
-            <div className={style.footer__row}>{handleProductionCount({ productCount, status, step })}</div>
+            <div className={style.footer__row}>{`${handleProductionPrice({
+              productPrice,
+              step,
+            })} Р`}</div>
+            <div className={style.footer__row}>
+              {handleProductionCount({ productCount, status, step })}
+            </div>
           </div>
           <div className={style.footer__column}>
             {checkedAndNumberProductInOrder?.productIsOrder ? (

@@ -5,7 +5,7 @@ export const LOAD_SHOPS_LIST = "LOAD_SHOPS_LIST";
 export const ERROR_SHOPS_LIST = "LOAD_SHOPS_LIST";
 
 const initialStates: shopsListState = {
-  shopsList: [],
+  shopsList: null,
   load: false,
   error: null,
 };
@@ -18,9 +18,9 @@ export const shopsListReducers = (
     case ADD_SHOPS_LIST:
       return { shopsList: action.payload, load: false, error: null };
     case LOAD_SHOPS_LIST:
-      return { shopsList: [], load: true, error: null };
+      return { shopsList: null, load: true, error: null };
     case ERROR_SHOPS_LIST:
-      return { shopsList: [], load: false, error: action.payload };
+      return { shopsList: null, load: false, error: action.payload };
     default:
       return state;
   }

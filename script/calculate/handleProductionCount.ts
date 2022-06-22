@@ -11,9 +11,9 @@ export const handleProductionCount = ({
 }: handleProductionCountArg) => {
   if (status === "draft" && step === 1) {
     return "цена за 1 л без тары";
-  } else if (status && step === 0.5) {
+  } else if (status === "draft" && step === 0.5) {
     return "цена за 0.5 л без тары";
-  } else if (status && step === 1.5) {
+  } else if (status === "draft" && step === 1.5) {
     return "цена за 1.5 л без тары";
   } else {
     return productCount;

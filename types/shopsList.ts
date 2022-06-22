@@ -4,7 +4,7 @@ export interface shopsListAction {
 }
 
 export interface shopsListState {
-  shopsList: shopsProps;
+  shopsList: shopsProps | null;
   load: boolean;
   error: any | null;
 }

@@ -10,3 +10,15 @@ export interface priceState {
     productTitle?: string,
   },
 }
+
+export interface productState {
+  beer?: any;
+  beverages?: any;
+  fish?: any;
+  meat?: any;
+  chease?: any;
+  snack?: any;
+  other?: any;
+  stock?: any;
+  bottled?: any;
+}

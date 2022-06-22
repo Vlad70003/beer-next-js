@@ -18,7 +18,7 @@ export const ChangeShopButton = ({
   borderBottom,
   margin,
 }: ChangeShopButtonProps) => {
-  const currentShopStore = useTypedSelector(
+  const currentShopStore: any = useTypedSelector(
     (state) => state.currentShop.currentShop
   );
 
@@ -26,7 +26,8 @@ export const ChangeShopButton = ({
   const { openModalAction } = useActions();
 
   useEffect(() => {
-    localStorage.setItem("currentShop", currentShopStore);
+    localStorage.setItem("currentShop", JSON.stringify(currentShopStore));
+
   }, [currentShopStore]);
 
   const ChangeShopButtonStyle = {
@@ -48,27 +49,32 @@ export const ChangeShopButton = ({
           </span>
         )}
         <span className={style.changeShopBtn__button__wrapper}>
-          <Button title={currentShopStore} type="button" color="#3D69B7" fontSize="1rem" />
+          <Button
+            title={
+              currentShopStore.name ? currentShopStore.name : currentShopStore
+            }
+            type="button"
+            color="#3D69B7"
+            fontSize="1rem"
+          />
         </span>
       </div>
 
-      {
-        modal.typeModal === "change-shop" && (
-          <ModalWrapper
-            padding="32px 54px"
-            borderRadius="20px"
-            top="35%"
-            left="50%"
-            minWidth="560px"
-            modalIsOpen={modal.modalOpen}
-            backgroundColor="#0000004D"
-            onRequestClose
-            close
-          >
-            <ChangeChopModal />
-          </ModalWrapper>
-        )
-      }
+      {modal.typeModal === "change-shop" && (
+        <ModalWrapper
+          padding="32px 54px"
+          borderRadius="20px"
+          top="35%"
+          left="50%"
+          minWidth="560px"
+          modalIsOpen={modal.modalOpen}
+          backgroundColor="#0000004D"
+          onRequestClose
+          close
+        >
+          <ChangeChopModal />
+        </ModalWrapper>
+      )}
     </>
   );
 };

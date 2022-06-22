@@ -4,5 +4,5 @@ export interface currentShopAction {
   }
   
   export interface currentShopState {
-    currentShop: string;
+    currentShop: any;
   }

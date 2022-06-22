@@ -29,7 +29,7 @@ export const ChangeChopModal = ({}: ChangeChopModalState) => {
   const [currentCities, setCurrentCities] = useState<{value: string} | null>(null);
 
   const shopListFilter = () => {
-    const returnArray = shopsList.data
+    const returnArray = shopsList?.data
       .filter((item) => item.region && item.city && item)
       .map((item) => {
         return { [item.city || 1]: [item.region, item.id] };
@@ -37,13 +37,13 @@ export const ChangeChopModal = ({}: ChangeChopModalState) => {
     return returnArray;
   };
 
-  const shopListFilterResult = useMemo(() => shopListFilter(), [shopsList]);
+  const shopListFilterResult:any = useMemo(() => shopListFilter(), [shopsList]);
 
   useEffect(() => {
     setRegion([]);
 
-    const newRegion = shopListFilterResult.map(
-      (item) => item[Object.keys(item)[0]][0]
+    const newRegion = shopListFilterResult?.map(
+      (item: { [x: string]: any[]; }) => item[Object.keys(item)[0]][0]
     );
 
     Array.isArray(newRegion) &&

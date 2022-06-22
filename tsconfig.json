@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components", "src/types/custom.d.ts", "src/ui/Logotype", "src/ui/Info", "src/ui/TimeChange", "components/Product/Product.jsx", "components/RatingStar/RatingStar.jsx", "ui/Select/InputSelect.jsx", "ui/Select/customStyles.ss"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components", "src/types/custom.d.ts", "src/ui/Logotype", "src/ui/Info", "src/ui/TimeChange", "components/Product/Product.jsx", "components/RatingStar/RatingStar.jsx", "ui/Select/InputSelect.tsx", "ui/Select/customStyles.ss"],
   "exclude": ["node_modules"]
 }

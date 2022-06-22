@@ -10,6 +10,10 @@ import * as deleteOrderAction from "./order";
 import * as deleteAllOrderAction from "./order";
 import * as addGeneralOrderAction from "./generalOrder";
 import * as addShopsListAction from "./shopsList";
+import * as addProductListAction from "./productsList";
+import * as loadProductListAction from "./productsList";
+import * as errorProductListAction from "./productsList";
+import * as fetchCatalogByIdShop from "../think/catalogList";
 
 export default {
   ...LoggedInAction,
@@ -23,4 +27,8 @@ export default {
   ...deleteAllOrderAction,
   ...addGeneralOrderAction,
   ...addShopsListAction,
+  ...addProductListAction,
+  ...loadProductListAction,
+  ...errorProductListAction,
+  ...fetchCatalogByIdShop,
 };

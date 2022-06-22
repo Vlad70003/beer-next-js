@@ -1,7 +1,8 @@
 import { shopsProps } from "./shopsList"
 
 export interface HomeProps {
-    shops: shopsProps
+    shops: shopsProps,
+    catalog: any,
 }
 
 export interface OrderingProps {

@@ -6,6 +6,7 @@ import { modalReducers } from "./modal";
 import { orderReducers } from "./order";
 import { generalOrderReducers } from "./genegalOrder";
 import { shopsListReducers } from "./shopsList";
+import { productListReducers } from "./productsList";
 
 
 export const rootReducer = combineReducers({
@@ -16,6 +17,7 @@ export const rootReducer = combineReducers({
     order: orderReducers,
     generalOrder: generalOrderReducers,
     shopList: shopsListReducers,
+    productList: productListReducers,
 });
 
 export type RootState = ReturnType <typeof rootReducer>

@@ -29,3 +29,4 @@ export const Chease = ["Твердые", "Полутвердые", "Мягкие
 
 export const Snacks = ["Чипсы", "Сырные", "Мясные ", "Соломка ", "Орешки "];
 export const Other = ["Прочее"];
+
