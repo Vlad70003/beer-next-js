@@ -1,7 +1,7 @@
 import React from "react";
 import { baseWrapperState } from "../../../types/baseWrapper";
 
-export const BaseWrapperMargin = ({
+const BaseWrapperMargin = ({
   children,
   maxWidth,
   display,
@@ -9,10 +9,8 @@ export const BaseWrapperMargin = ({
   alignItems,
   flex,
   borderBottom,
-  position,
-  top
 }: baseWrapperState) => {
-  
+
   const styleBaseWrapper = {
     width: "inherit",
     maxWidth: maxWidth || "1280px",
@@ -31,3 +29,5 @@ export const BaseWrapperMargin = ({
     </div>
   );
 };
+
+export default React.memo(BaseWrapperMargin);

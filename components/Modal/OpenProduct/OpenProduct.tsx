@@ -6,6 +6,7 @@ import Image from "next/image";
 import { checkedProductInOrder } from "../../../script/order/checkedProductInOrder";
 import { handleProductionPrice } from "../../../script/calculate/handleProductionPrice";
 import { handleProductionCount } from "../../../script/calculate/handleProductionCount";
+import { addToOrderFirstProduct } from "../../../script/order/addToOrderFirstProduct";
 
 //example
 import { container } from "../../Product/productExample";
@@ -29,6 +30,7 @@ interface OpenProductProps {
     productCount: string;
     stock: string;
     productTitle: string;
+    measure: { symbol: string; ratio: string };
     name: string;
     description?: string;
     id: number;
@@ -36,9 +38,14 @@ interface OpenProductProps {
   stepInOpenProduct: number;
   productGrade: string;
   productPrice: number;
+  numberOrder: number;
   productSubtitle: string;
   productProduction: string;
   status: string;
+  checkedAndNumberProductInOrder: {
+    productIsOrder: boolean;
+    numberOrder: number | null;
+  };
   handleStep: (value: number) => void;
 }
 
@@ -51,6 +58,7 @@ export const OpenProduct = ({
   productProduction,
   status,
   productPrice,
+  checkedAndNumberProductInOrder,
 }: OpenProductProps) => {
   const { brewery, picture, productCount, stock, name, description, id } =
     product;
@@ -62,31 +70,9 @@ export const OpenProduct = ({
 
   const [step, setStep] = useState(stepInOpenProduct);
 
-  const [checkedAndNumberProductInOrder, setCheckedAndNumberProductInOrder] =
-    useState<{ productIsOrder: boolean; numberOrder: number | null } | null>(
-      null
-    );
-
-  useEffect(() => {
-    const { productIsOrder, numberOrder } = checkedProductInOrder({
-      generalOrder,
-      id,
-      step,
-    });
-    setCheckedAndNumberProductInOrder({ productIsOrder, numberOrder });
-  }, [generalOrder, id, step]);
-
   useEffect(() => {
     setStep(stepInOpenProduct);
   }, [stepInOpenProduct]);
-
-  const handleClick = () => {
-    return currentShop === "Выберите магазин"
-      ? openModalAction("change-shop")
-      : addOrderAction({ product, step }) &&
-          status === "draft" &&
-          addOrderAction({ product: container, step });
-  };
 
   return (
     <div className={style.openProduct}>
@@ -130,7 +116,11 @@ export const OpenProduct = ({
           )}
           {status === "draft" && (
             <div className={style.row}>
-              <ChooseVolume handleStep={handleStep} step={step} />
+              <ChooseVolume
+                handleStep={handleStep}
+                step={step}
+                measure={product.measure}
+              />
             </div>
           )}
         </main>
@@ -138,10 +128,15 @@ export const OpenProduct = ({
           <div className={style.footer__column}>
             <div className={style.footer__row}>{`${handleProductionPrice({
               productPrice,
-              step,
-            })} Р`}</div>
+              step: checkedAndNumberProductInOrder?.numberOrder || step,
+            })}`}</div>
             <div className={style.footer__row}>
-              {handleProductionCount({ productCount, status, step })}
+              {handleProductionCount({
+                productCount,
+                status,
+                step,
+                checkedAndNumberProductInOrder,
+              })}
             </div>
           </div>
           <div className={style.footer__column}>
@@ -149,12 +144,14 @@ export const OpenProduct = ({
               <ProductCounter
                 customNumber
                 padding="0 50px"
+                status={status}
                 productInfo={{
                   product: product,
                   price: productPrice,
                   count: checkedAndNumberProductInOrder?.numberOrder || 1,
                   status: status,
                   step: step,
+                  measure: product.measure,
                 }}
               />
             ) : (
@@ -166,7 +163,16 @@ export const OpenProduct = ({
                 width="100%"
                 color="white"
                 borderRadius="60px"
-                onClick={() => handleClick()}
+                onClick={() =>
+                  addToOrderFirstProduct({
+                    currentShop,
+                    openModalAction,
+                    addOrderAction,
+                    product,
+                    container,
+                    step,
+                  })
+                }
               />
             )}
           </div>

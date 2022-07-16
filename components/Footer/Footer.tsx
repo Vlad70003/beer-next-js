@@ -2,7 +2,7 @@ import React from "react";
 import style from "./Footer.module.scss";
 import Image from "next/image";
 
-import { BaseWrapperMargin } from "../wrappers/BaseWrapperMargin/BaseWrapperMargin";
+import  BaseWrapperMargin  from "../wrappers/BaseWrapperMargin/BaseWrapperMargin";
 import { Social } from "../Link/Social/Social";
 
 import logotype from "../../assests/img/logotype.png";

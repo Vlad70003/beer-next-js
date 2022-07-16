@@ -15,7 +15,7 @@ import Hamburger from "../../ui/hamburger/hamburger";
 import { toggleColor } from "./script/toggleColor";
 import { toggleFontWidth } from "./script/toggleColor";
 
-export const Header: React.FC = () => {
+const Header: React.FC = () => {
   const [pathName, setPathName] = useState<string>("");
   const [isOpen, setIsOpen] = useState(false);
 
@@ -150,3 +150,5 @@ export const Header: React.FC = () => {
     </header>
   );
 };
+
+export default React.memo(Header)

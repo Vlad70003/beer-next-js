@@ -11,10 +11,9 @@ import { orderSum } from "../../../script/order/orderSum";
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { useActions } from "../../../hooks/useActions";
 
-export const OrderingPrew = () => {
+const OrderingPrew = () => {
   const modal = useTypedSelector((state) => state.modal);
   const { order } = useTypedSelector((state) => state.order);
-
   const { closeModalAction } = useActions();
 
   const orderingPrewStyle = {
@@ -60,3 +59,5 @@ export const OrderingPrew = () => {
     </div>
   );
 };
+
+export default React.memo(OrderingPrew);

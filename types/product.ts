@@ -1,14 +1,14 @@
 export interface priceState {
   product: {
-    productImg?: string,
-    productCount?: string,
-    productGrade?: string,
-    productPrice?: string,
-    productProduction?: string,
-    productSubtitle?: string,
-    productTextButton?: string,
-    productTitle?: string,
-  },
+    productImg?: string;
+    productCount?: string;
+    productGrade?: string;
+    productPrice?: string;
+    productProduction?: string;
+    productSubtitle?: string;
+    productTextButton?: string;
+    productTitle?: string;
+  };
 }
 
 export interface productState {
@@ -21,4 +21,16 @@ export interface productState {
   other?: any;
   stock?: any;
   bottled?: any;
+}
+
+export interface productItem {
+  stil_piva: { value: string };
+  vid_piva: { value: string };
+  props: [
+    {
+      value: string;
+      id: any;
+      property_id: string;
+    }
+  ];
 }

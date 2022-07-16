@@ -7,5 +7,6 @@ export const handleProductionPrice = ({
   productPrice,
   step,
 }: handleProductionPriceArg) => {
+
   return productPrice ? `${productPrice * step} ₽` : "Нет цены";
 };

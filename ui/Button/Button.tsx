@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { buttonState } from "../../types/button";
 
@@ -29,6 +29,7 @@ export const Button = ({
   selectClass,
   selected,
   privateOffice,
+
 }: buttonState) => {
   const styleButton = {
     color: disabled ? "white" : color || "black",
@@ -65,7 +66,7 @@ export const Button = ({
         hoverClassColor,
         selectedBtn,
         selectClass,
-        privateOffice
+        privateOffice,
       })}
       type={type}
       style={styleButton}

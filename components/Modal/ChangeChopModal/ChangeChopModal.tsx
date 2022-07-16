@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import style from "./ChangeChopModal.module.scss";
 
 //hooks
@@ -19,7 +19,7 @@ interface ChangeChopModalState {
   closeModal?: any;
 }
 
-export const ChangeChopModal = ({}: ChangeChopModalState) => {
+const ChangeChopModal = ({}: ChangeChopModalState) => {
   const [showMap, setShowMap] = useState(false);
   const { shopsList } = useTypedSelector((state) => state.shopList);
   const [region, setRegion] = useState<{value: string}[]>([]);
@@ -144,3 +144,6 @@ export const ChangeChopModal = ({}: ChangeChopModalState) => {
     </div>
   );
 };
+
+
+export default React.memo(ChangeChopModal)

@@ -9,14 +9,19 @@ export interface orderState {
 
 export interface orderArg {
   product: {
-    productImg: { src: string };
+    productImg?: any;
+    picture?: any;
     id: number;
-    productTitle: string;
-    productPrice: number;
+    name: string;
+    price: number;
     status: string;
     productCount: string;
+    measure: {
+      symbol: string
+    };
   };
   step: number;
+
   count?: number;
   number?: number;
   key?: number;

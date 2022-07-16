@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import style from "./ChangeShopButton.module.scss";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useActions } from "../../hooks/useActions";
-import { ChangeChopModal } from "../Modal/ChangeChopModal/ChangeChopModal";
+import ChangeChopModal from "../Modal/ChangeChopModal/ChangeChopModal";
 import { MapPin } from "../../ui/MapPin/MapPin";
 import { ModalWrapper } from "../Modal/ModalWrapper";
 import { Button } from "../../ui/Button/Button";

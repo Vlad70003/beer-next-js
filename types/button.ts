@@ -23,4 +23,5 @@ export interface buttonState {
     selected?: boolean;
     selectClass?: string;
     privateOffice?: string | null;
+    setFilterArray?: any;
 }

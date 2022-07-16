@@ -11,7 +11,7 @@ import { styleRouterState } from "../types/router";
 //components
 import { AdditionalPageWrapper } from "../components/wrappers/AdditionPageWrapper/AdditionPageWrapper";
 import { Vacancy } from "../components/Vacancy/Vacancy";
-import { BaseWrapperMargin } from "../components/wrappers/BaseWrapperMargin/BaseWrapperMargin";
+import BaseWrapperMargin from "../components/wrappers/BaseWrapperMargin/BaseWrapperMargin";
 import { InputSelect } from "../ui/Select/InputSelect";
 import { HeaderWrapper } from "../components/wrappers/HeaderWrapper/HeaderWrapper";
 

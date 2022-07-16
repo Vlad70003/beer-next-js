@@ -29,22 +29,23 @@ export const handleProductCounter = ({
   }
 
   if (action === "increase") {
-    if (status === "conteiner") {
-      const { countConteiner, countDraft } = findProductById({
-        generalOrder,
-        product,
-        step,
-      });
-      if (countConteiner > countDraft) {
-        //Нельзя выбрать меньше тар, чем необходимо для разливного пива
-        deteteOrderAction({ product: checkedProduct(product), step });
-      }
-    } else if (status === "draft") {
+    // if (status === "conteiner") {
+    //   const { countConteiner, countDraft } = findProductById({
+    //     generalOrder,
+    //     product,
+    //     step,
+    //   });
+    //   if (countConteiner > countDraft) {
+    //     //Нельзя выбрать меньше тар, чем необходимо для разливного пива
+    //     deteteOrderAction({ product: checkedProduct(product), step });
+    //   }
+    // }
+     if (status === "draft") {
       // Удаляет разливное пиво и тару
       const conteiner = findConteiner({ generalOrder, step });
 
       deteteOrderAction({ product: checkedProduct(product), step });
-      deteteOrderAction({ product: checkedProduct(conteiner), step });
+      // deteteOrderAction({ product: checkedProduct(conteiner), step });
     } else {
       // Убирает товар из корзины, если это не разливное пиво
       deteteOrderAction({ product: checkedProduct(product), step });
@@ -56,7 +57,7 @@ export const handleProductCounter = ({
 
     if (status === "draft") {
       // Добавляет тару к разливному пиву
-      addOrderAction({ product: container, step });
+      // addOrderAction({ product: container, step });
     }
   }
 };

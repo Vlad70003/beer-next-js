@@ -8,7 +8,7 @@ import { SamplePrevArrow } from "./SamplePrevArrow/SamplePrevArrow";
 
 import bunner from "../../assests/img/bunner.svg";
 
-export const SlickSlider = () => {
+const SlickSlider = () => {
   const settings = {
     className: "slider-bunner variable-width-bunner center-bunner",
     dots: true,
@@ -41,3 +41,5 @@ export const SlickSlider = () => {
     </div>
   );
 };
+
+export default React.memo(SlickSlider);

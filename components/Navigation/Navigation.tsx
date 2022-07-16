@@ -18,9 +18,14 @@ import { useScroll } from "../../hooks/useScroll";
 interface NavigationProps {
   handlePage?: any;
   shopPage?: string;
+  categories: [];
 }
 
-export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
+export const Navigation = ({
+  shopPage,
+  handlePage,
+  categories,
+}: NavigationProps) => {
   const { openModalAction } = useActions();
   const scrollY = useScroll();
 
@@ -45,274 +50,43 @@ export const Navigation = ({ shopPage, handlePage }: NavigationProps) => {
               />
             </a>
           </li>
-          <li className={style.navigation__item}>
-            <Link
-              activeClass="active"
-              className="beer"
-              to="beer"
-              spy={true}
-              smooth={true}
-              duration={500}
-              offset={-120}
-              onClick={() => handlePage("beer")}
-            >
-              <Button
-                title="ПИВО И СИДРЫ"
-                type="button"
-                fontSize="18px"
-                padding="0 0 8px 0"
-                margin="0 0 0 1.5rem"
-                borderBottom={
-                  shopPage && toggleBorderBottom({ shopPage, value: "beer" })
-                }
-                color={shopPage && toggleColor({ shopPage, value: "beer" })}
-                fontWeightClass="bold"
-                hoverClassColor="blueHoverClassColor"
-              />
-            </Link>
-          </li>
-          <li className={style.navigation__item}>
-            <Link
-              activeClass="active"
-              className="beverages"
-              to="beverages"
-              spy={true}
-              smooth={true}
-              duration={500}
-              offset={-120}
-              onClick={() => handlePage("beverages")}
-            >
-              <Button
-                title="НАПИТКИ"
-                type="button"
-                fontSize="18px"
-                padding="0 0 8px 0"
-                margin="0 0 0 1.5rem"
-                borderBottom={
-                  shopPage &&
-                  toggleBorderBottom({
-                    shopPage,
-                    value: "beverages",
-                  })
-                }
-                color={
-                  shopPage && toggleColor({ shopPage, value: "beverages" })
-                }
-                fontWeightClass="bold"
-                hoverClassColor="blueHoverClassColor"
-              />
-            </Link>
-          </li>
-          <li className={style.navigation__item}>
-            <Link
-              activeClass="active"
-              className="bottled"
-              to="bottled"
-              spy={true}
-              smooth={true}
-              duration={500}
-              offset={-120}
-              onClick={() => handlePage("bottled")}
-            >
-              <Button
-                title="БУТЫЛОЧНОЕ"
-                type="button"
-                fontSize="18px"
-                padding="0 0 8px 0"
-                margin="0 0 0 1.5rem"
-                borderBottom={
-                  shopPage &&
-                  toggleBorderBottom({
-                    shopPage,
-                    value: "bottled",
-                  })
-                }
-                color={shopPage && toggleColor({ shopPage, value: "bottled" })}
-                fontWeightClass="bold"
-                hoverClassColor="blueHoverClassColor"
-              />
-            </Link>
-          </li>
-          <li className={style.navigation__item}>
-            <Link
-              activeClass="active"
-              className="chease"
-              to="chease"
-              spy={true}
-              smooth={true}
-              duration={500}
-              offset={-120}
-              onClick={() => handlePage("chease")}
-            >
-              <Button
-                title="СЫР"
-                type="button"
-                fontSize="18px"
-                padding="0 0 8px 0"
-                margin="0 0 0 1.5rem"
-                borderBottom={
-                  shopPage &&
-                  toggleBorderBottom({
-                    shopPage,
-                    value: "chease",
-                  })
-                }
-                color={shopPage && toggleColor({ shopPage, value: "chease" })}
-                fontWeightClass="bold"
-                hoverClassColor="blueHoverClassColor"
-              />
-            </Link>
-          </li>
-          <li className={style.navigation__item}>
-            <Link
-              activeClass="active"
-              className="fishes"
-              to="fishes"
-              spy={true}
-              smooth={true}
-              duration={500}
-              offset={-120}
-              onClick={() => handlePage("fishes")}
-            >
-              <Button
-                title="РЫБА"
-                type="button"
-                fontSize="18px"
-                padding="0 0 8px 0"
-                margin="0 0 0 1.5rem"
-                borderBottom={
-                  shopPage &&
-                  toggleBorderBottom({
-                    shopPage,
-                    value: "fishes",
-                  })
-                }
-                color={shopPage && toggleColor({ shopPage, value: "fishes" })}
-                fontWeightClass="bold"
-                hoverClassColor="blueHoverClassColor"
-              />
-            </Link>
-          </li>
-          <li className={style.navigation__item}>
-            <Link
-              activeClass="active"
-              className="meat"
-              to="meat"
-              spy={true}
-              smooth={true}
-              duration={500}
-              offset={-120}
-              onClick={() => handlePage("meat")}
-            >
-              <Button
-                title="МЯСО"
-                type="button"
-                fontSize="18px"
-                padding="0 0 8px 0"
-                margin="0 0 0 1.5rem"
-                borderBottom={
-                  shopPage &&
-                  toggleBorderBottom({
-                    shopPage,
-                    value: "meat",
-                  })
-                }
-                color={shopPage && toggleColor({ shopPage, value: "meat" })}
-                fontWeightClass="bold"
-                hoverClassColor="blueHoverClassColor"
-              />
-            </Link>
-          </li>
-
-          <li className={style.navigation__item}>
-            <Link
-              activeClass="active"
-              className="snacks"
-              to="snacks"
-              spy={true}
-              smooth={true}
-              duration={500}
-              offset={-120}
-              onClick={() => handlePage("snacks")}
-            >
-              <Button
-                title="СНЕКИ"
-                type="button"
-                fontSize="18px"
-                padding="0 0 8px 0"
-                margin="0 0 0 1.5rem"
-                borderBottom={
-                  shopPage &&
-                  toggleBorderBottom({
-                    shopPage,
-                    value: "snacks",
-                  })
-                }
-                color={shopPage && toggleColor({ shopPage, value: "snacks" })}
-                fontWeightClass="bold"
-                hoverClassColor="blueHoverClassColor"
-              />
-            </Link>
-          </li>
-          <li className={style.navigation__item}>
-            <Link
-              activeClass="active"
-              className="other"
-              to="other"
-              spy={true}
-              smooth={true}
-              duration={500}
-              offset={-100}
-              onClick={() => handlePage("other")}
-            >
-              <Button
-                title="ПРОЧЕЕ"
-                type="button"
-                fontSize="18px"
-                padding="0 0 8px 0"
-                margin="0 0 0 1.5rem"
-                borderBottom={
-                  shopPage &&
-                  toggleBorderBottom({
-                    shopPage,
-                    value: "other",
-                  })
-                }
-                color={shopPage && toggleColor({ shopPage, value: "other" })}
-                fontWeightClass="bold"
-                hoverClassColor="blueHoverClassColor"
-              />
-            </Link>
-          </li>
-          <li className={style.navigation__item}>
-            <Link
-              activeClass="active"
-              className="stock"
-              to="stock"
-              spy={true}
-              smooth={true}
-              duration={500}
-              offset={-150}
-              onClick={() => handlePage("stock")}
-            >
-              <Button
-                title="АКЦИИ"
-                type="button"
-                fontSize="18px"
-                margin="0 0 0 1.5rem"
-                padding="0 0 8px 0"
-                borderBottom={
-                  shopPage &&
-                  toggleBorderBottom({
-                    shopPage,
-                    value: "stock",
-                  })
-                }
-                color="#E31E25"
-                fontWeightClass="bold"
-              />
-            </Link>
-          </li>
+          {categories?.map((item: { id: string; name: string }) => {
+            
+            return (
+              <li className={style.navigation__item} key={item.id}>
+                <Link
+                  activeClass="active"
+                  className={item.name}
+                  to={item.name}
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                  offset={-120}
+                  onClick={() => handlePage(item?.id)}
+                >
+                  <Button
+                    title={item.name}
+                    type="button"
+                    fontSize="18px"
+                    padding="0 0 8px 0"
+                    margin="0 0 0 1.5rem"
+                    borderBottom={
+                      shopPage &&
+                      toggleBorderBottom({
+                        shopPage,
+                        value: item.id,
+                      })
+                    }
+                    color={
+                      shopPage && toggleColor({ shopPage, value: item.id })
+                    }
+                    fontWeightClass="bold"
+                    hoverClassColor="blueHoverClassColor"
+                  />
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
       <div className={style.navigation__rightSide}>

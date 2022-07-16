@@ -2,13 +2,13 @@ import React, { useEffect } from "react";
 import Head from "next/head";
 import style from "./HeaderWrapper.module.scss";
 
-import { Header } from "../../Header/Header";
-import { BaseWrapperMargin } from "../../wrappers/BaseWrapperMargin/BaseWrapperMargin";
+import Header from "../../Header/Header";
+import BaseWrapperMargin from "../../wrappers/BaseWrapperMargin/BaseWrapperMargin";
 import { Navigation } from "../../../components/Navigation/Navigation";
-import { SlickSlider } from "../../../components/Slick-slider-bunner/SlickSlider";
+import SlickSlider from "../../../components/Slick-slider-bunner/SlickSlider";
 import { Footer } from "../../../components/Footer/Footer";
 import OpenHeaderMenu from "../../Modal/OpenHeaderMenu/OpenHeaderMenu";
-import { OrderingPrew } from "../../Modal/OrderingPrew/OrderingPrew";
+import OrderingPrew from "../../Modal/OrderingPrew/OrderingPrew";
 
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import { useActions } from "../../../hooks/useActions";
@@ -22,6 +22,7 @@ import { loggedFirstTime } from "../../../script/modal/loggedFirstTime";
 interface HeaderWrapperState {
   children: React.ReactNode;
   styles: {};
+  categories?: [];
   header?: boolean;
   navigation?: boolean;
   footer?: boolean;
@@ -37,6 +38,7 @@ export function HeaderWrapper({
   styles,
   header,
   navigation,
+  categories,
   slider,
   footer,
 }: HeaderWrapperState) {
@@ -81,7 +83,13 @@ export function HeaderWrapper({
             }
           >
             <BaseWrapperMargin flex="auto">
-              <Navigation handlePage={handlePage} shopPage={shopPage} />
+              {categories && (
+                <Navigation
+                  handlePage={handlePage}
+                  shopPage={shopPage}
+                  categories={categories}
+                />
+              )}
             </BaseWrapperMargin>
           </div>
         )}
@@ -104,7 +112,7 @@ export function HeaderWrapper({
         )}
 
         <OrderingPrew />
-        < OpenHeaderMenu />
+        <OpenHeaderMenu />
       </div>
     </>
   );

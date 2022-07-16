@@ -14,7 +14,7 @@ import { ShopsApi } from "../api/shopsApi";
 //components
 import { HeaderWrapper } from "../components/wrappers/HeaderWrapper/HeaderWrapper";
 import { AdditionalPageWrapper } from "../components/wrappers/AdditionPageWrapper/AdditionPageWrapper";
-import { BaseWrapperMargin } from "../components/wrappers/BaseWrapperMargin/BaseWrapperMargin";
+import BaseWrapperMargin from "../components/wrappers/BaseWrapperMargin/BaseWrapperMargin";
 import { AboutUs } from "../components/AboutUs/AboutUs";
 
 const AboutCompany:NextPage<AboutCompanyProps> = ({shops}) => {

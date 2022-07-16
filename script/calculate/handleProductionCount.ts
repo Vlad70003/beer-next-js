@@ -2,19 +2,18 @@ interface handleProductionCountArg {
   productCount: string;
   status: string;
   step: number;
+  checkedAndNumberProductInOrder: { numberOrder: number | null };
 }
 
 export const handleProductionCount = ({
   productCount,
   status,
   step,
+  checkedAndNumberProductInOrder,
 }: handleProductionCountArg) => {
-  if (status === "draft" && step === 1) {
-    return "цена за 1 л без тары";
-  } else if (status === "draft" && step === 0.5) {
-    return "цена за 0.5 л без тары";
-  } else if (status === "draft" && step === 1.5) {
-    return "цена за 1.5 л без тары";
+  const numberOrder = checkedAndNumberProductInOrder?.numberOrder || step;
+  if (status === "draft") {
+    return `цена за ${numberOrder} л без тары`;
   } else {
     return productCount;
   }

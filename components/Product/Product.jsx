@@ -19,6 +19,7 @@ import { checkedProductInOrder } from "../../script/order/checkedProductInOrder"
 import { handleProductionCount } from "../../script/calculate/handleProductionCount";
 import { handleProductionPrice } from "../../script/calculate/handleProductionPrice";
 import { ProductClass } from "../../script/product/product";
+import { addToOrderFirstProduct } from "../../script/order/addToOrderFirstProduct";
 
 //assests
 import noPhoto from "../../assests/img/no-photo.svg";
@@ -65,17 +66,18 @@ export const Product = ({ product }) => {
     alkogol,
     plotnost,
   });
-  const status = productClass.status({ category_id });
+  const status = productClass.status({ measure });
   const productProduction = productClass.production({
     category_id,
     proizvodstvo,
   });
   const productPrice = productClass.price({ price });
-  const productCount = productClass.count({ category_id, measure });
 
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(+measure.ratio);
   const [checkedAndNumberProductInOrder, setCheckedAndNumberProductInOrder] =
     useState(null);
+
+  const productCount = productClass.count({ measure });
 
   useEffect(() => {
     const { productIsOrder, numberOrder } = checkedProductInOrder({
@@ -103,14 +105,6 @@ export const Product = ({ product }) => {
     openModalAction("open-product", id);
   };
 
-  const handleClick = () => {
-    return currentShop === "Выберите магазин"
-      ? openModalAction("change-shop")
-      : addOrderAction({ product, step }) &&
-          status === "draft" &&
-          addOrderAction({ product: container, step });
-  };
-
   return (
     <>
       <ul
@@ -135,16 +129,30 @@ export const Product = ({ product }) => {
           )}
           {status === "draft" && (
             <div className={`${style.product__chooseVolume} chooseVolume`}>
-              {<ChooseVolume step={step} handleStep={handleStep} />}
+              {
+                <ChooseVolume
+                  step={step}
+                  handleStep={handleStep}
+                  measure={measure}
+                />
+              }
             </div>
           )}
           <div className={style.product__footer}>
             <div className={style.product__production__leftSide}>
               <div className={style.product__production__price}>
-                {`${handleProductionPrice({ productPrice, step })}`}
+                {`${handleProductionPrice({
+                  productPrice,
+                  step: checkedAndNumberProductInOrder?.numberOrder || step,
+                })}`}
               </div>
               <div className={style.product__production__count}>
-                {handleProductionCount({ productCount, status, step })}
+                {handleProductionCount({
+                  productCount,
+                  status,
+                  step,
+                  checkedAndNumberProductInOrder,
+                })}
               </div>
             </div>
             <div
@@ -160,6 +168,7 @@ export const Product = ({ product }) => {
                     status: status,
                     step: step,
                   }}
+                  status={status}
                 />
               ) : (
                 <Info
@@ -175,14 +184,22 @@ export const Product = ({ product }) => {
                     background="#20598E"
                     padding="11px 24px"
                     borderRadius="60px"
-                    onClick={() => handleClick()}
+                    onClick={() =>
+                      addToOrderFirstProduct({
+                        currentShop,
+                        openModalAction,
+                        addOrderAction,
+                        product,
+                        container,
+                        step,
+                      })
+                    }
                     hoverClassColor="productBtnHover"
                     fontSize="1rem"
                   />
                 </Info>
               )}
             </div>
-            
           </div>
         </li>
         {/* {stock && (
@@ -210,8 +227,7 @@ export const Product = ({ product }) => {
             stepInOpenProduct={step}
             handleStep={handleStep}
             productGrade={productGrade}
-            isOrder={checkedAndNumberProductInOrder.productIsOrder}
-            numberOrder={checkedAndNumberProductInOrder.numberOrder}
+            checkedAndNumberProductInOrder={checkedAndNumberProductInOrder}
             productSubtitle={productSubtitle}
             productProduction={productProduction}
             productPrice={productPrice}

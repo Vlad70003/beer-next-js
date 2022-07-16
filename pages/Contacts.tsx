@@ -4,7 +4,7 @@ import { NextPage } from "next";
 //components
 import { Contact } from "../components/Contacts/Contact";
 import { AdditionalPageWrapper } from "../components/wrappers/AdditionPageWrapper/AdditionPageWrapper";
-import { BaseWrapperMargin } from "../components/wrappers/BaseWrapperMargin/BaseWrapperMargin";
+import BaseWrapperMargin from "../components/wrappers/BaseWrapperMargin/BaseWrapperMargin";
 import { HeaderWrapper } from "../components/wrappers/HeaderWrapper/HeaderWrapper";
 import { ModalWrapper } from "../components/Modal/ModalWrapper";
 import { FeedBack } from "../components/Modal/FeedBack/FeedBack";
