@@ -84,6 +84,7 @@ export const Product = ({ product }) => {
       generalOrder,
       id,
       step,
+      status,
     });
     setCheckedAndNumberProductInOrder({ productIsOrder, numberOrder });
   }, [generalOrder, id, step]);
@@ -138,11 +139,13 @@ export const Product = ({ product }) => {
               }
             </div>
           )}
+
           <div className={style.product__footer}>
             <div className={style.product__production__leftSide}>
               <div className={style.product__production__price}>
                 {`${handleProductionPrice({
                   productPrice,
+                  status,
                   step: checkedAndNumberProductInOrder?.numberOrder || step,
                 })}`}
               </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useLayoutEffect } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./ProductCounter.module.scss";
 
 import { useActions } from "../../hooks/useActions";
@@ -38,9 +38,8 @@ export const ProductCounter = ({
 
   useEffect(() => {
     const pow = productCount * productInfo?.price;
-
     if (status === "draft" || status === "conteiner") {
-      setProductPrice(pow * productInfo.step);
+      setProductPrice(pow);
     } else if (status === "weight") {
       setProductPrice(pow / 100);
     } else {

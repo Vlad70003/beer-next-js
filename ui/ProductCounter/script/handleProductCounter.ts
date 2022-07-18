@@ -24,6 +24,7 @@ export const handleProductCounter = ({
   action,
   status,
 }: handleProductCounterArg) => {
+
   if (productCount === 0 && action === "increase") {
     return;
   }

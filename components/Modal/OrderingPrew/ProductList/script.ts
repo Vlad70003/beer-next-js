@@ -1,6 +1,10 @@
 import { addToOrderArg, orderArg } from "../../../../types/order";
+import { ProductClass } from "../../../../script/product/product";
 
 export const addToOrder = ({ addGeneralOrderAction, order }: addToOrderArg) => {
+  
+  const productClass = new ProductClass();
+
   const compareItems = (resultItem: any, orderItem: any, status: any) => {
     if (status === "weight") {
       return resultItem?.product?.id === orderItem.product.id;
@@ -15,13 +19,16 @@ export const addToOrder = ({ addGeneralOrderAction, order }: addToOrderArg) => {
   const result: any = [];
 
   order.forEach((orderItem, ind) => {
+    const status = productClass.status({
+      measure: orderItem?.product?.measure,
+    });
     const filtered = result.filter((resultItem: any) =>
-      compareItems(resultItem, orderItem, orderItem.product.status)
+      compareItems(resultItem, orderItem, status)
     );
 
     if (filtered.length > 0) {
       const inx = result.findIndex((resultItem: any) =>
-        compareItems(resultItem, orderItem, orderItem.product.status)
+        compareItems(resultItem, orderItem, status)
       );
       result[inx].number += orderItem.step;
     } else {

@@ -1,4 +1,5 @@
 import { orderAction, orderState } from "../../types/order";
+import { ProductClass } from "../../script/product/product";
 
 export const ADD_PRODUCT_BY_ORDER = "ADD_PRODUCT_BY_ORDER";
 export const DELETE_PRODUCT_BY_ORDER = "DELETE_ PRODUCT_BY_ORDER";
@@ -9,6 +10,8 @@ const initialStates: orderState = {
 };
 
 export const orderReducers = (state = initialStates, action: orderAction) => {
+  const productClass = new ProductClass();
+
   switch (action.type) {
     case ADD_PRODUCT_BY_ORDER:
       return { order: [...state.order, action.payload] };
@@ -17,8 +20,12 @@ export const orderReducers = (state = initialStates, action: orderAction) => {
       let firstIndexClone = null;
 
       for (let i = order.length - 1; i >= 0; i--) {
+        const status = productClass.status({
+          measure: order[i].product?.measure,
+        });
+
         if (
-          order[i].product.status === "weight" &&
+          status === "weight" &&
           order[i].product.id === action.payload.product.id
         ) {
           firstIndexClone = i;

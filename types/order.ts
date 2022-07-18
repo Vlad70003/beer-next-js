@@ -4,7 +4,9 @@ export interface orderAction {
 }
 
 export interface orderState {
-  order: { product: { id: number; status: string }; step: number }[];
+  order: { product: {
+    measure: any; id: number; status: string 
+}; step: number }[];
 }
 
 export interface orderArg {

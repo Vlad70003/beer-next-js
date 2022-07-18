@@ -14,6 +14,8 @@ export const handleProductionCount = ({
   const numberOrder = checkedAndNumberProductInOrder?.numberOrder || step;
   if (status === "draft") {
     return `цена за ${numberOrder} л без тары`;
+  } else if (status === "weight") {
+    return `цена за ${numberOrder * 100} г.`;
   } else {
     return productCount;
   }

@@ -76,6 +76,7 @@ export const ProductList = () => {
                     >{`${product.step} л.`}</div>
                   )}
                 </div>
+
                 <div className={style.item__col}>
                   <ProductCounter
                     status={status}
