@@ -16,7 +16,7 @@ import { Input } from "../ui/Input/Input";
 import TimeChange from "../ui/TimeChange/TimeChange";
 import { Button } from "../ui/Button/Button";
 import OrderWindow from "../components/OrderWindow/OrderWindow";
-import { BaseWrapperMargin } from "../components/wrappers/BaseWrapperMargin/BaseWrapperMargin";
+import BaseWrapperMargin from "../components/wrappers/BaseWrapperMargin/BaseWrapperMargin";
 import { HeaderWrapper } from "../components/wrappers/HeaderWrapper/HeaderWrapper";
 import { PurchaseSuccess } from "../components/Modal/PurchaseSuccess/PurchaseSuccess";
 import { TimeChanger } from "../components/Modal/TimeChanger/TimeChanger";
@@ -36,7 +36,7 @@ import visa from "../assests/img/visa.svg";
 import mir from "../assests/img/mir.svg";
 import { baseBackground } from "../assests/variable/variable";
 
-const Ordering:NextPage<OrderingProps> = ({shops}) => {
+const Ordering: NextPage<OrderingProps> = ({ shops }) => {
   const [timeOrder, setTimeOrder] = useState("Побыстрее");
   const [timeChangeIsOpen, setTimeChangeIsOpen] = useState(false);
 
@@ -86,7 +86,7 @@ const Ordering:NextPage<OrderingProps> = ({shops}) => {
                     htmlFor=""
                     className={`${style.ordering__label} ${style.ordering__marginRight24}`}
                   >
-                    <pre>Имя получателя:     </pre>
+                    <pre>Имя получателя: </pre>
                     <BorderWrapper
                       border="1px solid #BFBFBF"
                       borderRadius="92px"
@@ -104,7 +104,7 @@ const Ordering:NextPage<OrderingProps> = ({shops}) => {
                     className={style.ordering__label}
                     onClick={() => openModalAction("time-picker")}
                   >
-                    <pre>Время:     </pre>
+                    <pre>Время: </pre>
                     <BorderWrapper
                       border="1px solid #BFBFBF"
                       borderRadius="92px"
@@ -128,7 +128,7 @@ const Ordering:NextPage<OrderingProps> = ({shops}) => {
                 >
                   <label className={style.ordering__label}>
                     <ReCheckBox padding="0 8px 0 0" />
-                    <pre>Использовать бонусы:     </pre>
+                    <pre>Использовать бонусы: </pre>
                   </label>
                   <BorderWrapper
                     border="1px solid #BFBFBF"
@@ -146,7 +146,7 @@ const Ordering:NextPage<OrderingProps> = ({shops}) => {
                   className={`${style.ordering__flexWrapper} ${style.ordering__padding24}`}
                 >
                   <label className={style.ordering__label}>
-                    <pre>Комментарий к заказу:     </pre>
+                    <pre>Комментарий к заказу: </pre>
                   </label>
                   <BorderWrapper
                     border="1px solid #BFBFBF"
@@ -358,7 +358,7 @@ const Ordering:NextPage<OrderingProps> = ({shops}) => {
       )}
     </>
   );
-}
+};
 
 export async function getStaticProps() {
   const shopsApi = new ShopsApi();

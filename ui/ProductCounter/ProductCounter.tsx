@@ -20,6 +20,7 @@ interface ProductCounterProps {
   };
   padding?: string;
   status: string | null;
+  petsBottle: { smallPet: {}; mediumPet: {}; bigPet: {} }
 }
 
 export const ProductCounter = ({
@@ -27,6 +28,7 @@ export const ProductCounter = ({
   productInfo,
   padding,
   status,
+  petsBottle,
 }: ProductCounterProps) => {
   const { addOrderAction } = useActions();
   const { deteteOrderAction } = useActions();
@@ -35,13 +37,12 @@ export const ProductCounter = ({
   const [productCount, setProductCount] = useState<number>(productInfo.count);
   const [productPrice, setProductPrice] = useState(0);
 
-
   useEffect(() => {
     const pow = productCount * productInfo?.price;
     if (status === "draft" || status === "conteiner") {
       setProductPrice(pow);
     } else if (status === "weight") {
-      setProductPrice(pow / 100);
+      setProductPrice(pow / 1000);
     } else {
       setProductPrice(pow);
     }
@@ -79,13 +80,14 @@ export const ProductCounter = ({
               productCount,
               action: "increase",
               status: status,
+              petsBottle
             });
           }}
         >
           -
         </button>
         <div className={style.count} style={sountStyle}>
-          {`${productCount} ${productInfo?.product?.measure?.symbol}`}
+          {`${productCount} ${productInfo?.product?.measure?.symbol === "кг" ? "г" : productInfo?.product?.measure?.symbol}`}
         </div>
         <button
           className={style.button}
@@ -99,6 +101,7 @@ export const ProductCounter = ({
               productCount,
               action: "decrease",
               status: status,
+              petsBottle
             });
           }}
         >

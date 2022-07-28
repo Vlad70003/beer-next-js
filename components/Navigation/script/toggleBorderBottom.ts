@@ -1,11 +1,16 @@
 interface toggleBorderBottomState {
-  shopPage?: string;
+  activeScrollPage?: string;
   value?: string;
 }
 
-export const toggleBorderBottom = ({ shopPage, value }: toggleBorderBottomState) => {
-  if (shopPage === value &&  shopPage === "stock") {
-    return "4px solid red"
+export const toggleBorderBottom = ({
+  activeScrollPage,
+  value,
+}: toggleBorderBottomState) => {
+  if (activeScrollPage === value && activeScrollPage === "stock") {
+    return "4px solid red";
   }
-  return shopPage === value ? "4px solid #3D69B7" : "4px solid transparent";
+  return activeScrollPage === value
+    ? "4px solid #3D69B7"
+    : "4px solid transparent";
 };

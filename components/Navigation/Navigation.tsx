@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./Navigation.module.scss";
 import Image from "next/image";
 import { Link, animateScroll as scroll } from "react-scroll";
@@ -16,18 +16,28 @@ import { useActions } from "../../hooks/useActions";
 import { useScroll } from "../../hooks/useScroll";
 
 interface NavigationProps {
-  handlePage?: any;
+  activeScrollPage?: any;
   shopPage?: string;
+  setActiveScrollPage?: (value: any) => void;
   categories: [];
 }
 
 export const Navigation = ({
   shopPage,
-  handlePage,
+  activeScrollPage,
   categories,
+  setActiveScrollPage,
 }: NavigationProps) => {
+  //action
   const { openModalAction } = useActions();
+
+  //hook
   const scrollY = useScroll();
+
+  const handleActiveScrollPage = (to: string) => {
+    setActiveScrollPage && setActiveScrollPage(to);
+  };
+
 
   return (
     <nav className={style.navigation}>
@@ -39,7 +49,7 @@ export const Navigation = ({
               : `${style.navigation__list} ${style.navigation__list__close}`
           }
         >
-          <li>
+          <li className={style.navigation__img}>
             <a onClick={() => scroll.scrollToTop()}>
               <Image
                 src={miniLogo}
@@ -51,7 +61,6 @@ export const Navigation = ({
             </a>
           </li>
           {categories?.map((item: { id: string; name: string }) => {
-            
             return (
               <li className={style.navigation__item} key={item.id}>
                 <Link
@@ -62,24 +71,22 @@ export const Navigation = ({
                   smooth={true}
                   duration={500}
                   offset={-120}
-                  onClick={() => handlePage(item?.id)}
+                  onSetActive={handleActiveScrollPage}
                 >
                   <Button
                     title={item.name}
+                    whiteSpace="nowrap"
                     type="button"
                     fontSize="18px"
                     padding="0 0 8px 0"
                     margin="0 0 0 1.5rem"
                     borderBottom={
-                      shopPage &&
                       toggleBorderBottom({
-                        shopPage,
-                        value: item.id,
+                        activeScrollPage,
+                        value: item.name,
                       })
                     }
-                    color={
-                      shopPage && toggleColor({ shopPage, value: item.id })
-                    }
+                    color={toggleColor({ activeScrollPage, value: item.name })}
                     fontWeightClass="bold"
                     hoverClassColor="blueHoverClassColor"
                   />

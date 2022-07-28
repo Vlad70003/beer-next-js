@@ -27,7 +27,7 @@ import noPhoto from "../../assests/img/no-photo.svg";
 //data
 import { container } from "./productExample";
 
-export const Product = ({ product }) => {
+export const Product = ({ product, petsBottle, setProductAfterChangeShop }) => {
   const {
     alkogol,
     brend,
@@ -41,6 +41,8 @@ export const Product = ({ product }) => {
     id,
     measure,
     name,
+    ves,
+    obem,
     picture,
     pivovarnya,
     plotnost,
@@ -51,8 +53,9 @@ export const Product = ({ product }) => {
     stil_piva,
     vid_piva,
     xml_id,
+    vkus,
   } = product;
-
+  console.log(product);
   const productClass = new ProductClass();
   const modal = useTypedSelector((state) => state.modal);
   const { openModalAction } = useActions();
@@ -60,13 +63,32 @@ export const Product = ({ product }) => {
   const { currentShop } = useTypedSelector((state) => state.currentShop);
   const { generalOrder } = useTypedSelector((state) => state.generalOrder);
 
-  const productGrade = productClass.grade({ category_id, vid_piva, measure });
-  const productSubtitle = productClass.subtitle({
+  const productGradeFirst = productClass.grade({
+    category_id,
+    vid_piva,
+    filtratsiya,
+    measure,
+    vkus,
+  });
+
+  const productSubtitleProduct = productClass.subtitle({
     category_id,
     alkogol,
     plotnost,
+    alkogolLength: 3,
+    plotnostLength: 2,
   });
-  const status = productClass.status({ measure });
+
+  const productSubtitleOpenProduct = productClass.subtitle({
+    category_id,
+    alkogol,
+    plotnost,
+    alkogolLength: 999,
+    plotnostLength: 9,
+  });
+
+  const status = productClass.status({ measure, name: product?.name });
+  const unit = productClass.unit({ ves, obem });
   const productProduction = productClass.production({
     category_id,
     proizvodstvo,
@@ -74,6 +96,7 @@ export const Product = ({ product }) => {
   const productPrice = productClass.price({ price });
 
   const [step, setStep] = useState(+measure.ratio);
+
   const [checkedAndNumberProductInOrder, setCheckedAndNumberProductInOrder] =
     useState(null);
 
@@ -87,6 +110,7 @@ export const Product = ({ product }) => {
       status,
     });
     setCheckedAndNumberProductInOrder({ productIsOrder, numberOrder });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [generalOrder, id, step]);
 
   const handleStep = (value) => {
@@ -122,86 +146,100 @@ export const Product = ({ product }) => {
           />
         </li>
         <li className={style.product__title__wrapper}>
-          <div className={style.product__title}>{name}</div>
-          <div className={style.product__grade}>{productGrade}</div>
-          <div className={style.product__subtitle}>{productSubtitle}</div>
-          {status !== "draft" && (
-            <div className={style.product__production}>{productProduction}</div>
-          )}
-          {status === "draft" && (
-            <div className={`${style.product__chooseVolume} chooseVolume`}>
-              {
-                <ChooseVolume
-                  step={step}
-                  handleStep={handleStep}
-                  measure={measure}
-                />
-              }
-            </div>
-          )}
-
-          <div className={style.product__footer}>
-            <div className={style.product__production__leftSide}>
-              <div className={style.product__production__price}>
-                {`${handleProductionPrice({
-                  productPrice,
-                  status,
-                  step: checkedAndNumberProductInOrder?.numberOrder || step,
-                })}`}
+          <div className={style.product__side}>
+            {name && <pre className={style.product__title}>{name}</pre>}
+            {status !== "draft" && status !== "weight" && unit && (
+              <div className={style.product__production}>{unit}</div>
+            )}
+            {productGradeFirst && (
+              <div className={style.product__grade}>{productGradeFirst}</div>
+            )}
+            {productSubtitleProduct && (
+              <div className={style.product__subtitle}>
+                {productSubtitleProduct}
               </div>
-              <div className={style.product__production__count}>
-                {handleProductionCount({
-                  productCount,
-                  status,
-                  step,
-                  checkedAndNumberProductInOrder,
-                })}
-              </div>
-            </div>
-            <div
-              className={`${style.product__production__rightSide} product__button-wrapper`}
-            >
-              {checkedAndNumberProductInOrder?.productIsOrder ? (
-                <ProductCounter
-                  customNumber
-                  productInfo={{
-                    product: product,
-                    price: productPrice,
-                    count: checkedAndNumberProductInOrder?.numberOrder || 1,
-                    status: status,
-                    step: step,
-                  }}
-                  status={status}
-                />
-              ) : (
-                <Info
-                  text="Пожалуйста выберите магазин, чтобы мы могли педоставить вам актуальный ассортимент"
-                  position="relative"
-                  width="100%"
-                  height="auto"
-                  positionWindow="bottom"
-                >
-                  <Button
-                    title="В корзину"
-                    color="white"
-                    background="#20598E"
-                    padding="11px 24px"
-                    borderRadius="60px"
-                    onClick={() =>
-                      addToOrderFirstProduct({
-                        currentShop,
-                        openModalAction,
-                        addOrderAction,
-                        product,
-                        container,
-                        step,
-                      })
-                    }
-                    hoverClassColor="productBtnHover"
-                    fontSize="1rem"
+            )}
+          </div>
+          <div className={style.product__side}>
+            {status === "draft" && (
+              <div className={`${style.product__chooseVolume} chooseVolume`}>
+                {
+                  <ChooseVolume
+                    step={step}
+                    handleStep={handleStep}
+                    measure={measure}
                   />
-                </Info>
-              )}
+                }
+              </div>
+            )}
+
+            <div className={style.product__footer}>
+              <div className={style.product__production__leftSide}>
+                <div className={style.product__production__price}>
+                  {`${handleProductionPrice({
+                    productPrice,
+                    status,
+                    step: checkedAndNumberProductInOrder?.numberOrder || step,
+                  })}`}
+                </div>
+                <div className={style.product__production__count}>
+                  {handleProductionCount({
+                    productCount,
+                    status,
+                    step,
+                    checkedAndNumberProductInOrder,
+                  })}
+                </div>
+              </div>
+              <div
+                className={`${style.product__production__rightSide} product__button-wrapper`}
+              >
+                {checkedAndNumberProductInOrder?.productIsOrder ? (
+                  <ProductCounter
+                    customNumber
+                    productInfo={{
+                      product: product,
+                      price: productPrice,
+                      count: checkedAndNumberProductInOrder?.numberOrder || 1,
+                      status: status,
+                      step: step,
+                    }}
+                    petsBottle={petsBottle}
+                    status={status}
+                  />
+                ) : (
+                  <Info
+                    text="Пожалуйста выберите магазин, чтобы мы могли педоставить вам актуальный ассортимент"
+                    position="relative"
+                    width="100%"
+                    height="auto"
+                    positionWindow="bottom"
+                  >
+                    <Button
+                      title="В корзину"
+                      color="white"
+                      background="#20598E"
+                      padding="11px 24px"
+                      borderRadius="60px"
+                      onClick={() =>
+                        addToOrderFirstProduct({
+                          currentShop,
+                          setProductAfterChangeShop,
+                          petsBottle,
+                          openModalAction,
+                          addOrderAction,
+                          product,
+                          container,
+                          step,
+                          status,
+                        })
+                      }
+                      hoverClassColor="productBtnHover"
+                      fontSize="1rem"
+                    />
+                  </Info>
+                )}
+              </div>
             </div>
           </div>
         </li>
@@ -229,12 +267,14 @@ export const Product = ({ product }) => {
             product={product}
             stepInOpenProduct={step}
             handleStep={handleStep}
-            productGrade={productGrade}
+            productGrade={productGradeFirst}
+            setProductAfterChangeShop={setProductAfterChangeShop}
             checkedAndNumberProductInOrder={checkedAndNumberProductInOrder}
-            productSubtitle={productSubtitle}
+            productSubtitle={productSubtitleOpenProduct}
             productProduction={productProduction}
             productPrice={productPrice}
             status={status}
+            petsBottle={petsBottle}
           />
         </ModalWrapper>
       )}

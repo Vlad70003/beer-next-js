@@ -18,6 +18,7 @@ import BaseWrapperMargin from "../components/wrappers/BaseWrapperMargin/BaseWrap
 import { AboutUs } from "../components/AboutUs/AboutUs";
 
 const AboutCompany:NextPage<AboutCompanyProps> = ({shops}) => {
+  
   const styleHome: styleRouterState = {
     width: "100%",
     minHeight: "100vh",

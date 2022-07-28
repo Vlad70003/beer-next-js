@@ -26,6 +26,7 @@ export interface productState {
 export interface productItem {
   stil_piva: { value: string };
   vid_piva: { value: string };
+  id: string;
   props: [
     {
       value: string;

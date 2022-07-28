@@ -36,10 +36,12 @@ interface OpenProductProps {
     id: number;
   };
   stepInOpenProduct: number;
+  setProductAfterChangeShop: (value: any) => void;
   productGrade: string;
   productPrice: number;
   numberOrder: number;
   productSubtitle: string;
+  petsBottle: { smallPet: {}; mediumPet: {}; bigPet: {} }
   productProduction: string;
   status: string;
   checkedAndNumberProductInOrder: {
@@ -59,6 +61,8 @@ export const OpenProduct = ({
   status,
   productPrice,
   checkedAndNumberProductInOrder,
+  petsBottle,
+  setProductAfterChangeShop
 }: OpenProductProps) => {
   const { brewery, picture, productCount, stock, name, description, id } =
     product;
@@ -129,6 +133,7 @@ export const OpenProduct = ({
             <div className={style.footer__row}>{`${handleProductionPrice({
               productPrice,
               step: checkedAndNumberProductInOrder?.numberOrder || step,
+              status: status
             })}`}</div>
             <div className={style.footer__row}>
               {handleProductionCount({
@@ -153,6 +158,7 @@ export const OpenProduct = ({
                   step: step,
                   measure: product.measure,
                 }}
+                petsBottle={petsBottle}
               />
             ) : (
               <Button
@@ -167,10 +173,13 @@ export const OpenProduct = ({
                   addToOrderFirstProduct({
                     currentShop,
                     openModalAction,
+                    setProductAfterChangeShop,
                     addOrderAction,
                     product,
                     container,
                     step,
+                    status,
+                    petsBottle,
                   })
                 }
               />

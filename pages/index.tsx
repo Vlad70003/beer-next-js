@@ -1,9 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
+import Head from "next/head";
 import type { NextPage } from "next";
 import { useActions } from "../hooks/useActions";
 import { Element } from "react-scroll";
 import { useTypedSelector } from "../hooks/useTypedSelector";
+import Error from "next/error";
+
+import { scroller } from "react-scroll";
 
 //components
 import { HeaderWrapper } from "../components/wrappers/HeaderWrapper/HeaderWrapper";
@@ -22,14 +26,23 @@ import { productState } from "../types/product";
 
 //script
 import { ProductClass } from "../script/product/product";
+import { addToOrderFirstProductAfterChangeShop } from "../script/order/addToOrderFirstProductAfterChangeShop";
 
-const Home: NextPage<HomeProps> = ({ shops, catalog }) => {
+const Home: NextPage<HomeProps> = ({ shops, catalog, errorCode, message }) => {
   //actions
   const { addShopsListAction } = useActions();
   const { fetchCatalogByIdShop } = useActions();
+  const { addProductListAction } = useActions();
+  const { addOrderAction } = useActions();
 
   //state
   const [product, setProduct] = useState<productState>({});
+  const [productAfterChangeShop, setProductAfterChangeShop] = useState<{
+    product: { id: any };
+    step: number;
+    rightPet: {} | null;
+  } | null>(null);
+  const [activeScrollPage, setActiveScrollPage] = useState(null);
 
   //typeSelector
   const { currentShop } = useTypedSelector((state) => state.currentShop);
@@ -45,13 +58,22 @@ const Home: NextPage<HomeProps> = ({ shops, catalog }) => {
   const { products, categories } = catalog?.data;
   const productsForShopData = productList?.data;
   const categorySort = productClass.category(categories);
+  const petsBottle = productClass.getPetBottle({ products });
 
-  //state
-  const [shopPage, setShopPage] = useState(categories[0]?.id);
+  useEffect(() => {
+    addProductListAction(catalog);
+  }, [catalog]);
 
-  const handlePage = (value: string) => {
-    setShopPage(value);
-  };
+  useEffect(() => {
+    if (productAfterChangeShop) {
+      addToOrderFirstProductAfterChangeShop({
+        productsForShopData,
+        productAfterChangeShop,
+        addOrderAction,
+        setProductAfterChangeShop,
+      });
+    }
+  }, [productsForShopData]);
 
   //useEffect
   useEffect(() => {
@@ -78,12 +100,35 @@ const Home: NextPage<HomeProps> = ({ shops, catalog }) => {
     background: baseBackground,
   };
 
+  const t = () => {
+    productAfterChangeShop?.product?.id &&
+      scroller.scrollTo(productAfterChangeShop?.product?.id, {
+        duration: 0,
+        delay: 0,
+        smooth: true,
+        offset: -120,
+      });
+  };
+
+  useEffect(() => {
+    !load && t();
+  }, [load]);
+
+  if (errorCode) {
+    <Error statusCode={errorCode} title={message} />;
+  }
+
   return (
     <>
+      <Head>
+        <meta name="keywords" content="Пивас и квас" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
+      </Head>
+
       <HeaderWrapper
         styles={styleHome}
-        handlePage={handlePage}
-        shopPage={shopPage}
+        activeScrollPage={activeScrollPage}
+        setActiveScrollPage={setActiveScrollPage}
         categories={categories}
         header
         navigation
@@ -98,12 +143,14 @@ const Home: NextPage<HomeProps> = ({ shops, catalog }) => {
                   item[1].name[0].toUpperCase() +
                   item[1].name.slice(1).toLowerCase();
                 return (
-                  <Element name={item[1].name} className="other" key={item[0]}>
+                  <Element name={item[1].name} key={item[0]}>
                     <Catalog
                       title={name}
                       product={item[1].products}
                       filters={item[1].filters}
-                      
+                      petsBottle={petsBottle}
+                      setActiveScrollPage={setActiveScrollPage}
+                      setProductAfterChangeShop={setProductAfterChangeShop}
                     />
                   </Element>
                 );
@@ -118,18 +165,25 @@ const Home: NextPage<HomeProps> = ({ shops, catalog }) => {
   );
 };
 
-export async function getStaticProps() {
-  const shopsApi = new ShopsApi();
-  const catalogApi = new CatalogApi();
+export const getServerSideProps = async () => {
+  try {
+    const shopsApi = new ShopsApi();
+    const catalogApi = new CatalogApi();
+    const shopsList = await shopsApi.getShopsList();
+    const catalogList = await catalogApi.getCatalogList();
+    const shops = await shopsList.json();
+    const catalog = await catalogList.json();
 
-  const shopsList = await shopsApi.getShopsList();
-  const catalogList = await catalogApi.getCatalogList();
-  const shops = await shopsList.json();
-  const catalog = await catalogList.json();
+    if (!shops || !catalog) {
+      return { notFound: true };
+    }
 
-  return {
-    props: { shops, catalog },
-  };
-}
+    return {
+      props: { shops, catalog },
+    };
+  } catch {
+    return { props: { shops: null, catalog: null } };
+  }
+};
 
 export default Home;

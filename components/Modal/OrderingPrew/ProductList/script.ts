@@ -21,6 +21,7 @@ export const addToOrder = ({ addGeneralOrderAction, order }: addToOrderArg) => {
   order.forEach((orderItem, ind) => {
     const status = productClass.status({
       measure: orderItem?.product?.measure,
+      name: orderItem?.product?.name,
     });
     const filtered = result.filter((resultItem: any) =>
       compareItems(resultItem, orderItem, status)

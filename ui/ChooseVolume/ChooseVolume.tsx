@@ -12,6 +12,7 @@ export const ChooseVolume = ({
   handleStep,
   measure,
 }: ChooseVolumeArg) => {
+  
   const toggleItemStyle = {
     left: step === 0.5 ? "0" : step === 1 ? "50%" : step === 1.5 ? "100%" : "0",
     top: "0",

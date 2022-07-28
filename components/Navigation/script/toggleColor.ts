@@ -1,8 +1,8 @@
 interface toggleColorState {
-  shopPage: string;
+  activeScrollPage: string;
   value: string;
 }
 
-export const toggleColor = ({ shopPage, value }: toggleColorState) => {
-  return shopPage === value ? "#3D69B7" : "black";
+export const toggleColor = ({ activeScrollPage, value }: toggleColorState) => {
+  return activeScrollPage === value ? "#3D69B7" : "black";
 };

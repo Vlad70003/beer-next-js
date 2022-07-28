@@ -22,7 +22,7 @@ import { ShopsApi } from "../api/shopsApi";
 //hooks
 import { useTypedSelector } from "../hooks/useTypedSelector";
 
-const Contacts: NextPage<ContactsProps> = ({ shops }) => {
+const Contacts: NextPage<ContactsProps> = () => {
   const modal = useTypedSelector((state) => state.modal);
 
   const styleHome: styleRouterState = {
@@ -68,15 +68,15 @@ const Contacts: NextPage<ContactsProps> = ({ shops }) => {
   );
 };
 
-export async function getStaticProps() {
-  const shopsApi = new ShopsApi();
+// export async function getStaticProps() {
+//   const shopsApi = new ShopsApi();
 
-  const res = await shopsApi.getShopsList();
-  const shops = await res.json();
+//   const res = await shopsApi.getShopsList();
+//   const shops = await res.json();
 
-  return {
-    props: { shops },
-  };
-}
+//   return {
+//     props: { shops },
+//   };
+// }
 
 export default Contacts;

@@ -1,13 +1,14 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false, //strict mode
+  generateEtags: false, // no cashe
   typescript: {
     ignoreBuildErrors: true,
   },
   images: {
-    loader: 'akamai',
-    path: '',
+    loader: "akamai",
+    path: "",
     domains: ["bitrix.pivasikvas.ru"],
   },
 };

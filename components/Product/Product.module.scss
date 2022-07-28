@@ -11,6 +11,10 @@
   box-sizing: border-box;
   position: relative;
   cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   &:hover {
     box-shadow: 5px 5px 20px rgba($color: #000000, $alpha: 0.2);
@@ -18,6 +22,7 @@
 
   & li {
     text-align: center;
+    flex: 1;
   }
 
   &__img {
@@ -25,6 +30,8 @@
 
     &__wrapper {
       min-width: 82px;
+      max-height: 220px;
+      margin-bottom: 16px;
     }
 
     @media screen and (max-width: 535px) {
@@ -36,9 +43,17 @@
 
   &__title {
     color: #434242;
-    font-size: 0.94rem;
+    font-size: 1rem;
     padding-bottom: 8px;
     font-family: "PTSans-Bold";
+    // font-family: "Times New Roman", Times, serif;
+    white-space: break-spaces;
+
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
     @media screen and (max-width: 535px) {
       &__wrapper {
@@ -50,18 +65,19 @@
   &__grade {
     color: #434242;
     padding-bottom: 8px;
-    font-size: 0.94rem;
+    font-size: 0.8889rem;
   }
 
   &__subtitle {
     color: #757575;
     padding-bottom: 8px;
-    font-size: 0.94rem;
+    font-size: 0.8889rem;
   }
 
   &__production {
     color: #757575;
-    padding-bottom: 40px;
+    padding-bottom: 8px;
+    font-size: 0.8889rem;
   }
 
   &__chooseVolume {
@@ -72,6 +88,7 @@
   &__footer {
     display: flex;
     justify-content: space-around;
+    padding-top: 8px;
 
     & > div {
       flex: 1;
@@ -82,6 +99,7 @@
     &__leftSide {
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
     }
     &__rightSide {
       display: flex;

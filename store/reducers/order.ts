@@ -22,6 +22,7 @@ export const orderReducers = (state = initialStates, action: orderAction) => {
       for (let i = order.length - 1; i >= 0; i--) {
         const status = productClass.status({
           measure: order[i].product?.measure,
+          name: order[i].product?.name,
         });
 
         if (

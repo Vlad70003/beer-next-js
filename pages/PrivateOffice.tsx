@@ -16,7 +16,7 @@ import { ShopChanger } from "../components/ShopChanger/ShopChanger";
 import { CardChanger } from "../components/CardChanger/CardChanger";
 import { Button } from "../ui/Button/Button";
 import { ProductListFromPrivateOffice } from "../components/ProductListFromPrivateOffice/ProductListFromPrivateOffice";
-import { BaseWrapperMargin } from "../components/wrappers/BaseWrapperMargin/BaseWrapperMargin";
+import BaseWrapperMargin from "../components/wrappers/BaseWrapperMargin/BaseWrapperMargin";
 import { HeaderWrapper } from "../components/wrappers/HeaderWrapper/HeaderWrapper";
 
 //hooks
@@ -34,6 +34,7 @@ import { PrivateOfficeProps } from "../types/pages";
 import { styleRouterState } from "../types/router";
 
 const PrivateOffice: NextPage<PrivateOfficeProps> = ({ shops }) => {
+  
   const { loggedOutAction } = useActions();
   const [shoppingMenuPage, setShoppingMenuPage] = useState("onTheSite");
 

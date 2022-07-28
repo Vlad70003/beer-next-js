@@ -29,6 +29,12 @@ export const ProductList = () => {
   const { generalOrder }: { generalOrder: orderArg[] } = useTypedSelector(
     (store) => store.generalOrder
   );
+
+  const { productList } = useTypedSelector((store) => store.productList);
+
+  const products = productList?.data?.products
+  const petsBottle = products && productClass.getPetBottle({products: productList?.data?.products});
+
   const { deleteAllOrderAction } = useActions();
   const { addGeneralOrderAction } = useActions();
 
@@ -51,6 +57,7 @@ export const ProductList = () => {
 
             const status = productClass.status({
               measure: product?.product?.measure,
+              name: product?.product?.name,
             });
 
             return (
@@ -75,6 +82,9 @@ export const ProductList = () => {
                       className={style.item__displacement}
                     >{`${product.step} л.`}</div>
                   )}
+                  {status === "weight" && <div
+                      className={style.item__displacement}
+                    >{`${product.step * 100} гр`}</div>}
                 </div>
 
                 <div className={style.item__col}>
@@ -88,6 +98,7 @@ export const ProductList = () => {
                       status: product.product.status,
                       step: product.step,
                     }}
+                    petsBottle={petsBottle}
                   />
                 </div>
               </li>

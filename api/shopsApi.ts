@@ -1,4 +1,4 @@
-export class  ShopsApi {
+export class ShopsApi {
 
     getShopsList = () => {
         return fetch(`https://bitrix.pivasikvas.ru/api/shops`, {

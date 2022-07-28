@@ -29,7 +29,7 @@ export const Button = ({
   selectClass,
   selected,
   privateOffice,
-
+  whiteSpace,
 }: buttonState) => {
   const styleButton = {
     color: disabled ? "white" : color || "black",
@@ -44,6 +44,7 @@ export const Button = ({
     fontSize: fontSize || "16px",
     width: width || "auto",
     minWidth: minWidth,
+    whiteSpace: whiteSpace || "inherit",
     transition: "all .4s",
   };
 

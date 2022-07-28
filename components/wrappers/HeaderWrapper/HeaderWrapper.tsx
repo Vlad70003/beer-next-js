@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import style from "./HeaderWrapper.module.scss";
 
@@ -21,6 +21,7 @@ import { loggedFirstTime } from "../../../script/modal/loggedFirstTime";
 
 interface HeaderWrapperState {
   children: React.ReactNode;
+  setActiveScrollPage?: (value: any) => void;
   styles: {};
   categories?: [];
   header?: boolean;
@@ -28,23 +29,29 @@ interface HeaderWrapperState {
   footer?: boolean;
   slider?: boolean;
   shopPage?: string;
-  handlePage?: any;
+  activeScrollPage?: any;
 }
 
 export function HeaderWrapper({
   children,
   shopPage,
-  handlePage,
+  activeScrollPage,
   styles,
   header,
   navigation,
+  setActiveScrollPage,
   categories,
   slider,
   footer,
 }: HeaderWrapperState) {
+  //store
   const modal = useTypedSelector((state) => state.modal);
+
+  //action
   const { openModalAction } = useActions();
   const { closeModalAction } = useActions();
+
+  //hook
   const scroll = useScroll();
 
   useEffect(() => {
@@ -85,9 +92,10 @@ export function HeaderWrapper({
             <BaseWrapperMargin flex="auto">
               {categories && (
                 <Navigation
-                  handlePage={handlePage}
+                  activeScrollPage={activeScrollPage}
                   shopPage={shopPage}
                   categories={categories}
+                  setActiveScrollPage={setActiveScrollPage}
                 />
               )}
             </BaseWrapperMargin>

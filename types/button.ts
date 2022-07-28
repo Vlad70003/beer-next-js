@@ -1,4 +1,4 @@
-export interface buttonState {
+export interface                                                                                                                              buttonState {
     type?: 'submit' | 'reset' | 'button',
     title: string,
     color?: string,
@@ -9,6 +9,7 @@ export interface buttonState {
     background?: string,
     border?: string,
     borderRadius?: string,
+    whiteSpace?: any,
     onClick?: any,
     // onClick?: React.MouseEventHandler<HTMLButtonElement> | ((value: string) => void),
     margin?: string,

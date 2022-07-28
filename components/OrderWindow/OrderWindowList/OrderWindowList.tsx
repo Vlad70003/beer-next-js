@@ -7,6 +7,7 @@ interface OrderWindowListData {
 }
 
 export default function OrderWindowList({content}:OrderWindowListData) {
+
   return (
     <ul className="orderWindow__list">
         {content && content.map((item, idx) => {

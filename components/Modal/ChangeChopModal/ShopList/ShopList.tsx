@@ -24,24 +24,23 @@ const ShopList = ({ currentCities, currentRegion }: ShopListProps) => {
     currentRegion: any,
     shopsList: any
   ) => {
-    return shopsList.data.filter((item: any) =>
+    return shopsList?.data?.filter((item: any) =>
       currentCities
-        ? item.city === currentCities?.value
+        ? item?.city === currentCities?.value
         : currentRegion
-        ? item.region === currentRegion?.value
+        ? item?.region === currentRegion?.value
         : item
     );
   };
 
   const shopsListFilterResult = useMemo(() => {
     return shopsListFilter(currentCities, currentRegion, shopsList);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentCities, currentRegion]);
 
   return (
     <ul className={style.shopList}>
       {shopsListFilterResult?.map((shop: shopPropsDataItems, ind: number) => {
-
         const background = ind % 2 === 0 ? "#F4F9FD" : "white";
         return (
           <li
@@ -56,7 +55,7 @@ const ShopList = ({ currentCities, currentRegion }: ShopListProps) => {
                 >
                   {shop.name ? shop.name : null}
                 </div>
-                <div className={style.shopItem__text}>пн-пт</div>
+                <div className={style.shopItem__text}>вс-чт</div>
                 <div className={style.shopItem__text}>
                   {shop?.schedule?.fri || ""}
                 </div>
@@ -65,8 +64,10 @@ const ShopList = ({ currentCities, currentRegion }: ShopListProps) => {
                 <div className={style.shopItem__text}>
                   {shop?.phone ? shop?.phone : "Нет телефона"}
                 </div>
-                <div className={style.shopItem__text}>сб-вс</div>
-                <div className={style.shopItem__text}>
+                <div className={`${style.shopItem__text} ${style.green}`}>
+                  пт-сб
+                </div>
+                <div className={`${style.shopItem__text} ${style.green}`}>
                   {shop?.schedule?.wed || ""}
                 </div>
               </div>

@@ -6,11 +6,15 @@ import { YandexMap } from "../YandexMap/YandexMap";
 
 import { contact } from "../../types/contact";
 
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+
 import { useActions } from "../../hooks/useActions";
 
 export const Contact = ({ address, phone, working_hours }: contact) => {
   
-  const {openModalAction} = useActions();
+  const { openModalAction } = useActions();
+
+  const { shopsList } = useTypedSelector((state) => state.shopList);
 
   return (
     <div className={style.contact}>
@@ -41,7 +45,7 @@ export const Contact = ({ address, phone, working_hours }: contact) => {
         </div>
       </div>
       <div className={style.contact__rightSide}>
-        <YandexMap width="100%" height="500px" />
+        <YandexMap width="100%" height="500px" coordForContacts={[57.699, 39.759]} centerOffice={[57.699, 39.759]} />
       </div>
     </div>
   );

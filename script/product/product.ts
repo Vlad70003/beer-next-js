@@ -4,33 +4,95 @@ export class ProductClass {
   category = (categories: []) => {
     const returnCategory: any = {};
 
-    categories.forEach((category: { xml_id: string; name: string; filters?: {} }) => {
-      returnCategory[category.xml_id] = { products: [], name: category.name, filters: category.filters || null };
-    });
+    categories.forEach(
+      (category: { xml_id: string; name: string; filters?: {} }) => {
+        returnCategory[category.xml_id] = {
+          products: [],
+          name: category.name,
+          filters: category.filters || null,
+        };
+      }
+    );
 
     return returnCategory;
   };
 
   grade = (arg: any) => {
-    const { vid_piva, measure } = arg;
+    const { vid_piva, measure, filtratsiya, vkus } = arg;
 
-    return vid_piva.value
-      ? `${vid_piva.value} ${
-          measure?.ratio ? `${measure?.ratio} ${measure?.symbol}` : ""
-        }`
-      : `${measure?.ratio} ${measure?.symbol}`;
+    let grade = [];
+
+    if (vid_piva.value) {
+      grade.push(vid_piva.value);
+    }
+
+    if (filtratsiya.value) {
+      grade.push(filtratsiya.value);
+    }
+
+    if (vkus.value) {
+      grade.push(vkus.value);
+    }
+
+    if (!grade.length) {
+      return null;
+    }
+
+    return grade
+      .map((item, index) => (index ? item.toLowerCase() : item))
+      .join(", ");
   };
 
   subtitle = (arg: any) => {
-    const { alkogol, plotnost } = arg;
+    const { alkogol, plotnost, alkogolLength, plotnostLength } = arg;
 
-    return `${alkogol?.value ? `${alkogol?.name}: ${alkogol?.value}%` : ""} ${
-      plotnost?.value ? `${plotnost?.name}: ${plotnost?.value}%` : ""
+    if (!alkogol?.value && !plotnost?.value) {
+      return null;
+    }
+
+    return `${
+      alkogol?.value
+        ? `${alkogol?.name?.substr(0, alkogolLength || 999)}: ${
+            alkogol?.value
+          }%`
+        : ""
+    } ${
+      plotnost?.value
+        ? `${plotnost?.name?.substr(0, plotnostLength || 999)}: ${
+            plotnost?.value
+          }%`
+        : ""
     }`;
   };
 
+  getPetBottle = ({ products }: any) => {
+    let smallPet = null;
+    let mediumPet = null;
+    let bigPet = null;
+
+    products?.forEach((element: { name: string }) => {
+      if (element.name === "ПЭТ 0,5") {
+        smallPet = element;
+      }
+
+      if (element.name === "ПЭТ 1,0") {
+        mediumPet = element;
+      }
+
+      if (element.name === "ПЭТ 1,5") {
+        bigPet = element;
+      }
+    });
+
+    return { smallPet, mediumPet, bigPet };
+  };
+
   status = (arg: any) => {
-    const { measure } = arg;
+    const { measure, name } = arg;
+
+    if (name === "ПЭТ 0,5" || name === "ПЭТ 1,0" || name === "ПЭТ 1,5") {
+      return "conteiner";
+    }
 
     switch (measure?.symbol) {
       case "л.":
@@ -44,6 +106,22 @@ export class ProductClass {
 
       default:
         return null;
+    }
+  };
+
+  unit = ({
+    ves,
+    obem,
+  }: {
+    ves: { value: number | null; name: string };
+    obem: { value: number | null; name: string };
+  }) => {
+    if (obem?.value) {
+      return `${obem.name} : ${obem?.value} мл.`;
+    } else if (ves?.value) {
+      return `${ves.name} : ${ves?.value} г.`;
+    } else {
+      return null;
     }
   };
 

@@ -1,17 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import style from "./Catalog.module.scss";
+import { useDebouncedCallback } from 'use-debounce';
 
 //component
 import { catalogState } from "../../types/catalog";
 import { baseBackground } from "../../assests/variable/variable";
 import { Button } from "../../ui/Button/Button";
 import { Product } from "../Product/Product";
+import { Element, Link } from "react-scroll";
 
 //types
 import { productItem } from "../../types/product";
 
-export function Catalog({ title, product, filters }: catalogState) {
+export function Catalog({
+  title,
+  product,
+  filters,
+  petsBottle,
+  setActiveScrollPage,
+  setProductAfterChangeShop,
+}: catalogState) {
+
   const [filterArray, setFilterArray] = useState<any>([]);
+
 
   return (
     <section className={style.catalog}>
@@ -65,38 +76,34 @@ export function Catalog({ title, product, filters }: catalogState) {
         </ul>
       </nav>
       <ul className={style.catalog__list}>
-        {product?.slice(0, 1).map(
-          (
-            item: productItem,
-            ind: number
-          ) => {
-            const li = (
-              <li className={style.catalog__item} key={ind}>
-                <Product product={item} />
-              </li>
-            );
-            const arr: boolean[] = [];
+        {product?.map((item: productItem, ind: number) => {
+          const li = (
+              <Element name={item.id} key={ind} style={{height: "100%"}}>
+                <li className={style.catalog__item}>
+                  <Product
+                    product={item}
+                    petsBottle={petsBottle}
+                    setProductAfterChangeShop={setProductAfterChangeShop}
+                  />
+                </li>
+              </Element>
+          );
+          const flag: boolean[] = [];
 
-            filterArray.length &&
-              item?.props.map((itm) => {
-                filterArray?.map((iem: { id: any; value: string }) => {
-                  if (itm.id === iem.id) {
-                    if (itm.value === iem.value) {
-                      arr.push(true);
-                    } else {
-                      arr.push(false);
-                    }
-                  }
-                });
-              });
-
-            if (!filterArray.length) {
-              return li;
-            } else if (filterArray.length && !arr.includes(false)) {
-              return li;
+          for (let key of item.props) {
+            for (let item of filterArray) {
+              if (key.id === item.id) {
+                flag.push(true);
+              }
             }
           }
-        )}
+
+          if (!filterArray.length) {
+            return li;
+          } else if (flag.length === filterArray.length) {
+            return li;
+          }
+        })}
       </ul>
     </section>
   );

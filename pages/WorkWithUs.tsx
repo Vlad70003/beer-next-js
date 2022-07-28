@@ -19,6 +19,7 @@ import { HeaderWrapper } from "../components/wrappers/HeaderWrapper/HeaderWrappe
 import { baseBackground } from "../assests/variable/variable";
 
 const WorkWithUs: NextPage<WorkWithUsProps> = ({shops}) => {
+  
   const styleHome: styleRouterState = {
     width: "100%",
     minHeight: "100vh",
